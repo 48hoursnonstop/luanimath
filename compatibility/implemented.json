@@ -930,5 +930,302 @@
       "tests/run.lua"
     ],
     "limitations": "Real outline/fill phases; reverse Write is rejected. Text glyphs are not yet individual Mobjects, affecting per-glyph lag timing."
+  },
+  {
+    "id": "manim.mobject.graphing.number_line.NumberLine",
+    "lua_api": "NumberLine",
+    "status": "implemented_partial",
+    "evidence": [
+      "tests/graphing.lua",
+      "tests/reference_graphing.lua",
+      "tests/run.lua"
+    ],
+    "limitations": "Linear numerical axes, default triangular 2D tips, finite scalar/vector Lua functions and cubic open/closed smoothing. Numeric labels, nonlinear scaling, advanced plotting helpers, custom tips and remaining constructor options are pending."
+  },
+  {
+    "id": "manim.mobject.graphing.coordinate_systems.Axes",
+    "lua_api": "Axes",
+    "status": "implemented_partial",
+    "evidence": [
+      "tests/graphing.lua",
+      "tests/reference_graphing.lua",
+      "tests/run.lua"
+    ],
+    "limitations": "Linear numerical axes, default triangular 2D tips, finite scalar/vector Lua functions and cubic open/closed smoothing. Numeric labels, nonlinear scaling, advanced plotting helpers, custom tips and remaining constructor options are pending."
+  },
+  {
+    "id": "manim.mobject.graphing.functions.ParametricFunction",
+    "lua_api": "ParametricFunction",
+    "status": "implemented_partial",
+    "evidence": [
+      "tests/graphing.lua",
+      "tests/reference_graphing.lua",
+      "tests/run.lua"
+    ],
+    "limitations": "Linear numerical axes, default triangular 2D tips, finite scalar/vector Lua functions and cubic open/closed smoothing. Numeric labels, nonlinear scaling, advanced plotting helpers, custom tips and remaining constructor options are pending."
+  },
+  {
+    "id": "manim.mobject.graphing.functions.FunctionGraph",
+    "lua_api": "FunctionGraph",
+    "status": "implemented_partial",
+    "evidence": [
+      "tests/graphing.lua",
+      "tests/reference_graphing.lua",
+      "tests/run.lua"
+    ],
+    "limitations": "Linear numerical axes, default triangular 2D tips, finite scalar/vector Lua functions and cubic open/closed smoothing. Numeric labels, nonlinear scaling, advanced plotting helpers, custom tips and remaining constructor options are pending."
+  },
+  {
+    "id": "manim.mobject.types.vectorized_mobject.VMobject.set_points_smoothly",
+    "lua_api": "VMobject:set_points_smoothly",
+    "status": "implemented_partial",
+    "evidence": [
+      "tests/graphing.lua",
+      "tests/reference_graphing.lua",
+      "tests/run.lua"
+    ],
+    "limitations": "Linear numerical axes, default triangular 2D tips, finite scalar/vector Lua functions and cubic open/closed smoothing. Numeric labels, nonlinear scaling, advanced plotting helpers, custom tips and remaining constructor options are pending."
+  },
+  {
+    "id": "manim.mobject.types.vectorized_mobject.VMobject.make_smooth",
+    "lua_api": "VMobject:make_smooth",
+    "status": "implemented_partial",
+    "evidence": [
+      "tests/graphing.lua",
+      "tests/reference_graphing.lua",
+      "tests/run.lua"
+    ],
+    "limitations": "Linear numerical axes, default triangular 2D tips, finite scalar/vector Lua functions and cubic open/closed smoothing. Numeric labels, nonlinear scaling, advanced plotting helpers, custom tips and remaining constructor options are pending."
+  },
+  {
+    "id": "manim.mobject.types.vectorized_mobject.VMobject.get_subpaths",
+    "lua_api": "VMobject:get_subpaths",
+    "status": "implemented_partial",
+    "evidence": [
+      "tests/graphing.lua",
+      "tests/reference_graphing.lua",
+      "tests/run.lua"
+    ],
+    "limitations": "Linear numerical axes, default triangular 2D tips, finite scalar/vector Lua functions and cubic open/closed smoothing. Numeric labels, nonlinear scaling, advanced plotting helpers, custom tips and remaining constructor options are pending."
+  },
+  {
+    "id": "manim.mobject.mobject.Mobject.get_end",
+    "lua_api": "Mobject:get_end",
+    "status": "implemented_partial",
+    "evidence": [
+      "tests/graphing.lua",
+      "tests/reference_graphing.lua",
+      "tests/run.lua"
+    ],
+    "limitations": "Linear numerical axes, default triangular 2D tips, finite scalar/vector Lua functions and cubic open/closed smoothing. Numeric labels, nonlinear scaling, advanced plotting helpers, custom tips and remaining constructor options are pending."
+  },
+  {
+    "id": "manim.mobject.geometry.arc.TipableVMobject.add_tip",
+    "lua_api": "Mobject:add_tip",
+    "status": "implemented_partial",
+    "evidence": [
+      "tests/graphing.lua",
+      "tests/reference_graphing.lua",
+      "tests/run.lua"
+    ],
+    "limitations": "Linear numerical axes, default triangular 2D tips, finite scalar/vector Lua functions and cubic open/closed smoothing. Numeric labels, nonlinear scaling, advanced plotting helpers, custom tips and remaining constructor options are pending."
+  },
+  {
+    "id": "manim.animation.updaters.mobject_update_utils.always_redraw",
+    "lua_api": "always_redraw",
+    "status": "implemented_partial",
+    "evidence": [
+      "tests/graphing.lua",
+      "tests/reference_graphing.lua",
+      "tests/run.lua"
+    ],
+    "limitations": "Linear numerical axes, default triangular 2D tips, finite scalar/vector Lua functions and cubic open/closed smoothing. Numeric labels, nonlinear scaling, advanced plotting helpers, custom tips and remaining constructor options are pending."
+  },
+  {
+    "id": "manim.mobject.graphing.number_line.NumberLine.number_to_point",
+    "lua_api": "NumberLine:number_to_point",
+    "status": "implemented_partial",
+    "evidence": [
+      "tests/graphing.lua",
+      "tests/reference_graphing.lua",
+      "tests/run.lua"
+    ],
+    "limitations": "Linear numerical axes, default triangular 2D tips, finite scalar/vector Lua functions and cubic open/closed smoothing. Numeric labels, nonlinear scaling, advanced plotting helpers, custom tips and remaining constructor options are pending."
+  },
+  {
+    "id": "manim.mobject.graphing.number_line.NumberLine.point_to_number",
+    "lua_api": "NumberLine:point_to_number",
+    "status": "implemented_partial",
+    "evidence": [
+      "tests/graphing.lua",
+      "tests/reference_graphing.lua",
+      "tests/run.lua"
+    ],
+    "limitations": "Linear numerical axes, default triangular 2D tips, finite scalar/vector Lua functions and cubic open/closed smoothing. Numeric labels, nonlinear scaling, advanced plotting helpers, custom tips and remaining constructor options are pending."
+  },
+  {
+    "id": "manim.mobject.graphing.number_line.NumberLine.n2p",
+    "lua_api": "NumberLine:n2p",
+    "status": "implemented_partial",
+    "evidence": [
+      "tests/graphing.lua",
+      "tests/reference_graphing.lua",
+      "tests/run.lua"
+    ],
+    "limitations": "Linear numerical axes, default triangular 2D tips, finite scalar/vector Lua functions and cubic open/closed smoothing. Numeric labels, nonlinear scaling, advanced plotting helpers, custom tips and remaining constructor options are pending."
+  },
+  {
+    "id": "manim.mobject.graphing.number_line.NumberLine.p2n",
+    "lua_api": "NumberLine:p2n",
+    "status": "implemented_partial",
+    "evidence": [
+      "tests/graphing.lua",
+      "tests/reference_graphing.lua",
+      "tests/run.lua"
+    ],
+    "limitations": "Linear numerical axes, default triangular 2D tips, finite scalar/vector Lua functions and cubic open/closed smoothing. Numeric labels, nonlinear scaling, advanced plotting helpers, custom tips and remaining constructor options are pending."
+  },
+  {
+    "id": "manim.mobject.graphing.number_line.NumberLine.get_tick",
+    "lua_api": "NumberLine:get_tick",
+    "status": "implemented_partial",
+    "evidence": [
+      "tests/graphing.lua",
+      "tests/reference_graphing.lua",
+      "tests/run.lua"
+    ],
+    "limitations": "Linear numerical axes, default triangular 2D tips, finite scalar/vector Lua functions and cubic open/closed smoothing. Numeric labels, nonlinear scaling, advanced plotting helpers, custom tips and remaining constructor options are pending."
+  },
+  {
+    "id": "manim.mobject.graphing.number_line.NumberLine.get_tick_range",
+    "lua_api": "NumberLine:get_tick_range",
+    "status": "implemented_partial",
+    "evidence": [
+      "tests/graphing.lua",
+      "tests/reference_graphing.lua",
+      "tests/run.lua"
+    ],
+    "limitations": "Linear numerical axes, default triangular 2D tips, finite scalar/vector Lua functions and cubic open/closed smoothing. Numeric labels, nonlinear scaling, advanced plotting helpers, custom tips and remaining constructor options are pending."
+  },
+  {
+    "id": "manim.mobject.graphing.number_line.NumberLine.get_tick_marks",
+    "lua_api": "NumberLine:get_tick_marks",
+    "status": "implemented_partial",
+    "evidence": [
+      "tests/graphing.lua",
+      "tests/reference_graphing.lua",
+      "tests/run.lua"
+    ],
+    "limitations": "Linear numerical axes, default triangular 2D tips, finite scalar/vector Lua functions and cubic open/closed smoothing. Numeric labels, nonlinear scaling, advanced plotting helpers, custom tips and remaining constructor options are pending."
+  },
+  {
+    "id": "manim.mobject.graphing.number_line.NumberLine.get_unit_size",
+    "lua_api": "NumberLine:get_unit_size",
+    "status": "implemented_partial",
+    "evidence": [
+      "tests/graphing.lua",
+      "tests/reference_graphing.lua",
+      "tests/run.lua"
+    ],
+    "limitations": "Linear numerical axes, default triangular 2D tips, finite scalar/vector Lua functions and cubic open/closed smoothing. Numeric labels, nonlinear scaling, advanced plotting helpers, custom tips and remaining constructor options are pending."
+  },
+  {
+    "id": "manim.mobject.graphing.coordinate_systems.Axes.coords_to_point",
+    "lua_api": "Axes:coords_to_point",
+    "status": "implemented_partial",
+    "evidence": [
+      "tests/graphing.lua",
+      "tests/reference_graphing.lua",
+      "tests/run.lua"
+    ],
+    "limitations": "Linear numerical axes, default triangular 2D tips, finite scalar/vector Lua functions and cubic open/closed smoothing. Numeric labels, nonlinear scaling, advanced plotting helpers, custom tips and remaining constructor options are pending."
+  },
+  {
+    "id": "manim.mobject.graphing.coordinate_systems.Axes.point_to_coords",
+    "lua_api": "Axes:point_to_coords",
+    "status": "implemented_partial",
+    "evidence": [
+      "tests/graphing.lua",
+      "tests/reference_graphing.lua",
+      "tests/run.lua"
+    ],
+    "limitations": "Linear numerical axes, default triangular 2D tips, finite scalar/vector Lua functions and cubic open/closed smoothing. Numeric labels, nonlinear scaling, advanced plotting helpers, custom tips and remaining constructor options are pending."
+  },
+  {
+    "id": "manim.mobject.graphing.coordinate_systems.Axes.get_axes",
+    "lua_api": "Axes:get_axes",
+    "status": "implemented_partial",
+    "evidence": [
+      "tests/graphing.lua",
+      "tests/reference_graphing.lua",
+      "tests/run.lua"
+    ],
+    "limitations": "Linear numerical axes, default triangular 2D tips, finite scalar/vector Lua functions and cubic open/closed smoothing. Numeric labels, nonlinear scaling, advanced plotting helpers, custom tips and remaining constructor options are pending."
+  },
+  {
+    "id": "manim.mobject.graphing.coordinate_systems.CoordinateSystem.plot",
+    "lua_api": "Axes:plot",
+    "status": "implemented_partial",
+    "evidence": [
+      "tests/graphing.lua",
+      "tests/reference_graphing.lua",
+      "tests/run.lua"
+    ],
+    "limitations": "Linear numerical axes, default triangular 2D tips, finite scalar/vector Lua functions and cubic open/closed smoothing. Numeric labels, nonlinear scaling, advanced plotting helpers, custom tips and remaining constructor options are pending."
+  },
+  {
+    "id": "manim.mobject.graphing.coordinate_systems.CoordinateSystem.c2p",
+    "lua_api": "Axes:c2p",
+    "status": "implemented_partial",
+    "evidence": [
+      "tests/graphing.lua",
+      "tests/reference_graphing.lua",
+      "tests/run.lua"
+    ],
+    "limitations": "Linear numerical axes, default triangular 2D tips, finite scalar/vector Lua functions and cubic open/closed smoothing. Numeric labels, nonlinear scaling, advanced plotting helpers, custom tips and remaining constructor options are pending."
+  },
+  {
+    "id": "manim.mobject.graphing.coordinate_systems.CoordinateSystem.p2c",
+    "lua_api": "Axes:p2c",
+    "status": "implemented_partial",
+    "evidence": [
+      "tests/graphing.lua",
+      "tests/reference_graphing.lua",
+      "tests/run.lua"
+    ],
+    "limitations": "Linear numerical axes, default triangular 2D tips, finite scalar/vector Lua functions and cubic open/closed smoothing. Numeric labels, nonlinear scaling, advanced plotting helpers, custom tips and remaining constructor options are pending."
+  },
+  {
+    "id": "manim.mobject.graphing.coordinate_systems.CoordinateSystem.get_origin",
+    "lua_api": "Axes:get_origin",
+    "status": "implemented_partial",
+    "evidence": [
+      "tests/graphing.lua",
+      "tests/reference_graphing.lua",
+      "tests/run.lua"
+    ],
+    "limitations": "Linear numerical axes, default triangular 2D tips, finite scalar/vector Lua functions and cubic open/closed smoothing. Numeric labels, nonlinear scaling, advanced plotting helpers, custom tips and remaining constructor options are pending."
+  },
+  {
+    "id": "manim.mobject.graphing.functions.ParametricFunction.get_function",
+    "lua_api": "ParametricFunction:get_function",
+    "status": "implemented_partial",
+    "evidence": [
+      "tests/graphing.lua",
+      "tests/reference_graphing.lua",
+      "tests/run.lua"
+    ],
+    "limitations": "Linear numerical axes, default triangular 2D tips, finite scalar/vector Lua functions and cubic open/closed smoothing. Numeric labels, nonlinear scaling, advanced plotting helpers, custom tips and remaining constructor options are pending."
+  },
+  {
+    "id": "manim.mobject.graphing.functions.ParametricFunction.get_point_from_function",
+    "lua_api": "ParametricFunction:get_point_from_function",
+    "status": "implemented_partial",
+    "evidence": [
+      "tests/graphing.lua",
+      "tests/reference_graphing.lua",
+      "tests/run.lua"
+    ],
+    "limitations": "Linear numerical axes, default triangular 2D tips, finite scalar/vector Lua functions and cubic open/closed smoothing. Numeric labels, nonlinear scaling, advanced plotting helpers, custom tips and remaining constructor options are pending."
   }
 ]

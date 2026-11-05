@@ -46,6 +46,53 @@ function B.remap(points,count)
     end
     return result
 end
+function B.subpaths(points)
+    local out,current={},nil
+    for _,c in ipairs(B.curves(points)) do
+        if not current or not V.close(current[#current],c[1],1e-6) then current={};out[#out+1]=current end
+        B.append(current,c)
+    end
+    return out
+end
+local function tridiagonal(lower,diagonal,upper,rhs)
+    local n=#diagonal;local c,d={},{ }
+    c[1]=(upper[1] or 0)/diagonal[1];d[1]=rhs[1]/diagonal[1]
+    for i=2,n do
+        local denominator=diagonal[i]-lower[i]*c[i-1]
+        c[i]=(upper[i] or 0)/denominator;d[i]=(rhs[i]-d[i-1]*lower[i])/denominator
+    end
+    local result={[n]=d[n]}
+    for i=n-1,1,-1 do result[i]=d[i]-result[i+1]*c[i] end
+    return result
+end
+function B.smooth(anchors)
+    assert(#anchors>=2,'at least two anchors required')
+    local a={};for i,p in ipairs(anchors) do a[i]=V(p) end
+    local n=#a-1
+    if n==1 then return B.line(a[1],a[2]) end
+    local closed=V.close(a[1],a[#a],1e-6)
+    local lower,diagonal,upper,rhs={},{},{},{}
+    for i=1,n do lower[i]=1;diagonal[i]=4;upper[i]=1;rhs[i]=a[i]*4+a[i+1]*2 end
+    if closed then
+        diagonal[1]=3;diagonal[n]=3
+    else
+        diagonal[1]=2;diagonal[n]=7;lower[n]=2
+        rhs[1]=a[1]+a[2]*2;rhs[n]=a[n]*8+a[n+1]
+    end
+    local handles=tridiagonal(lower,diagonal,upper,rhs)
+    if closed then
+        local unit={};for i=1,n do unit[i]=(i==1 or i==n) and 1 or 0 end
+        local q=tridiagonal(lower,diagonal,upper,unit)
+        local correction=(handles[1]+handles[n])/(1+q[1]+q[n])
+        for i=1,n do handles[i]=handles[i]-correction*q[i] end
+    end
+    local points={}
+    for i=1,n do
+        local second=i<n and a[i+1]*2-handles[i+1] or closed and a[1]*2-handles[1] or (a[n+1]+handles[n])/2
+        B.append(points,{a[i],handles[i],second,a[i+1]})
+    end
+    return points
+end
 function B.partial_path(points,a,b)
     U.number(a,'a');U.number(b,'b')
     assert(a>=0 and b<=1 and a<=b,'partial path requires 0 <= a <= b <= 1')

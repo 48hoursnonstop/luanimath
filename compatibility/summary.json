@@ -1,10 +1,10 @@
 {
   "upstream_version": "0.22.1",
-  "inventory_entries": 2718,
+  "inventory_entries": 5002,
   "statuses": {
-    "not_implemented": 2087,
-    "implemented_partial": 88,
-    "blocked": 537,
+    "not_implemented": 4339,
+    "implemented_partial": 115,
+    "blocked": 542,
     "implemented_verified": 6
   },
   "note": "Status counts refer to explicitly inventoried symbols, not an overall project completion percentage. Partial APIs are available only within their documented restrictions."

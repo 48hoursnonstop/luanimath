@@ -5,6 +5,7 @@ import argparse
 import ast
 import hashlib
 import json
+import inspect
 from pathlib import Path
 
 import numpy as np
@@ -58,6 +59,13 @@ def inventory(upstream):
                 except (ValueError, TypeError):
                     pass
         for node in tree.body:
+            if isinstance(node,(ast.Assign,ast.AnnAssign)):
+                targets=node.targets if isinstance(node,ast.Assign) else [node.target]
+                for target in targets:
+                    for symbol in ast.walk(target):
+                        if isinstance(symbol,ast.Name) and not symbol.id.startswith('_') and symbol.id.isupper():
+                            qualified=module+'.'+symbol.id
+                            records.setdefault(qualified,dict(id=qualified,kind='constant',source=rel,line=node.lineno,status='not_implemented'))
             if not isinstance(node, (ast.ClassDef, ast.FunctionDef, ast.AsyncFunctionDef)):
                 continue
             if node.name.startswith('_') or (exports is not None and node.name not in exports):
@@ -78,7 +86,15 @@ def inventory(upstream):
                 qualified = module + '.' + name
                 records.setdefault(qualified, dict(id=qualified, kind='export', source=rel, status='not_implemented'))
     (ROOT/'compatibility/upstream_files.sha256').write_text(''.join(f'{v}  {k}\n' for k, v in hashes.items()))
-    result = dict(upstream_version=m.__version__, definition='Module __all__ declarations, public definitions in modules without __all__, and public class methods defined in those classes. Inherited methods resolve to their defining class. Dynamic exports and runtime instance attributes need a later audit.',
+    exports=[]
+    for name,value in sorted(vars(m).items()):
+        if name.startswith('_'):continue
+        owner=getattr(value,'__module__','')
+        if (inspect.isclass(value) or inspect.isfunction(value)) and owner.startswith('manim'):
+            exports.append(dict(name=name,id=owner+'.'+value.__name__))
+        elif name.isupper():exports.append(dict(name=name,id='manim.'+name))
+    (ROOT/'compatibility/public_exports.json').write_text(json.dumps(exports,indent=2)+'\n')
+    result = dict(upstream_version=m.__version__, definition='Module __all__ declarations, public definitions in modules without __all__, uppercase assignment declarations, and public class methods defined in those classes. Inherited methods resolve to their defining class. Runtime root exports are separately indexed in public_exports.json. Dynamically generated instance attributes still need an audit.',
                   entries=list(records.values()))
     (ROOT/'compatibility/api_inventory.json').write_text(json.dumps(result, indent=2)+'\n')
     print(f'Inventory: {len(records)} explicit API entries from {len(hashes)} source files')

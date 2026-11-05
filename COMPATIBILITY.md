@@ -1,6 +1,6 @@
 # Compatibility
 
-Target: Manim Community 0.22.1. Current development version: 0.2.0-dev.
+Target: Manim Community 0.22.1. Current development version: 0.3.0-dev.
 
 The public API inventory is `compatibility/api_inventory.json`; reviewed
 declarations are in `compatibility/implemented.json`. `python3 tools/coverage.py`
@@ -13,10 +13,12 @@ validates declarations and writes `compatibility/summary.json`. Status labels:
 - `not_applicable`: only for a justified host-language difference; none is used
   to avoid implementing a scene capability.
 
-The initial inventory contains 2,718 explicit symbols. It includes module
+The current inventory contains 5,002 explicit symbols. It includes module
 `__all__` declarations, public definitions in modules without `__all__`, and
-public class methods defined in those classes. Inherited methods resolve to the
-defining class. Dynamic exports and instance attributes need a later audit.
+public class methods defined in those classes and uppercase constant assignment
+declarations. Inherited methods resolve to the defining class. Runtime root
+exports have a separate index in `compatibility/public_exports.json`.
+Dynamic instance attributes still need a later audit.
 These symbol counts are not a percentage of total project completion.
 
 ## Executable surface
@@ -51,6 +53,14 @@ Mixed LTR/Arabic text is separately checked against unmodified Manim.
 
 ## Current restrictions
 
+Numerical axes and graphs now include NumberLine, Axes, scalar/batched point
+conversion, ticks, standard triangular 2D tips, ParametricFunction,
+FunctionGraph and Axes.plot. Open and closed cubic splines use the upstream
+linear-time tridiagonal/rank-one algorithms, with 83 differential cases and
+12,264 scalar/invalid-input comparisons. `always_redraw` executes actual Lua
+callbacks. Nonlinear scaling, math labels, custom tips and many specialized
+plotting methods remain pending and are explicitly rejected where applicable.
+
 - Transform requires equal hierarchical structure. Curve-count alignment is
   implemented for connected cubic paths; multipath correspondence and degenerate
   missing paths still need work. `path_arc` is explicitly rejected.
@@ -68,7 +78,7 @@ Mixed LTR/Arabic text is separately checked against unmodified Manim.
   individual glyph Mobjects. Character slicing, per-glyph timing, text-to-color
   mappings, MarkupText, missing-font warnings and advanced layout remain pending.
   Reverse Write is explicitly rejected.
-- Math typography, SVG, images, plots, animated cameras, 3D, OpenGL,
+- Math typography, SVG, images, advanced plots, animated cameras, 3D, OpenGL,
   audio, render caching, scene sections and notebook integration are pending.
 - Lua 5.4 is the only tested ABI. Lua indices are 1-based. Tables and functions
   replace Python classes and keyword machinery where appropriate.

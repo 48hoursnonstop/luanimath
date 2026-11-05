@@ -1,5 +1,20 @@
 # Executed test results
 
+## 0.3.0-dev — 2026-11-04 America/Mexico_City
+
+- Core Lua regression: **15 groups, 313 checks passed**.
+- Graphing oracle: **40 numerical-line/axes cases, 37 open/closed spline cases
+  and 6 parametric-function cases**. Actual Lua execution passed **12,264
+  scalar/invalid-input checks**, including transformed mappings and helper APIs.
+- Sine/axes/dot reference image: mean absolute RGBA error **0.006761188271604939**,
+  fraction of pixels with any channel error >16 **0.00020833333333333335**.
+  Both are within the unchanged geometric comparison tolerance.
+- Plot animation: **108 frames, 640×360, 24 fps, 4.5 seconds**. Full FFmpeg
+  decode passed and the final frame was opened and visually inspected.
+- Existing 282 geometry/animation cases, 42 frame comparisons, typography
+  comparisons and actual media decoding passed as part of `make check` before
+  the final source release.
+
 ## 0.2.0-dev — 2026-11-04 America/Mexico_City
 
 - Lua regression suite: **14 groups, 309 checks passed**.

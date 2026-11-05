@@ -8,7 +8,7 @@ PKGS = $(LUA_PKG) cairo pangocairo
 export LUA_PATH := $(CURDIR)/lua/?.lua;$(CURDIR)/lua/?/init.lua;;
 export LUA_CPATH := $(CURDIR)/build/?.so;;
 
-.PHONY: all test text-test media-test demo reference differential check clean sanitize release
+.PHONY: all test text-test media-test graphing-test demo reference differential check clean sanitize release
 all: build/luanim_native.so
 
 build/luanim_native.so: native/cairo_backend.c native/text.c
@@ -24,6 +24,11 @@ demo: all
 reference:
 	.dev/venv/bin/python tools/reference.py --upstream .dev/manim-0.22.1
 	.dev/venv/bin/python tools/reference_text.py
+	.dev/venv/bin/python tools/reference_graphing.py
+
+graphing-test: all
+	$(LUA) tests/graphing.lua
+	$(PYTHON) tools/visual_graphing.py
 
 text-test: all
 	$(LUA) tests/text.lua
@@ -37,7 +42,7 @@ differential: all
 	$(LUA) tests/differential.lua
 	$(PYTHON) tools/visual_compare.py
 
-check: test demo differential text-test media-test
+check: test demo differential text-test media-test graphing-test
 
 sanitize:
 	$(MAKE) clean

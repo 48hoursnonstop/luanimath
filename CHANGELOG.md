@@ -1,5 +1,18 @@
 # Changelog
 
+## 0.3.0-dev
+
+- Numerical lines, ticks, triangular tips, axes and transformed point mapping.
+- Parametric and function graphs, discontinuity intervals, plots, updater-based
+  redraw and open/closed cubic spline smoothing with O(N) solvers.
+- 83 new upstream cases and 12,264 scalar/invalid-input checks; real sine plot
+  screenshot comparison and an actual tracker-driven graph animation.
+- Expanded API inventory to include uppercase constant declarations and a root
+  public-export index; all declared availability remains evidence-based.
+- Corrected default world frame to Manim's fixed 128/9 × 8 independently of
+  raster resolution, and distinguished a path's last control point from its
+  arrow-tip endpoint.
+
 ## 0.2.0-dev
 
 - Native Pango-shaped Unicode vector text, fonts, size, weight, slant, multiline

@@ -196,7 +196,12 @@ function M:set_points_as_corners(points)
     return self:set_points(out)
 end
 function M:get_start() assert(#self.points>0,'Mobject has no points');return V(self.points[1]) end
-function M:get_end() assert(#self.points>0,'Mobject has no points');return V(self.points[#self.points]) end
+function M:get_end()
+    if self.tip then return self.tip:get_start() end
+    assert(#self.points>0,'Mobject has no points');return V(self.points[#self.points])
+end
+function M:get_length() return V.norm(self:get_end()-self:get_start()) end
+function M:get_angle() local d=self:get_end()-self:get_start();return math.atan(d[2],d[1]) end
 function M:get_num_curves() assert(self.is_vector,'curves require VMobject');return #self.points/4 end
 function M:get_arc_length(samples)
     local out=0;for _,c in ipairs(B.curves(self.points)) do out=out+B.length(c,samples) end;return out
@@ -204,7 +209,7 @@ end
 function M:point_from_proportion(alpha)
     U.number(alpha,'alpha');assert(alpha>=0 and alpha<=1,'alpha must be in [0,1]')
     local curves=B.curves(self.points);assert(#curves>0,'VMobject has no curves')
-    if alpha==1 then return self:get_end() end
+    if alpha==1 then return V(self.points[#self.points]) end
     local lengths,total={},0
     for i,c in ipairs(curves) do lengths[i]=B.length(c);total=total+lengths[i] end
     local target,current=alpha*total,0
@@ -212,13 +217,27 @@ function M:point_from_proportion(alpha)
         if current+lengths[i]>=target then return B.point(c,lengths[i]==0 and 0 or (target-current)/lengths[i]) end
         current=current+lengths[i]
     end
-    return self:get_end()
+    return V(self.points[#self.points])
 end
 function M:pointwise_become_partial(other,a,b) return self:set_points(B.partial_path(other.points,a,b)) end
 function M:get_subcurve(a,b) return self:copy():pointwise_become_partial(self,a,b) end
 function M:reverse_direction()
     local points={};for i=#self.points,1,-1 do points[#points+1]=V(self.points[i]) end
     return self:set_points(points)
+end
+function M:get_subpaths() return B.subpaths(self.points) end
+function M:set_points_smoothly(points) return self:set_points(B.smooth(points)) end
+function M:make_smooth()
+    for _,m in ipairs(self:family_members_with_points()) do
+        local result={}
+        for _,path in ipairs(B.subpaths(m.points)) do
+            local anchors={};for i=1,#path,4 do anchors[#anchors+1]=path[i] end
+            anchors[#anchors+1]=path[#path]
+            for _,p in ipairs(B.smooth(anchors)) do result[#result+1]=p end
+        end
+        m.points=result
+    end
+    return self
 end
 function M:become(other)
     self.points=U.copy(other.points)

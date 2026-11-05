@@ -1,0 +1,2214 @@
+[
+  {
+    "name": "AS2700",
+    "id": "manim.AS2700"
+  },
+  {
+    "name": "Add",
+    "id": "manim.animation.animation.Add"
+  },
+  {
+    "name": "AddTextLetterByLetter",
+    "id": "manim.animation.creation.AddTextLetterByLetter"
+  },
+  {
+    "name": "AddTextWordByWord",
+    "id": "manim.animation.creation.AddTextWordByWord"
+  },
+  {
+    "name": "Angle",
+    "id": "manim.mobject.geometry.line.Angle"
+  },
+  {
+    "name": "AnimatedBoundary",
+    "id": "manim.animation.changing.AnimatedBoundary"
+  },
+  {
+    "name": "Animation",
+    "id": "manim.animation.animation.Animation"
+  },
+  {
+    "name": "AnimationGroup",
+    "id": "manim.animation.composition.AnimationGroup"
+  },
+  {
+    "name": "AnnotationDot",
+    "id": "manim.mobject.geometry.arc.AnnotationDot"
+  },
+  {
+    "name": "AnnularSector",
+    "id": "manim.mobject.geometry.arc.AnnularSector"
+  },
+  {
+    "name": "Annulus",
+    "id": "manim.mobject.geometry.arc.Annulus"
+  },
+  {
+    "name": "ApplyComplexFunction",
+    "id": "manim.animation.transform.ApplyComplexFunction"
+  },
+  {
+    "name": "ApplyFunction",
+    "id": "manim.animation.transform.ApplyFunction"
+  },
+  {
+    "name": "ApplyMatrix",
+    "id": "manim.animation.transform.ApplyMatrix"
+  },
+  {
+    "name": "ApplyMethod",
+    "id": "manim.animation.transform.ApplyMethod"
+  },
+  {
+    "name": "ApplyPointwiseFunction",
+    "id": "manim.animation.transform.ApplyPointwiseFunction"
+  },
+  {
+    "name": "ApplyPointwiseFunctionToCenter",
+    "id": "manim.animation.transform.ApplyPointwiseFunctionToCenter"
+  },
+  {
+    "name": "ApplyWave",
+    "id": "manim.animation.indication.ApplyWave"
+  },
+  {
+    "name": "Arc",
+    "id": "manim.mobject.geometry.arc.Arc"
+  },
+  {
+    "name": "ArcBetweenPoints",
+    "id": "manim.mobject.geometry.arc.ArcBetweenPoints"
+  },
+  {
+    "name": "ArcBrace",
+    "id": "manim.mobject.svg.brace.ArcBrace"
+  },
+  {
+    "name": "ArcPolygon",
+    "id": "manim.mobject.geometry.arc.ArcPolygon"
+  },
+  {
+    "name": "ArcPolygonFromArcs",
+    "id": "manim.mobject.geometry.arc.ArcPolygonFromArcs"
+  },
+  {
+    "name": "Arrow",
+    "id": "manim.mobject.geometry.line.Arrow"
+  },
+  {
+    "name": "Arrow3D",
+    "id": "manim.mobject.three_d.three_dimensions.Arrow3D"
+  },
+  {
+    "name": "ArrowCircleFilledTip",
+    "id": "manim.mobject.geometry.tips.ArrowCircleFilledTip"
+  },
+  {
+    "name": "ArrowCircleTip",
+    "id": "manim.mobject.geometry.tips.ArrowCircleTip"
+  },
+  {
+    "name": "ArrowSquareFilledTip",
+    "id": "manim.mobject.geometry.tips.ArrowSquareFilledTip"
+  },
+  {
+    "name": "ArrowSquareTip",
+    "id": "manim.mobject.geometry.tips.ArrowSquareTip"
+  },
+  {
+    "name": "ArrowTip",
+    "id": "manim.mobject.geometry.tips.ArrowTip"
+  },
+  {
+    "name": "ArrowTriangleFilledTip",
+    "id": "manim.mobject.geometry.tips.ArrowTriangleFilledTip"
+  },
+  {
+    "name": "ArrowTriangleTip",
+    "id": "manim.mobject.geometry.tips.ArrowTriangleTip"
+  },
+  {
+    "name": "ArrowVectorField",
+    "id": "manim.mobject.vector_field.ArrowVectorField"
+  },
+  {
+    "name": "Axes",
+    "id": "manim.mobject.graphing.coordinate_systems.Axes"
+  },
+  {
+    "name": "BLACK",
+    "id": "manim.BLACK"
+  },
+  {
+    "name": "BLUE",
+    "id": "manim.BLUE"
+  },
+  {
+    "name": "BLUE_A",
+    "id": "manim.BLUE_A"
+  },
+  {
+    "name": "BLUE_B",
+    "id": "manim.BLUE_B"
+  },
+  {
+    "name": "BLUE_C",
+    "id": "manim.BLUE_C"
+  },
+  {
+    "name": "BLUE_D",
+    "id": "manim.BLUE_D"
+  },
+  {
+    "name": "BLUE_E",
+    "id": "manim.BLUE_E"
+  },
+  {
+    "name": "BOLD",
+    "id": "manim.BOLD"
+  },
+  {
+    "name": "BOOK",
+    "id": "manim.BOOK"
+  },
+  {
+    "name": "BS381",
+    "id": "manim.BS381"
+  },
+  {
+    "name": "BackgroundColoredVMobjectDisplayer",
+    "id": "manim.camera.camera.BackgroundColoredVMobjectDisplayer"
+  },
+  {
+    "name": "BackgroundRectangle",
+    "id": "manim.mobject.geometry.shape_matchers.BackgroundRectangle"
+  },
+  {
+    "name": "BarChart",
+    "id": "manim.mobject.graphing.probability.BarChart"
+  },
+  {
+    "name": "Blink",
+    "id": "manim.animation.indication.Blink"
+  },
+  {
+    "name": "Brace",
+    "id": "manim.mobject.svg.brace.Brace"
+  },
+  {
+    "name": "BraceBetweenPoints",
+    "id": "manim.mobject.svg.brace.BraceBetweenPoints"
+  },
+  {
+    "name": "BraceLabel",
+    "id": "manim.mobject.svg.brace.BraceLabel"
+  },
+  {
+    "name": "BraceText",
+    "id": "manim.mobject.svg.brace.BraceText"
+  },
+  {
+    "name": "Broadcast",
+    "id": "manim.animation.specialized.Broadcast"
+  },
+  {
+    "name": "BulletedList",
+    "id": "manim.mobject.text.tex_mobject.BulletedList"
+  },
+  {
+    "name": "CHOOSE_NUMBER_MESSAGE",
+    "id": "manim.CHOOSE_NUMBER_MESSAGE"
+  },
+  {
+    "name": "CONTEXT_SETTINGS",
+    "id": "manim.CONTEXT_SETTINGS"
+  },
+  {
+    "name": "CTRL_VALUE",
+    "id": "manim.CTRL_VALUE"
+  },
+  {
+    "name": "CairoRenderer",
+    "id": "manim.renderer.cairo_renderer.CairoRenderer"
+  },
+  {
+    "name": "Camera",
+    "id": "manim.camera.camera.Camera"
+  },
+  {
+    "name": "CapStyleType",
+    "id": "manim.constants.CapStyleType"
+  },
+  {
+    "name": "ChangeDecimalToValue",
+    "id": "manim.animation.numbers.ChangeDecimalToValue"
+  },
+  {
+    "name": "ChangeSpeed",
+    "id": "manim.animation.speedmodifier.ChangeSpeed"
+  },
+  {
+    "name": "ChangingDecimal",
+    "id": "manim.animation.numbers.ChangingDecimal"
+  },
+  {
+    "name": "Circle",
+    "id": "manim.mobject.geometry.arc.Circle"
+  },
+  {
+    "name": "Circumscribe",
+    "id": "manim.animation.indication.Circumscribe"
+  },
+  {
+    "name": "ClockwiseTransform",
+    "id": "manim.animation.transform.ClockwiseTransform"
+  },
+  {
+    "name": "Code",
+    "id": "manim.mobject.text.code_mobject.Code"
+  },
+  {
+    "name": "ComplexHomotopy",
+    "id": "manim.animation.movement.ComplexHomotopy"
+  },
+  {
+    "name": "ComplexPlane",
+    "id": "manim.mobject.graphing.coordinate_systems.ComplexPlane"
+  },
+  {
+    "name": "ComplexValueTracker",
+    "id": "manim.mobject.value_tracker.ComplexValueTracker"
+  },
+  {
+    "name": "Cone",
+    "id": "manim.mobject.three_d.three_dimensions.Cone"
+  },
+  {
+    "name": "ConvexHull",
+    "id": "manim.mobject.geometry.polygram.ConvexHull"
+  },
+  {
+    "name": "ConvexHull3D",
+    "id": "manim.mobject.three_d.polyhedra.ConvexHull3D"
+  },
+  {
+    "name": "CoordinateSystem",
+    "id": "manim.mobject.graphing.coordinate_systems.CoordinateSystem"
+  },
+  {
+    "name": "CounterclockwiseTransform",
+    "id": "manim.animation.transform.CounterclockwiseTransform"
+  },
+  {
+    "name": "Create",
+    "id": "manim.animation.creation.Create"
+  },
+  {
+    "name": "Cross",
+    "id": "manim.mobject.geometry.shape_matchers.Cross"
+  },
+  {
+    "name": "Cube",
+    "id": "manim.mobject.three_d.three_dimensions.Cube"
+  },
+  {
+    "name": "CubicBezier",
+    "id": "manim.mobject.geometry.arc.CubicBezier"
+  },
+  {
+    "name": "CurvedArrow",
+    "id": "manim.mobject.geometry.arc.CurvedArrow"
+  },
+  {
+    "name": "CurvedDoubleArrow",
+    "id": "manim.mobject.geometry.arc.CurvedDoubleArrow"
+  },
+  {
+    "name": "CurvesAsSubmobjects",
+    "id": "manim.mobject.types.vectorized_mobject.CurvesAsSubmobjects"
+  },
+  {
+    "name": "Cutout",
+    "id": "manim.mobject.geometry.polygram.Cutout"
+  },
+  {
+    "name": "CyclicReplace",
+    "id": "manim.animation.transform.CyclicReplace"
+  },
+  {
+    "name": "Cylinder",
+    "id": "manim.mobject.three_d.three_dimensions.Cylinder"
+  },
+  {
+    "name": "DARKER_GRAY",
+    "id": "manim.DARKER_GRAY"
+  },
+  {
+    "name": "DARKER_GREY",
+    "id": "manim.DARKER_GREY"
+  },
+  {
+    "name": "DARK_BLUE",
+    "id": "manim.DARK_BLUE"
+  },
+  {
+    "name": "DARK_BROWN",
+    "id": "manim.DARK_BROWN"
+  },
+  {
+    "name": "DARK_GRAY",
+    "id": "manim.DARK_GRAY"
+  },
+  {
+    "name": "DARK_GREY",
+    "id": "manim.DARK_GREY"
+  },
+  {
+    "name": "DEFAULT_ARROW_TIP_LENGTH",
+    "id": "manim.DEFAULT_ARROW_TIP_LENGTH"
+  },
+  {
+    "name": "DEFAULT_DASH_LENGTH",
+    "id": "manim.DEFAULT_DASH_LENGTH"
+  },
+  {
+    "name": "DEFAULT_DOT_RADIUS",
+    "id": "manim.DEFAULT_DOT_RADIUS"
+  },
+  {
+    "name": "DEFAULT_FONT_SIZE",
+    "id": "manim.DEFAULT_FONT_SIZE"
+  },
+  {
+    "name": "DEFAULT_MOBJECT_TO_EDGE_BUFFER",
+    "id": "manim.DEFAULT_MOBJECT_TO_EDGE_BUFFER"
+  },
+  {
+    "name": "DEFAULT_MOBJECT_TO_MOBJECT_BUFFER",
+    "id": "manim.DEFAULT_MOBJECT_TO_MOBJECT_BUFFER"
+  },
+  {
+    "name": "DEFAULT_POINTWISE_FUNCTION_RUN_TIME",
+    "id": "manim.DEFAULT_POINTWISE_FUNCTION_RUN_TIME"
+  },
+  {
+    "name": "DEFAULT_POINT_DENSITY_1D",
+    "id": "manim.DEFAULT_POINT_DENSITY_1D"
+  },
+  {
+    "name": "DEFAULT_POINT_DENSITY_2D",
+    "id": "manim.DEFAULT_POINT_DENSITY_2D"
+  },
+  {
+    "name": "DEFAULT_QUALITY",
+    "id": "manim.DEFAULT_QUALITY"
+  },
+  {
+    "name": "DEFAULT_SMALL_DOT_RADIUS",
+    "id": "manim.DEFAULT_SMALL_DOT_RADIUS"
+  },
+  {
+    "name": "DEFAULT_STROKE_WIDTH",
+    "id": "manim.DEFAULT_STROKE_WIDTH"
+  },
+  {
+    "name": "DEFAULT_WAIT_TIME",
+    "id": "manim.DEFAULT_WAIT_TIME"
+  },
+  {
+    "name": "DEGREES",
+    "id": "manim.DEGREES"
+  },
+  {
+    "name": "DL",
+    "id": "manim.DL"
+  },
+  {
+    "name": "DOWN",
+    "id": "manim.DOWN"
+  },
+  {
+    "name": "DR",
+    "id": "manim.DR"
+  },
+  {
+    "name": "DVIPSNAMES",
+    "id": "manim.DVIPSNAMES"
+  },
+  {
+    "name": "DashedLine",
+    "id": "manim.mobject.geometry.line.DashedLine"
+  },
+  {
+    "name": "DashedVMobject",
+    "id": "manim.mobject.types.vectorized_mobject.DashedVMobject"
+  },
+  {
+    "name": "DecimalMatrix",
+    "id": "manim.mobject.matrix.DecimalMatrix"
+  },
+  {
+    "name": "DecimalNumber",
+    "id": "manim.mobject.text.numbers.DecimalNumber"
+  },
+  {
+    "name": "DecimalTable",
+    "id": "manim.mobject.table.DecimalTable"
+  },
+  {
+    "name": "DefaultSectionType",
+    "id": "manim.scene.section.DefaultSectionType"
+  },
+  {
+    "name": "DiGraph",
+    "id": "manim.mobject.graph.DiGraph"
+  },
+  {
+    "name": "DictAsObject",
+    "id": "manim.utils.config_ops.DictAsObject"
+  },
+  {
+    "name": "Difference",
+    "id": "manim.mobject.geometry.boolean_ops.Difference"
+  },
+  {
+    "name": "Dodecahedron",
+    "id": "manim.mobject.three_d.polyhedra.Dodecahedron"
+  },
+  {
+    "name": "Dot",
+    "id": "manim.mobject.geometry.arc.Dot"
+  },
+  {
+    "name": "Dot3D",
+    "id": "manim.mobject.three_d.three_dimensions.Dot3D"
+  },
+  {
+    "name": "DotCloud",
+    "id": "manim.mobject.opengl.dot_cloud.DotCloud"
+  },
+  {
+    "name": "DoubleArrow",
+    "id": "manim.mobject.geometry.line.DoubleArrow"
+  },
+  {
+    "name": "DrawBorderThenFill",
+    "id": "manim.animation.creation.DrawBorderThenFill"
+  },
+  {
+    "name": "EPILOG",
+    "id": "manim.EPILOG"
+  },
+  {
+    "name": "Elbow",
+    "id": "manim.mobject.geometry.line.Elbow"
+  },
+  {
+    "name": "Ellipse",
+    "id": "manim.mobject.geometry.arc.Ellipse"
+  },
+  {
+    "name": "Exclusion",
+    "id": "manim.mobject.geometry.boolean_ops.Exclusion"
+  },
+  {
+    "name": "FadeIn",
+    "id": "manim.animation.fading.FadeIn"
+  },
+  {
+    "name": "FadeOut",
+    "id": "manim.animation.fading.FadeOut"
+  },
+  {
+    "name": "FadeToColor",
+    "id": "manim.animation.transform.FadeToColor"
+  },
+  {
+    "name": "FadeTransform",
+    "id": "manim.animation.transform.FadeTransform"
+  },
+  {
+    "name": "FadeTransformPieces",
+    "id": "manim.animation.transform.FadeTransformPieces"
+  },
+  {
+    "name": "Flash",
+    "id": "manim.animation.indication.Flash"
+  },
+  {
+    "name": "FocusOn",
+    "id": "manim.animation.indication.FocusOn"
+  },
+  {
+    "name": "FullScreenRectangle",
+    "id": "manim.mobject.frame.FullScreenRectangle"
+  },
+  {
+    "name": "FunctionGraph",
+    "id": "manim.mobject.graphing.functions.FunctionGraph"
+  },
+  {
+    "name": "GOLD",
+    "id": "manim.GOLD"
+  },
+  {
+    "name": "GOLD_A",
+    "id": "manim.GOLD_A"
+  },
+  {
+    "name": "GOLD_B",
+    "id": "manim.GOLD_B"
+  },
+  {
+    "name": "GOLD_C",
+    "id": "manim.GOLD_C"
+  },
+  {
+    "name": "GOLD_D",
+    "id": "manim.GOLD_D"
+  },
+  {
+    "name": "GOLD_E",
+    "id": "manim.GOLD_E"
+  },
+  {
+    "name": "GRAY",
+    "id": "manim.GRAY"
+  },
+  {
+    "name": "GRAY_A",
+    "id": "manim.GRAY_A"
+  },
+  {
+    "name": "GRAY_B",
+    "id": "manim.GRAY_B"
+  },
+  {
+    "name": "GRAY_BROWN",
+    "id": "manim.GRAY_BROWN"
+  },
+  {
+    "name": "GRAY_C",
+    "id": "manim.GRAY_C"
+  },
+  {
+    "name": "GRAY_D",
+    "id": "manim.GRAY_D"
+  },
+  {
+    "name": "GRAY_E",
+    "id": "manim.GRAY_E"
+  },
+  {
+    "name": "GREEN",
+    "id": "manim.GREEN"
+  },
+  {
+    "name": "GREEN_A",
+    "id": "manim.GREEN_A"
+  },
+  {
+    "name": "GREEN_B",
+    "id": "manim.GREEN_B"
+  },
+  {
+    "name": "GREEN_C",
+    "id": "manim.GREEN_C"
+  },
+  {
+    "name": "GREEN_D",
+    "id": "manim.GREEN_D"
+  },
+  {
+    "name": "GREEN_E",
+    "id": "manim.GREEN_E"
+  },
+  {
+    "name": "GREY",
+    "id": "manim.GREY"
+  },
+  {
+    "name": "GREY_A",
+    "id": "manim.GREY_A"
+  },
+  {
+    "name": "GREY_B",
+    "id": "manim.GREY_B"
+  },
+  {
+    "name": "GREY_BROWN",
+    "id": "manim.GREY_BROWN"
+  },
+  {
+    "name": "GREY_C",
+    "id": "manim.GREY_C"
+  },
+  {
+    "name": "GREY_D",
+    "id": "manim.GREY_D"
+  },
+  {
+    "name": "GREY_E",
+    "id": "manim.GREY_E"
+  },
+  {
+    "name": "Graph",
+    "id": "manim.mobject.graph.Graph"
+  },
+  {
+    "name": "Group",
+    "id": "manim.mobject.mobject.Group"
+  },
+  {
+    "name": "GrowArrow",
+    "id": "manim.animation.growing.GrowArrow"
+  },
+  {
+    "name": "GrowFromCenter",
+    "id": "manim.animation.growing.GrowFromCenter"
+  },
+  {
+    "name": "GrowFromEdge",
+    "id": "manim.animation.growing.GrowFromEdge"
+  },
+  {
+    "name": "GrowFromPoint",
+    "id": "manim.animation.growing.GrowFromPoint"
+  },
+  {
+    "name": "HEAVY",
+    "id": "manim.HEAVY"
+  },
+  {
+    "name": "HSV",
+    "id": "manim.utils.color.core.HSV"
+  },
+  {
+    "name": "Homotopy",
+    "id": "manim.animation.movement.Homotopy"
+  },
+  {
+    "name": "IN",
+    "id": "manim.IN"
+  },
+  {
+    "name": "INVALID_NUMBER_MESSAGE",
+    "id": "manim.INVALID_NUMBER_MESSAGE"
+  },
+  {
+    "name": "ITALIC",
+    "id": "manim.ITALIC"
+  },
+  {
+    "name": "Icosahedron",
+    "id": "manim.mobject.three_d.polyhedra.Icosahedron"
+  },
+  {
+    "name": "ImageMobject",
+    "id": "manim.mobject.types.image_mobject.ImageMobject"
+  },
+  {
+    "name": "ImageMobjectFromCamera",
+    "id": "manim.mobject.types.image_mobject.ImageMobjectFromCamera"
+  },
+  {
+    "name": "ImplicitFunction",
+    "id": "manim.mobject.graphing.functions.ImplicitFunction"
+  },
+  {
+    "name": "Indicate",
+    "id": "manim.animation.indication.Indicate"
+  },
+  {
+    "name": "Integer",
+    "id": "manim.mobject.text.numbers.Integer"
+  },
+  {
+    "name": "IntegerMatrix",
+    "id": "manim.mobject.matrix.IntegerMatrix"
+  },
+  {
+    "name": "IntegerTable",
+    "id": "manim.mobject.table.IntegerTable"
+  },
+  {
+    "name": "Intersection",
+    "id": "manim.mobject.geometry.boolean_ops.Intersection"
+  },
+  {
+    "name": "LARGE_BUFF",
+    "id": "manim.LARGE_BUFF"
+  },
+  {
+    "name": "LEFT",
+    "id": "manim.LEFT"
+  },
+  {
+    "name": "LIGHT",
+    "id": "manim.LIGHT"
+  },
+  {
+    "name": "LIGHTER_GRAY",
+    "id": "manim.LIGHTER_GRAY"
+  },
+  {
+    "name": "LIGHTER_GREY",
+    "id": "manim.LIGHTER_GREY"
+  },
+  {
+    "name": "LIGHT_BROWN",
+    "id": "manim.LIGHT_BROWN"
+  },
+  {
+    "name": "LIGHT_GRAY",
+    "id": "manim.LIGHT_GRAY"
+  },
+  {
+    "name": "LIGHT_GREY",
+    "id": "manim.LIGHT_GREY"
+  },
+  {
+    "name": "LIGHT_PINK",
+    "id": "manim.LIGHT_PINK"
+  },
+  {
+    "name": "LOGO_BLACK",
+    "id": "manim.LOGO_BLACK"
+  },
+  {
+    "name": "LOGO_BLUE",
+    "id": "manim.LOGO_BLUE"
+  },
+  {
+    "name": "LOGO_GREEN",
+    "id": "manim.LOGO_GREEN"
+  },
+  {
+    "name": "LOGO_RED",
+    "id": "manim.LOGO_RED"
+  },
+  {
+    "name": "LOGO_WHITE",
+    "id": "manim.LOGO_WHITE"
+  },
+  {
+    "name": "Label",
+    "id": "manim.mobject.geometry.labeled.Label"
+  },
+  {
+    "name": "LabeledArrow",
+    "id": "manim.mobject.geometry.labeled.LabeledArrow"
+  },
+  {
+    "name": "LabeledDot",
+    "id": "manim.mobject.geometry.arc.LabeledDot"
+  },
+  {
+    "name": "LabeledLine",
+    "id": "manim.mobject.geometry.labeled.LabeledLine"
+  },
+  {
+    "name": "LabeledPolygram",
+    "id": "manim.mobject.geometry.labeled.LabeledPolygram"
+  },
+  {
+    "name": "LaggedStart",
+    "id": "manim.animation.composition.LaggedStart"
+  },
+  {
+    "name": "LaggedStartMap",
+    "id": "manim.animation.composition.LaggedStartMap"
+  },
+  {
+    "name": "Line",
+    "id": "manim.mobject.geometry.line.Line"
+  },
+  {
+    "name": "Line3D",
+    "id": "manim.mobject.three_d.three_dimensions.Line3D"
+  },
+  {
+    "name": "LineJointType",
+    "id": "manim.constants.LineJointType"
+  },
+  {
+    "name": "LinearBase",
+    "id": "manim.mobject.graphing.scale.LinearBase"
+  },
+  {
+    "name": "LinearTransformationScene",
+    "id": "manim.scene.vector_space_scene.LinearTransformationScene"
+  },
+  {
+    "name": "LogBase",
+    "id": "manim.mobject.graphing.scale.LogBase"
+  },
+  {
+    "name": "MAROON",
+    "id": "manim.MAROON"
+  },
+  {
+    "name": "MAROON_A",
+    "id": "manim.MAROON_A"
+  },
+  {
+    "name": "MAROON_B",
+    "id": "manim.MAROON_B"
+  },
+  {
+    "name": "MAROON_C",
+    "id": "manim.MAROON_C"
+  },
+  {
+    "name": "MAROON_D",
+    "id": "manim.MAROON_D"
+  },
+  {
+    "name": "MAROON_E",
+    "id": "manim.MAROON_E"
+  },
+  {
+    "name": "MEDIUM",
+    "id": "manim.MEDIUM"
+  },
+  {
+    "name": "MED_LARGE_BUFF",
+    "id": "manim.MED_LARGE_BUFF"
+  },
+  {
+    "name": "MED_SMALL_BUFF",
+    "id": "manim.MED_SMALL_BUFF"
+  },
+  {
+    "name": "MaintainPositionRelativeTo",
+    "id": "manim.animation.updaters.update.MaintainPositionRelativeTo"
+  },
+  {
+    "name": "Manager",
+    "id": "manim.manager.Manager"
+  },
+  {
+    "name": "ManimBanner",
+    "id": "manim.mobject.logo.ManimBanner"
+  },
+  {
+    "name": "ManimColor",
+    "id": "manim.utils.color.core.ManimColor"
+  },
+  {
+    "name": "MappingCamera",
+    "id": "manim.camera.mapping_camera.MappingCamera"
+  },
+  {
+    "name": "MarkupText",
+    "id": "manim.mobject.text.text_mobject.MarkupText"
+  },
+  {
+    "name": "MathTable",
+    "id": "manim.mobject.table.MathTable"
+  },
+  {
+    "name": "MathTex",
+    "id": "manim.mobject.text.tex_mobject.MathTex"
+  },
+  {
+    "name": "MathTypst",
+    "id": "manim.mobject.text.typst_mobject.MathTypst"
+  },
+  {
+    "name": "Matrix",
+    "id": "manim.mobject.matrix.Matrix"
+  },
+  {
+    "name": "Mobject",
+    "id": "manim.mobject.mobject.Mobject"
+  },
+  {
+    "name": "Mobject1D",
+    "id": "manim.mobject.types.point_cloud_mobject.Mobject1D"
+  },
+  {
+    "name": "Mobject2D",
+    "id": "manim.mobject.types.point_cloud_mobject.Mobject2D"
+  },
+  {
+    "name": "MobjectMatrix",
+    "id": "manim.mobject.matrix.MobjectMatrix"
+  },
+  {
+    "name": "MobjectTable",
+    "id": "manim.mobject.table.MobjectTable"
+  },
+  {
+    "name": "MoveAlongPath",
+    "id": "manim.animation.movement.MoveAlongPath"
+  },
+  {
+    "name": "MoveToTarget",
+    "id": "manim.animation.transform.MoveToTarget"
+  },
+  {
+    "name": "MovingCamera",
+    "id": "manim.camera.moving_camera.MovingCamera"
+  },
+  {
+    "name": "MovingCameraScene",
+    "id": "manim.scene.moving_camera_scene.MovingCameraScene"
+  },
+  {
+    "name": "MultiCamera",
+    "id": "manim.camera.multi_camera.MultiCamera"
+  },
+  {
+    "name": "NORMAL",
+    "id": "manim.NORMAL"
+  },
+  {
+    "name": "NO_SCENE_MESSAGE",
+    "id": "manim.NO_SCENE_MESSAGE"
+  },
+  {
+    "name": "NumberLine",
+    "id": "manim.mobject.graphing.number_line.NumberLine"
+  },
+  {
+    "name": "NumberPlane",
+    "id": "manim.mobject.graphing.coordinate_systems.NumberPlane"
+  },
+  {
+    "name": "OBLIQUE",
+    "id": "manim.OBLIQUE"
+  },
+  {
+    "name": "ORANGE",
+    "id": "manim.ORANGE"
+  },
+  {
+    "name": "ORIGIN",
+    "id": "manim.ORIGIN"
+  },
+  {
+    "name": "OUT",
+    "id": "manim.OUT"
+  },
+  {
+    "name": "Octahedron",
+    "id": "manim.mobject.three_d.polyhedra.Octahedron"
+  },
+  {
+    "name": "OldMultiCamera",
+    "id": "manim.camera.mapping_camera.OldMultiCamera"
+  },
+  {
+    "name": "OpenGLPGroup",
+    "id": "manim.mobject.opengl.opengl_point_cloud_mobject.OpenGLPGroup"
+  },
+  {
+    "name": "OpenGLPMPoint",
+    "id": "manim.mobject.opengl.opengl_point_cloud_mobject.OpenGLPMPoint"
+  },
+  {
+    "name": "OpenGLPMobject",
+    "id": "manim.mobject.opengl.opengl_point_cloud_mobject.OpenGLPMobject"
+  },
+  {
+    "name": "PGroup",
+    "id": "manim.mobject.types.point_cloud_mobject.PGroup"
+  },
+  {
+    "name": "PI",
+    "id": "manim.PI"
+  },
+  {
+    "name": "PINK",
+    "id": "manim.PINK"
+  },
+  {
+    "name": "PMobject",
+    "id": "manim.mobject.types.point_cloud_mobject.PMobject"
+  },
+  {
+    "name": "PURE_BLUE",
+    "id": "manim.PURE_BLUE"
+  },
+  {
+    "name": "PURE_CYAN",
+    "id": "manim.PURE_CYAN"
+  },
+  {
+    "name": "PURE_GREEN",
+    "id": "manim.PURE_GREEN"
+  },
+  {
+    "name": "PURE_MAGENTA",
+    "id": "manim.PURE_MAGENTA"
+  },
+  {
+    "name": "PURE_RED",
+    "id": "manim.PURE_RED"
+  },
+  {
+    "name": "PURE_YELLOW",
+    "id": "manim.PURE_YELLOW"
+  },
+  {
+    "name": "PURPLE",
+    "id": "manim.PURPLE"
+  },
+  {
+    "name": "PURPLE_A",
+    "id": "manim.PURPLE_A"
+  },
+  {
+    "name": "PURPLE_B",
+    "id": "manim.PURPLE_B"
+  },
+  {
+    "name": "PURPLE_C",
+    "id": "manim.PURPLE_C"
+  },
+  {
+    "name": "PURPLE_D",
+    "id": "manim.PURPLE_D"
+  },
+  {
+    "name": "PURPLE_E",
+    "id": "manim.PURPLE_E"
+  },
+  {
+    "name": "Paragraph",
+    "id": "manim.mobject.text.text_mobject.Paragraph"
+  },
+  {
+    "name": "ParametricFunction",
+    "id": "manim.mobject.graphing.functions.ParametricFunction"
+  },
+  {
+    "name": "PhaseFlow",
+    "id": "manim.animation.movement.PhaseFlow"
+  },
+  {
+    "name": "Point",
+    "id": "manim.mobject.types.point_cloud_mobject.Point"
+  },
+  {
+    "name": "PointCloudDot",
+    "id": "manim.mobject.types.point_cloud_mobject.PointCloudDot"
+  },
+  {
+    "name": "PolarPlane",
+    "id": "manim.mobject.graphing.coordinate_systems.PolarPlane"
+  },
+  {
+    "name": "Polygon",
+    "id": "manim.mobject.geometry.polygram.Polygon"
+  },
+  {
+    "name": "Polygram",
+    "id": "manim.mobject.geometry.polygram.Polygram"
+  },
+  {
+    "name": "Polyhedron",
+    "id": "manim.mobject.three_d.polyhedra.Polyhedron"
+  },
+  {
+    "name": "Prism",
+    "id": "manim.mobject.three_d.three_dimensions.Prism"
+  },
+  {
+    "name": "QUALITIES",
+    "id": "manim.QUALITIES"
+  },
+  {
+    "name": "R3_to_complex",
+    "id": "manim.utils.space_ops.R3_to_complex"
+  },
+  {
+    "name": "RED",
+    "id": "manim.RED"
+  },
+  {
+    "name": "RED_A",
+    "id": "manim.RED_A"
+  },
+  {
+    "name": "RED_B",
+    "id": "manim.RED_B"
+  },
+  {
+    "name": "RED_C",
+    "id": "manim.RED_C"
+  },
+  {
+    "name": "RED_D",
+    "id": "manim.RED_D"
+  },
+  {
+    "name": "RED_E",
+    "id": "manim.RED_E"
+  },
+  {
+    "name": "RESAMPLING_ALGORITHMS",
+    "id": "manim.RESAMPLING_ALGORITHMS"
+  },
+  {
+    "name": "RGBA",
+    "id": "manim.utils.color.core.ManimColor"
+  },
+  {
+    "name": "RIGHT",
+    "id": "manim.RIGHT"
+  },
+  {
+    "name": "RandomColorGenerator",
+    "id": "manim.utils.color.core.RandomColorGenerator"
+  },
+  {
+    "name": "Rectangle",
+    "id": "manim.mobject.geometry.polygram.Rectangle"
+  },
+  {
+    "name": "RegularPolygon",
+    "id": "manim.mobject.geometry.polygram.RegularPolygon"
+  },
+  {
+    "name": "RegularPolygram",
+    "id": "manim.mobject.geometry.polygram.RegularPolygram"
+  },
+  {
+    "name": "RemoveTextLetterByLetter",
+    "id": "manim.animation.creation.RemoveTextLetterByLetter"
+  },
+  {
+    "name": "RendererType",
+    "id": "manim.constants.RendererType"
+  },
+  {
+    "name": "ReplacementTransform",
+    "id": "manim.animation.transform.ReplacementTransform"
+  },
+  {
+    "name": "Restore",
+    "id": "manim.animation.transform.Restore"
+  },
+  {
+    "name": "RightAngle",
+    "id": "manim.mobject.geometry.line.RightAngle"
+  },
+  {
+    "name": "Rotate",
+    "id": "manim.animation.rotation.Rotate"
+  },
+  {
+    "name": "Rotating",
+    "id": "manim.animation.rotation.Rotating"
+  },
+  {
+    "name": "RoundedRectangle",
+    "id": "manim.mobject.geometry.polygram.RoundedRectangle"
+  },
+  {
+    "name": "SCALE_FACTOR_PER_FONT_POINT",
+    "id": "manim.SCALE_FACTOR_PER_FONT_POINT"
+  },
+  {
+    "name": "SCENE_NOT_FOUND_MESSAGE",
+    "id": "manim.SCENE_NOT_FOUND_MESSAGE"
+  },
+  {
+    "name": "SEMIBOLD",
+    "id": "manim.SEMIBOLD"
+  },
+  {
+    "name": "SEMILIGHT",
+    "id": "manim.SEMILIGHT"
+  },
+  {
+    "name": "SHIFT_VALUE",
+    "id": "manim.SHIFT_VALUE"
+  },
+  {
+    "name": "SMALL_BUFF",
+    "id": "manim.SMALL_BUFF"
+  },
+  {
+    "name": "START_X",
+    "id": "manim.START_X"
+  },
+  {
+    "name": "START_Y",
+    "id": "manim.START_Y"
+  },
+  {
+    "name": "SVGMobject",
+    "id": "manim.mobject.svg.svg_mobject.SVGMobject"
+  },
+  {
+    "name": "SVGNAMES",
+    "id": "manim.SVGNAMES"
+  },
+  {
+    "name": "SampleSpace",
+    "id": "manim.mobject.graphing.probability.SampleSpace"
+  },
+  {
+    "name": "ScaleInPlace",
+    "id": "manim.animation.transform.ScaleInPlace"
+  },
+  {
+    "name": "Scene",
+    "id": "manim.scene.scene.Scene"
+  },
+  {
+    "name": "SceneFileWriter",
+    "id": "manim.scene.scene_file_writer.SceneFileWriter"
+  },
+  {
+    "name": "ScreenRectangle",
+    "id": "manim.mobject.frame.ScreenRectangle"
+  },
+  {
+    "name": "Section",
+    "id": "manim.scene.section.Section"
+  },
+  {
+    "name": "Sector",
+    "id": "manim.mobject.geometry.arc.Sector"
+  },
+  {
+    "name": "ShowIncreasingSubsets",
+    "id": "manim.animation.creation.ShowIncreasingSubsets"
+  },
+  {
+    "name": "ShowPartial",
+    "id": "manim.animation.creation.ShowPartial"
+  },
+  {
+    "name": "ShowPassingFlash",
+    "id": "manim.animation.indication.ShowPassingFlash"
+  },
+  {
+    "name": "ShowPassingFlashWithThinningStrokeWidth",
+    "id": "manim.animation.indication.ShowPassingFlashWithThinningStrokeWidth"
+  },
+  {
+    "name": "ShowSubmobjectsOneByOne",
+    "id": "manim.animation.creation.ShowSubmobjectsOneByOne"
+  },
+  {
+    "name": "ShrinkToCenter",
+    "id": "manim.animation.transform.ShrinkToCenter"
+  },
+  {
+    "name": "SingleStringMathTex",
+    "id": "manim.mobject.text.tex_mobject.SingleStringMathTex"
+  },
+  {
+    "name": "SmoothedVectorizedHomotopy",
+    "id": "manim.animation.movement.SmoothedVectorizedHomotopy"
+  },
+  {
+    "name": "SpecialThreeDScene",
+    "id": "manim.scene.three_d_scene.SpecialThreeDScene"
+  },
+  {
+    "name": "Sphere",
+    "id": "manim.mobject.three_d.three_dimensions.Sphere"
+  },
+  {
+    "name": "SpinInFromNothing",
+    "id": "manim.animation.growing.SpinInFromNothing"
+  },
+  {
+    "name": "SpiralIn",
+    "id": "manim.animation.creation.SpiralIn"
+  },
+  {
+    "name": "SplitScreenCamera",
+    "id": "manim.camera.mapping_camera.SplitScreenCamera"
+  },
+  {
+    "name": "Square",
+    "id": "manim.mobject.geometry.polygram.Square"
+  },
+  {
+    "name": "Star",
+    "id": "manim.mobject.geometry.polygram.Star"
+  },
+  {
+    "name": "StealthTip",
+    "id": "manim.mobject.geometry.tips.StealthTip"
+  },
+  {
+    "name": "StreamLines",
+    "id": "manim.mobject.vector_field.StreamLines"
+  },
+  {
+    "name": "Succession",
+    "id": "manim.animation.composition.Succession"
+  },
+  {
+    "name": "Surface",
+    "id": "manim.mobject.three_d.three_dimensions.Surface"
+  },
+  {
+    "name": "SurroundingRectangle",
+    "id": "manim.mobject.geometry.shape_matchers.SurroundingRectangle"
+  },
+  {
+    "name": "Swap",
+    "id": "manim.animation.transform.Swap"
+  },
+  {
+    "name": "TAU",
+    "id": "manim.TAU"
+  },
+  {
+    "name": "TEAL",
+    "id": "manim.TEAL"
+  },
+  {
+    "name": "TEAL_A",
+    "id": "manim.TEAL_A"
+  },
+  {
+    "name": "TEAL_B",
+    "id": "manim.TEAL_B"
+  },
+  {
+    "name": "TEAL_C",
+    "id": "manim.TEAL_C"
+  },
+  {
+    "name": "TEAL_D",
+    "id": "manim.TEAL_D"
+  },
+  {
+    "name": "TEAL_E",
+    "id": "manim.TEAL_E"
+  },
+  {
+    "name": "THIN",
+    "id": "manim.THIN"
+  },
+  {
+    "name": "Table",
+    "id": "manim.mobject.table.Table"
+  },
+  {
+    "name": "TangentLine",
+    "id": "manim.mobject.geometry.line.TangentLine"
+  },
+  {
+    "name": "TangentialArc",
+    "id": "manim.mobject.geometry.arc.TangentialArc"
+  },
+  {
+    "name": "Tetrahedron",
+    "id": "manim.mobject.three_d.polyhedra.Tetrahedron"
+  },
+  {
+    "name": "Tex",
+    "id": "manim.mobject.text.tex_mobject.Tex"
+  },
+  {
+    "name": "TexFontTemplates",
+    "id": "manim.utils.tex_templates.TexFontTemplates"
+  },
+  {
+    "name": "TexTemplate",
+    "id": "manim.utils.tex.TexTemplate"
+  },
+  {
+    "name": "TexTemplateLibrary",
+    "id": "manim.utils.tex_templates.TexTemplateLibrary"
+  },
+  {
+    "name": "Text",
+    "id": "manim.mobject.text.text_mobject.Text"
+  },
+  {
+    "name": "ThreeDAxes",
+    "id": "manim.mobject.graphing.coordinate_systems.ThreeDAxes"
+  },
+  {
+    "name": "ThreeDCamera",
+    "id": "manim.camera.three_d_camera.ThreeDCamera"
+  },
+  {
+    "name": "ThreeDScene",
+    "id": "manim.scene.three_d_scene.ThreeDScene"
+  },
+  {
+    "name": "ThreeDVMobject",
+    "id": "manim.mobject.three_d.three_dimensions.ThreeDVMobject"
+  },
+  {
+    "name": "TipableVMobject",
+    "id": "manim.mobject.geometry.arc.TipableVMobject"
+  },
+  {
+    "name": "Title",
+    "id": "manim.mobject.text.tex_mobject.Title"
+  },
+  {
+    "name": "Torus",
+    "id": "manim.mobject.three_d.three_dimensions.Torus"
+  },
+  {
+    "name": "TracedPath",
+    "id": "manim.animation.changing.TracedPath"
+  },
+  {
+    "name": "Transform",
+    "id": "manim.animation.transform.Transform"
+  },
+  {
+    "name": "TransformAnimations",
+    "id": "manim.animation.transform.TransformAnimations"
+  },
+  {
+    "name": "TransformFromCopy",
+    "id": "manim.animation.transform.TransformFromCopy"
+  },
+  {
+    "name": "TransformMatchingShapes",
+    "id": "manim.animation.transform_matching_parts.TransformMatchingShapes"
+  },
+  {
+    "name": "TransformMatchingTex",
+    "id": "manim.animation.transform_matching_parts.TransformMatchingTex"
+  },
+  {
+    "name": "Triangle",
+    "id": "manim.mobject.geometry.polygram.Triangle"
+  },
+  {
+    "name": "TrueDot",
+    "id": "manim.mobject.opengl.dot_cloud.TrueDot"
+  },
+  {
+    "name": "TypeWithCursor",
+    "id": "manim.animation.creation.TypeWithCursor"
+  },
+  {
+    "name": "Typst",
+    "id": "manim.mobject.text.typst_mobject.Typst"
+  },
+  {
+    "name": "UL",
+    "id": "manim.UL"
+  },
+  {
+    "name": "ULTRABOLD",
+    "id": "manim.ULTRABOLD"
+  },
+  {
+    "name": "ULTRAHEAVY",
+    "id": "manim.ULTRAHEAVY"
+  },
+  {
+    "name": "ULTRALIGHT",
+    "id": "manim.ULTRALIGHT"
+  },
+  {
+    "name": "UP",
+    "id": "manim.UP"
+  },
+  {
+    "name": "UR",
+    "id": "manim.UR"
+  },
+  {
+    "name": "Uncreate",
+    "id": "manim.animation.creation.Uncreate"
+  },
+  {
+    "name": "Underline",
+    "id": "manim.mobject.geometry.shape_matchers.Underline"
+  },
+  {
+    "name": "Union",
+    "id": "manim.mobject.geometry.boolean_ops.Union"
+  },
+  {
+    "name": "UnitInterval",
+    "id": "manim.mobject.graphing.number_line.UnitInterval"
+  },
+  {
+    "name": "UntypeWithCursor",
+    "id": "manim.animation.creation.UntypeWithCursor"
+  },
+  {
+    "name": "Unwrite",
+    "id": "manim.animation.creation.Unwrite"
+  },
+  {
+    "name": "UpdateFromAlphaFunc",
+    "id": "manim.animation.updaters.update.UpdateFromAlphaFunc"
+  },
+  {
+    "name": "UpdateFromFunc",
+    "id": "manim.animation.updaters.update.UpdateFromFunc"
+  },
+  {
+    "name": "VDict",
+    "id": "manim.mobject.types.vectorized_mobject.VDict"
+  },
+  {
+    "name": "VGroup",
+    "id": "manim.mobject.types.vectorized_mobject.VGroup"
+  },
+  {
+    "name": "VMobject",
+    "id": "manim.mobject.types.vectorized_mobject.VMobject"
+  },
+  {
+    "name": "VMobjectFromSVGPath",
+    "id": "manim.mobject.svg.svg_mobject.VMobjectFromSVGPath"
+  },
+  {
+    "name": "ValueTracker",
+    "id": "manim.mobject.value_tracker.ValueTracker"
+  },
+  {
+    "name": "Variable",
+    "id": "manim.mobject.text.numbers.Variable"
+  },
+  {
+    "name": "Vector",
+    "id": "manim.mobject.geometry.line.Vector"
+  },
+  {
+    "name": "VectorField",
+    "id": "manim.mobject.vector_field.VectorField"
+  },
+  {
+    "name": "VectorScene",
+    "id": "manim.scene.vector_space_scene.VectorScene"
+  },
+  {
+    "name": "VectorizedPoint",
+    "id": "manim.mobject.types.vectorized_mobject.VectorizedPoint"
+  },
+  {
+    "name": "WHITE",
+    "id": "manim.WHITE"
+  },
+  {
+    "name": "Wait",
+    "id": "manim.animation.animation.Wait"
+  },
+  {
+    "name": "Wiggle",
+    "id": "manim.animation.indication.Wiggle"
+  },
+  {
+    "name": "Write",
+    "id": "manim.animation.creation.Write"
+  },
+  {
+    "name": "X11",
+    "id": "manim.X11"
+  },
+  {
+    "name": "XKCD",
+    "id": "manim.XKCD"
+  },
+  {
+    "name": "X_AXIS",
+    "id": "manim.X_AXIS"
+  },
+  {
+    "name": "YELLOW",
+    "id": "manim.YELLOW"
+  },
+  {
+    "name": "YELLOW_A",
+    "id": "manim.YELLOW_A"
+  },
+  {
+    "name": "YELLOW_B",
+    "id": "manim.YELLOW_B"
+  },
+  {
+    "name": "YELLOW_C",
+    "id": "manim.YELLOW_C"
+  },
+  {
+    "name": "YELLOW_D",
+    "id": "manim.YELLOW_D"
+  },
+  {
+    "name": "YELLOW_E",
+    "id": "manim.YELLOW_E"
+  },
+  {
+    "name": "Y_AXIS",
+    "id": "manim.Y_AXIS"
+  },
+  {
+    "name": "Z_AXIS",
+    "id": "manim.Z_AXIS"
+  },
+  {
+    "name": "ZoomedScene",
+    "id": "manim.scene.zoomed_scene.ZoomedScene"
+  },
+  {
+    "name": "add_extension_if_not_present",
+    "id": "manim.utils.file_ops.add_extension_if_not_present"
+  },
+  {
+    "name": "adjacent_n_tuples",
+    "id": "manim.utils.iterables.adjacent_n_tuples"
+  },
+  {
+    "name": "adjacent_pairs",
+    "id": "manim.utils.iterables.adjacent_pairs"
+  },
+  {
+    "name": "all_elements_are_instances",
+    "id": "manim.utils.iterables.all_elements_are_instances"
+  },
+  {
+    "name": "always",
+    "id": "manim.animation.updaters.mobject_update_utils.always"
+  },
+  {
+    "name": "always_redraw",
+    "id": "manim.animation.updaters.mobject_update_utils.always_redraw"
+  },
+  {
+    "name": "always_rotate",
+    "id": "manim.animation.updaters.mobject_update_utils.always_rotate"
+  },
+  {
+    "name": "always_shift",
+    "id": "manim.animation.updaters.mobject_update_utils.always_shift"
+  },
+  {
+    "name": "angle_axis_from_quaternion",
+    "id": "manim.utils.space_ops.angle_axis_from_quaternion"
+  },
+  {
+    "name": "angle_between_vectors",
+    "id": "manim.utils.space_ops.angle_between_vectors"
+  },
+  {
+    "name": "angle_of_vector",
+    "id": "manim.utils.space_ops.angle_of_vector"
+  },
+  {
+    "name": "assert_is_mobject_method",
+    "id": "manim.animation.updaters.mobject_update_utils.assert_is_mobject_method"
+  },
+  {
+    "name": "average_color",
+    "id": "manim.utils.color.core.average_color"
+  },
+  {
+    "name": "bezier",
+    "id": "manim.utils.bezier.bezier"
+  },
+  {
+    "name": "bezier_remap",
+    "id": "manim.utils.bezier.bezier_remap"
+  },
+  {
+    "name": "binary_search",
+    "id": "manim.utils.simple_functions.binary_search"
+  },
+  {
+    "name": "capture",
+    "id": "manim.utils.commands.capture"
+  },
+  {
+    "name": "cartesian_to_spherical",
+    "id": "manim.utils.space_ops.cartesian_to_spherical"
+  },
+  {
+    "name": "center_of_mass",
+    "id": "manim.utils.space_ops.center_of_mass"
+  },
+  {
+    "name": "change_to_rgba_array",
+    "id": "manim.utils.images.change_to_rgba_array"
+  },
+  {
+    "name": "clip",
+    "id": "manim.utils.simple_functions.clip"
+  },
+  {
+    "name": "clockwise_path",
+    "id": "manim.utils.paths.clockwise_path"
+  },
+  {
+    "name": "color_gradient",
+    "id": "manim.utils.color.core.color_gradient"
+  },
+  {
+    "name": "color_to_int_rgb",
+    "id": "manim.utils.color.core.color_to_int_rgb"
+  },
+  {
+    "name": "color_to_int_rgba",
+    "id": "manim.utils.color.core.color_to_int_rgba"
+  },
+  {
+    "name": "color_to_rgb",
+    "id": "manim.utils.color.core.color_to_rgb"
+  },
+  {
+    "name": "color_to_rgba",
+    "id": "manim.utils.color.core.color_to_rgba"
+  },
+  {
+    "name": "compass_directions",
+    "id": "manim.utils.space_ops.compass_directions"
+  },
+  {
+    "name": "complex_func_to_R3_func",
+    "id": "manim.utils.space_ops.complex_func_to_R3_func"
+  },
+  {
+    "name": "complex_to_R3",
+    "id": "manim.utils.space_ops.complex_to_R3"
+  },
+  {
+    "name": "concatenate_lists",
+    "id": "manim.utils.iterables.concatenate_lists"
+  },
+  {
+    "name": "counterclockwise_path",
+    "id": "manim.utils.paths.counterclockwise_path"
+  },
+  {
+    "name": "cross2d",
+    "id": "manim.utils.space_ops.cross2d"
+  },
+  {
+    "name": "cycle_animation",
+    "id": "manim.animation.updaters.mobject_update_utils.cycle_animation"
+  },
+  {
+    "name": "double_smooth",
+    "id": "manim.utils.rate_functions.double_smooth"
+  },
+  {
+    "name": "drag_pixels",
+    "id": "manim.utils.images.drag_pixels"
+  },
+  {
+    "name": "earclip_triangulation",
+    "id": "manim.utils.space_ops.earclip_triangulation"
+  },
+  {
+    "name": "ensure_executable",
+    "id": "manim.utils.file_ops.ensure_executable"
+  },
+  {
+    "name": "exponential_decay",
+    "id": "manim.utils.rate_functions.exponential_decay"
+  },
+  {
+    "name": "f_always",
+    "id": "manim.animation.updaters.mobject_update_utils.f_always"
+  },
+  {
+    "name": "find_intersection",
+    "id": "manim.utils.space_ops.find_intersection"
+  },
+  {
+    "name": "get_3d_vmob_end_corner",
+    "id": "manim.mobject.three_d.three_d_utils.get_3d_vmob_end_corner"
+  },
+  {
+    "name": "get_3d_vmob_end_corner_index",
+    "id": "manim.mobject.three_d.three_d_utils.get_3d_vmob_end_corner_index"
+  },
+  {
+    "name": "get_3d_vmob_end_corner_unit_normal",
+    "id": "manim.mobject.three_d.three_d_utils.get_3d_vmob_end_corner_unit_normal"
+  },
+  {
+    "name": "get_3d_vmob_gradient_start_and_end_points",
+    "id": "manim.mobject.three_d.three_d_utils.get_3d_vmob_gradient_start_and_end_points"
+  },
+  {
+    "name": "get_3d_vmob_start_corner",
+    "id": "manim.mobject.three_d.three_d_utils.get_3d_vmob_start_corner"
+  },
+  {
+    "name": "get_3d_vmob_start_corner_index",
+    "id": "manim.mobject.three_d.three_d_utils.get_3d_vmob_start_corner_index"
+  },
+  {
+    "name": "get_3d_vmob_start_corner_unit_normal",
+    "id": "manim.mobject.three_d.three_d_utils.get_3d_vmob_start_corner_unit_normal"
+  },
+  {
+    "name": "get_3d_vmob_unit_normal",
+    "id": "manim.mobject.three_d.three_d_utils.get_3d_vmob_unit_normal"
+  },
+  {
+    "name": "get_det_text",
+    "id": "manim.mobject.matrix.get_det_text"
+  },
+  {
+    "name": "get_dir_layout",
+    "id": "manim.utils.commands.get_dir_layout"
+  },
+  {
+    "name": "get_full_raster_image_path",
+    "id": "manim.utils.images.get_full_raster_image_path"
+  },
+  {
+    "name": "get_full_sound_file_path",
+    "id": "manim.utils.sounds.get_full_sound_file_path"
+  },
+  {
+    "name": "get_plugins",
+    "id": "manim.plugins.plugins_flags.get_plugins"
+  },
+  {
+    "name": "get_shaded_rgb",
+    "id": "manim.utils.color.core.get_shaded_rgb"
+  },
+  {
+    "name": "get_smooth_cubic_bezier_handle_points",
+    "id": "manim.utils.bezier.get_smooth_cubic_bezier_handle_points"
+  },
+  {
+    "name": "get_unit_normal",
+    "id": "manim.utils.space_ops.get_unit_normal"
+  },
+  {
+    "name": "get_video_metadata",
+    "id": "manim.utils.commands.get_video_metadata"
+  },
+  {
+    "name": "get_winding_number",
+    "id": "manim.utils.space_ops.get_winding_number"
+  },
+  {
+    "name": "guarantee_empty_existence",
+    "id": "manim.utils.file_ops.guarantee_empty_existence"
+  },
+  {
+    "name": "guarantee_existence",
+    "id": "manim.utils.file_ops.guarantee_existence"
+  },
+  {
+    "name": "hex_to_rgb",
+    "id": "manim.utils.color.core.hex_to_rgb"
+  },
+  {
+    "name": "index_labels",
+    "id": "manim.utils.debug.index_labels"
+  },
+  {
+    "name": "integer_interpolate",
+    "id": "manim.utils.bezier.integer_interpolate"
+  },
+  {
+    "name": "interpolate",
+    "id": "manim.utils.bezier.interpolate"
+  },
+  {
+    "name": "interpolate_color",
+    "id": "manim.utils.color.core.interpolate_color"
+  },
+  {
+    "name": "inverse_interpolate",
+    "id": "manim.utils.bezier.inverse_interpolate"
+  },
+  {
+    "name": "invert_color",
+    "id": "manim.utils.color.core.invert_color"
+  },
+  {
+    "name": "invert_image",
+    "id": "manim.utils.images.invert_image"
+  },
+  {
+    "name": "is_closed",
+    "id": "manim.utils.bezier.is_closed"
+  },
+  {
+    "name": "line_intersection",
+    "id": "manim.utils.space_ops.line_intersection"
+  },
+  {
+    "name": "linear",
+    "id": "manim.utils.rate_functions.linear"
+  },
+  {
+    "name": "lingering",
+    "id": "manim.utils.rate_functions.lingering"
+  },
+  {
+    "name": "list_difference_update",
+    "id": "manim.utils.iterables.list_difference_update"
+  },
+  {
+    "name": "list_plugins",
+    "id": "manim.plugins.plugins_flags.list_plugins"
+  },
+  {
+    "name": "list_update",
+    "id": "manim.utils.iterables.list_update"
+  },
+  {
+    "name": "listify",
+    "id": "manim.utils.iterables.listify"
+  },
+  {
+    "name": "make_even",
+    "id": "manim.utils.iterables.make_even"
+  },
+  {
+    "name": "make_even_by_cycling",
+    "id": "manim.utils.iterables.make_even_by_cycling"
+  },
+  {
+    "name": "match_interpolate",
+    "id": "manim.utils.bezier.match_interpolate"
+  },
+  {
+    "name": "matrix_to_mobject",
+    "id": "manim.mobject.matrix.matrix_to_mobject"
+  },
+  {
+    "name": "matrix_to_tex_string",
+    "id": "manim.mobject.matrix.matrix_to_tex_string"
+  },
+  {
+    "name": "merge_dicts_recursively",
+    "id": "manim.utils.config_ops.merge_dicts_recursively"
+  },
+  {
+    "name": "mid",
+    "id": "manim.utils.bezier.mid"
+  },
+  {
+    "name": "midpoint",
+    "id": "manim.utils.space_ops.midpoint"
+  },
+  {
+    "name": "modify_atime",
+    "id": "manim.utils.file_ops.modify_atime"
+  },
+  {
+    "name": "normalize",
+    "id": "manim.utils.space_ops.normalize"
+  },
+  {
+    "name": "not_quite_there",
+    "id": "manim.utils.rate_functions.not_quite_there"
+  },
+  {
+    "name": "open_file",
+    "id": "manim.utils.file_ops.open_file"
+  },
+  {
+    "name": "override_animate",
+    "id": "manim.mobject.mobject.override_animate"
+  },
+  {
+    "name": "override_animation",
+    "id": "manim.animation.animation.override_animation"
+  },
+  {
+    "name": "partial_bezier_points",
+    "id": "manim.utils.bezier.partial_bezier_points"
+  },
+  {
+    "name": "path_along_arc",
+    "id": "manim.utils.paths.path_along_arc"
+  },
+  {
+    "name": "perpendicular_bisector",
+    "id": "manim.utils.space_ops.perpendicular_bisector"
+  },
+  {
+    "name": "point_lies_on_bezier",
+    "id": "manim.utils.bezier.point_lies_on_bezier"
+  },
+  {
+    "name": "print_family",
+    "id": "manim.utils.debug.print_family"
+  },
+  {
+    "name": "proportions_along_bezier_curve_for_point",
+    "id": "manim.utils.bezier.proportions_along_bezier_curve_for_point"
+  },
+  {
+    "name": "quaternion_conjugate",
+    "id": "manim.utils.space_ops.quaternion_conjugate"
+  },
+  {
+    "name": "quaternion_from_angle_axis",
+    "id": "manim.utils.space_ops.quaternion_from_angle_axis"
+  },
+  {
+    "name": "quaternion_mult",
+    "id": "manim.utils.space_ops.quaternion_mult"
+  },
+  {
+    "name": "random_bright_color",
+    "id": "manim.utils.color.core.random_bright_color"
+  },
+  {
+    "name": "random_color",
+    "id": "manim.utils.color.core.random_color"
+  },
+  {
+    "name": "register_font",
+    "id": "manim.mobject.text.text_mobject.register_font"
+  },
+  {
+    "name": "regular_vertices",
+    "id": "manim.utils.space_ops.regular_vertices"
+  },
+  {
+    "name": "remove_list_redundancies",
+    "id": "manim.utils.iterables.remove_list_redundancies"
+  },
+  {
+    "name": "remove_nones",
+    "id": "manim.utils.iterables.remove_nones"
+  },
+  {
+    "name": "rgb_to_color",
+    "id": "manim.utils.color.core.rgb_to_color"
+  },
+  {
+    "name": "rgb_to_hex",
+    "id": "manim.utils.color.core.rgb_to_hex"
+  },
+  {
+    "name": "rgba_to_color",
+    "id": "manim.utils.color.core.rgba_to_color"
+  },
+  {
+    "name": "rotate_vector",
+    "id": "manim.utils.space_ops.rotate_vector"
+  },
+  {
+    "name": "rotation_about_z",
+    "id": "manim.utils.space_ops.rotation_about_z"
+  },
+  {
+    "name": "rotation_matrix",
+    "id": "manim.utils.space_ops.rotation_matrix"
+  },
+  {
+    "name": "running_start",
+    "id": "manim.utils.rate_functions.running_start"
+  },
+  {
+    "name": "rush_from",
+    "id": "manim.utils.rate_functions.rush_from"
+  },
+  {
+    "name": "rush_into",
+    "id": "manim.utils.rate_functions.rush_into"
+  },
+  {
+    "name": "seek_full_path_from_defaults",
+    "id": "manim.utils.file_ops.seek_full_path_from_defaults"
+  },
+  {
+    "name": "shoelace",
+    "id": "manim.utils.space_ops.shoelace"
+  },
+  {
+    "name": "shoelace_direction",
+    "id": "manim.utils.space_ops.shoelace_direction"
+  },
+  {
+    "name": "sigmoid",
+    "id": "manim.utils.simple_functions.sigmoid"
+  },
+  {
+    "name": "slow_into",
+    "id": "manim.utils.rate_functions.slow_into"
+  },
+  {
+    "name": "smooth",
+    "id": "manim.utils.rate_functions.smooth"
+  },
+  {
+    "name": "smoothererstep",
+    "id": "manim.utils.rate_functions.smoothererstep"
+  },
+  {
+    "name": "smootherstep",
+    "id": "manim.utils.rate_functions.smootherstep"
+  },
+  {
+    "name": "smoothstep",
+    "id": "manim.utils.rate_functions.smoothstep"
+  },
+  {
+    "name": "spherical_to_cartesian",
+    "id": "manim.utils.space_ops.spherical_to_cartesian"
+  },
+  {
+    "name": "split_bezier",
+    "id": "manim.utils.bezier.split_bezier"
+  },
+  {
+    "name": "squish_rate_func",
+    "id": "manim.utils.rate_functions.squish_rate_func"
+  },
+  {
+    "name": "straight_path",
+    "id": "manim.utils.paths.straight_path"
+  },
+  {
+    "name": "stretch_array_to_length",
+    "id": "manim.utils.iterables.stretch_array_to_length"
+  },
+  {
+    "name": "subdivide_bezier",
+    "id": "manim.utils.bezier.subdivide_bezier"
+  },
+  {
+    "name": "tempconfig",
+    "id": "manim._config.tempconfig"
+  },
+  {
+    "name": "there_and_back",
+    "id": "manim.utils.rate_functions.there_and_back"
+  },
+  {
+    "name": "there_and_back_with_pause",
+    "id": "manim.utils.rate_functions.there_and_back_with_pause"
+  },
+  {
+    "name": "thick_diagonal",
+    "id": "manim.utils.space_ops.thick_diagonal"
+  },
+  {
+    "name": "tuplify",
+    "id": "manim.utils.iterables.tuplify"
+  },
+  {
+    "name": "turn_animation_into_updater",
+    "id": "manim.animation.updaters.mobject_update_utils.turn_animation_into_updater"
+  },
+  {
+    "name": "update_dict_recursively",
+    "id": "manim.utils.config_ops.update_dict_recursively"
+  },
+  {
+    "name": "wiggle",
+    "id": "manim.utils.rate_functions.wiggle"
+  },
+  {
+    "name": "z_to_vector",
+    "id": "manim.utils.space_ops.z_to_vector"
+  }
+]

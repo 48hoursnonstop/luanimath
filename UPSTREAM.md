@@ -26,6 +26,10 @@ to its source-derived algorithms. Luanim's own changes are MIT-licensed.
 | `manim/animation/{animation,creation,fading,transform,rotation,composition}.py` | `animation.lua` |
 | `manim/mobject/value_tracker.py` | `geometry.lua`, `mobject.lua` |
 | `manim/mobject/text/text_mobject.py` | `text.lua`, `native/text.c` |
+| `manim/mobject/graphing/number_line.py` | `graphing.lua` |
+| `manim/mobject/graphing/coordinate_systems.py` | `graphing.lua` |
+| `manim/mobject/graphing/functions.py` | `graphing.lua` |
+| `manim/mobject/geometry/tips.py` | `graphing.lua` triangular tip geometry |
 | `manim/scene/scene.py` | `scene.lua` |
 | `manim/camera/camera.py` | `renderer.lua`, `native/cairo_backend.c` |
 
@@ -35,6 +39,9 @@ points. Those are intentionally different upstream semantics. The Cairo
 renderer uses default miter joins and butt caps, a 0.01 world-unit stroke-width
 multiplier, and the same frame matrix. Length estimation defaults to ten
 samples per cubic. Transform curve-count alignment follows `bezier_remap`.
+Spline smoothing uses the upstream open/closed handle-point systems and their
+linear-time solutions. Tick enumeration preserves Manim's origin inclusion,
+negative/positive range handling, and tip endpoint rules.
 
 Text uses Manim's public-font-size / 4.8 conversion to Pango points and a final
 0.05 scene-unit geometry scale. Glyph rounding is disabled, as in ManimPango

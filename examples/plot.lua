@@ -1,0 +1,13 @@
+local l=require('luanim')
+return l.Scene(function(s)
+    local axes=l.Axes{x_range={-3,3,1},y_range={-2,2,1},x_length=9,y_length=5}
+    local curve=axes:plot(math.sin,{x_range={-3,3,.08},color=l.BLUE})
+    local heading=l.Text('sin(x)',{font='Liberation Sans',font_size=44,color=l.BLUE}):shift(3.2*l.UP)
+    local t=l.ValueTracker(-3)
+    local dot=l.Dot(axes:c2p(-3,math.sin(-3)),{color=l.YELLOW,radius=.1})
+    dot:add_updater(function(m) m:move_to(axes:c2p(t:get_value(),math.sin(t:get_value()))) end)
+    s:play(l.Create(axes),l.FadeIn(heading),{run_time=1})
+    s:play(l.Create(curve),{run_time=1})
+    s:add(t,dot);s:play(t:animate():set_value(3),{run_time=2,rate_func=l.linear})
+    s:wait(.5)
+end)

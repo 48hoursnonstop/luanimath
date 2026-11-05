@@ -41,6 +41,13 @@ individually quoted arguments, and frame directories come from `mktemp`.
 Failed renders retain their frame directory for diagnosis. Successful renders
 remove only their own generated directory unless `keep_frames` is requested.
 
+`graphing.lua` owns numerical ranges, NumberLine, Axes and parametric graphs.
+It derives mapping from the transformed axis endpoints, including arrow tips,
+so mapping follows group rotations/scaling. `bezier.lua` solves open splines
+using Thomas' tridiagonal algorithm and closed splines using a rank-one cyclic
+correction. Both are O(N), rather than a dense cubic-cost solve. The public
+world frame matches Manim's fixed 128/9 × 8 default independently of raster size.
+
 ## Dependencies and extension boundaries
 
 Cairo is the first backend. `native/text.c` owns the Pango typography interface;

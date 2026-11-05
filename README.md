@@ -49,7 +49,9 @@ lua5.4 tools/luanim.lua examples/geometric.lua \
 
 PNG, MP4, GIF and WebM outputs are accepted. MP4 requires even pixel dimensions
 with the current yuv420p encoder. The default is 854×480, 30 fps, eight scene
-units high. A matching aspect ratio is derived unless `frame_width` is explicit.
+units high. Like Manim, the world frame defaults to 128/9 × 8 independently
+of pixel resolution; set `frame_width`/`frame_height` explicitly for other world
+aspect ratios.
 For programmatic use set `LUA_PATH` to `lua/?.lua;lua/?/init.lua;;` and
 `LUA_CPATH` to `build/?.so;;`.
 
