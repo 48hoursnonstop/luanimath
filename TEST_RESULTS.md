@@ -1,5 +1,21 @@
 # Executed test results
 
+## 0.4.0-dev — 2026-11-04 America/Mexico_City
+
+- Core Lua regression: **16 groups, 321 checks passed**.
+- Geometry/animation: **288 upstream cases, 12,884 scalar comparisons**;
+  **48 real frame comparisons**, all with zero pixel error.
+- Path construction/alignment: **8 builder states and 72 family/subpath
+  Transform states**, **15,657 numerical/identity checks**. All **30 additional
+  family/subpath reference frame pairs had zero pixel error**.
+- Mathematical paths/updaters: **136 path cases, 25 arc transforms, 5 composition
+  traces including backward evaluation, and 5 grouped motion states**;
+  **10,284 numeric checks**, including actual source/target snapshot updaters.
+- Existing text, numerical-graph, media and visual suites passed.
+- Morph example: actual **120-frame, 640×360, 24 fps, five-second** animation
+  transforming a square into a two-member group, then a compound path, then
+  Uncreate. The export command completed; full decoding is recorded at release.
+
 ## 0.3.0-dev — 2026-11-04 America/Mexico_City
 
 - Core Lua regression: **15 groups, 313 checks passed**.

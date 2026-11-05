@@ -1,8 +1,8 @@
 local U=require('luanim.util')
 local V=require('luanim.vector')
 local C=require('luanim.color')
-local B=require('luanim.bezier')
 local R=require('luanim.rate_functions')
+local Paths=require('luanim.paths')
 local A={}
 local Animation={};Animation.__index=Animation
 
@@ -11,25 +11,24 @@ local function new(kind,mobject,opts)
     local self=setmetatable({kind=kind,is_animation=true,mobject=mobject,opts=opts,
         run_time=opts.run_time or 1,rate_func=opts.rate_func or R.smooth,
         lag_ratio=opts.lag_ratio or (kind=='Create' and 1 or 0)},Animation)
+    self.reverse_rate_function=not not opts.reverse_rate_function
+    self.remover=opts.remover or kind=='FadeOut' or kind=='Uncreate'
+    self.path_func=opts.path_func or (opts.path_arc_centers and Paths.path_along_circles(opts.path_arc or 0,opts.path_arc_centers,opts.path_arc_axis))
+        or Paths.path_along_arc(opts.path_arc or 0,opts.path_arc_axis)
+    assert(type(self.path_func)=='function','path_func must be callable')
     U.number(self.run_time,'run_time');assert(self.run_time>=0,'run_time must be nonnegative')
     U.number(self.lag_ratio,'lag_ratio');assert(self.lag_ratio>=0,'lag_ratio must be nonnegative')
     assert(type(self.rate_func)=='function','rate_func must be callable')
     return self
 end
 
-local function align(a,b)
-    assert(#a.submobjects==#b.submobjects,'Transform between different family structures is not implemented')
-    if #a.points~=#b.points then
-        assert(a.is_vector and b.is_vector and #a.points>0 and #b.points>0,'Transform requires compatible points')
-        local n=math.max(#a.points,#b.points)/4
-        a.points=B.remap(a.points,n);b.points=B.remap(b.points,n)
-    end
-    for i,child in ipairs(a.submobjects) do align(child,b.submobjects[i]) end
-end
-
-local function interpolate(m,a,b,t)
+local function interpolate(m,a,b,t,path_func)
     assert(#a.points==#b.points,'unaligned point arrays')
-    local points={};for i,p in ipairs(a.points) do points[i]=V.lerp(p,b.points[i],t) end
+    local points
+    if path_func then
+        points=path_func(a.points,b.points,t);assert(type(points)=='table' and #points==#a.points,'path_func returned an invalid point array')
+        for i,p in ipairs(points) do points[i]=V(p) end
+    else points={};for i,p in ipairs(a.points) do points[i]=V.lerp(p,b.points[i],t) end end
     m.points=points;m.fill_color=C.interpolate(a.fill_color,b.fill_color,t)
     m.stroke_color=C.interpolate(a.stroke_color,b.stroke_color,t)
     m.stroke_width=a.stroke_width*(1-t)+b.stroke_width*t
@@ -41,7 +40,7 @@ function Animation:begin(scene)
     self.starting_mobject=self.mobject:copy()
     if self.kind=='Transform' or self.kind=='ReplacementTransform' then
         self.target_copy=self.target_mobject:copy()
-        align(self.starting_mobject,self.target_copy)
+        self.starting_mobject:align_data(self.target_copy)
         self.mobject:become(self.starting_mobject)
     elseif self.kind=='FadeIn' or self.kind=='FadeOut' then
         local faded=self.starting_mobject:copy():fade(1)
@@ -63,16 +62,14 @@ function Animation:begin(scene)
         end
     end
     if scene then scene:add(self.mobject) end
-    self.saved_suspension={}
-    if self.opts.suspend_mobject_updating~=false then
-        for _,m in ipairs(self.mobject:get_family()) do self.saved_suspension[m]=m.updating_suspended;m.updating_suspended=true end
-    end
+    if self.opts.suspend_mobject_updating~=false then self.mobject:suspend_updating() end
     self:interpolate(0)
     return self
 end
 function Animation:interpolate(alpha)
     assert(self.started,'animation must begin before interpolation')
     U.number(alpha,'alpha');alpha=U.clamp(alpha)
+    if self.kind=='MoveAlongPath' then self.mobject:move_to(self.path:point_from_proportion(self.rate_func(alpha)));return self end
     local family=self.mobject:family_members_with_points()
     -- Create at alpha=0 still retains a degenerate curve; select the original family.
     local originals=self.starting_mobject:family_members_with_points()
@@ -81,9 +78,10 @@ function Animation:interpolate(alpha)
     local outlines=self.outline and self.outline:family_members_with_points()
     local n=#originals;local full=(n-1)*self.lag_ratio+1
     for i,src in ipairs(originals) do
-        local t=self.rate_func(U.clamp(alpha*full-(i-1)*self.lag_ratio))
+        local subalpha=U.clamp(alpha*full-(i-1)*self.lag_ratio)
+        local t=self.rate_func(self.reverse_rate_function and 1-subalpha or subalpha)
         local m=family[i]
-        if self.kind=='Create' then m:pointwise_become_partial(src,0,t)
+        if self.kind=='Create' or self.kind=='Uncreate' then m:pointwise_become_partial(src,0,t)
         elseif outlines then
             local outline=outlines[i]
             if t<0.5 then
@@ -94,10 +92,7 @@ function Animation:interpolate(alpha)
             m.points=U.copy(src.points)
             local p=self.about_point;local axis=self.opts.axis or V(0,0,1)
             for j,v in ipairs(m.points) do m.points[j]=p+V.rotate(v-p,self.angle*t,axis) end
-        elseif self.kind=='MoveAlongPath' then
-            local p=self.path:point_from_proportion(t)
-            m:become(src):move_to(p)
-        elseif self.target_copy then interpolate(m,src,targets[i],t)
+        elseif self.target_copy then interpolate(m,src,targets[i],t,self.path_func)
         end
     end
     return self
@@ -105,11 +100,18 @@ end
 function Animation:finish()
     if self.finished then return self end
     self:interpolate(1);self.finished=true
-    for m,previous in pairs(self.saved_suspension) do m.updating_suspended=previous end
+    if self.opts.suspend_mobject_updating~=false then self.mobject:resume_updating() end
     if self.scene then
-        if self.kind=='FadeOut' then self.scene:remove(self.mobject);self.mobject:become(self.starting_mobject)
+        if self.remover then self.scene:remove(self.mobject) end
+        if self.kind=='FadeOut' then self.mobject:become(self.starting_mobject)
         elseif self.kind=='ReplacementTransform' then self.scene:replace(self.mobject,self.target_mobject) end
     end
+    return self
+end
+function Animation:update_mobjects(dt)
+    if self.starting_mobject then self.starting_mobject:update(dt) end
+    if self.target_mobject and self.target_mobject~=self.mobject then self.target_mobject:update(dt) end
+    if self.target_copy and self.target_copy~=self.mobject then self.target_copy:update(dt) end
     return self
 end
 for _,kind in ipairs({'Animation','Create','FadeIn','FadeOut'}) do
@@ -119,9 +121,13 @@ for _,kind in ipairs({'Animation','Create','FadeIn','FadeOut'}) do
     end
 end
 function A.Transform(m,target,opts)
-    opts=opts or {};assert(not opts.path_arc or opts.path_arc==0,'Transform path_arc is not implemented')
+    opts=opts or {}
     assert(target and target.get_family,'target must be a Mobject')
     local a=new('Transform',m,opts);a.target_mobject=target;return a
+end
+function A.Uncreate(m,opts)
+    assert(m and m.is_vector,'Uncreate requires VMobject')
+    return new('Uncreate',m,U.merge({reverse_rate_function=true,remover=true,lag_ratio=1},opts))
 end
 function A.ReplacementTransform(m,target,opts) local a=A.Transform(m,target,opts);a.kind='ReplacementTransform';return a end
 function A.Rotate(m,angle,opts) local a=new('Rotate',m,opts);a.angle=U.number(angle or math.pi,'angle');return a end
@@ -160,10 +166,18 @@ end
 for _,kind in ipairs({'AnimationGroup','Succession','LaggedStart'}) do A[kind]=function(a,opts) return composition(kind,a,opts) end end
 function Composition:begin(scene)
     assert(not self.started,'animation instances cannot be reused');self.started=true;self.scene=scene
+    if self.kind~='Succession' then for _,a in ipairs(self.animations) do a:begin(scene) end end
     self:interpolate(0);return self
 end
 function Composition:interpolate(alpha)
     local t=self.rate_func(U.clamp(alpha))*self.natural_duration
+    if self.kind~='Succession' then
+        for i,a in ipairs(self.animations) do
+            local start,finish=table.unpack(self.timings[i])
+            a:interpolate(finish==start and (t>=start and 1 or 0) or U.clamp((t-start)/(finish-start)))
+        end
+        return self
+    end
     for i,a in ipairs(self.animations) do
         local start,finish=table.unpack(self.timings[i])
         if t>=start then
@@ -178,7 +192,15 @@ function Composition:interpolate(alpha)
 end
 function Composition:finish()
     if self.finished then return self end
-    self:interpolate(1);self.finished=true;return self
+    if self.kind=='Succession' then self:interpolate(1)
+    else for _,a in ipairs(self.animations) do a:finish() end end
+    self.finished=true;return self
+end
+function Composition:update_mobjects(dt)
+    for _,a in ipairs(self.animations) do
+        if a.started and (self.kind~='Succession' or not a.finished) then a:update_mobjects(dt) end
+    end
+    return self
 end
 
 function A.builder(m,opts)

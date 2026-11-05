@@ -27,9 +27,9 @@ function B.length(c,samples)
     return length
 end
 function B.curves(points)
-    assert(#points%4==0,'cubic point count must be divisible by four')
+    assert(#points%4==0 or #points%4==1,'cubic point count requires complete curves and an optional pending anchor')
     local out={}
-    for i=1,#points,4 do out[#out+1]={points[i],points[i+1],points[i+2],points[i+3]} end
+    for i=1,#points-3,4 do out[#out+1]={points[i],points[i+1],points[i+2],points[i+3]} end
     return out
 end
 function B.append(points,c) for _,p in ipairs(c) do points[#points+1]=V(p) end end
@@ -66,7 +66,8 @@ local function tridiagonal(lower,diagonal,upper,rhs)
     return result
 end
 function B.smooth(anchors)
-    assert(#anchors>=2,'at least two anchors required')
+    assert(#anchors>=1,'at least one anchor required')
+    if #anchors==1 then return {} end
     local a={};for i,p in ipairs(anchors) do a[i]=V(p) end
     local n=#a-1
     if n==1 then return B.line(a[1],a[2]) end
@@ -95,11 +96,13 @@ function B.smooth(anchors)
 end
 function B.partial_path(points,a,b)
     U.number(a,'a');U.number(b,'b')
-    assert(a>=0 and b<=1 and a<=b,'partial path requires 0 <= a <= b <= 1')
     if #points==0 then return {} end
-    if a==0 and b==1 then return U.copy(points) end
+    if a<=0 and b>=1 then return U.copy(points) end
+    a,b=U.clamp(a),U.clamp(b)
+    assert(a<=b,'partial path requires a <= b after clamping')
     local curves=B.curves(points)
     local n=#curves
+    if n==0 then return U.copy(points) end
     local low=math.min(n-1,math.floor(a*n))
     local high=math.min(n-1,math.floor(b*n))
     local result={}

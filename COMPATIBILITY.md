@@ -1,6 +1,6 @@
 # Compatibility
 
-Target: Manim Community 0.22.1. Current development version: 0.3.0-dev.
+Target: Manim Community 0.22.1. Current development version: 0.4.0-dev.
 
 The public API inventory is `compatibility/api_inventory.json`; reviewed
 declarations are in `compatibility/implemented.json`. `python3 tools/coverage.py`
@@ -13,8 +13,8 @@ validates declarations and writes `compatibility/summary.json`. Status labels:
 - `not_applicable`: only for a justified host-language difference; none is used
   to avoid implementing a scene capability.
 
-The current inventory contains 5,002 explicit symbols. It includes module
-`__all__` declarations, public definitions in modules without `__all__`, and
+The current inventory contains 5,155 explicit symbols. It includes module
+`__all__` declarations, all public definitions, and
 public class methods defined in those classes and uppercase constant assignment
 declarations. Inherited methods resolve to the defining class. Runtime root
 exports have a separate index in `compatibility/public_exports.json`.
@@ -61,17 +61,21 @@ linear-time tridiagonal/rank-one algorithms, with 83 differential cases and
 callbacks. Nonlinear scaling, math labels, custom tips and many specialized
 plotting methods remain pending and are explicitly rejected where applicable.
 
-- Transform requires equal hierarchical structure. Curve-count alignment is
-  implemented for connected cubic paths; multipath correspondence and degenerate
-  missing paths still need work. `path_arc` is explicitly rejected.
+- Transform aligns unequal vector families, empty vector groups, differing
+  curve counts and multiple subpaths using upstream duplication/fade and null
+  path rules. Non-vector point clouds and all malformed/degenerate cases are
+  not yet covered. Curved arc/circular paths and custom path functions work.
 - One RGBA fill and stroke per object. Gradient/sheens, background strokes,
   several style inheritance options and path-building APIs are pending.
-- Corners, curve partial extraction and supplied point arrays currently require
-  complete four-point cubic groups. Upstream's single-point open-path builder
-  state has not yet been ported.
-- Composition evaluation is forward-only; arbitrary backward time seeking is
-  not claimed. Updater suspension works, but the whole animation option surface
-  and every overlapping animation case are not yet compatible.
+- Path builders support complete cubics and one pending start anchor, including
+  lines, quadratic degree elevation, multiple subpaths, closing and subdivision.
+  Incomplete two-/three-point cubic groups are rejected. Boundary queries on
+  pending paths use the available anchor instead of reproducing upstream's
+  inconsistent anchor-array zip failure.
+- AnimationGroup/LaggedStart support backward interpolation and there-and-back
+  rate functions. Succession remains forward stepping. Starting/target snapshots
+  execute their actual updaters; grouped MoveAlongPath preserves the whole group.
+  The complete option surface and every overlapping animation case still need work.
 - Many constructor options are still pending; an implemented class name does
   not imply all its upstream arguments are implemented.
 - Text is currently one VMobject containing shaped contours, rather than

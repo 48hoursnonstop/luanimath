@@ -1,0 +1,15 @@
+local l=require('luanim')
+return l.Scene(function(s)
+    local title=l.Text('Transform · grupos y subtrazados',{font='Liberation Sans',font_size=44}):shift(2.8*l.UP)
+    local shape=l.Square{color=l.BLUE,fill_opacity=.3}
+    s:add(title);s:play(l.Create(shape),{run_time=.75})
+    local group=l.VGroup(l.Circle{color=l.GREEN,fill_opacity=.3}:shift(1.4*l.LEFT),
+        l.Triangle{color=l.YELLOW,fill_opacity=.3}:shift(1.4*l.RIGHT))
+    s:play(l.Transform(shape,group,{path_arc=l.PI/3}),{run_time=1.5})
+    local path=l.VMobject{color=l.BLUE,stroke_width=5}:start_new_path(l.vec(-2,-1,0))
+        :add_cubic_bezier_curve_to(l.vec(-1,2,0),l.vec(1,-2,0),l.vec(2,1,0))
+        :start_new_path(l.vec(-2,1,0)):add_line_to(l.vec(2,-1,0))
+    s:play(l.Transform(shape,path),{run_time=1.5})
+    s:play(l.Uncreate(shape),{run_time=1})
+    s:wait(.25)
+end)

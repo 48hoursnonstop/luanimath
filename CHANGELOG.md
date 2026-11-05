@@ -1,5 +1,17 @@
 # Changelog
 
+## 0.4.0-dev
+
+- Cubic/quadratic/line path builders, pending anchors, subpaths, closure,
+  subdivision, wrapped closed subcurves and VectorizedPoint.
+- Source-derived vector family/subpath alignment, including empty groups and
+  faded duplicate members; 72 Transform states and 30 exact visual comparisons.
+- Arc/circular/custom paths, Uncreate, backward group interpolation, snapshot
+  updater execution and grouped MoveAlongPath correction.
+- State save/restore and explicit updater suspension/resumption.
+- Broadened public-definition inventory to 5,155 entries, including utility
+  functions intentionally omitted from upstream star imports.
+
 ## 0.3.0-dev
 
 - Numerical lines, ticks, triangular tips, axes and transformed point mapping.

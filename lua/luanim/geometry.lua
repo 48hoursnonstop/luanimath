@@ -78,4 +78,9 @@ end
 function G.ValueTracker(value)
     local m=M();m.kind='ValueTracker';m.points={V(U.number(value or 0,'value'),0,0)};return m
 end
+function G.VectorizedPoint(location,opts)
+    opts=opts or {};local m=G.VMobject(U.merge({color=C.BLACK,fill_opacity=0,stroke_width=0},opts))
+    m.kind='VectorizedPoint';m.artificial_width=opts.artificial_width or .01;m.artificial_height=opts.artificial_height or .01
+    return m:set_points({V(location or {})})
+end
 return G

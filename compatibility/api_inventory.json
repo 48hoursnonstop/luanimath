@@ -1,6 +1,6 @@
 {
   "upstream_version": "0.22.1",
-  "definition": "Module __all__ declarations, public definitions in modules without __all__, uppercase assignment declarations, and public class methods defined in those classes. Inherited methods resolve to their defining class. Runtime root exports are separately indexed in public_exports.json. Dynamically generated instance attributes still need an audit.",
+  "definition": "Module __all__ declarations plus all public definitions, uppercase assignment declarations, and public class methods defined in those classes. Inherited methods resolve to their defining class. Runtime root exports are separately indexed in public_exports.json. Dynamically generated instance attributes still need an audit.",
   "entries": [
     {
       "id": "manim.__main__.show_splash",
@@ -1029,7 +1029,14 @@
       "kind": "method",
       "source": "manim/animation/animation.py",
       "line": 289,
-      "status": "not_implemented"
+      "status": "implemented_partial",
+      "lua_api": "Animation:update_mobjects",
+      "evidence": [
+        "tests/alignment.lua",
+        "tests/paths.lua",
+        "tests/run.lua"
+      ],
+      "limitations": "Verified native vector subset and documented Lua point tables. Point clouds, all styling/kwargs, arbitrary host objects and some degenerate/malformed upstream states are not yet fully compatible."
     },
     {
       "id": "manim.animation.animation.Animation.get_all_mobjects_to_update",
@@ -1127,6 +1134,13 @@
       "kind": "method",
       "source": "manim/animation/animation.py",
       "line": 503,
+      "status": "not_implemented"
+    },
+    {
+      "id": "manim.animation.animation.prepare_animation",
+      "kind": "function",
+      "source": "manim/animation/animation.py",
+      "line": 543,
       "status": "not_implemented"
     },
     {
@@ -1299,9 +1313,11 @@
       "lua_api": "AnimationGroup",
       "evidence": [
         "tests/run.lua",
-        "tests/differential.lua"
+        "tests/differential.lua",
+        "tests/alignment.lua",
+        "tests/paths.lua"
       ],
-      "limitations": "Single RGBA style; equal family structure for transforms; multipath alignment, path_arc, backward composition evaluation and remaining options are pending."
+      "limitations": "Native vector family/subpath alignment, curved paths and snapshot updaters are implemented. AnimationGroup/LaggedStart support backward evaluation; Succession is forward-only, like its current upstream stepping model. Remaining animation options and non-vector point-cloud alignment need work."
     },
     {
       "id": "manim.animation.composition.AnimationGroup.__init__",
@@ -1375,9 +1391,11 @@
       "lua_api": "Succession",
       "evidence": [
         "tests/run.lua",
-        "tests/differential.lua"
+        "tests/differential.lua",
+        "tests/alignment.lua",
+        "tests/paths.lua"
       ],
-      "limitations": "Single RGBA style; equal family structure for transforms; multipath alignment, path_arc, backward composition evaluation and remaining options are pending."
+      "limitations": "Native vector family/subpath alignment, curved paths and snapshot updaters are implemented. AnimationGroup/LaggedStart support backward evaluation; Succession is forward-only, like its current upstream stepping model. Remaining animation options and non-vector point-cloud alignment need work."
     },
     {
       "id": "manim.animation.composition.Succession.__init__",
@@ -1437,9 +1455,11 @@
       "lua_api": "LaggedStart",
       "evidence": [
         "tests/run.lua",
-        "tests/differential.lua"
+        "tests/differential.lua",
+        "tests/alignment.lua",
+        "tests/paths.lua"
       ],
-      "limitations": "Single RGBA style; equal family structure for transforms; multipath alignment, path_arc, backward composition evaluation and remaining options are pending."
+      "limitations": "Native vector family/subpath alignment, curved paths and snapshot updaters are implemented. AnimationGroup/LaggedStart support backward evaluation; Succession is forward-only, like its current upstream stepping model. Remaining animation options and non-vector point-cloud alignment need work."
     },
     {
       "id": "manim.animation.composition.LaggedStart.__init__",
@@ -1508,7 +1528,14 @@
       "kind": "class",
       "source": "manim/animation/creation.py",
       "line": 180,
-      "status": "not_implemented"
+      "status": "implemented_partial",
+      "lua_api": "Uncreate",
+      "evidence": [
+        "tests/alignment.lua",
+        "tests/paths.lua",
+        "tests/run.lua"
+      ],
+      "limitations": "Verified native vector subset and documented Lua point tables. Point clouds, all styling/kwargs, arbitrary host objects and some degenerate/malformed upstream states are not yet fully compatible."
     },
     {
       "id": "manim.animation.creation.Uncreate.__init__",
@@ -2224,9 +2251,11 @@
       "lua_api": "MoveAlongPath",
       "evidence": [
         "tests/run.lua",
-        "tests/differential.lua"
+        "tests/differential.lua",
+        "tests/alignment.lua",
+        "tests/paths.lua"
       ],
-      "limitations": "Single RGBA style; equal family structure for transforms; multipath alignment, path_arc, backward composition evaluation and remaining options are pending."
+      "limitations": "Native vector family/subpath alignment, curved paths and snapshot updaters are implemented. AnimationGroup/LaggedStart support backward evaluation; Succession is forward-only, like its current upstream stepping model. Remaining animation options and non-vector point-cloud alignment need work."
     },
     {
       "id": "manim.animation.movement.MoveAlongPath.__init__",
@@ -2425,9 +2454,11 @@
       "lua_api": "Transform",
       "evidence": [
         "tests/run.lua",
-        "tests/differential.lua"
+        "tests/differential.lua",
+        "tests/alignment.lua",
+        "tests/paths.lua"
       ],
-      "limitations": "Single RGBA style; equal family structure for transforms; multipath alignment, path_arc, backward composition evaluation and remaining options are pending."
+      "limitations": "Native vector family/subpath alignment, curved paths and snapshot updaters are implemented. AnimationGroup/LaggedStart support backward evaluation; Succession is forward-only, like its current upstream stepping model. Remaining animation options and non-vector point-cloud alignment need work."
     },
     {
       "id": "manim.animation.transform.Transform.__init__",
@@ -2501,9 +2532,11 @@
       "lua_api": "ReplacementTransform",
       "evidence": [
         "tests/run.lua",
-        "tests/differential.lua"
+        "tests/differential.lua",
+        "tests/alignment.lua",
+        "tests/paths.lua"
       ],
-      "limitations": "Single RGBA style; equal family structure for transforms; multipath alignment, path_arc, backward composition evaluation and remaining options are pending."
+      "limitations": "Native vector family/subpath alignment, curved paths and snapshot updaters are implemented. AnimationGroup/LaggedStart support backward evaluation; Succession is forward-only, like its current upstream stepping model. Remaining animation options and non-vector point-cloud alignment need work."
     },
     {
       "id": "manim.animation.transform.ReplacementTransform.__init__",
@@ -2874,6 +2907,48 @@
       "kind": "method",
       "source": "manim/animation/transform.py",
       "line": 953,
+      "status": "not_implemented"
+    },
+    {
+      "id": "manim.animation.transform_matching_parts.TransformMatchingAbstractBase",
+      "kind": "class",
+      "source": "manim/animation/transform_matching_parts.py",
+      "line": 27,
+      "status": "not_implemented"
+    },
+    {
+      "id": "manim.animation.transform_matching_parts.TransformMatchingAbstractBase.__init__",
+      "kind": "method",
+      "source": "manim/animation/transform_matching_parts.py",
+      "line": 71,
+      "status": "not_implemented"
+    },
+    {
+      "id": "manim.animation.transform_matching_parts.TransformMatchingAbstractBase.get_shape_map",
+      "kind": "method",
+      "source": "manim/animation/transform_matching_parts.py",
+      "line": 144,
+      "status": "not_implemented"
+    },
+    {
+      "id": "manim.animation.transform_matching_parts.TransformMatchingAbstractBase.clean_up_from_scene",
+      "kind": "method",
+      "source": "manim/animation/transform_matching_parts.py",
+      "line": 157,
+      "status": "not_implemented"
+    },
+    {
+      "id": "manim.animation.transform_matching_parts.TransformMatchingAbstractBase.get_mobject_parts",
+      "kind": "method",
+      "source": "manim/animation/transform_matching_parts.py",
+      "line": 167,
+      "status": "not_implemented"
+    },
+    {
+      "id": "manim.animation.transform_matching_parts.TransformMatchingAbstractBase.get_mobject_key",
+      "kind": "method",
+      "source": "manim/animation/transform_matching_parts.py",
+      "line": 171,
       "status": "not_implemented"
     },
     {
@@ -3885,6 +3960,13 @@
       "status": "not_implemented"
     },
     {
+      "id": "manim.cli.cache.commands.clear",
+      "kind": "function",
+      "source": "manim/cli/cache/commands.py",
+      "line": 80,
+      "status": "not_implemented"
+    },
+    {
       "id": "manim.cli.cfg.group.RICH_COLOUR_INSTRUCTIONS",
       "kind": "constant",
       "source": "manim/cli/cfg/group.py",
@@ -3948,10 +4030,52 @@
       "status": "not_implemented"
     },
     {
+      "id": "manim.cli.checkhealth.checks.HealthCheckFunction",
+      "kind": "class",
+      "source": "manim/cli/checkhealth/checks.py",
+      "line": 15,
+      "status": "not_implemented"
+    },
+    {
       "id": "manim.cli.checkhealth.checks.HEALTH_CHECKS",
       "kind": "constant",
       "source": "manim/cli/checkhealth/checks.py",
       "line": 25,
+      "status": "not_implemented"
+    },
+    {
+      "id": "manim.cli.checkhealth.checks.healthcheck",
+      "kind": "function",
+      "source": "manim/cli/checkhealth/checks.py",
+      "line": 28,
+      "status": "not_implemented"
+    },
+    {
+      "id": "manim.cli.checkhealth.checks.is_manim_on_path",
+      "kind": "function",
+      "source": "manim/cli/checkhealth/checks.py",
+      "line": 95,
+      "status": "not_implemented"
+    },
+    {
+      "id": "manim.cli.checkhealth.checks.is_manim_executable_associated_to_this_library",
+      "kind": "function",
+      "source": "manim/cli/checkhealth/checks.py",
+      "line": 118,
+      "status": "not_implemented"
+    },
+    {
+      "id": "manim.cli.checkhealth.checks.is_latex_available",
+      "kind": "function",
+      "source": "manim/cli/checkhealth/checks.py",
+      "line": 167,
+      "status": "not_implemented"
+    },
+    {
+      "id": "manim.cli.checkhealth.checks.is_dvisvgm_available",
+      "kind": "function",
+      "source": "manim/cli/checkhealth/checks.py",
+      "line": 189,
       "status": "not_implemented"
     },
     {
@@ -4046,10 +4170,31 @@
       "status": "not_implemented"
     },
     {
+      "id": "manim.cli.init.commands.init",
+      "kind": "function",
+      "source": "manim/cli/init/commands.py",
+      "line": 197,
+      "status": "not_implemented"
+    },
+    {
       "id": "manim.cli.plugins.commands.plugins",
       "kind": "function",
       "source": "manim/cli/plugins/commands.py",
       "line": 32,
+      "status": "not_implemented"
+    },
+    {
+      "id": "manim.cli.render.commands.ClickArgs",
+      "kind": "class",
+      "source": "manim/cli/render/commands.py",
+      "line": 41,
+      "status": "not_implemented"
+    },
+    {
+      "id": "manim.cli.render.commands.ClickArgs.__init__",
+      "kind": "method",
+      "source": "manim/cli/render/commands.py",
+      "line": 42,
       "status": "not_implemented"
     },
     {
@@ -4066,6 +4211,13 @@
       "status": "not_implemented"
     },
     {
+      "id": "manim.cli.render.global_options.validate_gui_location",
+      "kind": "function",
+      "source": "manim/cli/render/global_options.py",
+      "line": 18,
+      "status": "not_implemented"
+    },
+    {
       "id": "manim.cli.render.global_options.global_options",
       "kind": "export",
       "source": "manim/cli/render/global_options.py",
@@ -4075,6 +4227,27 @@
       "id": "manim.cli.render.output_options.output_options",
       "kind": "export",
       "source": "manim/cli/render/output_options.py",
+      "status": "not_implemented"
+    },
+    {
+      "id": "manim.cli.render.render_options.validate_scene_range",
+      "kind": "function",
+      "source": "manim/cli/render/render_options.py",
+      "line": 21,
+      "status": "not_implemented"
+    },
+    {
+      "id": "manim.cli.render.render_options.validate_encoder_options",
+      "kind": "function",
+      "source": "manim/cli/render/render_options.py",
+      "line": 67,
+      "status": "not_implemented"
+    },
+    {
+      "id": "manim.cli.render.render_options.validate_resolution",
+      "kind": "function",
+      "source": "manim/cli/render/render_options.py",
+      "line": 96,
       "status": "not_implemented"
     },
     {
@@ -4466,6 +4639,13 @@
       "kind": "constant",
       "source": "manim/constants.py",
       "line": 194,
+      "status": "not_implemented"
+    },
+    {
+      "id": "manim.constants.QualityDict",
+      "kind": "class",
+      "source": "manim/constants.py",
+      "line": 198,
       "status": "not_implemented"
     },
     {
@@ -6030,6 +6210,76 @@
       "kind": "method",
       "source": "manim/mobject/geometry/tips.py",
       "line": 339,
+      "status": "not_implemented"
+    },
+    {
+      "id": "manim.mobject.graph.LayoutFunction",
+      "kind": "class",
+      "source": "manim/mobject/graph.py",
+      "line": 38,
+      "status": "not_implemented"
+    },
+    {
+      "id": "manim.mobject.graph.GenericGraph",
+      "kind": "class",
+      "source": "manim/mobject/graph.py",
+      "line": 483,
+      "status": "not_implemented"
+    },
+    {
+      "id": "manim.mobject.graph.GenericGraph.__init__",
+      "kind": "method",
+      "source": "manim/mobject/graph.py",
+      "line": 567,
+      "status": "not_implemented"
+    },
+    {
+      "id": "manim.mobject.graph.GenericGraph.__getitem__",
+      "kind": "method",
+      "source": "manim/mobject/graph.py",
+      "line": 676,
+      "status": "not_implemented"
+    },
+    {
+      "id": "manim.mobject.graph.GenericGraph.add_vertices",
+      "kind": "method",
+      "source": "manim/mobject/graph.py",
+      "line": 875,
+      "status": "not_implemented"
+    },
+    {
+      "id": "manim.mobject.graph.GenericGraph.remove_vertices",
+      "kind": "method",
+      "source": "manim/mobject/graph.py",
+      "line": 982,
+      "status": "not_implemented"
+    },
+    {
+      "id": "manim.mobject.graph.GenericGraph.add_edges",
+      "kind": "method",
+      "source": "manim/mobject/graph.py",
+      "line": 1070,
+      "status": "not_implemented"
+    },
+    {
+      "id": "manim.mobject.graph.GenericGraph.remove_edges",
+      "kind": "method",
+      "source": "manim/mobject/graph.py",
+      "line": 1169,
+      "status": "not_implemented"
+    },
+    {
+      "id": "manim.mobject.graph.GenericGraph.from_networkx",
+      "kind": "method",
+      "source": "manim/mobject/graph.py",
+      "line": 1197,
+      "status": "not_implemented"
+    },
+    {
+      "id": "manim.mobject.graph.GenericGraph.change_layout",
+      "kind": "method",
+      "source": "manim/mobject/graph.py",
+      "line": 1232,
       "status": "not_implemented"
     },
     {
@@ -7680,14 +7930,28 @@
       "kind": "method",
       "source": "manim/mobject/mobject.py",
       "line": 1313,
-      "status": "not_implemented"
+      "status": "implemented_partial",
+      "lua_api": "Mobject:suspend_updating",
+      "evidence": [
+        "tests/alignment.lua",
+        "tests/paths.lua",
+        "tests/run.lua"
+      ],
+      "limitations": "Verified native vector subset and documented Lua point tables. Point clouds, all styling/kwargs, arbitrary host objects and some degenerate/malformed upstream states are not yet fully compatible."
     },
     {
       "id": "manim.mobject.mobject.Mobject.resume_updating",
       "kind": "method",
       "source": "manim/mobject/mobject.py",
       "line": 1339,
-      "status": "not_implemented"
+      "status": "implemented_partial",
+      "lua_api": "Mobject:resume_updating",
+      "evidence": [
+        "tests/alignment.lua",
+        "tests/paths.lua",
+        "tests/run.lua"
+      ],
+      "limitations": "Verified native vector subset and documented Lua point tables. Point clouds, all styling/kwargs, arbitrary host objects and some degenerate/malformed upstream states are not yet fully compatible."
     },
     {
       "id": "manim.mobject.mobject.Mobject.apply_to_family",
@@ -8112,14 +8376,28 @@
       "kind": "method",
       "source": "manim/mobject/mobject.py",
       "line": 2281,
-      "status": "not_implemented"
+      "status": "implemented_partial",
+      "lua_api": "Mobject:save_state",
+      "evidence": [
+        "tests/alignment.lua",
+        "tests/paths.lua",
+        "tests/run.lua"
+      ],
+      "limitations": "Verified native vector subset and documented Lua point tables. Point clouds, all styling/kwargs, arbitrary host objects and some degenerate/malformed upstream states are not yet fully compatible."
     },
     {
       "id": "manim.mobject.mobject.Mobject.restore",
       "kind": "method",
       "source": "manim/mobject/mobject.py",
       "line": 2290,
-      "status": "not_implemented"
+      "status": "implemented_partial",
+      "lua_api": "Mobject:restore",
+      "evidence": [
+        "tests/alignment.lua",
+        "tests/paths.lua",
+        "tests/run.lua"
+      ],
+      "limitations": "Verified native vector subset and documented Lua point tables. Point clouds, all styling/kwargs, arbitrary host objects and some degenerate/malformed upstream states are not yet fully compatible."
     },
     {
       "id": "manim.mobject.mobject.Mobject.reduce_across_dimension",
@@ -8631,7 +8909,14 @@
       "kind": "method",
       "source": "manim/mobject/mobject.py",
       "line": 3116,
-      "status": "not_implemented"
+      "status": "implemented_partial",
+      "lua_api": "Mobject:align_data",
+      "evidence": [
+        "tests/alignment.lua",
+        "tests/paths.lua",
+        "tests/run.lua"
+      ],
+      "limitations": "Verified native vector subset and documented Lua point tables. Point clouds, all styling/kwargs, arbitrary host objects and some degenerate/malformed upstream states are not yet fully compatible."
     },
     {
       "id": "manim.mobject.mobject.Mobject.get_point_mobject",
@@ -8673,14 +8958,28 @@
       "kind": "method",
       "source": "manim/mobject/mobject.py",
       "line": 3211,
-      "status": "not_implemented"
+      "status": "implemented_partial",
+      "lua_api": "Mobject:push_self_into_submobjects",
+      "evidence": [
+        "tests/alignment.lua",
+        "tests/paths.lua",
+        "tests/run.lua"
+      ],
+      "limitations": "Verified native vector subset and documented Lua point tables. Point clouds, all styling/kwargs, arbitrary host objects and some degenerate/malformed upstream states are not yet fully compatible."
     },
     {
       "id": "manim.mobject.mobject.Mobject.add_n_more_submobjects",
       "kind": "method",
       "source": "manim/mobject/mobject.py",
       "line": 3218,
-      "status": "not_implemented"
+      "status": "implemented_partial",
+      "lua_api": "Mobject:add_n_more_submobjects",
+      "evidence": [
+        "tests/alignment.lua",
+        "tests/paths.lua",
+        "tests/run.lua"
+      ],
+      "limitations": "Verified native vector subset and documented Lua point tables. Point clouds, all styling/kwargs, arbitrary host objects and some degenerate/malformed upstream states are not yet fully compatible."
     },
     {
       "id": "manim.mobject.mobject.Mobject.repeat_submobject",
@@ -9970,6 +10269,66 @@
       ]
     },
     {
+      "id": "manim.mobject.opengl.opengl_geometry.OpenGLRectangle",
+      "kind": "class",
+      "source": "manim/mobject/opengl/opengl_geometry.py",
+      "line": 941,
+      "status": "blocked",
+      "blocked_by": [
+        "OpenGL backend"
+      ]
+    },
+    {
+      "id": "manim.mobject.opengl.opengl_geometry.OpenGLRectangle.__init__",
+      "kind": "method",
+      "source": "manim/mobject/opengl/opengl_geometry.py",
+      "line": 942,
+      "status": "blocked",
+      "blocked_by": [
+        "OpenGL backend"
+      ]
+    },
+    {
+      "id": "manim.mobject.opengl.opengl_geometry.OpenGLSquare",
+      "kind": "class",
+      "source": "manim/mobject/opengl/opengl_geometry.py",
+      "line": 955,
+      "status": "blocked",
+      "blocked_by": [
+        "OpenGL backend"
+      ]
+    },
+    {
+      "id": "manim.mobject.opengl.opengl_geometry.OpenGLSquare.__init__",
+      "kind": "method",
+      "source": "manim/mobject/opengl/opengl_geometry.py",
+      "line": 956,
+      "status": "blocked",
+      "blocked_by": [
+        "OpenGL backend"
+      ]
+    },
+    {
+      "id": "manim.mobject.opengl.opengl_geometry.OpenGLRoundedRectangle",
+      "kind": "class",
+      "source": "manim/mobject/opengl/opengl_geometry.py",
+      "line": 962,
+      "status": "blocked",
+      "blocked_by": [
+        "OpenGL backend"
+      ]
+    },
+    {
+      "id": "manim.mobject.opengl.opengl_geometry.OpenGLRoundedRectangle.__init__",
+      "kind": "method",
+      "source": "manim/mobject/opengl/opengl_geometry.py",
+      "line": 963,
+      "status": "blocked",
+      "blocked_by": [
+        "OpenGL backend"
+      ]
+    },
+    {
       "id": "manim.mobject.opengl.opengl_image_mobject.OpenGLImageMobject",
       "kind": "class",
       "source": "manim/mobject/opengl/opengl_image_mobject.py",
@@ -9994,6 +10353,16 @@
       "kind": "method",
       "source": "manim/mobject/opengl/opengl_image_mobject.py",
       "line": 92,
+      "status": "blocked",
+      "blocked_by": [
+        "OpenGL backend"
+      ]
+    },
+    {
+      "id": "manim.mobject.opengl.opengl_mobject.affects_shader_info_id",
+      "kind": "function",
+      "source": "manim/mobject/opengl/opengl_mobject.py",
+      "line": 96,
       "status": "blocked",
       "blocked_by": [
         "OpenGL backend"
@@ -12040,6 +12409,16 @@
       ]
     },
     {
+      "id": "manim.mobject.opengl.opengl_mobject.override_animate",
+      "kind": "function",
+      "source": "manim/mobject/opengl/opengl_mobject.py",
+      "line": 3237,
+      "status": "blocked",
+      "blocked_by": [
+        "OpenGL backend"
+      ]
+    },
+    {
       "id": "manim.mobject.opengl.opengl_mobject._AnimationBuilder",
       "kind": "export",
       "source": "manim/mobject/opengl/opengl_mobject.py",
@@ -12413,6 +12792,36 @@
       "kind": "method",
       "source": "manim/mobject/opengl/opengl_surface.py",
       "line": 354,
+      "status": "blocked",
+      "blocked_by": [
+        "OpenGL backend"
+      ]
+    },
+    {
+      "id": "manim.mobject.opengl.opengl_surface.OpenGLSurfaceGroup",
+      "kind": "class",
+      "source": "manim/mobject/opengl/opengl_surface.py",
+      "line": 358,
+      "status": "blocked",
+      "blocked_by": [
+        "OpenGL backend"
+      ]
+    },
+    {
+      "id": "manim.mobject.opengl.opengl_surface.OpenGLSurfaceGroup.__init__",
+      "kind": "method",
+      "source": "manim/mobject/opengl/opengl_surface.py",
+      "line": 359,
+      "status": "blocked",
+      "blocked_by": [
+        "OpenGL backend"
+      ]
+    },
+    {
+      "id": "manim.mobject.opengl.opengl_surface.OpenGLSurfaceGroup.init_points",
+      "kind": "method",
+      "source": "manim/mobject/opengl/opengl_surface.py",
+      "line": 364,
       "status": "blocked",
       "blocked_by": [
         "OpenGL backend"
@@ -14488,6 +14897,16 @@
       ]
     },
     {
+      "id": "manim.mobject.text.tex_mobject.MathTexPart",
+      "kind": "class",
+      "source": "manim/mobject/text/tex_mobject.py",
+      "line": 607,
+      "status": "blocked",
+      "blocked_by": [
+        "mathematical text pipeline"
+      ]
+    },
+    {
       "id": "manim.mobject.text.tex_mobject.Tex",
       "kind": "class",
       "source": "manim/mobject/text/tex_mobject.py",
@@ -14576,6 +14995,13 @@
       "kind": "constant",
       "source": "manim/mobject/text/text_mobject.py",
       "line": 85,
+      "status": "not_implemented"
+    },
+    {
+      "id": "manim.mobject.text.text_mobject.remove_invisible_chars",
+      "kind": "function",
+      "source": "manim/mobject/text/text_mobject.py",
+      "line": 90,
       "status": "not_implemented"
     },
     {
@@ -15294,6 +15720,48 @@
       "kind": "method",
       "source": "manim/mobject/three_d/three_dimensions.py",
       "line": 1341,
+      "status": "not_implemented"
+    },
+    {
+      "id": "manim.mobject.types.image_mobject.AbstractImageMobject",
+      "kind": "class",
+      "source": "manim/mobject/types/image_mobject.py",
+      "line": 42,
+      "status": "not_implemented"
+    },
+    {
+      "id": "manim.mobject.types.image_mobject.AbstractImageMobject.__init__",
+      "kind": "method",
+      "source": "manim/mobject/types/image_mobject.py",
+      "line": 56,
+      "status": "not_implemented"
+    },
+    {
+      "id": "manim.mobject.types.image_mobject.AbstractImageMobject.get_pixel_array",
+      "kind": "method",
+      "source": "manim/mobject/types/image_mobject.py",
+      "line": 68,
+      "status": "not_implemented"
+    },
+    {
+      "id": "manim.mobject.types.image_mobject.AbstractImageMobject.set_color",
+      "kind": "method",
+      "source": "manim/mobject/types/image_mobject.py",
+      "line": 71,
+      "status": "not_implemented"
+    },
+    {
+      "id": "manim.mobject.types.image_mobject.AbstractImageMobject.set_resampling_algorithm",
+      "kind": "method",
+      "source": "manim/mobject/types/image_mobject.py",
+      "line": 80,
+      "status": "not_implemented"
+    },
+    {
+      "id": "manim.mobject.types.image_mobject.AbstractImageMobject.reset_points",
+      "kind": "method",
+      "source": "manim/mobject/types/image_mobject.py",
+      "line": 112,
       "status": "not_implemented"
     },
     {
@@ -16031,28 +16499,56 @@
       "kind": "method",
       "source": "manim/mobject/types/vectorized_mobject.py",
       "line": 855,
-      "status": "not_implemented"
+      "status": "implemented_partial",
+      "lua_api": "VMobject:clear_points",
+      "evidence": [
+        "tests/alignment.lua",
+        "tests/paths.lua",
+        "tests/run.lua"
+      ],
+      "limitations": "Verified native vector subset and documented Lua point tables. Point clouds, all styling/kwargs, arbitrary host objects and some degenerate/malformed upstream states are not yet fully compatible."
     },
     {
       "id": "manim.mobject.types.vectorized_mobject.VMobject.append_points",
       "kind": "method",
       "source": "manim/mobject/types/vectorized_mobject.py",
       "line": 859,
-      "status": "not_implemented"
+      "status": "implemented_partial",
+      "lua_api": "VMobject:append_points",
+      "evidence": [
+        "tests/alignment.lua",
+        "tests/paths.lua",
+        "tests/run.lua"
+      ],
+      "limitations": "Verified native vector subset and documented Lua point tables. Point clouds, all styling/kwargs, arbitrary host objects and some degenerate/malformed upstream states are not yet fully compatible."
     },
     {
       "id": "manim.mobject.types.vectorized_mobject.VMobject.start_new_path",
       "kind": "method",
       "source": "manim/mobject/types/vectorized_mobject.py",
       "line": 883,
-      "status": "not_implemented"
+      "status": "implemented_partial",
+      "lua_api": "VMobject:start_new_path",
+      "evidence": [
+        "tests/alignment.lua",
+        "tests/paths.lua",
+        "tests/run.lua"
+      ],
+      "limitations": "Verified native vector subset and documented Lua point tables. Point clouds, all styling/kwargs, arbitrary host objects and some degenerate/malformed upstream states are not yet fully compatible."
     },
     {
       "id": "manim.mobject.types.vectorized_mobject.VMobject.add_cubic_bezier_curve",
       "kind": "method",
       "source": "manim/mobject/types/vectorized_mobject.py",
       "line": 913,
-      "status": "not_implemented"
+      "status": "implemented_partial",
+      "lua_api": "VMobject:add_cubic_bezier_curve",
+      "evidence": [
+        "tests/alignment.lua",
+        "tests/paths.lua",
+        "tests/run.lua"
+      ],
+      "limitations": "Verified native vector subset and documented Lua point tables. Point clouds, all styling/kwargs, arbitrary host objects and some degenerate/malformed upstream states are not yet fully compatible."
     },
     {
       "id": "manim.mobject.types.vectorized_mobject.VMobject.add_cubic_bezier_curves",
@@ -16066,21 +16562,42 @@
       "kind": "method",
       "source": "manim/mobject/types/vectorized_mobject.py",
       "line": 929,
-      "status": "not_implemented"
+      "status": "implemented_partial",
+      "lua_api": "VMobject:add_cubic_bezier_curve_to",
+      "evidence": [
+        "tests/alignment.lua",
+        "tests/paths.lua",
+        "tests/run.lua"
+      ],
+      "limitations": "Verified native vector subset and documented Lua point tables. Point clouds, all styling/kwargs, arbitrary host objects and some degenerate/malformed upstream states are not yet fully compatible."
     },
     {
       "id": "manim.mobject.types.vectorized_mobject.VMobject.add_quadratic_bezier_curve_to",
       "kind": "method",
       "source": "manim/mobject/types/vectorized_mobject.py",
       "line": 961,
-      "status": "not_implemented"
+      "status": "implemented_partial",
+      "lua_api": "VMobject:add_quadratic_bezier_curve_to",
+      "evidence": [
+        "tests/alignment.lua",
+        "tests/paths.lua",
+        "tests/run.lua"
+      ],
+      "limitations": "Verified native vector subset and documented Lua point tables. Point clouds, all styling/kwargs, arbitrary host objects and some degenerate/malformed upstream states are not yet fully compatible."
     },
     {
       "id": "manim.mobject.types.vectorized_mobject.VMobject.add_line_to",
       "kind": "method",
       "source": "manim/mobject/types/vectorized_mobject.py",
       "line": 987,
-      "status": "not_implemented"
+      "status": "implemented_partial",
+      "lua_api": "VMobject:add_line_to",
+      "evidence": [
+        "tests/alignment.lua",
+        "tests/paths.lua",
+        "tests/run.lua"
+      ],
+      "limitations": "Verified native vector subset and documented Lua point tables. Point clouds, all styling/kwargs, arbitrary host objects and some degenerate/malformed upstream states are not yet fully compatible."
     },
     {
       "id": "manim.mobject.types.vectorized_mobject.VMobject.add_smooth_curve_to",
@@ -16094,35 +16611,70 @@
       "kind": "method",
       "source": "manim/mobject/types/vectorized_mobject.py",
       "line": 1052,
-      "status": "not_implemented"
+      "status": "implemented_partial",
+      "lua_api": "VMobject:has_new_path_started",
+      "evidence": [
+        "tests/alignment.lua",
+        "tests/paths.lua",
+        "tests/run.lua"
+      ],
+      "limitations": "Verified native vector subset and documented Lua point tables. Point clouds, all styling/kwargs, arbitrary host objects and some degenerate/malformed upstream states are not yet fully compatible."
     },
     {
       "id": "manim.mobject.types.vectorized_mobject.VMobject.get_last_point",
       "kind": "method",
       "source": "manim/mobject/types/vectorized_mobject.py",
       "line": 1057,
-      "status": "not_implemented"
+      "status": "implemented_partial",
+      "lua_api": "VMobject:get_last_point",
+      "evidence": [
+        "tests/alignment.lua",
+        "tests/paths.lua",
+        "tests/run.lua"
+      ],
+      "limitations": "Verified native vector subset and documented Lua point tables. Point clouds, all styling/kwargs, arbitrary host objects and some degenerate/malformed upstream states are not yet fully compatible."
     },
     {
       "id": "manim.mobject.types.vectorized_mobject.VMobject.is_closed",
       "kind": "method",
       "source": "manim/mobject/types/vectorized_mobject.py",
       "line": 1060,
-      "status": "not_implemented"
+      "status": "implemented_partial",
+      "lua_api": "VMobject:is_closed",
+      "evidence": [
+        "tests/alignment.lua",
+        "tests/paths.lua",
+        "tests/run.lua"
+      ],
+      "limitations": "Verified native vector subset and documented Lua point tables. Point clouds, all styling/kwargs, arbitrary host objects and some degenerate/malformed upstream states are not yet fully compatible."
     },
     {
       "id": "manim.mobject.types.vectorized_mobject.VMobject.close_path",
       "kind": "method",
       "source": "manim/mobject/types/vectorized_mobject.py",
       "line": 1064,
-      "status": "not_implemented"
+      "status": "implemented_partial",
+      "lua_api": "VMobject:close_path",
+      "evidence": [
+        "tests/alignment.lua",
+        "tests/paths.lua",
+        "tests/run.lua"
+      ],
+      "limitations": "Verified native vector subset and documented Lua point tables. Point clouds, all styling/kwargs, arbitrary host objects and some degenerate/malformed upstream states are not yet fully compatible."
     },
     {
       "id": "manim.mobject.types.vectorized_mobject.VMobject.add_points_as_corners",
       "kind": "method",
       "source": "manim/mobject/types/vectorized_mobject.py",
       "line": 1069,
-      "status": "not_implemented"
+      "status": "implemented_partial",
+      "lua_api": "VMobject:add_points_as_corners",
+      "evidence": [
+        "tests/alignment.lua",
+        "tests/paths.lua",
+        "tests/run.lua"
+      ],
+      "limitations": "Verified native vector subset and documented Lua point tables. Point clouds, all styling/kwargs, arbitrary host objects and some degenerate/malformed upstream states are not yet fully compatible."
     },
     {
       "id": "manim.mobject.types.vectorized_mobject.VMobject.set_points_as_corners",
@@ -16184,7 +16736,14 @@
       "kind": "method",
       "source": "manim/mobject/types/vectorized_mobject.py",
       "line": 1205,
-      "status": "not_implemented"
+      "status": "implemented_partial",
+      "lua_api": "VMobject:add_subpath",
+      "evidence": [
+        "tests/alignment.lua",
+        "tests/paths.lua",
+        "tests/run.lua"
+      ],
+      "limitations": "Verified native vector subset and documented Lua point tables. Point clouds, all styling/kwargs, arbitrary host objects and some degenerate/malformed upstream states are not yet fully compatible."
     },
     {
       "id": "manim.mobject.types.vectorized_mobject.VMobject.append_vectorized_mobject",
@@ -16378,21 +16937,42 @@
       "kind": "method",
       "source": "manim/mobject/types/vectorized_mobject.py",
       "line": 1755,
-      "status": "not_implemented"
+      "status": "implemented_partial",
+      "lua_api": "VMobject:get_start_anchors",
+      "evidence": [
+        "tests/alignment.lua",
+        "tests/paths.lua",
+        "tests/run.lua"
+      ],
+      "limitations": "Verified native vector subset and documented Lua point tables. Point clouds, all styling/kwargs, arbitrary host objects and some degenerate/malformed upstream states are not yet fully compatible."
     },
     {
       "id": "manim.mobject.types.vectorized_mobject.VMobject.get_end_anchors",
       "kind": "method",
       "source": "manim/mobject/types/vectorized_mobject.py",
       "line": 1765,
-      "status": "not_implemented"
+      "status": "implemented_partial",
+      "lua_api": "VMobject:get_end_anchors",
+      "evidence": [
+        "tests/alignment.lua",
+        "tests/paths.lua",
+        "tests/run.lua"
+      ],
+      "limitations": "Verified native vector subset and documented Lua point tables. Point clouds, all styling/kwargs, arbitrary host objects and some degenerate/malformed upstream states are not yet fully compatible."
     },
     {
       "id": "manim.mobject.types.vectorized_mobject.VMobject.get_anchors",
       "kind": "method",
       "source": "manim/mobject/types/vectorized_mobject.py",
       "line": 1776,
-      "status": "not_implemented"
+      "status": "implemented_partial",
+      "lua_api": "VMobject:get_anchors",
+      "evidence": [
+        "tests/alignment.lua",
+        "tests/paths.lua",
+        "tests/run.lua"
+      ],
+      "limitations": "Verified native vector subset and documented Lua point tables. Point clouds, all styling/kwargs, arbitrary host objects and some degenerate/malformed upstream states are not yet fully compatible."
     },
     {
       "id": "manim.mobject.types.vectorized_mobject.VMobject.get_points_defining_boundary",
@@ -16419,14 +16999,28 @@
       "kind": "method",
       "source": "manim/mobject/types/vectorized_mobject.py",
       "line": 1818,
-      "status": "not_implemented"
+      "status": "implemented_partial",
+      "lua_api": "VMobject:align_points",
+      "evidence": [
+        "tests/alignment.lua",
+        "tests/paths.lua",
+        "tests/run.lua"
+      ],
+      "limitations": "Verified native vector subset and documented Lua point tables. Point clouds, all styling/kwargs, arbitrary host objects and some degenerate/malformed upstream states are not yet fully compatible."
     },
     {
       "id": "manim.mobject.types.vectorized_mobject.VMobject.insert_n_curves",
       "kind": "method",
       "source": "manim/mobject/types/vectorized_mobject.py",
       "line": 1895,
-      "status": "not_implemented"
+      "status": "implemented_partial",
+      "lua_api": "VMobject:insert_n_curves",
+      "evidence": [
+        "tests/alignment.lua",
+        "tests/paths.lua",
+        "tests/run.lua"
+      ],
+      "limitations": "Verified native vector subset and documented Lua point tables. Point clouds, all styling/kwargs, arbitrary host objects and some degenerate/malformed upstream states are not yet fully compatible."
     },
     {
       "id": "manim.mobject.types.vectorized_mobject.VMobject.insert_n_curves_to_point_list",
@@ -16447,7 +17041,14 @@
       "kind": "method",
       "source": "manim/mobject/types/vectorized_mobject.py",
       "line": 1958,
-      "status": "not_implemented"
+      "status": "implemented_partial",
+      "lua_api": "VMobject:get_point_mobject",
+      "evidence": [
+        "tests/alignment.lua",
+        "tests/paths.lua",
+        "tests/run.lua"
+      ],
+      "limitations": "Verified native vector subset and documented Lua point tables. Point clouds, all styling/kwargs, arbitrary host objects and some degenerate/malformed upstream states are not yet fully compatible."
     },
     {
       "id": "manim.mobject.types.vectorized_mobject.VMobject.interpolate_color",
@@ -16611,7 +17212,14 @@
       "kind": "class",
       "source": "manim/mobject/types/vectorized_mobject.py",
       "line": 2746,
-      "status": "not_implemented"
+      "status": "implemented_partial",
+      "lua_api": "VectorizedPoint",
+      "evidence": [
+        "tests/alignment.lua",
+        "tests/paths.lua",
+        "tests/run.lua"
+      ],
+      "limitations": "Verified native vector subset and documented Lua point tables. Point clouds, all styling/kwargs, arbitrary host objects and some degenerate/malformed upstream states are not yet fully compatible."
     },
     {
       "id": "manim.mobject.types.vectorized_mobject.VectorizedPoint.__init__",
@@ -16639,14 +17247,28 @@
       "kind": "method",
       "source": "manim/mobject/types/vectorized_mobject.py",
       "line": 2777,
-      "status": "not_implemented"
+      "status": "implemented_partial",
+      "lua_api": "VectorizedPoint:get_location",
+      "evidence": [
+        "tests/alignment.lua",
+        "tests/paths.lua",
+        "tests/run.lua"
+      ],
+      "limitations": "Verified native vector subset and documented Lua point tables. Point clouds, all styling/kwargs, arbitrary host objects and some degenerate/malformed upstream states are not yet fully compatible."
     },
     {
       "id": "manim.mobject.types.vectorized_mobject.VectorizedPoint.set_location",
       "kind": "method",
       "source": "manim/mobject/types/vectorized_mobject.py",
       "line": 2780,
-      "status": "not_implemented"
+      "status": "implemented_partial",
+      "lua_api": "VectorizedPoint:set_location",
+      "evidence": [
+        "tests/alignment.lua",
+        "tests/paths.lua",
+        "tests/run.lua"
+      ],
+      "limitations": "Verified native vector subset and documented Lua point tables. Point clouds, all styling/kwargs, arbitrary host objects and some degenerate/malformed upstream states are not yet fully compatible."
     },
     {
       "id": "manim.mobject.types.vectorized_mobject.CurvesAsSubmobjects",
@@ -16914,6 +17536,20 @@
       "status": "not_implemented"
     },
     {
+      "id": "manim.mobject.vector_field.StreamLine",
+      "kind": "class",
+      "source": "manim/mobject/vector_field.py",
+      "line": 664,
+      "status": "not_implemented"
+    },
+    {
+      "id": "manim.mobject.vector_field.StreamLine.__init__",
+      "kind": "method",
+      "source": "manim/mobject/vector_field.py",
+      "line": 671,
+      "status": "not_implemented"
+    },
+    {
       "id": "manim.mobject.vector_field.StreamLines",
       "kind": "class",
       "source": "manim/mobject/vector_field.py",
@@ -16958,6 +17594,13 @@
       "id": "manim.plugins.__init__.list_plugins",
       "kind": "export",
       "source": "manim/plugins/__init__.py",
+      "status": "not_implemented"
+    },
+    {
+      "id": "manim.plugins.plugins_flags.get_plugins",
+      "kind": "function",
+      "source": "manim/plugins/plugins_flags.py",
+      "line": 13,
       "status": "not_implemented"
     },
     {
@@ -17472,6 +18115,20 @@
       "status": "not_implemented"
     },
     {
+      "id": "manim.renderer.shader.get_shader_code_from_file",
+      "kind": "function",
+      "source": "manim/renderer/shader.py",
+      "line": 39,
+      "status": "not_implemented"
+    },
+    {
+      "id": "manim.renderer.shader.filter_attributes",
+      "kind": "function",
+      "source": "manim/renderer/shader.py",
+      "line": 58,
+      "status": "not_implemented"
+    },
+    {
       "id": "manim.renderer.shader.Object3D",
       "kind": "class",
       "source": "manim/renderer/shader.py",
@@ -17731,6 +18388,20 @@
       "status": "not_implemented"
     },
     {
+      "id": "manim.renderer.shader_wrapper.get_shader_dir",
+      "kind": "function",
+      "source": "manim/renderer/shader_wrapper.py",
+      "line": 28,
+      "status": "not_implemented"
+    },
+    {
+      "id": "manim.renderer.shader_wrapper.find_file",
+      "kind": "function",
+      "source": "manim/renderer/shader_wrapper.py",
+      "line": 32,
+      "status": "not_implemented"
+    },
+    {
       "id": "manim.renderer.shader_wrapper.ShaderWrapper",
       "kind": "class",
       "source": "manim/renderer/shader_wrapper.py",
@@ -17822,6 +18493,27 @@
       "status": "not_implemented"
     },
     {
+      "id": "manim.renderer.shader_wrapper.get_shader_code_from_file",
+      "kind": "function",
+      "source": "manim/renderer/shader_wrapper.py",
+      "line": 173,
+      "status": "not_implemented"
+    },
+    {
+      "id": "manim.renderer.shader_wrapper.get_colormap_code",
+      "kind": "function",
+      "source": "manim/renderer/shader_wrapper.py",
+      "line": 207,
+      "status": "not_implemented"
+    },
+    {
+      "id": "manim.renderer.vectorized_mobject_rendering.build_matrix_lists",
+      "kind": "function",
+      "source": "manim/renderer/vectorized_mobject_rendering.py",
+      "line": 26,
+      "status": "not_implemented"
+    },
+    {
       "id": "manim.renderer.vectorized_mobject_rendering.render_opengl_vectorized_mobject_fill",
       "kind": "function",
       "source": "manim/renderer/vectorized_mobject_rendering.py",
@@ -17829,10 +18521,31 @@
       "status": "not_implemented"
     },
     {
+      "id": "manim.renderer.vectorized_mobject_rendering.render_mobject_fills_with_matrix",
+      "kind": "function",
+      "source": "manim/renderer/vectorized_mobject_rendering.py",
+      "line": 60,
+      "status": "not_implemented"
+    },
+    {
+      "id": "manim.renderer.vectorized_mobject_rendering.triangulate_mobject",
+      "kind": "function",
+      "source": "manim/renderer/vectorized_mobject_rendering.py",
+      "line": 118,
+      "status": "not_implemented"
+    },
+    {
       "id": "manim.renderer.vectorized_mobject_rendering.render_opengl_vectorized_mobject_stroke",
       "kind": "function",
       "source": "manim/renderer/vectorized_mobject_rendering.py",
       "line": 212,
+      "status": "not_implemented"
+    },
+    {
+      "id": "manim.renderer.vectorized_mobject_rendering.render_mobject_strokes_with_matrix",
+      "kind": "function",
+      "source": "manim/renderer/vectorized_mobject_rendering.py",
+      "line": 221,
       "status": "not_implemented"
     },
     {
@@ -17854,6 +18567,48 @@
       "kind": "method",
       "source": "manim/scene/moving_camera_scene.py",
       "line": 123,
+      "status": "not_implemented"
+    },
+    {
+      "id": "manim.scene.scene.SceneInteractContinue",
+      "kind": "class",
+      "source": "manim/scene/scene.py",
+      "line": 94,
+      "status": "not_implemented"
+    },
+    {
+      "id": "manim.scene.scene.SceneInteractRerun",
+      "kind": "class",
+      "source": "manim/scene/scene.py",
+      "line": 112,
+      "status": "not_implemented"
+    },
+    {
+      "id": "manim.scene.scene.SceneInteractRerun.__init__",
+      "kind": "method",
+      "source": "manim/scene/scene.py",
+      "line": 130,
+      "status": "not_implemented"
+    },
+    {
+      "id": "manim.scene.scene.RerunSceneHandler",
+      "kind": "class",
+      "source": "manim/scene/scene.py",
+      "line": 135,
+      "status": "not_implemented"
+    },
+    {
+      "id": "manim.scene.scene.RerunSceneHandler.__init__",
+      "kind": "method",
+      "source": "manim/scene/scene.py",
+      "line": 138,
+      "status": "not_implemented"
+    },
+    {
+      "id": "manim.scene.scene.RerunSceneHandler.on_modified",
+      "kind": "method",
+      "source": "manim/scene/scene.py",
+      "line": 142,
       "status": "not_implemented"
     },
     {
@@ -18329,6 +19084,13 @@
       "kind": "method",
       "source": "manim/scene/scene.py",
       "line": 1964,
+      "status": "not_implemented"
+    },
+    {
+      "id": "manim.scene.scene_file_writer.convert_audio",
+      "kind": "function",
+      "source": "manim/scene/scene_file_writer.py",
+      "line": 50,
       "status": "not_implemented"
     },
     {
@@ -19778,10 +20540,31 @@
       "status": "not_implemented"
     },
     {
+      "id": "manim.utils.bezier.get_smooth_closed_cubic_bezier_handle_points",
+      "kind": "function",
+      "source": "manim/utils/bezier.py",
+      "line": 1299,
+      "status": "not_implemented"
+    },
+    {
       "id": "manim.utils.bezier.CP_OPEN_MEMO",
       "kind": "constant",
       "source": "manim/utils/bezier.py",
       "line": 1588,
+      "status": "not_implemented"
+    },
+    {
+      "id": "manim.utils.bezier.get_smooth_open_cubic_bezier_handle_points",
+      "kind": "function",
+      "source": "manim/utils/bezier.py",
+      "line": 1591,
+      "status": "not_implemented"
+    },
+    {
+      "id": "manim.utils.bezier.get_quadratic_approximation_of_cubic",
+      "kind": "function",
+      "source": "manim/utils/bezier.py",
+      "line": 1759,
       "status": "not_implemented"
     },
     {
@@ -35827,6 +36610,13 @@
       "status": "not_implemented"
     },
     {
+      "id": "manim.utils.commands.VideoMetadata",
+      "kind": "class",
+      "source": "manim/utils/commands.py",
+      "line": 37,
+      "status": "not_implemented"
+    },
+    {
       "id": "manim.utils.commands.get_video_metadata",
       "kind": "function",
       "source": "manim/utils/commands.py",
@@ -35939,6 +36729,20 @@
       "status": "not_implemented"
     },
     {
+      "id": "manim.utils.docbuild.autoaliasattr_directive.smart_replace",
+      "kind": "function",
+      "source": "manim/utils/docbuild/autoaliasattr_directive.py",
+      "line": 28,
+      "status": "not_implemented"
+    },
+    {
+      "id": "manim.utils.docbuild.autoaliasattr_directive.setup",
+      "kind": "function",
+      "source": "manim/utils/docbuild/autoaliasattr_directive.py",
+      "line": 72,
+      "status": "not_implemented"
+    },
+    {
       "id": "manim.utils.docbuild.autoaliasattr_directive.AliasAttrDocumenter",
       "kind": "class",
       "source": "manim/utils/docbuild/autoaliasattr_directive.py",
@@ -35950,6 +36754,13 @@
       "kind": "method",
       "source": "manim/utils/docbuild/autoaliasattr_directive.py",
       "line": 100,
+      "status": "not_implemented"
+    },
+    {
+      "id": "manim.utils.docbuild.autocolor_directive.setup",
+      "kind": "function",
+      "source": "manim/utils/docbuild/autocolor_directive.py",
+      "line": 19,
       "status": "not_implemented"
     },
     {
@@ -35974,6 +36785,41 @@
       "status": "not_implemented"
     },
     {
+      "id": "manim.utils.docbuild.manim_directive.SetupMetadata",
+      "kind": "class",
+      "source": "manim/utils/docbuild/manim_directive.py",
+      "line": 111,
+      "status": "not_implemented"
+    },
+    {
+      "id": "manim.utils.docbuild.manim_directive.SkipManimNode",
+      "kind": "class",
+      "source": "manim/utils/docbuild/manim_directive.py",
+      "line": 116,
+      "status": "not_implemented"
+    },
+    {
+      "id": "manim.utils.docbuild.manim_directive.visit",
+      "kind": "function",
+      "source": "manim/utils/docbuild/manim_directive.py",
+      "line": 126,
+      "status": "not_implemented"
+    },
+    {
+      "id": "manim.utils.docbuild.manim_directive.depart",
+      "kind": "function",
+      "source": "manim/utils/docbuild/manim_directive.py",
+      "line": 133,
+      "status": "not_implemented"
+    },
+    {
+      "id": "manim.utils.docbuild.manim_directive.process_name_list",
+      "kind": "function",
+      "source": "manim/utils/docbuild/manim_directive.py",
+      "line": 138,
+      "status": "not_implemented"
+    },
+    {
       "id": "manim.utils.docbuild.manim_directive.ManimDirective",
       "kind": "class",
       "source": "manim/utils/docbuild/manim_directive.py",
@@ -35985,6 +36831,13 @@
       "kind": "method",
       "source": "manim/utils/docbuild/manim_directive.py",
       "line": 181,
+      "status": "not_implemented"
+    },
+    {
+      "id": "manim.utils.docbuild.manim_directive.setup",
+      "kind": "function",
+      "source": "manim/utils/docbuild/manim_directive.py",
+      "line": 397,
       "status": "not_implemented"
     },
     {
@@ -36086,6 +36939,13 @@
       "status": "not_implemented"
     },
     {
+      "id": "manim.utils.file_ops.add_version_before_extension",
+      "kind": "function",
+      "source": "manim/utils/file_ops.py",
+      "line": 51,
+      "status": "not_implemented"
+    },
+    {
       "id": "manim.utils.file_ops.guarantee_existence",
       "kind": "function",
       "source": "manim/utils/file_ops.py",
@@ -36121,6 +36981,41 @@
       "status": "not_implemented"
     },
     {
+      "id": "manim.utils.file_ops.open_media_file",
+      "kind": "function",
+      "source": "manim/utils/file_ops.py",
+      "line": 125,
+      "status": "not_implemented"
+    },
+    {
+      "id": "manim.utils.file_ops.get_template_names",
+      "kind": "function",
+      "source": "manim/utils/file_ops.py",
+      "line": 146,
+      "status": "not_implemented"
+    },
+    {
+      "id": "manim.utils.file_ops.get_template_path",
+      "kind": "function",
+      "source": "manim/utils/file_ops.py",
+      "line": 157,
+      "status": "not_implemented"
+    },
+    {
+      "id": "manim.utils.file_ops.add_import_statement",
+      "kind": "function",
+      "source": "manim/utils/file_ops.py",
+      "line": 167,
+      "status": "not_implemented"
+    },
+    {
+      "id": "manim.utils.file_ops.copy_template_files",
+      "kind": "function",
+      "source": "manim/utils/file_ops.py",
+      "line": 181,
+      "status": "not_implemented"
+    },
+    {
       "id": "manim.utils.hashing.KEYS_TO_FILTER_OUT",
       "kind": "constant",
       "source": "manim/utils/hashing.py",
@@ -36146,6 +37041,13 @@
       "kind": "function",
       "source": "manim/utils/images.py",
       "line": 27,
+      "status": "not_implemented"
+    },
+    {
+      "id": "manim.utils.images.get_full_vector_image_path",
+      "kind": "function",
+      "source": "manim/utils/images.py",
+      "line": 35,
       "status": "not_implemented"
     },
     {
@@ -36232,6 +37134,13 @@
       "status": "not_implemented"
     },
     {
+      "id": "manim.utils.iterables.batch_by_property",
+      "kind": "function",
+      "source": "manim/utils/iterables.py",
+      "line": 89,
+      "status": "not_implemented"
+    },
+    {
       "id": "manim.utils.iterables.concatenate_lists",
       "kind": "function",
       "source": "manim/utils/iterables.py",
@@ -36288,6 +37197,27 @@
       "status": "not_implemented"
     },
     {
+      "id": "manim.utils.iterables.resize_array",
+      "kind": "function",
+      "source": "manim/utils/iterables.py",
+      "line": 358,
+      "status": "not_implemented"
+    },
+    {
+      "id": "manim.utils.iterables.resize_preserving_order",
+      "kind": "function",
+      "source": "manim/utils/iterables.py",
+      "line": 387,
+      "status": "not_implemented"
+    },
+    {
+      "id": "manim.utils.iterables.resize_with_interpolation",
+      "kind": "function",
+      "source": "manim/utils/iterables.py",
+      "line": 425,
+      "status": "not_implemented"
+    },
+    {
       "id": "manim.utils.iterables.stretch_array_to_length",
       "kind": "function",
       "source": "manim/utils/iterables.py",
@@ -36299,6 +37229,48 @@
       "kind": "function",
       "source": "manim/utils/iterables.py",
       "line": 497,
+      "status": "not_implemented"
+    },
+    {
+      "id": "manim.utils.iterables.uniq_chain",
+      "kind": "function",
+      "source": "manim/utils/iterables.py",
+      "line": 519,
+      "status": "not_implemented"
+    },
+    {
+      "id": "manim.utils.iterables.hash_obj",
+      "kind": "function",
+      "source": "manim/utils/iterables.py",
+      "line": 542,
+      "status": "not_implemented"
+    },
+    {
+      "id": "manim.utils.module_ops.get_module",
+      "kind": "function",
+      "source": "manim/utils/module_ops.py",
+      "line": 26,
+      "status": "not_implemented"
+    },
+    {
+      "id": "manim.utils.module_ops.get_scene_classes_from_module",
+      "kind": "function",
+      "source": "manim/utils/module_ops.py",
+      "line": 71,
+      "status": "not_implemented"
+    },
+    {
+      "id": "manim.utils.module_ops.get_scenes_to_render",
+      "kind": "function",
+      "source": "manim/utils/module_ops.py",
+      "line": 88,
+      "status": "not_implemented"
+    },
+    {
+      "id": "manim.utils.module_ops.prompt_user_for_choice",
+      "kind": "function",
+      "source": "manim/utils/module_ops.py",
+      "line": 112,
       "status": "not_implemented"
     },
     {
@@ -36444,27 +37416,76 @@
       "kind": "function",
       "source": "manim/utils/paths.py",
       "line": 33,
-      "status": "not_implemented"
+      "status": "implemented_partial",
+      "lua_api": "straight_path",
+      "evidence": [
+        "tests/alignment.lua",
+        "tests/paths.lua",
+        "tests/run.lua"
+      ],
+      "limitations": "Verified native vector subset and documented Lua point tables. Point clouds, all styling/kwargs, arbitrary host objects and some degenerate/malformed upstream states are not yet fully compatible."
+    },
+    {
+      "id": "manim.utils.paths.path_along_circles",
+      "kind": "function",
+      "source": "manim/utils/paths.py",
+      "line": 79,
+      "status": "implemented_partial",
+      "lua_api": "path_along_circles",
+      "evidence": [
+        "tests/alignment.lua",
+        "tests/paths.lua",
+        "tests/run.lua"
+      ],
+      "limitations": "Verified native vector subset and documented Lua point tables. Point clouds, all styling/kwargs, arbitrary host objects and some degenerate/malformed upstream states are not yet fully compatible."
     },
     {
       "id": "manim.utils.paths.path_along_arc",
       "kind": "function",
       "source": "manim/utils/paths.py",
       "line": 158,
-      "status": "not_implemented"
+      "status": "implemented_partial",
+      "lua_api": "path_along_arc",
+      "evidence": [
+        "tests/alignment.lua",
+        "tests/paths.lua",
+        "tests/run.lua"
+      ],
+      "limitations": "Verified native vector subset and documented Lua point tables. Point clouds, all styling/kwargs, arbitrary host objects and some degenerate/malformed upstream states are not yet fully compatible."
     },
     {
       "id": "manim.utils.paths.clockwise_path",
       "kind": "function",
       "source": "manim/utils/paths.py",
       "line": 225,
-      "status": "not_implemented"
+      "status": "implemented_partial",
+      "lua_api": "clockwise_path",
+      "evidence": [
+        "tests/alignment.lua",
+        "tests/paths.lua",
+        "tests/run.lua"
+      ],
+      "limitations": "Verified native vector subset and documented Lua point tables. Point clouds, all styling/kwargs, arbitrary host objects and some degenerate/malformed upstream states are not yet fully compatible."
     },
     {
       "id": "manim.utils.paths.counterclockwise_path",
       "kind": "function",
       "source": "manim/utils/paths.py",
       "line": 271,
+      "status": "implemented_partial",
+      "lua_api": "counterclockwise_path",
+      "evidence": [
+        "tests/alignment.lua",
+        "tests/paths.lua",
+        "tests/run.lua"
+      ],
+      "limitations": "Verified native vector subset and documented Lua point tables. Point clouds, all styling/kwargs, arbitrary host objects and some degenerate/malformed upstream states are not yet fully compatible."
+    },
+    {
+      "id": "manim.utils.paths.spiral_path",
+      "kind": "function",
+      "source": "manim/utils/paths.py",
+      "line": 317,
       "status": "not_implemented"
     },
     {
@@ -36619,6 +37640,27 @@
       "kind": "method",
       "source": "manim/utils/qhull.py",
       "line": 188,
+      "status": "not_implemented"
+    },
+    {
+      "id": "manim.utils.rate_functions.RateFunction",
+      "kind": "class",
+      "source": "manim/utils/rate_functions.py",
+      "line": 118,
+      "status": "not_implemented"
+    },
+    {
+      "id": "manim.utils.rate_functions.unit_interval",
+      "kind": "function",
+      "source": "manim/utils/rate_functions.py",
+      "line": 124,
+      "status": "not_implemented"
+    },
+    {
+      "id": "manim.utils.rate_functions.zero",
+      "kind": "function",
+      "source": "manim/utils/rate_functions.py",
+      "line": 139,
       "status": "not_implemented"
     },
     {
@@ -36795,6 +37837,216 @@
       "status": "not_implemented"
     },
     {
+      "id": "manim.utils.rate_functions.ease_in_sine",
+      "kind": "function",
+      "source": "manim/utils/rate_functions.py",
+      "line": 318,
+      "status": "not_implemented"
+    },
+    {
+      "id": "manim.utils.rate_functions.ease_out_sine",
+      "kind": "function",
+      "source": "manim/utils/rate_functions.py",
+      "line": 324,
+      "status": "not_implemented"
+    },
+    {
+      "id": "manim.utils.rate_functions.ease_in_out_sine",
+      "kind": "function",
+      "source": "manim/utils/rate_functions.py",
+      "line": 330,
+      "status": "not_implemented"
+    },
+    {
+      "id": "manim.utils.rate_functions.ease_in_quad",
+      "kind": "function",
+      "source": "manim/utils/rate_functions.py",
+      "line": 336,
+      "status": "not_implemented"
+    },
+    {
+      "id": "manim.utils.rate_functions.ease_out_quad",
+      "kind": "function",
+      "source": "manim/utils/rate_functions.py",
+      "line": 341,
+      "status": "not_implemented"
+    },
+    {
+      "id": "manim.utils.rate_functions.ease_in_out_quad",
+      "kind": "function",
+      "source": "manim/utils/rate_functions.py",
+      "line": 346,
+      "status": "not_implemented"
+    },
+    {
+      "id": "manim.utils.rate_functions.ease_in_cubic",
+      "kind": "function",
+      "source": "manim/utils/rate_functions.py",
+      "line": 351,
+      "status": "not_implemented"
+    },
+    {
+      "id": "manim.utils.rate_functions.ease_out_cubic",
+      "kind": "function",
+      "source": "manim/utils/rate_functions.py",
+      "line": 356,
+      "status": "not_implemented"
+    },
+    {
+      "id": "manim.utils.rate_functions.ease_in_out_cubic",
+      "kind": "function",
+      "source": "manim/utils/rate_functions.py",
+      "line": 361,
+      "status": "not_implemented"
+    },
+    {
+      "id": "manim.utils.rate_functions.ease_in_quart",
+      "kind": "function",
+      "source": "manim/utils/rate_functions.py",
+      "line": 366,
+      "status": "not_implemented"
+    },
+    {
+      "id": "manim.utils.rate_functions.ease_out_quart",
+      "kind": "function",
+      "source": "manim/utils/rate_functions.py",
+      "line": 371,
+      "status": "not_implemented"
+    },
+    {
+      "id": "manim.utils.rate_functions.ease_in_out_quart",
+      "kind": "function",
+      "source": "manim/utils/rate_functions.py",
+      "line": 376,
+      "status": "not_implemented"
+    },
+    {
+      "id": "manim.utils.rate_functions.ease_in_quint",
+      "kind": "function",
+      "source": "manim/utils/rate_functions.py",
+      "line": 381,
+      "status": "not_implemented"
+    },
+    {
+      "id": "manim.utils.rate_functions.ease_out_quint",
+      "kind": "function",
+      "source": "manim/utils/rate_functions.py",
+      "line": 386,
+      "status": "not_implemented"
+    },
+    {
+      "id": "manim.utils.rate_functions.ease_in_out_quint",
+      "kind": "function",
+      "source": "manim/utils/rate_functions.py",
+      "line": 391,
+      "status": "not_implemented"
+    },
+    {
+      "id": "manim.utils.rate_functions.ease_in_expo",
+      "kind": "function",
+      "source": "manim/utils/rate_functions.py",
+      "line": 396,
+      "status": "not_implemented"
+    },
+    {
+      "id": "manim.utils.rate_functions.ease_out_expo",
+      "kind": "function",
+      "source": "manim/utils/rate_functions.py",
+      "line": 401,
+      "status": "not_implemented"
+    },
+    {
+      "id": "manim.utils.rate_functions.ease_in_out_expo",
+      "kind": "function",
+      "source": "manim/utils/rate_functions.py",
+      "line": 406,
+      "status": "not_implemented"
+    },
+    {
+      "id": "manim.utils.rate_functions.ease_in_circ",
+      "kind": "function",
+      "source": "manim/utils/rate_functions.py",
+      "line": 418,
+      "status": "not_implemented"
+    },
+    {
+      "id": "manim.utils.rate_functions.ease_out_circ",
+      "kind": "function",
+      "source": "manim/utils/rate_functions.py",
+      "line": 423,
+      "status": "not_implemented"
+    },
+    {
+      "id": "manim.utils.rate_functions.ease_in_out_circ",
+      "kind": "function",
+      "source": "manim/utils/rate_functions.py",
+      "line": 428,
+      "status": "not_implemented"
+    },
+    {
+      "id": "manim.utils.rate_functions.ease_in_back",
+      "kind": "function",
+      "source": "manim/utils/rate_functions.py",
+      "line": 437,
+      "status": "not_implemented"
+    },
+    {
+      "id": "manim.utils.rate_functions.ease_out_back",
+      "kind": "function",
+      "source": "manim/utils/rate_functions.py",
+      "line": 444,
+      "status": "not_implemented"
+    },
+    {
+      "id": "manim.utils.rate_functions.ease_in_out_back",
+      "kind": "function",
+      "source": "manim/utils/rate_functions.py",
+      "line": 451,
+      "status": "not_implemented"
+    },
+    {
+      "id": "manim.utils.rate_functions.ease_in_elastic",
+      "kind": "function",
+      "source": "manim/utils/rate_functions.py",
+      "line": 462,
+      "status": "not_implemented"
+    },
+    {
+      "id": "manim.utils.rate_functions.ease_out_elastic",
+      "kind": "function",
+      "source": "manim/utils/rate_functions.py",
+      "line": 474,
+      "status": "not_implemented"
+    },
+    {
+      "id": "manim.utils.rate_functions.ease_in_out_elastic",
+      "kind": "function",
+      "source": "manim/utils/rate_functions.py",
+      "line": 486,
+      "status": "not_implemented"
+    },
+    {
+      "id": "manim.utils.rate_functions.ease_in_bounce",
+      "kind": "function",
+      "source": "manim/utils/rate_functions.py",
+      "line": 501,
+      "status": "not_implemented"
+    },
+    {
+      "id": "manim.utils.rate_functions.ease_out_bounce",
+      "kind": "function",
+      "source": "manim/utils/rate_functions.py",
+      "line": 506,
+      "status": "not_implemented"
+    },
+    {
+      "id": "manim.utils.rate_functions.ease_in_out_bounce",
+      "kind": "function",
+      "source": "manim/utils/rate_functions.py",
+      "line": 521,
+      "status": "not_implemented"
+    },
+    {
       "id": "manim.utils.simple_functions.binary_search",
       "kind": "function",
       "source": "manim/utils/simple_functions.py",
@@ -36806,6 +38058,13 @@
       "kind": "function",
       "source": "manim/utils/simple_functions.py",
       "line": 80,
+      "status": "not_implemented"
+    },
+    {
+      "id": "manim.utils.simple_functions.Comparable",
+      "kind": "class",
+      "source": "manim/utils/simple_functions.py",
+      "line": 95,
       "status": "not_implemented"
     },
     {
@@ -36827,6 +38086,20 @@
       "kind": "function",
       "source": "manim/utils/sounds.py",
       "line": 20,
+      "status": "not_implemented"
+    },
+    {
+      "id": "manim.utils.space_ops.norm_squared",
+      "kind": "function",
+      "source": "manim/utils/space_ops.py",
+      "line": 69,
+      "status": "not_implemented"
+    },
+    {
+      "id": "manim.utils.space_ops.cross",
+      "kind": "function",
+      "source": "manim/utils/space_ops.py",
+      "line": 74,
       "status": "not_implemented"
     },
     {
@@ -36872,6 +38145,27 @@
       "status": "not_implemented"
     },
     {
+      "id": "manim.utils.space_ops.rotation_matrix_transpose_from_quaternion",
+      "kind": "function",
+      "source": "manim/utils/space_ops.py",
+      "line": 222,
+      "status": "not_implemented"
+    },
+    {
+      "id": "manim.utils.space_ops.rotation_matrix_from_quaternion",
+      "kind": "function",
+      "source": "manim/utils/space_ops.py",
+      "line": 249,
+      "status": "not_implemented"
+    },
+    {
+      "id": "manim.utils.space_ops.rotation_matrix_transpose",
+      "kind": "function",
+      "source": "manim/utils/space_ops.py",
+      "line": 253,
+      "status": "not_implemented"
+    },
+    {
       "id": "manim.utils.space_ops.rotation_matrix",
       "kind": "function",
       "source": "manim/utils/space_ops.py",
@@ -36911,6 +38205,13 @@
       "kind": "function",
       "source": "manim/utils/space_ops.py",
       "line": 364,
+      "status": "not_implemented"
+    },
+    {
+      "id": "manim.utils.space_ops.normalize_along_axis",
+      "kind": "function",
+      "source": "manim/utils/space_ops.py",
+      "line": 385,
       "status": "not_implemented"
     },
     {
@@ -37201,6 +38502,13 @@
       "status": "not_implemented"
     },
     {
+      "id": "manim.utils.tex_file_writing.tex_hash",
+      "kind": "function",
+      "source": "manim/utils/tex_file_writing.py",
+      "line": 27,
+      "status": "not_implemented"
+    },
+    {
       "id": "manim.utils.tex_file_writing.tex_to_svg_file",
       "kind": "function",
       "source": "manim/utils/tex_file_writing.py",
@@ -37208,10 +38516,73 @@
       "status": "not_implemented"
     },
     {
+      "id": "manim.utils.tex_file_writing.generate_tex_file",
+      "kind": "function",
+      "source": "manim/utils/tex_file_writing.py",
+      "line": 76,
+      "status": "not_implemented"
+    },
+    {
+      "id": "manim.utils.tex_file_writing.make_tex_compilation_command",
+      "kind": "function",
+      "source": "manim/utils/tex_file_writing.py",
+      "line": 118,
+      "status": "not_implemented"
+    },
+    {
+      "id": "manim.utils.tex_file_writing.insight_inputenc_error",
+      "kind": "function",
+      "source": "manim/utils/tex_file_writing.py",
+      "line": 169,
+      "status": "not_implemented"
+    },
+    {
+      "id": "manim.utils.tex_file_writing.insight_package_not_found_error",
+      "kind": "function",
+      "source": "manim/utils/tex_file_writing.py",
+      "line": 176,
+      "status": "not_implemented"
+    },
+    {
+      "id": "manim.utils.tex_file_writing.compile_tex",
+      "kind": "function",
+      "source": "manim/utils/tex_file_writing.py",
+      "line": 181,
+      "status": "not_implemented"
+    },
+    {
+      "id": "manim.utils.tex_file_writing.convert_to_svg",
+      "kind": "function",
+      "source": "manim/utils/tex_file_writing.py",
+      "line": 226,
+      "status": "not_implemented"
+    },
+    {
+      "id": "manim.utils.tex_file_writing.delete_nonsvg_files",
+      "kind": "function",
+      "source": "manim/utils/tex_file_writing.py",
+      "line": 269,
+      "status": "not_implemented"
+    },
+    {
+      "id": "manim.utils.tex_file_writing.print_all_tex_errors",
+      "kind": "function",
+      "source": "manim/utils/tex_file_writing.py",
+      "line": 285,
+      "status": "not_implemented"
+    },
+    {
       "id": "manim.utils.tex_file_writing.LATEX_ERROR_INSIGHTS",
       "kind": "constant",
       "source": "manim/utils/tex_file_writing.py",
       "line": 303,
+      "status": "not_implemented"
+    },
+    {
+      "id": "manim.utils.tex_file_writing.print_tex_error",
+      "kind": "function",
+      "source": "manim/utils/tex_file_writing.py",
+      "line": 315,
       "status": "not_implemented"
     },
     {

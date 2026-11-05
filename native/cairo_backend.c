@@ -59,7 +59,8 @@ static int clear_surface(lua_State *L) {
 }
 static int draw_path(lua_State *L) {
     Surface *s=get_surface(L);luaL_checktype(L,2,LUA_TTABLE);
-    size_t n=lua_rawlen(L,2);luaL_argcheck(L,n%4==0,2,"four points per cubic required");
+    size_t n=lua_rawlen(L,2);luaL_argcheck(L,n%4==0 || n%4==1,2,"complete cubics and optional pending anchor required");
+    size_t complete=n-n%4;
     double fill[4],stroke[4];color(L,3,fill);color(L,4,stroke);
     double width=finite_number(L,5);luaL_argcheck(L,width>=0,5,"negative stroke width");
     const char *joins[]={"round","bevel","miter",NULL};
@@ -70,7 +71,7 @@ static int draw_path(lua_State *L) {
     /* Validate the complete input before changing the Cairo path. */
     for(size_t i=1;i<=n;i++) { double p[2];lua_geti(L,2,(lua_Integer)i);luaL_checktype(L,-1,LUA_TTABLE);point(L,lua_gettop(L),p);lua_pop(L,1); }
     cairo_new_path(s->cr);double previous[2]={0,0},first[2]={0,0};int open=0;
-    for(size_t i=1;i<=n;i+=4) {
+    for(size_t i=1;i<=complete;i+=4) {
         double p[4][2];
         for(int j=0;j<4;j++) { lua_geti(L,2,(lua_Integer)i+j);point(L,lua_gettop(L),p[j]);lua_pop(L,1); }
         if(!open || fabs(previous[0]-p[0][0])>1e-6 || fabs(previous[1]-p[0][1])>1e-6) {

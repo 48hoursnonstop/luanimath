@@ -69,6 +69,7 @@ function Scene:play(...)
     local last=0
     for frame=0,n-1 do
         local t=frame/self.config.frame_rate
+        group:update_mobjects(t-last)
         group:interpolate(group.run_time==0 and 1 or t/group.run_time)
         self.time=start+t;self:update_mobjects(t-last);self:_frame();last=t
     end

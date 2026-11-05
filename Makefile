@@ -8,7 +8,7 @@ PKGS = $(LUA_PKG) cairo pangocairo
 export LUA_PATH := $(CURDIR)/lua/?.lua;$(CURDIR)/lua/?/init.lua;;
 export LUA_CPATH := $(CURDIR)/build/?.so;;
 
-.PHONY: all test text-test media-test graphing-test demo reference differential check clean sanitize release
+.PHONY: all test text-test media-test graphing-test alignment-test paths-test demo reference differential check clean sanitize release
 all: build/luanim_native.so
 
 build/luanim_native.so: native/cairo_backend.c native/text.c
@@ -25,6 +25,15 @@ reference:
 	.dev/venv/bin/python tools/reference.py --upstream .dev/manim-0.22.1
 	.dev/venv/bin/python tools/reference_text.py
 	.dev/venv/bin/python tools/reference_graphing.py
+	.dev/venv/bin/python tools/reference_alignment.py
+	.dev/venv/bin/python tools/reference_paths.py
+
+paths-test: all
+	$(LUA) tests/paths.lua
+
+alignment-test: all
+	$(LUA) tests/alignment.lua
+	$(PYTHON) tools/visual_alignment.py
 
 graphing-test: all
 	$(LUA) tests/graphing.lua
@@ -42,13 +51,14 @@ differential: all
 	$(LUA) tests/differential.lua
 	$(PYTHON) tools/visual_compare.py
 
-check: test demo differential text-test media-test graphing-test
+check: test demo differential text-test media-test graphing-test alignment-test paths-test
 
 sanitize:
 	$(MAKE) clean
 	$(MAKE) CFLAGS='-O1 -g -fsanitize=address,undefined -fno-omit-frame-pointer'
 	ASAN_OPTIONS=detect_leaks=0 LD_PRELOAD="$$( $(CC) -print-file-name=libasan.so )" $(LUA) tests/run.lua
 	ASAN_OPTIONS=detect_leaks=0 LD_PRELOAD="$$( $(CC) -print-file-name=libasan.so )" $(LUA) tests/text.lua
+	ASAN_OPTIONS=detect_leaks=0 LD_PRELOAD="$$( $(CC) -print-file-name=libasan.so )" $(LUA) tests/alignment.lua
 	$(MAKE) clean
 	$(MAKE) all
 

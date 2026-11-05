@@ -649,9 +649,11 @@
     "status": "implemented_partial",
     "evidence": [
       "tests/run.lua",
-      "tests/differential.lua"
+      "tests/differential.lua",
+      "tests/alignment.lua",
+      "tests/paths.lua"
     ],
-    "limitations": "Single RGBA style; equal family structure for transforms; multipath alignment, path_arc, backward composition evaluation and remaining options are pending."
+    "limitations": "Native vector family/subpath alignment, curved paths and snapshot updaters are implemented. AnimationGroup/LaggedStart support backward evaluation; Succession is forward-only, like its current upstream stepping model. Remaining animation options and non-vector point-cloud alignment need work."
   },
   {
     "id": "manim.animation.transform.ReplacementTransform",
@@ -659,9 +661,11 @@
     "status": "implemented_partial",
     "evidence": [
       "tests/run.lua",
-      "tests/differential.lua"
+      "tests/differential.lua",
+      "tests/alignment.lua",
+      "tests/paths.lua"
     ],
-    "limitations": "Single RGBA style; equal family structure for transforms; multipath alignment, path_arc, backward composition evaluation and remaining options are pending."
+    "limitations": "Native vector family/subpath alignment, curved paths and snapshot updaters are implemented. AnimationGroup/LaggedStart support backward evaluation; Succession is forward-only, like its current upstream stepping model. Remaining animation options and non-vector point-cloud alignment need work."
   },
   {
     "id": "manim.animation.rotation.Rotate",
@@ -679,9 +683,11 @@
     "status": "implemented_partial",
     "evidence": [
       "tests/run.lua",
-      "tests/differential.lua"
+      "tests/differential.lua",
+      "tests/alignment.lua",
+      "tests/paths.lua"
     ],
-    "limitations": "Single RGBA style; equal family structure for transforms; multipath alignment, path_arc, backward composition evaluation and remaining options are pending."
+    "limitations": "Native vector family/subpath alignment, curved paths and snapshot updaters are implemented. AnimationGroup/LaggedStart support backward evaluation; Succession is forward-only, like its current upstream stepping model. Remaining animation options and non-vector point-cloud alignment need work."
   },
   {
     "id": "manim.animation.composition.AnimationGroup",
@@ -689,9 +695,11 @@
     "status": "implemented_partial",
     "evidence": [
       "tests/run.lua",
-      "tests/differential.lua"
+      "tests/differential.lua",
+      "tests/alignment.lua",
+      "tests/paths.lua"
     ],
-    "limitations": "Single RGBA style; equal family structure for transforms; multipath alignment, path_arc, backward composition evaluation and remaining options are pending."
+    "limitations": "Native vector family/subpath alignment, curved paths and snapshot updaters are implemented. AnimationGroup/LaggedStart support backward evaluation; Succession is forward-only, like its current upstream stepping model. Remaining animation options and non-vector point-cloud alignment need work."
   },
   {
     "id": "manim.animation.composition.Succession",
@@ -699,9 +707,11 @@
     "status": "implemented_partial",
     "evidence": [
       "tests/run.lua",
-      "tests/differential.lua"
+      "tests/differential.lua",
+      "tests/alignment.lua",
+      "tests/paths.lua"
     ],
-    "limitations": "Single RGBA style; equal family structure for transforms; multipath alignment, path_arc, backward composition evaluation and remaining options are pending."
+    "limitations": "Native vector family/subpath alignment, curved paths and snapshot updaters are implemented. AnimationGroup/LaggedStart support backward evaluation; Succession is forward-only, like its current upstream stepping model. Remaining animation options and non-vector point-cloud alignment need work."
   },
   {
     "id": "manim.animation.composition.LaggedStart",
@@ -709,9 +719,11 @@
     "status": "implemented_partial",
     "evidence": [
       "tests/run.lua",
-      "tests/differential.lua"
+      "tests/differential.lua",
+      "tests/alignment.lua",
+      "tests/paths.lua"
     ],
-    "limitations": "Single RGBA style; equal family structure for transforms; multipath alignment, path_arc, backward composition evaluation and remaining options are pending."
+    "limitations": "Native vector family/subpath alignment, curved paths and snapshot updaters are implemented. AnimationGroup/LaggedStart support backward evaluation; Succession is forward-only, like its current upstream stepping model. Remaining animation options and non-vector point-cloud alignment need work."
   },
   {
     "id": "manim.scene.scene.Scene",
@@ -1227,5 +1239,401 @@
       "tests/run.lua"
     ],
     "limitations": "Linear numerical axes, default triangular 2D tips, finite scalar/vector Lua functions and cubic open/closed smoothing. Numeric labels, nonlinear scaling, advanced plotting helpers, custom tips and remaining constructor options are pending."
+  },
+  {
+    "id": "manim.mobject.types.vectorized_mobject.VMobject.clear_points",
+    "lua_api": "VMobject:clear_points",
+    "status": "implemented_partial",
+    "evidence": [
+      "tests/alignment.lua",
+      "tests/paths.lua",
+      "tests/run.lua"
+    ],
+    "limitations": "Verified native vector subset and documented Lua point tables. Point clouds, all styling/kwargs, arbitrary host objects and some degenerate/malformed upstream states are not yet fully compatible."
+  },
+  {
+    "id": "manim.mobject.types.vectorized_mobject.VMobject.append_points",
+    "lua_api": "VMobject:append_points",
+    "status": "implemented_partial",
+    "evidence": [
+      "tests/alignment.lua",
+      "tests/paths.lua",
+      "tests/run.lua"
+    ],
+    "limitations": "Verified native vector subset and documented Lua point tables. Point clouds, all styling/kwargs, arbitrary host objects and some degenerate/malformed upstream states are not yet fully compatible."
+  },
+  {
+    "id": "manim.mobject.types.vectorized_mobject.VMobject.has_new_path_started",
+    "lua_api": "VMobject:has_new_path_started",
+    "status": "implemented_partial",
+    "evidence": [
+      "tests/alignment.lua",
+      "tests/paths.lua",
+      "tests/run.lua"
+    ],
+    "limitations": "Verified native vector subset and documented Lua point tables. Point clouds, all styling/kwargs, arbitrary host objects and some degenerate/malformed upstream states are not yet fully compatible."
+  },
+  {
+    "id": "manim.mobject.types.vectorized_mobject.VMobject.get_last_point",
+    "lua_api": "VMobject:get_last_point",
+    "status": "implemented_partial",
+    "evidence": [
+      "tests/alignment.lua",
+      "tests/paths.lua",
+      "tests/run.lua"
+    ],
+    "limitations": "Verified native vector subset and documented Lua point tables. Point clouds, all styling/kwargs, arbitrary host objects and some degenerate/malformed upstream states are not yet fully compatible."
+  },
+  {
+    "id": "manim.mobject.types.vectorized_mobject.VMobject.start_new_path",
+    "lua_api": "VMobject:start_new_path",
+    "status": "implemented_partial",
+    "evidence": [
+      "tests/alignment.lua",
+      "tests/paths.lua",
+      "tests/run.lua"
+    ],
+    "limitations": "Verified native vector subset and documented Lua point tables. Point clouds, all styling/kwargs, arbitrary host objects and some degenerate/malformed upstream states are not yet fully compatible."
+  },
+  {
+    "id": "manim.mobject.types.vectorized_mobject.VMobject.add_cubic_bezier_curve",
+    "lua_api": "VMobject:add_cubic_bezier_curve",
+    "status": "implemented_partial",
+    "evidence": [
+      "tests/alignment.lua",
+      "tests/paths.lua",
+      "tests/run.lua"
+    ],
+    "limitations": "Verified native vector subset and documented Lua point tables. Point clouds, all styling/kwargs, arbitrary host objects and some degenerate/malformed upstream states are not yet fully compatible."
+  },
+  {
+    "id": "manim.mobject.types.vectorized_mobject.VMobject.add_cubic_bezier_curve_to",
+    "lua_api": "VMobject:add_cubic_bezier_curve_to",
+    "status": "implemented_partial",
+    "evidence": [
+      "tests/alignment.lua",
+      "tests/paths.lua",
+      "tests/run.lua"
+    ],
+    "limitations": "Verified native vector subset and documented Lua point tables. Point clouds, all styling/kwargs, arbitrary host objects and some degenerate/malformed upstream states are not yet fully compatible."
+  },
+  {
+    "id": "manim.mobject.types.vectorized_mobject.VMobject.add_quadratic_bezier_curve_to",
+    "lua_api": "VMobject:add_quadratic_bezier_curve_to",
+    "status": "implemented_partial",
+    "evidence": [
+      "tests/alignment.lua",
+      "tests/paths.lua",
+      "tests/run.lua"
+    ],
+    "limitations": "Verified native vector subset and documented Lua point tables. Point clouds, all styling/kwargs, arbitrary host objects and some degenerate/malformed upstream states are not yet fully compatible."
+  },
+  {
+    "id": "manim.mobject.types.vectorized_mobject.VMobject.add_line_to",
+    "lua_api": "VMobject:add_line_to",
+    "status": "implemented_partial",
+    "evidence": [
+      "tests/alignment.lua",
+      "tests/paths.lua",
+      "tests/run.lua"
+    ],
+    "limitations": "Verified native vector subset and documented Lua point tables. Point clouds, all styling/kwargs, arbitrary host objects and some degenerate/malformed upstream states are not yet fully compatible."
+  },
+  {
+    "id": "manim.mobject.types.vectorized_mobject.VMobject.add_points_as_corners",
+    "lua_api": "VMobject:add_points_as_corners",
+    "status": "implemented_partial",
+    "evidence": [
+      "tests/alignment.lua",
+      "tests/paths.lua",
+      "tests/run.lua"
+    ],
+    "limitations": "Verified native vector subset and documented Lua point tables. Point clouds, all styling/kwargs, arbitrary host objects and some degenerate/malformed upstream states are not yet fully compatible."
+  },
+  {
+    "id": "manim.mobject.types.vectorized_mobject.VMobject.add_subpath",
+    "lua_api": "VMobject:add_subpath",
+    "status": "implemented_partial",
+    "evidence": [
+      "tests/alignment.lua",
+      "tests/paths.lua",
+      "tests/run.lua"
+    ],
+    "limitations": "Verified native vector subset and documented Lua point tables. Point clouds, all styling/kwargs, arbitrary host objects and some degenerate/malformed upstream states are not yet fully compatible."
+  },
+  {
+    "id": "manim.mobject.types.vectorized_mobject.VMobject.is_closed",
+    "lua_api": "VMobject:is_closed",
+    "status": "implemented_partial",
+    "evidence": [
+      "tests/alignment.lua",
+      "tests/paths.lua",
+      "tests/run.lua"
+    ],
+    "limitations": "Verified native vector subset and documented Lua point tables. Point clouds, all styling/kwargs, arbitrary host objects and some degenerate/malformed upstream states are not yet fully compatible."
+  },
+  {
+    "id": "manim.mobject.types.vectorized_mobject.VMobject.close_path",
+    "lua_api": "VMobject:close_path",
+    "status": "implemented_partial",
+    "evidence": [
+      "tests/alignment.lua",
+      "tests/paths.lua",
+      "tests/run.lua"
+    ],
+    "limitations": "Verified native vector subset and documented Lua point tables. Point clouds, all styling/kwargs, arbitrary host objects and some degenerate/malformed upstream states are not yet fully compatible."
+  },
+  {
+    "id": "manim.mobject.types.vectorized_mobject.VMobject.get_start_anchors",
+    "lua_api": "VMobject:get_start_anchors",
+    "status": "implemented_partial",
+    "evidence": [
+      "tests/alignment.lua",
+      "tests/paths.lua",
+      "tests/run.lua"
+    ],
+    "limitations": "Verified native vector subset and documented Lua point tables. Point clouds, all styling/kwargs, arbitrary host objects and some degenerate/malformed upstream states are not yet fully compatible."
+  },
+  {
+    "id": "manim.mobject.types.vectorized_mobject.VMobject.get_end_anchors",
+    "lua_api": "VMobject:get_end_anchors",
+    "status": "implemented_partial",
+    "evidence": [
+      "tests/alignment.lua",
+      "tests/paths.lua",
+      "tests/run.lua"
+    ],
+    "limitations": "Verified native vector subset and documented Lua point tables. Point clouds, all styling/kwargs, arbitrary host objects and some degenerate/malformed upstream states are not yet fully compatible."
+  },
+  {
+    "id": "manim.mobject.types.vectorized_mobject.VMobject.get_anchors",
+    "lua_api": "VMobject:get_anchors",
+    "status": "implemented_partial",
+    "evidence": [
+      "tests/alignment.lua",
+      "tests/paths.lua",
+      "tests/run.lua"
+    ],
+    "limitations": "Verified native vector subset and documented Lua point tables. Point clouds, all styling/kwargs, arbitrary host objects and some degenerate/malformed upstream states are not yet fully compatible."
+  },
+  {
+    "id": "manim.mobject.types.vectorized_mobject.VMobject.insert_n_curves",
+    "lua_api": "VMobject:insert_n_curves",
+    "status": "implemented_partial",
+    "evidence": [
+      "tests/alignment.lua",
+      "tests/paths.lua",
+      "tests/run.lua"
+    ],
+    "limitations": "Verified native vector subset and documented Lua point tables. Point clouds, all styling/kwargs, arbitrary host objects and some degenerate/malformed upstream states are not yet fully compatible."
+  },
+  {
+    "id": "manim.mobject.types.vectorized_mobject.VMobject.get_point_mobject",
+    "lua_api": "VMobject:get_point_mobject",
+    "status": "implemented_partial",
+    "evidence": [
+      "tests/alignment.lua",
+      "tests/paths.lua",
+      "tests/run.lua"
+    ],
+    "limitations": "Verified native vector subset and documented Lua point tables. Point clouds, all styling/kwargs, arbitrary host objects and some degenerate/malformed upstream states are not yet fully compatible."
+  },
+  {
+    "id": "manim.mobject.types.vectorized_mobject.VMobject.align_points",
+    "lua_api": "VMobject:align_points",
+    "status": "implemented_partial",
+    "evidence": [
+      "tests/alignment.lua",
+      "tests/paths.lua",
+      "tests/run.lua"
+    ],
+    "limitations": "Verified native vector subset and documented Lua point tables. Point clouds, all styling/kwargs, arbitrary host objects and some degenerate/malformed upstream states are not yet fully compatible."
+  },
+  {
+    "id": "manim.mobject.mobject.Mobject.align_data",
+    "lua_api": "Mobject:align_data",
+    "status": "implemented_partial",
+    "evidence": [
+      "tests/alignment.lua",
+      "tests/paths.lua",
+      "tests/run.lua"
+    ],
+    "limitations": "Verified native vector subset and documented Lua point tables. Point clouds, all styling/kwargs, arbitrary host objects and some degenerate/malformed upstream states are not yet fully compatible."
+  },
+  {
+    "id": "manim.mobject.mobject.Mobject.add_n_more_submobjects",
+    "lua_api": "Mobject:add_n_more_submobjects",
+    "status": "implemented_partial",
+    "evidence": [
+      "tests/alignment.lua",
+      "tests/paths.lua",
+      "tests/run.lua"
+    ],
+    "limitations": "Verified native vector subset and documented Lua point tables. Point clouds, all styling/kwargs, arbitrary host objects and some degenerate/malformed upstream states are not yet fully compatible."
+  },
+  {
+    "id": "manim.mobject.mobject.Mobject.push_self_into_submobjects",
+    "lua_api": "Mobject:push_self_into_submobjects",
+    "status": "implemented_partial",
+    "evidence": [
+      "tests/alignment.lua",
+      "tests/paths.lua",
+      "tests/run.lua"
+    ],
+    "limitations": "Verified native vector subset and documented Lua point tables. Point clouds, all styling/kwargs, arbitrary host objects and some degenerate/malformed upstream states are not yet fully compatible."
+  },
+  {
+    "id": "manim.mobject.mobject.Mobject.suspend_updating",
+    "lua_api": "Mobject:suspend_updating",
+    "status": "implemented_partial",
+    "evidence": [
+      "tests/alignment.lua",
+      "tests/paths.lua",
+      "tests/run.lua"
+    ],
+    "limitations": "Verified native vector subset and documented Lua point tables. Point clouds, all styling/kwargs, arbitrary host objects and some degenerate/malformed upstream states are not yet fully compatible."
+  },
+  {
+    "id": "manim.mobject.mobject.Mobject.resume_updating",
+    "lua_api": "Mobject:resume_updating",
+    "status": "implemented_partial",
+    "evidence": [
+      "tests/alignment.lua",
+      "tests/paths.lua",
+      "tests/run.lua"
+    ],
+    "limitations": "Verified native vector subset and documented Lua point tables. Point clouds, all styling/kwargs, arbitrary host objects and some degenerate/malformed upstream states are not yet fully compatible."
+  },
+  {
+    "id": "manim.mobject.mobject.Mobject.save_state",
+    "lua_api": "Mobject:save_state",
+    "status": "implemented_partial",
+    "evidence": [
+      "tests/alignment.lua",
+      "tests/paths.lua",
+      "tests/run.lua"
+    ],
+    "limitations": "Verified native vector subset and documented Lua point tables. Point clouds, all styling/kwargs, arbitrary host objects and some degenerate/malformed upstream states are not yet fully compatible."
+  },
+  {
+    "id": "manim.mobject.mobject.Mobject.restore",
+    "lua_api": "Mobject:restore",
+    "status": "implemented_partial",
+    "evidence": [
+      "tests/alignment.lua",
+      "tests/paths.lua",
+      "tests/run.lua"
+    ],
+    "limitations": "Verified native vector subset and documented Lua point tables. Point clouds, all styling/kwargs, arbitrary host objects and some degenerate/malformed upstream states are not yet fully compatible."
+  },
+  {
+    "id": "manim.mobject.types.vectorized_mobject.VectorizedPoint",
+    "lua_api": "VectorizedPoint",
+    "status": "implemented_partial",
+    "evidence": [
+      "tests/alignment.lua",
+      "tests/paths.lua",
+      "tests/run.lua"
+    ],
+    "limitations": "Verified native vector subset and documented Lua point tables. Point clouds, all styling/kwargs, arbitrary host objects and some degenerate/malformed upstream states are not yet fully compatible."
+  },
+  {
+    "id": "manim.mobject.types.vectorized_mobject.VectorizedPoint.get_location",
+    "lua_api": "VectorizedPoint:get_location",
+    "status": "implemented_partial",
+    "evidence": [
+      "tests/alignment.lua",
+      "tests/paths.lua",
+      "tests/run.lua"
+    ],
+    "limitations": "Verified native vector subset and documented Lua point tables. Point clouds, all styling/kwargs, arbitrary host objects and some degenerate/malformed upstream states are not yet fully compatible."
+  },
+  {
+    "id": "manim.mobject.types.vectorized_mobject.VectorizedPoint.set_location",
+    "lua_api": "VectorizedPoint:set_location",
+    "status": "implemented_partial",
+    "evidence": [
+      "tests/alignment.lua",
+      "tests/paths.lua",
+      "tests/run.lua"
+    ],
+    "limitations": "Verified native vector subset and documented Lua point tables. Point clouds, all styling/kwargs, arbitrary host objects and some degenerate/malformed upstream states are not yet fully compatible."
+  },
+  {
+    "id": "manim.utils.paths.straight_path",
+    "lua_api": "straight_path",
+    "status": "implemented_partial",
+    "evidence": [
+      "tests/alignment.lua",
+      "tests/paths.lua",
+      "tests/run.lua"
+    ],
+    "limitations": "Verified native vector subset and documented Lua point tables. Point clouds, all styling/kwargs, arbitrary host objects and some degenerate/malformed upstream states are not yet fully compatible."
+  },
+  {
+    "id": "manim.utils.paths.path_along_arc",
+    "lua_api": "path_along_arc",
+    "status": "implemented_partial",
+    "evidence": [
+      "tests/alignment.lua",
+      "tests/paths.lua",
+      "tests/run.lua"
+    ],
+    "limitations": "Verified native vector subset and documented Lua point tables. Point clouds, all styling/kwargs, arbitrary host objects and some degenerate/malformed upstream states are not yet fully compatible."
+  },
+  {
+    "id": "manim.utils.paths.path_along_circles",
+    "lua_api": "path_along_circles",
+    "status": "implemented_partial",
+    "evidence": [
+      "tests/alignment.lua",
+      "tests/paths.lua",
+      "tests/run.lua"
+    ],
+    "limitations": "Verified native vector subset and documented Lua point tables. Point clouds, all styling/kwargs, arbitrary host objects and some degenerate/malformed upstream states are not yet fully compatible."
+  },
+  {
+    "id": "manim.utils.paths.clockwise_path",
+    "lua_api": "clockwise_path",
+    "status": "implemented_partial",
+    "evidence": [
+      "tests/alignment.lua",
+      "tests/paths.lua",
+      "tests/run.lua"
+    ],
+    "limitations": "Verified native vector subset and documented Lua point tables. Point clouds, all styling/kwargs, arbitrary host objects and some degenerate/malformed upstream states are not yet fully compatible."
+  },
+  {
+    "id": "manim.utils.paths.counterclockwise_path",
+    "lua_api": "counterclockwise_path",
+    "status": "implemented_partial",
+    "evidence": [
+      "tests/alignment.lua",
+      "tests/paths.lua",
+      "tests/run.lua"
+    ],
+    "limitations": "Verified native vector subset and documented Lua point tables. Point clouds, all styling/kwargs, arbitrary host objects and some degenerate/malformed upstream states are not yet fully compatible."
+  },
+  {
+    "id": "manim.animation.creation.Uncreate",
+    "lua_api": "Uncreate",
+    "status": "implemented_partial",
+    "evidence": [
+      "tests/alignment.lua",
+      "tests/paths.lua",
+      "tests/run.lua"
+    ],
+    "limitations": "Verified native vector subset and documented Lua point tables. Point clouds, all styling/kwargs, arbitrary host objects and some degenerate/malformed upstream states are not yet fully compatible."
+  },
+  {
+    "id": "manim.animation.animation.Animation.update_mobjects",
+    "lua_api": "Animation:update_mobjects",
+    "status": "implemented_partial",
+    "evidence": [
+      "tests/alignment.lua",
+      "tests/paths.lua",
+      "tests/run.lua"
+    ],
+    "limitations": "Verified native vector subset and documented Lua point tables. Point clouds, all styling/kwargs, arbitrary host objects and some degenerate/malformed upstream states are not yet fully compatible."
   }
 ]

@@ -68,7 +68,7 @@ def inventory(upstream):
                             records.setdefault(qualified,dict(id=qualified,kind='constant',source=rel,line=node.lineno,status='not_implemented'))
             if not isinstance(node, (ast.ClassDef, ast.FunctionDef, ast.AsyncFunctionDef)):
                 continue
-            if node.name.startswith('_') or (exports is not None and node.name not in exports):
+            if node.name.startswith('_'):
                 continue
             qualified = module + '.' + node.name
             records[qualified] = dict(id=qualified, kind='class' if isinstance(node, ast.ClassDef) else 'function',
@@ -94,7 +94,7 @@ def inventory(upstream):
             exports.append(dict(name=name,id=owner+'.'+value.__name__))
         elif name.isupper():exports.append(dict(name=name,id='manim.'+name))
     (ROOT/'compatibility/public_exports.json').write_text(json.dumps(exports,indent=2)+'\n')
-    result = dict(upstream_version=m.__version__, definition='Module __all__ declarations, public definitions in modules without __all__, uppercase assignment declarations, and public class methods defined in those classes. Inherited methods resolve to their defining class. Runtime root exports are separately indexed in public_exports.json. Dynamically generated instance attributes still need an audit.',
+    result = dict(upstream_version=m.__version__, definition='Module __all__ declarations plus all public definitions, uppercase assignment declarations, and public class methods defined in those classes. Inherited methods resolve to their defining class. Runtime root exports are separately indexed in public_exports.json. Dynamically generated instance attributes still need an audit.',
                   entries=list(records.values()))
     (ROOT/'compatibility/api_inventory.json').write_text(json.dumps(result, indent=2)+'\n')
     print(f'Inventory: {len(records)} explicit API entries from {len(hashes)} source files')
@@ -143,7 +143,7 @@ def main():
             paths.append(dict(name=name, options=options, alpha=alpha, point=obj.point_from_proportion(alpha),
                               partial=obj.copy().pointwise_become_partial(obj,0,alpha).points, length=obj.get_arc_length()))
     animations=[]
-    for kind in ['Transform','Create','FadeIn','FadeOut','Rotate','Write','DrawBorderThenFill']:
+    for kind in ['Transform','Create','FadeIn','FadeOut','Rotate','Write','DrawBorderThenFill','Uncreate']:
         for alpha in [0,.125,.25,.5,.75,1]:
             obj=m.Square(color=m.BLUE,fill_opacity=.35).shift(m.LEFT)
             target=m.Circle(color=m.GREEN,fill_opacity=.7).shift(m.RIGHT)

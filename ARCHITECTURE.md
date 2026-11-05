@@ -19,7 +19,12 @@ mathematics without a numerical package dependency.
 Transforms capture copies at begin and align control-point counts through de
 Casteljau subdivision. Composition schedules children by their natural
 durations and lag ratios. Successions capture each child's state when it
-actually begins. Updaters on an animated object are suspended and restored.
+actually begins; groups begin all members and can interpolate backward.
+Updaters on an animated object are suspended and resumed, while snapshot and
+target updaters run before each interpolation, matching the upstream lifecycle.
+Vector alignment recursively normalizes families and subpaths, duplicates
+missing family members with zero opacity, and creates null vector paths where
+needed. Pending single-anchor paths are an explicit state of the geometry model.
 
 `scene.lua` orchestrates identity and frame evaluation. Each play/wait segment
 samples `t = k / fps` for `0 <= t < duration`, then finishes at its logical end.

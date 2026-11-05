@@ -18,7 +18,7 @@ for path in sorted((root/'tests/reference_images').glob('*.png')):
     mae=float(diff.mean());fraction=float(np.any(diff>16,axis=2).mean())
     assert mae<=0.6 and fraction<=0.004,(path.name,mae,fraction)
     results.append(dict(frame=path.name,mean_absolute_channel_error=mae,pixel_fraction_error_over_16=fraction))
-assert len(results)>=42,'expected complete reference frame set'
+assert len(results)>=48,'expected complete reference frame set'
 for name in ['artifacts/geometric.mp4']:
     path=root/name
     if not path.exists():continue
