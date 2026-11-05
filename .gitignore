@@ -1,0 +1,7 @@
+.dev/
+build/
+artifacts/
+releases/
+*.so
+__pycache__/
+.pytest_cache/

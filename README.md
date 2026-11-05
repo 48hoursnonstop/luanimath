@@ -1,0 +1,80 @@
+# Luanim
+
+A source-derived, Lua-native port of Manim Community Edition. The compatibility
+target is **Manim 0.22.1**. This is an early development release in a continuing
+port: consult `COMPATIBILITY.md` and the machine-readable inventory for its
+verified scope. It does not yet replace the full upstream library.
+
+The animation engine runs in Lua 5.4. A small C module interfaces directly with
+Cairo. FFmpeg encodes actual frames. Python and Manim are **development-only
+reference tools**, never part of scene execution or rendering.
+
+## Build
+
+Required: Lua 5.4 and development headers, a C11 compiler, make, pkg-config,
+Cairo, Pango development libraries, and FFmpeg. Check existing installations
+before installing anything. On Arch the relevant package names are `lua54`,
+`cairo`, `pango`, `ffmpeg`, `gcc`, `make` and `pkgconf`.
+
+```sh
+make
+make test
+make demo
+```
+
+The default module links specifically to Lua 5.4, even when the system `lua`
+command is another version. Override `LUA` and `LUA_PKG` together when testing
+another ABI; other ABIs have not yet been validated.
+
+## Write a scene
+
+```lua
+local l = require('luanim')
+
+return l.Scene(function(s)
+    local square = l.Square { color = l.BLUE, fill_opacity = 0.3 }
+    s:play(l.Create(square))
+    s:play(square:animate():shift(2 * l.RIGHT), { run_time = 2 })
+    s:play(l.Rotate(square, l.PI / 2))
+    s:wait(0.5)
+end)
+```
+
+Render from the repository root:
+
+```sh
+lua5.4 tools/luanim.lua examples/geometric.lua \
+    --output artifacts/geometric.mp4 --width 640 --height 360 --fps 24
+```
+
+PNG, MP4, GIF and WebM outputs are accepted. MP4 requires even pixel dimensions
+with the current yuv420p encoder. The default is 854×480, 30 fps, eight scene
+units high. A matching aspect ratio is derived unless `frame_width` is explicit.
+For programmatic use set `LUA_PATH` to `lua/?.lua;lua/?/init.lua;;` and
+`LUA_CPATH` to `build/?.so;;`.
+
+Constructor options use Lua tables; operations use colon calls. Vector
+arithmetic uses `l.vec(x,y,z)` and constants such as `l.RIGHT`. Dimension and
+sequence indices are **1-based**, including `stretch(factor, dimension)`.
+Angles are radians. Mobject point arrays contain four control points per cubic.
+
+## Verification
+
+`make check` builds the native module, runs the Lua regression suite, renders
+and decodes a real animation, and compares the port to frozen outputs generated
+by real Manim 0.22.1. Development image comparisons require Python 3, NumPy
+and Pillow; the Lua runtime itself does not.
+
+`make reference` regenerates the fixtures and API inventory using the isolated
+environment at `.dev/venv` and pinned source at `.dev/manim-0.22.1`. See
+`UPSTREAM.md`. `make sanitize` runs the regression suite with ASan/UBSan and
+then restores the normal build. `make release` packages source and reference
+test data, extracts it into a new directory, rebuilds and runs `make check`.
+
+See `TEST_RESULTS.md` for executed results, `ARCHITECTURE.md` for subsystem
+boundaries, and `ROADMAP.md` for the next dependency-ordered work.
+
+## License
+
+MIT. Retained upstream notices are in `LICENSE.manim` and
+`LICENSE.manim-community`; see `UPSTREAM.md` for attribution and source pinning.

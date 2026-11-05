@@ -1,0 +1,890 @@
+[
+  {
+    "id": "manim.mobject.mobject.Mobject",
+    "lua_api": "Mobject",
+    "status": "implemented_partial",
+    "evidence": [
+      "tests/run.lua"
+    ],
+    "limitations": "Only the documented Lua 5.4 subset is implemented; remaining constructor options and advanced behavior need differential coverage."
+  },
+  {
+    "id": "manim.mobject.mobject.Mobject.add",
+    "lua_api": "Mobject:add",
+    "status": "implemented_partial",
+    "evidence": [
+      "tests/run.lua",
+      "tests/reference_v0221.lua"
+    ],
+    "limitations": "Only the documented Lua 5.4 subset is implemented; remaining constructor options and advanced behavior need differential coverage."
+  },
+  {
+    "id": "manim.mobject.mobject.Mobject.remove",
+    "lua_api": "Mobject:remove",
+    "status": "implemented_partial",
+    "evidence": [
+      "tests/run.lua",
+      "tests/reference_v0221.lua"
+    ],
+    "limitations": "Only the documented Lua 5.4 subset is implemented; remaining constructor options and advanced behavior need differential coverage."
+  },
+  {
+    "id": "manim.mobject.mobject.Mobject.copy",
+    "lua_api": "Mobject:copy",
+    "status": "implemented_partial",
+    "evidence": [
+      "tests/run.lua",
+      "tests/reference_v0221.lua"
+    ],
+    "limitations": "Only the documented Lua 5.4 subset is implemented; remaining constructor options and advanced behavior need differential coverage."
+  },
+  {
+    "id": "manim.mobject.mobject.Mobject.get_family",
+    "lua_api": "Mobject:get_family",
+    "status": "implemented_partial",
+    "evidence": [
+      "tests/run.lua",
+      "tests/reference_v0221.lua"
+    ],
+    "limitations": "Only the documented Lua 5.4 subset is implemented; remaining constructor options and advanced behavior need differential coverage."
+  },
+  {
+    "id": "manim.mobject.mobject.Mobject.family_members_with_points",
+    "lua_api": "Mobject:family_members_with_points",
+    "status": "implemented_partial",
+    "evidence": [
+      "tests/run.lua",
+      "tests/reference_v0221.lua"
+    ],
+    "limitations": "Only the documented Lua 5.4 subset is implemented; remaining constructor options and advanced behavior need differential coverage."
+  },
+  {
+    "id": "manim.mobject.mobject.Mobject.get_all_points",
+    "lua_api": "Mobject:get_all_points",
+    "status": "implemented_partial",
+    "evidence": [
+      "tests/run.lua",
+      "tests/reference_v0221.lua"
+    ],
+    "limitations": "Only the documented Lua 5.4 subset is implemented; remaining constructor options and advanced behavior need differential coverage."
+  },
+  {
+    "id": "manim.mobject.mobject.Mobject.get_points_defining_boundary",
+    "lua_api": "Mobject:get_points_defining_boundary",
+    "status": "implemented_partial",
+    "evidence": [
+      "tests/run.lua",
+      "tests/reference_v0221.lua"
+    ],
+    "limitations": "Only the documented Lua 5.4 subset is implemented; remaining constructor options and advanced behavior need differential coverage."
+  },
+  {
+    "id": "manim.mobject.mobject.Mobject.get_critical_point",
+    "lua_api": "Mobject:get_critical_point",
+    "status": "implemented_partial",
+    "evidence": [
+      "tests/run.lua",
+      "tests/reference_v0221.lua"
+    ],
+    "limitations": "Only the documented Lua 5.4 subset is implemented; remaining constructor options and advanced behavior need differential coverage."
+  },
+  {
+    "id": "manim.mobject.mobject.Mobject.get_center",
+    "lua_api": "Mobject:get_center",
+    "status": "implemented_partial",
+    "evidence": [
+      "tests/run.lua",
+      "tests/reference_v0221.lua"
+    ],
+    "limitations": "Only the documented Lua 5.4 subset is implemented; remaining constructor options and advanced behavior need differential coverage."
+  },
+  {
+    "id": "manim.mobject.mobject.Mobject.get_left",
+    "lua_api": "Mobject:get_left",
+    "status": "implemented_partial",
+    "evidence": [
+      "tests/run.lua",
+      "tests/reference_v0221.lua"
+    ],
+    "limitations": "Only the documented Lua 5.4 subset is implemented; remaining constructor options and advanced behavior need differential coverage."
+  },
+  {
+    "id": "manim.mobject.mobject.Mobject.get_right",
+    "lua_api": "Mobject:get_right",
+    "status": "implemented_partial",
+    "evidence": [
+      "tests/run.lua",
+      "tests/reference_v0221.lua"
+    ],
+    "limitations": "Only the documented Lua 5.4 subset is implemented; remaining constructor options and advanced behavior need differential coverage."
+  },
+  {
+    "id": "manim.mobject.mobject.Mobject.get_top",
+    "lua_api": "Mobject:get_top",
+    "status": "implemented_partial",
+    "evidence": [
+      "tests/run.lua",
+      "tests/reference_v0221.lua"
+    ],
+    "limitations": "Only the documented Lua 5.4 subset is implemented; remaining constructor options and advanced behavior need differential coverage."
+  },
+  {
+    "id": "manim.mobject.mobject.Mobject.get_bottom",
+    "lua_api": "Mobject:get_bottom",
+    "status": "implemented_partial",
+    "evidence": [
+      "tests/run.lua",
+      "tests/reference_v0221.lua"
+    ],
+    "limitations": "Only the documented Lua 5.4 subset is implemented; remaining constructor options and advanced behavior need differential coverage."
+  },
+  {
+    "id": "manim.mobject.mobject.Mobject.shift",
+    "lua_api": "Mobject:shift",
+    "status": "implemented_partial",
+    "evidence": [
+      "tests/run.lua",
+      "tests/reference_v0221.lua"
+    ],
+    "limitations": "Only the documented Lua 5.4 subset is implemented; remaining constructor options and advanced behavior need differential coverage."
+  },
+  {
+    "id": "manim.mobject.mobject.Mobject.move_to",
+    "lua_api": "Mobject:move_to",
+    "status": "implemented_partial",
+    "evidence": [
+      "tests/run.lua",
+      "tests/reference_v0221.lua"
+    ],
+    "limitations": "Only the documented Lua 5.4 subset is implemented; remaining constructor options and advanced behavior need differential coverage."
+  },
+  {
+    "id": "manim.mobject.mobject.Mobject.scale",
+    "lua_api": "Mobject:scale",
+    "status": "implemented_partial",
+    "evidence": [
+      "tests/run.lua",
+      "tests/reference_v0221.lua"
+    ],
+    "limitations": "Only the documented Lua 5.4 subset is implemented; remaining constructor options and advanced behavior need differential coverage."
+  },
+  {
+    "id": "manim.mobject.mobject.Mobject.stretch",
+    "lua_api": "Mobject:stretch",
+    "status": "implemented_partial",
+    "evidence": [
+      "tests/run.lua",
+      "tests/reference_v0221.lua"
+    ],
+    "limitations": "Only the documented Lua 5.4 subset is implemented; remaining constructor options and advanced behavior need differential coverage."
+  },
+  {
+    "id": "manim.mobject.mobject.Mobject.rotate",
+    "lua_api": "Mobject:rotate",
+    "status": "implemented_partial",
+    "evidence": [
+      "tests/run.lua",
+      "tests/reference_v0221.lua"
+    ],
+    "limitations": "Only the documented Lua 5.4 subset is implemented; remaining constructor options and advanced behavior need differential coverage."
+  },
+  {
+    "id": "manim.mobject.mobject.Mobject.apply_matrix",
+    "lua_api": "Mobject:apply_matrix",
+    "status": "implemented_partial",
+    "evidence": [
+      "tests/run.lua",
+      "tests/reference_v0221.lua"
+    ],
+    "limitations": "Only the documented Lua 5.4 subset is implemented; remaining constructor options and advanced behavior need differential coverage."
+  },
+  {
+    "id": "manim.mobject.mobject.Mobject.align_to",
+    "lua_api": "Mobject:align_to",
+    "status": "implemented_partial",
+    "evidence": [
+      "tests/run.lua",
+      "tests/reference_v0221.lua"
+    ],
+    "limitations": "Only the documented Lua 5.4 subset is implemented; remaining constructor options and advanced behavior need differential coverage."
+  },
+  {
+    "id": "manim.mobject.mobject.Mobject.next_to",
+    "lua_api": "Mobject:next_to",
+    "status": "implemented_partial",
+    "evidence": [
+      "tests/run.lua",
+      "tests/reference_v0221.lua"
+    ],
+    "limitations": "Only the documented Lua 5.4 subset is implemented; remaining constructor options and advanced behavior need differential coverage."
+  },
+  {
+    "id": "manim.mobject.mobject.Mobject.arrange",
+    "lua_api": "Mobject:arrange",
+    "status": "implemented_partial",
+    "evidence": [
+      "tests/run.lua",
+      "tests/reference_v0221.lua"
+    ],
+    "limitations": "Only the documented Lua 5.4 subset is implemented; remaining constructor options and advanced behavior need differential coverage."
+  },
+  {
+    "id": "manim.mobject.mobject.Mobject.fade",
+    "lua_api": "Mobject:fade",
+    "status": "implemented_partial",
+    "evidence": [
+      "tests/run.lua",
+      "tests/reference_v0221.lua"
+    ],
+    "limitations": "Only the documented Lua 5.4 subset is implemented; remaining constructor options and advanced behavior need differential coverage."
+  },
+  {
+    "id": "manim.mobject.mobject.Mobject.set_color",
+    "lua_api": "Mobject:set_color",
+    "status": "implemented_partial",
+    "evidence": [
+      "tests/run.lua",
+      "tests/reference_v0221.lua"
+    ],
+    "limitations": "Only the documented Lua 5.4 subset is implemented; remaining constructor options and advanced behavior need differential coverage."
+  },
+  {
+    "id": "manim.mobject.mobject.Mobject.set_z_index",
+    "lua_api": "Mobject:set_z_index",
+    "status": "implemented_partial",
+    "evidence": [
+      "tests/run.lua",
+      "tests/reference_v0221.lua"
+    ],
+    "limitations": "Only the documented Lua 5.4 subset is implemented; remaining constructor options and advanced behavior need differential coverage."
+  },
+  {
+    "id": "manim.mobject.mobject.Mobject.become",
+    "lua_api": "Mobject:become",
+    "status": "implemented_partial",
+    "evidence": [
+      "tests/run.lua",
+      "tests/reference_v0221.lua"
+    ],
+    "limitations": "Only the documented Lua 5.4 subset is implemented; remaining constructor options and advanced behavior need differential coverage."
+  },
+  {
+    "id": "manim.mobject.mobject.Mobject.add_updater",
+    "lua_api": "Mobject:add_updater",
+    "status": "implemented_partial",
+    "evidence": [
+      "tests/run.lua",
+      "tests/reference_v0221.lua"
+    ],
+    "limitations": "Only the documented Lua 5.4 subset is implemented; remaining constructor options and advanced behavior need differential coverage."
+  },
+  {
+    "id": "manim.mobject.mobject.Mobject.remove_updater",
+    "lua_api": "Mobject:remove_updater",
+    "status": "implemented_partial",
+    "evidence": [
+      "tests/run.lua",
+      "tests/reference_v0221.lua"
+    ],
+    "limitations": "Only the documented Lua 5.4 subset is implemented; remaining constructor options and advanced behavior need differential coverage."
+  },
+  {
+    "id": "manim.mobject.mobject.Mobject.clear_updaters",
+    "lua_api": "Mobject:clear_updaters",
+    "status": "implemented_partial",
+    "evidence": [
+      "tests/run.lua",
+      "tests/reference_v0221.lua"
+    ],
+    "limitations": "Only the documented Lua 5.4 subset is implemented; remaining constructor options and advanced behavior need differential coverage."
+  },
+  {
+    "id": "manim.mobject.mobject.Mobject.update",
+    "lua_api": "Mobject:update",
+    "status": "implemented_partial",
+    "evidence": [
+      "tests/run.lua",
+      "tests/reference_v0221.lua"
+    ],
+    "limitations": "Only the documented Lua 5.4 subset is implemented; remaining constructor options and advanced behavior need differential coverage."
+  },
+  {
+    "id": "manim.mobject.mobject.Mobject.length_over_dim",
+    "lua_api": "Mobject:length_over_dim",
+    "status": "implemented_partial",
+    "evidence": [
+      "tests/run.lua",
+      "tests/reference_v0221.lua"
+    ],
+    "limitations": "Only the documented Lua 5.4 subset is implemented; remaining constructor options and advanced behavior need differential coverage."
+  },
+  {
+    "id": "manim.mobject.types.vectorized_mobject.VMobject",
+    "lua_api": "VMobject",
+    "status": "implemented_partial",
+    "evidence": [
+      "tests/run.lua",
+      "tests/reference_v0221.lua"
+    ],
+    "limitations": "Only the documented Lua 5.4 subset is implemented; remaining constructor options and advanced behavior need differential coverage."
+  },
+  {
+    "id": "manim.mobject.types.vectorized_mobject.VGroup",
+    "lua_api": "VGroup",
+    "status": "implemented_partial",
+    "evidence": [
+      "tests/run.lua",
+      "tests/reference_v0221.lua"
+    ],
+    "limitations": "Only the documented Lua 5.4 subset is implemented; remaining constructor options and advanced behavior need differential coverage."
+  },
+  {
+    "id": "manim.mobject.types.vectorized_mobject.VMobject.set_fill",
+    "lua_api": "VMobject:set_fill",
+    "status": "implemented_partial",
+    "evidence": [
+      "tests/run.lua",
+      "tests/reference_v0221.lua"
+    ],
+    "limitations": "Only the documented Lua 5.4 subset is implemented; remaining constructor options and advanced behavior need differential coverage."
+  },
+  {
+    "id": "manim.mobject.types.vectorized_mobject.VMobject.set_stroke",
+    "lua_api": "VMobject:set_stroke",
+    "status": "implemented_partial",
+    "evidence": [
+      "tests/run.lua",
+      "tests/reference_v0221.lua"
+    ],
+    "limitations": "Only the documented Lua 5.4 subset is implemented; remaining constructor options and advanced behavior need differential coverage."
+  },
+  {
+    "id": "manim.mobject.types.vectorized_mobject.VMobject.set_opacity",
+    "lua_api": "VMobject:set_opacity",
+    "status": "implemented_partial",
+    "evidence": [
+      "tests/run.lua",
+      "tests/reference_v0221.lua"
+    ],
+    "limitations": "Only the documented Lua 5.4 subset is implemented; remaining constructor options and advanced behavior need differential coverage."
+  },
+  {
+    "id": "manim.mobject.types.vectorized_mobject.VMobject.set_points",
+    "lua_api": "VMobject:set_points",
+    "status": "implemented_partial",
+    "evidence": [
+      "tests/run.lua",
+      "tests/reference_v0221.lua"
+    ],
+    "limitations": "Only the documented Lua 5.4 subset is implemented; remaining constructor options and advanced behavior need differential coverage."
+  },
+  {
+    "id": "manim.mobject.types.vectorized_mobject.VMobject.set_points_as_corners",
+    "lua_api": "VMobject:set_points_as_corners",
+    "status": "implemented_partial",
+    "evidence": [
+      "tests/run.lua",
+      "tests/reference_v0221.lua"
+    ],
+    "limitations": "Only the documented Lua 5.4 subset is implemented; remaining constructor options and advanced behavior need differential coverage."
+  },
+  {
+    "id": "manim.mobject.types.vectorized_mobject.VMobject.get_num_curves",
+    "lua_api": "VMobject:get_num_curves",
+    "status": "implemented_partial",
+    "evidence": [
+      "tests/run.lua",
+      "tests/reference_v0221.lua"
+    ],
+    "limitations": "Only the documented Lua 5.4 subset is implemented; remaining constructor options and advanced behavior need differential coverage."
+  },
+  {
+    "id": "manim.mobject.types.vectorized_mobject.VMobject.point_from_proportion",
+    "lua_api": "VMobject:point_from_proportion",
+    "status": "implemented_partial",
+    "evidence": [
+      "tests/run.lua",
+      "tests/reference_v0221.lua"
+    ],
+    "limitations": "Only the documented Lua 5.4 subset is implemented; remaining constructor options and advanced behavior need differential coverage."
+  },
+  {
+    "id": "manim.mobject.types.vectorized_mobject.VMobject.get_arc_length",
+    "lua_api": "VMobject:get_arc_length",
+    "status": "implemented_partial",
+    "evidence": [
+      "tests/run.lua",
+      "tests/reference_v0221.lua"
+    ],
+    "limitations": "Only the documented Lua 5.4 subset is implemented; remaining constructor options and advanced behavior need differential coverage."
+  },
+  {
+    "id": "manim.mobject.types.vectorized_mobject.VMobject.pointwise_become_partial",
+    "lua_api": "VMobject:pointwise_become_partial",
+    "status": "implemented_partial",
+    "evidence": [
+      "tests/run.lua",
+      "tests/reference_v0221.lua"
+    ],
+    "limitations": "Only the documented Lua 5.4 subset is implemented; remaining constructor options and advanced behavior need differential coverage."
+  },
+  {
+    "id": "manim.mobject.types.vectorized_mobject.VMobject.get_subcurve",
+    "lua_api": "VMobject:get_subcurve",
+    "status": "implemented_partial",
+    "evidence": [
+      "tests/run.lua",
+      "tests/reference_v0221.lua"
+    ],
+    "limitations": "Only the documented Lua 5.4 subset is implemented; remaining constructor options and advanced behavior need differential coverage."
+  },
+  {
+    "id": "manim.mobject.types.vectorized_mobject.VMobject.reverse_direction",
+    "lua_api": "VMobject:reverse_direction",
+    "status": "implemented_partial",
+    "evidence": [
+      "tests/run.lua",
+      "tests/reference_v0221.lua"
+    ],
+    "limitations": "Only the documented Lua 5.4 subset is implemented; remaining constructor options and advanced behavior need differential coverage."
+  },
+  {
+    "id": "manim.mobject.mobject.Group",
+    "lua_api": "Group",
+    "status": "implemented_partial",
+    "evidence": [
+      "tests/run.lua"
+    ],
+    "limitations": "Only the documented Lua 5.4 subset is implemented; remaining constructor options and advanced behavior need differential coverage."
+  },
+  {
+    "id": "manim.mobject.geometry.arc.Arc",
+    "lua_api": "Arc",
+    "status": "implemented_partial",
+    "evidence": [
+      "tests/run.lua",
+      "tests/reference_v0221.lua"
+    ],
+    "limitations": "Only the documented Lua 5.4 subset is implemented; remaining constructor options and advanced behavior need differential coverage."
+  },
+  {
+    "id": "manim.mobject.geometry.arc.Circle",
+    "lua_api": "Circle",
+    "status": "implemented_partial",
+    "evidence": [
+      "tests/run.lua",
+      "tests/reference_v0221.lua"
+    ],
+    "limitations": "Only the documented Lua 5.4 subset is implemented; remaining constructor options and advanced behavior need differential coverage."
+  },
+  {
+    "id": "manim.mobject.geometry.arc.Dot",
+    "lua_api": "Dot",
+    "status": "implemented_partial",
+    "evidence": [
+      "tests/run.lua",
+      "tests/reference_v0221.lua"
+    ],
+    "limitations": "Only the documented Lua 5.4 subset is implemented; remaining constructor options and advanced behavior need differential coverage."
+  },
+  {
+    "id": "manim.mobject.geometry.arc.Ellipse",
+    "lua_api": "Ellipse",
+    "status": "implemented_partial",
+    "evidence": [
+      "tests/run.lua",
+      "tests/reference_v0221.lua"
+    ],
+    "limitations": "Only the documented Lua 5.4 subset is implemented; remaining constructor options and advanced behavior need differential coverage."
+  },
+  {
+    "id": "manim.mobject.geometry.arc.CubicBezier",
+    "lua_api": "CubicBezier",
+    "status": "implemented_partial",
+    "evidence": [
+      "tests/run.lua",
+      "tests/reference_v0221.lua"
+    ],
+    "limitations": "Only the documented Lua 5.4 subset is implemented; remaining constructor options and advanced behavior need differential coverage."
+  },
+  {
+    "id": "manim.mobject.geometry.line.Line",
+    "lua_api": "Line",
+    "status": "implemented_partial",
+    "evidence": [
+      "tests/run.lua",
+      "tests/reference_v0221.lua"
+    ],
+    "limitations": "Only the documented Lua 5.4 subset is implemented; remaining constructor options and advanced behavior need differential coverage."
+  },
+  {
+    "id": "manim.mobject.geometry.polygram.Polygon",
+    "lua_api": "Polygon",
+    "status": "implemented_partial",
+    "evidence": [
+      "tests/run.lua",
+      "tests/reference_v0221.lua"
+    ],
+    "limitations": "Only the documented Lua 5.4 subset is implemented; remaining constructor options and advanced behavior need differential coverage."
+  },
+  {
+    "id": "manim.mobject.geometry.polygram.RegularPolygon",
+    "lua_api": "RegularPolygon",
+    "status": "implemented_partial",
+    "evidence": [
+      "tests/run.lua",
+      "tests/reference_v0221.lua"
+    ],
+    "limitations": "Only the documented Lua 5.4 subset is implemented; remaining constructor options and advanced behavior need differential coverage."
+  },
+  {
+    "id": "manim.mobject.geometry.polygram.Rectangle",
+    "lua_api": "Rectangle",
+    "status": "implemented_partial",
+    "evidence": [
+      "tests/run.lua",
+      "tests/reference_v0221.lua"
+    ],
+    "limitations": "Only the documented Lua 5.4 subset is implemented; remaining constructor options and advanced behavior need differential coverage."
+  },
+  {
+    "id": "manim.mobject.geometry.polygram.Square",
+    "lua_api": "Square",
+    "status": "implemented_partial",
+    "evidence": [
+      "tests/run.lua",
+      "tests/reference_v0221.lua"
+    ],
+    "limitations": "Only the documented Lua 5.4 subset is implemented; remaining constructor options and advanced behavior need differential coverage."
+  },
+  {
+    "id": "manim.mobject.geometry.polygram.Triangle",
+    "lua_api": "Triangle",
+    "status": "implemented_partial",
+    "evidence": [
+      "tests/run.lua",
+      "tests/reference_v0221.lua"
+    ],
+    "limitations": "Only the documented Lua 5.4 subset is implemented; remaining constructor options and advanced behavior need differential coverage."
+  },
+  {
+    "id": "manim.mobject.value_tracker.ValueTracker",
+    "lua_api": "ValueTracker",
+    "status": "implemented_partial",
+    "evidence": [
+      "tests/run.lua"
+    ],
+    "limitations": "Only the documented Lua 5.4 subset is implemented; remaining constructor options and advanced behavior need differential coverage."
+  },
+  {
+    "id": "manim.mobject.value_tracker.ValueTracker.get_value",
+    "lua_api": "ValueTracker:get_value",
+    "status": "implemented_partial",
+    "evidence": [
+      "tests/run.lua"
+    ],
+    "limitations": "Only the documented Lua 5.4 subset is implemented; remaining constructor options and advanced behavior need differential coverage."
+  },
+  {
+    "id": "manim.mobject.value_tracker.ValueTracker.set_value",
+    "lua_api": "ValueTracker:set_value",
+    "status": "implemented_partial",
+    "evidence": [
+      "tests/run.lua"
+    ],
+    "limitations": "Only the documented Lua 5.4 subset is implemented; remaining constructor options and advanced behavior need differential coverage."
+  },
+  {
+    "id": "manim.mobject.value_tracker.ValueTracker.increment_value",
+    "lua_api": "ValueTracker:increment_value",
+    "status": "implemented_partial",
+    "evidence": [
+      "tests/run.lua"
+    ],
+    "limitations": "Only the documented Lua 5.4 subset is implemented; remaining constructor options and advanced behavior need differential coverage."
+  },
+  {
+    "id": "manim.animation.animation.Animation",
+    "lua_api": "Animation",
+    "status": "implemented_partial",
+    "evidence": [
+      "tests/run.lua",
+      "tests/differential.lua"
+    ],
+    "limitations": "Single RGBA style; equal family structure for transforms; multipath alignment, path_arc, backward composition evaluation and remaining options are pending."
+  },
+  {
+    "id": "manim.animation.creation.Create",
+    "lua_api": "Create",
+    "status": "implemented_partial",
+    "evidence": [
+      "tests/run.lua",
+      "tests/differential.lua"
+    ],
+    "limitations": "Single RGBA style; equal family structure for transforms; multipath alignment, path_arc, backward composition evaluation and remaining options are pending."
+  },
+  {
+    "id": "manim.animation.fading.FadeIn",
+    "lua_api": "FadeIn",
+    "status": "implemented_partial",
+    "evidence": [
+      "tests/run.lua",
+      "tests/differential.lua"
+    ],
+    "limitations": "Single RGBA style; equal family structure for transforms; multipath alignment, path_arc, backward composition evaluation and remaining options are pending."
+  },
+  {
+    "id": "manim.animation.fading.FadeOut",
+    "lua_api": "FadeOut",
+    "status": "implemented_partial",
+    "evidence": [
+      "tests/run.lua",
+      "tests/differential.lua"
+    ],
+    "limitations": "Single RGBA style; equal family structure for transforms; multipath alignment, path_arc, backward composition evaluation and remaining options are pending."
+  },
+  {
+    "id": "manim.animation.transform.Transform",
+    "lua_api": "Transform",
+    "status": "implemented_partial",
+    "evidence": [
+      "tests/run.lua",
+      "tests/differential.lua"
+    ],
+    "limitations": "Single RGBA style; equal family structure for transforms; multipath alignment, path_arc, backward composition evaluation and remaining options are pending."
+  },
+  {
+    "id": "manim.animation.transform.ReplacementTransform",
+    "lua_api": "ReplacementTransform",
+    "status": "implemented_partial",
+    "evidence": [
+      "tests/run.lua",
+      "tests/differential.lua"
+    ],
+    "limitations": "Single RGBA style; equal family structure for transforms; multipath alignment, path_arc, backward composition evaluation and remaining options are pending."
+  },
+  {
+    "id": "manim.animation.rotation.Rotate",
+    "lua_api": "Rotate",
+    "status": "implemented_partial",
+    "evidence": [
+      "tests/run.lua",
+      "tests/differential.lua"
+    ],
+    "limitations": "Single RGBA style; equal family structure for transforms; multipath alignment, path_arc, backward composition evaluation and remaining options are pending."
+  },
+  {
+    "id": "manim.animation.movement.MoveAlongPath",
+    "lua_api": "MoveAlongPath",
+    "status": "implemented_partial",
+    "evidence": [
+      "tests/run.lua",
+      "tests/differential.lua"
+    ],
+    "limitations": "Single RGBA style; equal family structure for transforms; multipath alignment, path_arc, backward composition evaluation and remaining options are pending."
+  },
+  {
+    "id": "manim.animation.composition.AnimationGroup",
+    "lua_api": "AnimationGroup",
+    "status": "implemented_partial",
+    "evidence": [
+      "tests/run.lua",
+      "tests/differential.lua"
+    ],
+    "limitations": "Single RGBA style; equal family structure for transforms; multipath alignment, path_arc, backward composition evaluation and remaining options are pending."
+  },
+  {
+    "id": "manim.animation.composition.Succession",
+    "lua_api": "Succession",
+    "status": "implemented_partial",
+    "evidence": [
+      "tests/run.lua",
+      "tests/differential.lua"
+    ],
+    "limitations": "Single RGBA style; equal family structure for transforms; multipath alignment, path_arc, backward composition evaluation and remaining options are pending."
+  },
+  {
+    "id": "manim.animation.composition.LaggedStart",
+    "lua_api": "LaggedStart",
+    "status": "implemented_partial",
+    "evidence": [
+      "tests/run.lua",
+      "tests/differential.lua"
+    ],
+    "limitations": "Single RGBA style; equal family structure for transforms; multipath alignment, path_arc, backward composition evaluation and remaining options are pending."
+  },
+  {
+    "id": "manim.scene.scene.Scene",
+    "lua_api": "Scene",
+    "status": "implemented_partial",
+    "evidence": [
+      "tests/run.lua",
+      "examples/geometric.lua"
+    ],
+    "limitations": "Forward deterministic frame stepping; camera animation, audio, sections, caching and several upstream lifecycle hooks remain pending."
+  },
+  {
+    "id": "manim.scene.scene.Scene.add",
+    "lua_api": "Scene:add",
+    "status": "implemented_partial",
+    "evidence": [
+      "tests/run.lua",
+      "examples/geometric.lua"
+    ],
+    "limitations": "Forward deterministic frame stepping; camera animation, audio, sections, caching and several upstream lifecycle hooks remain pending."
+  },
+  {
+    "id": "manim.scene.scene.Scene.remove",
+    "lua_api": "Scene:remove",
+    "status": "implemented_partial",
+    "evidence": [
+      "tests/run.lua",
+      "examples/geometric.lua"
+    ],
+    "limitations": "Forward deterministic frame stepping; camera animation, audio, sections, caching and several upstream lifecycle hooks remain pending."
+  },
+  {
+    "id": "manim.scene.scene.Scene.replace",
+    "lua_api": "Scene:replace",
+    "status": "implemented_partial",
+    "evidence": [
+      "tests/run.lua",
+      "examples/geometric.lua"
+    ],
+    "limitations": "Forward deterministic frame stepping; camera animation, audio, sections, caching and several upstream lifecycle hooks remain pending."
+  },
+  {
+    "id": "manim.scene.scene.Scene.play",
+    "lua_api": "Scene:play",
+    "status": "implemented_partial",
+    "evidence": [
+      "tests/run.lua",
+      "examples/geometric.lua"
+    ],
+    "limitations": "Forward deterministic frame stepping; camera animation, audio, sections, caching and several upstream lifecycle hooks remain pending."
+  },
+  {
+    "id": "manim.scene.scene.Scene.wait",
+    "lua_api": "Scene:wait",
+    "status": "implemented_partial",
+    "evidence": [
+      "tests/run.lua",
+      "examples/geometric.lua"
+    ],
+    "limitations": "Forward deterministic frame stepping; camera animation, audio, sections, caching and several upstream lifecycle hooks remain pending."
+  },
+  {
+    "id": "manim.scene.scene.Scene.update_mobjects",
+    "lua_api": "Scene:update_mobjects",
+    "status": "implemented_partial",
+    "evidence": [
+      "tests/run.lua",
+      "examples/geometric.lua"
+    ],
+    "limitations": "Forward deterministic frame stepping; camera animation, audio, sections, caching and several upstream lifecycle hooks remain pending."
+  },
+  {
+    "id": "manim.scene.scene.Scene.render",
+    "lua_api": "Scene:render",
+    "status": "implemented_partial",
+    "evidence": [
+      "tests/run.lua",
+      "examples/geometric.lua"
+    ],
+    "limitations": "Forward deterministic frame stepping; camera animation, audio, sections, caching and several upstream lifecycle hooks remain pending."
+  },
+  {
+    "id": "manim.utils.rate_functions.linear",
+    "lua_api": "linear",
+    "status": "implemented_verified",
+    "evidence": [
+      "tests/reference_v0221.lua",
+      "tests/differential.lua"
+    ]
+  },
+  {
+    "id": "manim.utils.rate_functions.smooth",
+    "lua_api": "smooth",
+    "status": "implemented_partial",
+    "evidence": [
+      "tests/reference_v0221.lua",
+      "tests/differential.lua"
+    ],
+    "limitations": "Only the documented Lua 5.4 subset is implemented; remaining constructor options and advanced behavior need differential coverage."
+  },
+  {
+    "id": "manim.utils.rate_functions.smoothstep",
+    "lua_api": "smoothstep",
+    "status": "implemented_verified",
+    "evidence": [
+      "tests/reference_v0221.lua",
+      "tests/differential.lua"
+    ]
+  },
+  {
+    "id": "manim.utils.rate_functions.smootherstep",
+    "lua_api": "smootherstep",
+    "status": "implemented_verified",
+    "evidence": [
+      "tests/reference_v0221.lua",
+      "tests/differential.lua"
+    ]
+  },
+  {
+    "id": "manim.utils.rate_functions.smoothererstep",
+    "lua_api": "smoothererstep",
+    "status": "implemented_verified",
+    "evidence": [
+      "tests/reference_v0221.lua",
+      "tests/differential.lua"
+    ]
+  },
+  {
+    "id": "manim.utils.rate_functions.rush_into",
+    "lua_api": "rush_into",
+    "status": "implemented_partial",
+    "evidence": [
+      "tests/reference_v0221.lua",
+      "tests/differential.lua"
+    ],
+    "limitations": "Only the documented Lua 5.4 subset is implemented; remaining constructor options and advanced behavior need differential coverage."
+  },
+  {
+    "id": "manim.utils.rate_functions.rush_from",
+    "lua_api": "rush_from",
+    "status": "implemented_partial",
+    "evidence": [
+      "tests/reference_v0221.lua",
+      "tests/differential.lua"
+    ],
+    "limitations": "Only the documented Lua 5.4 subset is implemented; remaining constructor options and advanced behavior need differential coverage."
+  },
+  {
+    "id": "manim.utils.rate_functions.slow_into",
+    "lua_api": "slow_into",
+    "status": "implemented_verified",
+    "evidence": [
+      "tests/reference_v0221.lua",
+      "tests/differential.lua"
+    ]
+  },
+  {
+    "id": "manim.utils.rate_functions.double_smooth",
+    "lua_api": "double_smooth",
+    "status": "implemented_verified",
+    "evidence": [
+      "tests/reference_v0221.lua",
+      "tests/differential.lua"
+    ]
+  },
+  {
+    "id": "manim.utils.rate_functions.there_and_back",
+    "lua_api": "there_and_back",
+    "status": "implemented_partial",
+    "evidence": [
+      "tests/reference_v0221.lua",
+      "tests/differential.lua"
+    ],
+    "limitations": "Only the documented Lua 5.4 subset is implemented; remaining constructor options and advanced behavior need differential coverage."
+  }
+]
