@@ -1,11 +1,14 @@
 local U=require('luanim.util')
+local V=require('luanim.vector')
 local Config=require('luanim.config')
 local Renderer=require('luanim.renderer')
 local A=require('luanim.animation')
+local Cameras=require('luanim.camera')
 local Scene={};Scene.__index=Scene
 function Scene.new(construct,opts)
     assert(type(construct)=='function','Scene requires a construct function')
-    return setmetatable({construct=construct,raw_config=U.copy(opts or {}),config=Config.resolve(opts),mobjects={},time=0,frame_count=0},Scene)
+    return setmetatable({construct=construct,raw_config=U.copy(opts or {}),config=Config.resolve(opts),mobjects={},time=0,frame_count=0,
+        camera=opts and opts.camera or Cameras.Camera(opts)},Scene)
 end
 function Scene:add(...)
     for _,m in ipairs({...}) do
@@ -93,7 +96,13 @@ function Scene:render(opts)
     local handle=assert(io.popen('mktemp -d '..U.shell_quote(directory..'/.luanim-frames-XXXXXX'),'r'))
     self.frame_dir=assert(handle:read('*l'));assert(handle:close(),'cannot create frame directory')
     self.config=config;self.mobjects={};self.time=0;self.frame_count=0
-    self.renderer=Renderer(config)
+    if opts.frame_width then self.camera.frame:stretch(opts.frame_width/self.camera.frame:get_width(),1) end
+    if opts.frame_height then self.camera.frame:stretch(opts.frame_height/self.camera.frame:get_height(),2) end
+    if opts.frame_center then
+        local frame=self.camera.kind=='ThreeDCamera' and self.camera._frame_center or self.camera.frame
+        frame:move_to(V(opts.frame_center))
+    end
+    self.renderer=Renderer(config,self.camera)
     local ok,err=xpcall(function()
         self:construct()
         if self.frame_count==0 then self:_frame() end
@@ -106,5 +115,25 @@ function Scene:render(opts)
     if not ok then error(err,0) end
     return {output=output,frame_count=self.frame_count,duration=self.frame_count/config.frame_rate,
         scene_time=self.time,frame_dir=opts.keep_frames and self.frame_dir or nil}
+end
+function Scene:set_camera_orientation(opts)
+    assert(self.camera.kind=='ThreeDCamera','camera orientation requires ThreeDScene');opts=opts or {}
+    for _,name in ipairs({'phi','theta','gamma','zoom','focal_distance'}) do if opts[name]~=nil then self.camera['set_'..name](self.camera,opts[name]) end end
+    if opts.frame_center then self.camera._frame_center:move_to(V(opts.frame_center)) end
+    return self
+end
+function Scene:move_camera(opts)
+    assert(self.camera.kind=='ThreeDCamera','move_camera requires ThreeDScene');opts=opts or {}
+    local animations={}
+    for _,name in ipairs({'phi','theta','gamma','zoom','focal_distance'}) do
+        if opts[name]~=nil then animations[#animations+1]=self.camera[name..'_tracker']:animate():set_value(opts[name]) end
+    end
+    if opts.frame_center then animations[#animations+1]=self.camera._frame_center:animate():move_to(opts.frame_center) end
+    assert(#animations>0,'move_camera requires a target camera parameter')
+    animations[#animations+1]={run_time=opts.run_time or 1,rate_func=opts.rate_func}
+    return self:play(table.unpack(animations))
+end
+function Scene:add_fixed_in_frame_mobjects(...)
+    self:add(...);self.camera:add_fixed_in_frame_mobjects(...);return self
 end
 return setmetatable(Scene,{__call=function(_,...) return Scene.new(...) end})

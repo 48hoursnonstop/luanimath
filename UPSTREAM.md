@@ -32,6 +32,10 @@ to its source-derived algorithms. Luanim's own changes are MIT-licensed.
 | `manim/mobject/geometry/tips.py` | `graphing.lua` triangular tip geometry |
 | `manim/scene/scene.py` | `scene.lua` |
 | `manim/camera/camera.py` | `renderer.lua`, `native/cairo_backend.c` |
+| `manim/camera/{moving_camera,three_d_camera}.py` | `camera.lua` |
+| `manim/scene/three_d_scene.py` | `scene.lua` camera methods |
+| `manim/mobject/three_d/three_dimensions.py` | `three_d.lua` |
+| `manim/mobject/three_d/three_d_utils.py`, `manim/utils/color/core.py` | `camera.lua` corner normals and lighting |
 
 The default Cairo arc consists of eight cubic segments / 32 control points.
 Boundary critical points for VMobjects use anchors; dimensions use all control
@@ -57,3 +61,8 @@ Download the pinned archive into `.dev` and extract it as
 `manim==0.22.1` there after checking available system libraries. Then run
 `make reference`. The script asserts the exact Manim version. Updating upstream
 must be an explicit compatibility change with regenerated tests and provenance.
+
+The installed reference wheel's 177 Python package sources were checked against
+the pinned source archive: every file matched byte-for-byte. Exact reference
+dependency versions and tested font-file hashes are recorded in
+`compatibility/reference_environment.json`.

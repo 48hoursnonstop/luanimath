@@ -8,7 +8,7 @@ PKGS = $(LUA_PKG) cairo pangocairo
 export LUA_PATH := $(CURDIR)/lua/?.lua;$(CURDIR)/lua/?/init.lua;;
 export LUA_CPATH := $(CURDIR)/build/?.so;;
 
-.PHONY: all test text-test media-test graphing-test alignment-test paths-test demo reference differential check clean sanitize release
+.PHONY: all test text-test media-test graphing-test alignment-test paths-test three-d-test three-d-demo demo reference differential check clean sanitize release
 all: build/luanim_native.so
 
 build/luanim_native.so: native/cairo_backend.c native/text.c
@@ -27,6 +27,15 @@ reference:
 	.dev/venv/bin/python tools/reference_graphing.py
 	.dev/venv/bin/python tools/reference_alignment.py
 	.dev/venv/bin/python tools/reference_paths.py
+	.dev/venv/bin/python tools/reference_three_d.py
+
+three-d-test: all
+	$(LUA) tests/three_d.lua
+	$(PYTHON) tools/visual_three_d.py
+
+three-d-demo: all
+	$(LUA) tools/luanim.lua examples/three_d.lua --output artifacts/three-d.mp4 --width 640 --height 360 --fps 24
+	$(PYTHON) tools/verify_three_d_video.py
 
 paths-test: all
 	$(LUA) tests/paths.lua
@@ -51,7 +60,7 @@ differential: all
 	$(LUA) tests/differential.lua
 	$(PYTHON) tools/visual_compare.py
 
-check: test demo differential text-test media-test graphing-test alignment-test paths-test
+check: test demo differential text-test media-test graphing-test alignment-test paths-test three-d-test three-d-demo
 
 sanitize:
 	$(MAKE) clean
@@ -59,6 +68,7 @@ sanitize:
 	ASAN_OPTIONS=detect_leaks=0 LD_PRELOAD="$$( $(CC) -print-file-name=libasan.so )" $(LUA) tests/run.lua
 	ASAN_OPTIONS=detect_leaks=0 LD_PRELOAD="$$( $(CC) -print-file-name=libasan.so )" $(LUA) tests/text.lua
 	ASAN_OPTIONS=detect_leaks=0 LD_PRELOAD="$$( $(CC) -print-file-name=libasan.so )" $(LUA) tests/alignment.lua
+	ASAN_OPTIONS=detect_leaks=0 LD_PRELOAD="$$( $(CC) -print-file-name=libasan.so )" $(LUA) tests/three_d.lua
 	$(MAKE) clean
 	$(MAKE) all
 

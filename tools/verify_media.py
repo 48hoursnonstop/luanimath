@@ -7,6 +7,10 @@ from PIL import Image
 
 root=Path(__file__).resolve().parents[1]
 media=root/'artifacts/media'
+with Image.open(media/'frame-options.png') as image:
+    a=np.asarray(image.convert('RGB'))
+    yy,xx=np.where((a[:,:,0]>100)&(a[:,:,1]<100)&(a[:,:,2]<100))
+    assert len(xx)>0 and abs(float(xx.mean())-31.5)<.1 and abs(float(yy.mean())-31.5)<.1
 with Image.open(media/'motion.png') as image:
     a=np.asarray(image.convert('RGBA'));assert image.size==(160,90)
     assert a[:,:,3].min()==0 and a[:,:,3].max()==255

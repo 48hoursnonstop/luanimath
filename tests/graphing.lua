@@ -36,6 +36,8 @@ fails(function() l.NumberLine{x_range={1,1,1}} end)
 fails(function() l.NumberLine{x_range={0,1,0}} end)
 fails(function() l.NumberLine{include_numbers=true} end)
 fails(function() l.ParametricFunction(function() return {0/0,0,0} end) end)
+fails(function() l.ParametricFunction(function() return {} end) end)
+fails(function() l.ParametricFunction(function() return nil end) end)
 local ax=l.Axes{x_range={-3,3,1},y_range={-2,2,1},x_length=9,y_length=5,tips=true}
 eq(ax:get_origin(),ax:c2p(0,0),'origin')
 assert(ax:get_axes().submobjects[1]==ax.x_axis and ax:get_axes().submobjects[2]==ax.y_axis)

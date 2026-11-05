@@ -13,6 +13,7 @@ function M.new(opts)
         stroke_color=C.parse(opts.stroke_color or color,opts.stroke_opacity or 1),
         stroke_width=opts.stroke_width or 4,z_index=opts.z_index or 0,
         joint_type=opts.joint_type or 'miter',cap_style=opts.cap_style or 'butt',
+        shade_in_3d=not not opts.shade_in_3d,
         updating_suspended=false},M)
     U.number(self.stroke_width,'stroke_width');assert(self.stroke_width>=0,'stroke_width must be nonnegative')
     U.number(self.z_index,'z_index')

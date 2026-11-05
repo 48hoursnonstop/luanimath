@@ -1,6 +1,6 @@
 # Compatibility
 
-Target: Manim Community 0.22.1. Current development version: 0.4.0-dev.
+Target: Manim Community 0.22.1. Current development version: 0.5.0-dev.
 
 The public API inventory is `compatibility/api_inventory.json`; reviewed
 declarations are in `compatibility/implemented.json`. `python3 tools/coverage.py`
@@ -53,6 +53,16 @@ Mixed LTR/Arabic text is separately checked against unmodified Manim.
 
 ## Current restrictions
 
+MovingCamera and MovingCameraScene have an actual animated frame. ThreeDCamera
+and ThreeDScene provide phi/theta/gamma orientation, focal distance, zoom,
+projection, fixed overlays, depth ordering and tracked camera movement. The
+native Cairo backend performs the two-stop lighting gradients used by Manim's
+3D shading. Cube, Sphere, ThreeDVMobject and parametric Surface have executed
+geometry and visual comparisons; seven moving-camera/3D reference frames,
+including lit and unlit objects, matched pixel-for-pixel in this environment.
+Surfaces retain upstream zero-based `u_index`/`v_index` metadata internally;
+Lua sequence tables remain 1-based.
+
 Numerical axes and graphs now include NumberLine, Axes, scalar/batched point
 conversion, ticks, standard triangular 2D tips, ParametricFunction,
 FunctionGraph and Axes.plot. Open and closed cubic splines use the upstream
@@ -82,7 +92,11 @@ plotting methods remain pending and are explicitly rejected where applicable.
   individual glyph Mobjects. Character slicing, per-glyph timing, text-to-color
   mappings, MarkupText, missing-font warnings and advanced layout remain pending.
   Reverse Write is explicitly rejected.
-- Math typography, SVG, images, advanced plots, animated cameras, 3D, OpenGL,
+- Camera clipping at the focal plane, complete surface/camera options,
+  per-point textures, subcameras, ambient rotation helpers and the remaining
+  3D object families are pending. Points exactly on the focal plane are
+  explicitly rejected. The 3D API remains partially compatible.
+- Math typography, SVG, images, advanced plots, remaining 3D features, OpenGL,
   audio, render caching, scene sections and notebook integration are pending.
 - Lua 5.4 is the only tested ABI. Lua indices are 1-based. Tables and functions
   replace Python classes and keyword machinery where appropriate.
@@ -95,5 +109,12 @@ Image comparisons require equal dimensions, mean absolute RGBA channel error
 These allow small Cairo edge-rounding variation without accepting displaced
 geometry or changed object colors. Measured errors are recorded, never inferred.
 The initial 30 frame pairs had zero pixel error in this environment.
+
+Three-dimensional numerical comparisons use 1e-9 absolute plus 1e-14 relative
+tolerance. The relative term is necessary for the upstream behind-focal-plane
+sentinel projection factor of 1e6, which magnifies normal floating-point matrix
+rounding into coordinates above 1e7. The seven 3D image tolerances are unchanged
+from the existing visual suite and measured zero error. Ordinary 2D numerical
+tolerances remain 1e-9 absolute.
 
 No overall production-readiness or complete Manim compatibility is claimed.

@@ -1,5 +1,30 @@
 # Executed test results
 
+## 0.5.0-dev — 2026-11-04 America/Mexico_City
+
+- Native module compiled with strict C11 warnings; complete `make check` passed.
+- **18 camera configurations and 6 3D geometry cases**, **6,756 numerical and
+  invalid-input checks**. See COMPATIBILITY.md for the justified absolute and
+  relative projection tolerance, including points behind the focal plane.
+- **Seven actual native images matched upstream pixel-for-pixel**: Cube,
+  Sphere and Surface with/without shading, plus a MovingCamera viewport.
+- Real 3D example: **84 frames, 640×360, 24 fps, 3.5 seconds**, fully decoded
+  by FFmpeg and inspected as an image. Differences between sampled frames were
+  **3.0330613425925925** and **20.426451099537037** mean RGB channel levels,
+  confirming actual object/camera motion.
+- All prior geometry, path alignment, composition/updater, text, graphing,
+  media decoding and visual regression suites passed. The original standalone
+  RTL mismatch remains explicitly recorded rather than claimed as parity.
+- The exact versions and font hashes used by the upstream oracle are recorded
+  in `compatibility/reference_environment.json`. All **177 installed Manim
+  Python source files matched the pinned tag byte-for-byte**.
+
+Native ASan/UBSan execution passed the core, text, alignment and 3D suites;
+leak detection was disabled and system dependencies were not instrumented.
+**0.5 clean archive extraction/rebuild has NOT been run.** Work stopped at the
+user's 50% weekly-remaining limit. The latest packaged, clean-rebuilt release
+is **0.4.0-dev**. Logs for the development 0.5 checks remain under `artifacts/`.
+
 ## 0.4.0-dev — 2026-11-04 America/Mexico_City
 
 - Core Lua regression: **16 groups, 321 checks passed**.

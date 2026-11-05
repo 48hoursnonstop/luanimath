@@ -20,6 +20,7 @@ before installing anything. On Arch the relevant package names are `lua54`,
 make
 make test
 make demo
+make three-d-demo
 ```
 
 The default module links specifically to Lua 5.4, even when the system `lua`
@@ -27,6 +28,11 @@ command is another version. Override `LUA` and `LUA_PKG` together when testing
 another ABI; other ABIs have not yet been validated.
 
 ## Write a scene
+
+Available native subsystems include cubic geometry and hierarchy transforms,
+animation/composition, numerical axes and graphs, Pango-shaped Unicode text,
+moving cameras, 3D projection and lighting, Cube, Sphere and parametric Surface.
+Availability and compatibility are tracked separately for each upstream API.
 
 ```lua
 local l = require('luanim')
@@ -61,6 +67,11 @@ sequence indices are **1-based**, including `stretch(factor, dimension)`.
 Angles are radians. Mobject point arrays contain four control points per cubic.
 
 ## Verification
+
+The image tests use Liberation Sans, Noto Sans, Noto Sans Arabic and Noto Sans
+CJK JP. `compatibility/reference_environment.json` records exact reference
+library versions and font hashes. Missing/different fonts can produce real
+environmental differences; do not interpret fallback-font output as parity.
 
 `make check` builds the native module, runs the Lua regression suite, renders
 and decodes a real animation, and compares the port to frozen outputs generated

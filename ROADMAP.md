@@ -11,8 +11,10 @@
 4. SVG and raster assets with real file decoding, transformations and errors.
 5. Math typography: external TeX or Typst pipeline, vector import, glyph grouping
    and matching-expression transforms. TeX tools are not currently installed.
-6. Camera model and moving/zoomed cameras, then projection, 3D surfaces and
-   lighting; OpenGL after the renderer-facing contracts have stabilized.
+6. Camera/3D expansion: clipping, full camera options, ThreeDAxes, other solids,
+   textures and helper scene lifecycles. Moving cameras, 3D projection,
+   Cube/Sphere/Surface, depth ordering and lighting now have real executed
+   tests. OpenGL follows after the renderer-facing contracts stabilize.
 7. Audio synchronization, formats, caching, configuration and remaining API
    families; continually extend differential/visual testing and portability.
 

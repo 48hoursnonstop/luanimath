@@ -1,5 +1,22 @@
 # Changelog
 
+## 0.5.0-dev — unreleased checkpoint
+
+Stopped at the user's 50% weekly-remaining limit. Development tests and native
+sanitizers passed; the 0.5 source release and clean extraction/rebuild have
+**not** been executed. The latest clean-verified packaged release is 0.4.0-dev.
+
+- Camera, MovingCamera and ThreeDCamera with live view frames, orientation,
+  focal distance, zoom, fixed overlays, tracked movement and depth ordering.
+- Native two-stop Cairo gradients implement the upstream per-corner lighting.
+- Source-derived Cube, Sphere, ThreeDVMobject and parametric Surface meshes.
+- Eighteen camera states, six 3D geometry cases and seven exact visual matches,
+  covering lit/unlit geometry and a moving camera.
+- A real 84-frame 3D animation, full decoding and measured frame changes.
+- Strict function-result validation and explicit render-time frame overrides.
+- Recorded reference dependency/font fingerprints; verified all 177 installed
+  upstream Python sources match the pinned release archive.
+
 ## 0.4.0-dev
 
 - Cubic/quadratic/line path builders, pending anchors, subpaths, closure,

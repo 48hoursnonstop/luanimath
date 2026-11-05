@@ -115,6 +115,11 @@ end
 function P.ParametricFunction(fn,opts)
     assert(type(fn)=='function','ParametricFunction requires a function');opts=opts or {}
     assert(not opts.scaling and not opts.use_vectorized,'custom scaling and vectorized functions are not implemented')
+    local function evaluate(t)
+        local point=fn(t)
+        assert(type(point)=='table' and (#point==2 or #point==3),'parametric function must return a 2D/3D point table')
+        return V(point)
+    end
     local r=range(opts.t_range or {0,1,.01},.01)
     local dt=U.number(opts.dt or 1e-8,'dt');assert(dt>0,'dt must be positive')
     local boundaries={r[1],r[2]}
@@ -128,8 +133,8 @@ function P.ParametricFunction(fn,opts)
         local low,high=boundaries[i],boundaries[i+1]
         if high>=low then
             local anchors={};local n=math.ceil((high-low)/r[3])
-            for j=0,n-1 do anchors[#anchors+1]=V(fn(low+j*r[3])) end
-            anchors[#anchors+1]=V(fn(high))
+            for j=0,n-1 do anchors[#anchors+1]=evaluate(low+j*r[3]) end
+            anchors[#anchors+1]=evaluate(high)
             if #anchors>=2 then
                 local path={}
                 if opts.use_smoothing==false then for j=1,#anchors-1 do B.append(path,B.line(anchors[j],anchors[j+1])) end
@@ -138,7 +143,7 @@ function P.ParametricFunction(fn,opts)
             end
         end
     end
-    local m=G.VMobject(opts);m.kind='ParametricFunction';m.function_fn=fn;m.t_range=r
+    local m=G.VMobject(opts);m.kind='ParametricFunction';m.function_fn=evaluate;m.t_range=r
     return m:set_points(points)
 end
 function P.FunctionGraph(fn,opts)

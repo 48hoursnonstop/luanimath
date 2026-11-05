@@ -1635,5 +1635,365 @@
       "tests/run.lua"
     ],
     "limitations": "Verified native vector subset and documented Lua point tables. Point clouds, all styling/kwargs, arbitrary host objects and some degenerate/malformed upstream states are not yet fully compatible."
+  },
+  {
+    "id": "manim.camera.camera.Camera",
+    "lua_api": "Camera",
+    "status": "implemented_partial",
+    "evidence": [
+      "tests/three_d.lua",
+      "tools/visual_three_d.py",
+      "examples/three_d.lua",
+      "tools/verify_three_d_video.py"
+    ],
+    "limitations": "Cairo projection, depth ordering, two-stop native shading, cube/parametric surfaces and tracked cameras are verified. Advanced clipping, all surface/camera options, subcameras, complete 3D object families, OpenGL and remaining scene hooks are pending."
+  },
+  {
+    "id": "manim.camera.moving_camera.MovingCamera",
+    "lua_api": "MovingCamera",
+    "status": "implemented_partial",
+    "evidence": [
+      "tests/three_d.lua",
+      "tools/visual_three_d.py",
+      "examples/three_d.lua",
+      "tools/verify_three_d_video.py"
+    ],
+    "limitations": "Cairo projection, depth ordering, two-stop native shading, cube/parametric surfaces and tracked cameras are verified. Advanced clipping, all surface/camera options, subcameras, complete 3D object families, OpenGL and remaining scene hooks are pending."
+  },
+  {
+    "id": "manim.camera.three_d_camera.ThreeDCamera",
+    "lua_api": "ThreeDCamera",
+    "status": "implemented_partial",
+    "evidence": [
+      "tests/three_d.lua",
+      "tools/visual_three_d.py",
+      "examples/three_d.lua",
+      "tools/verify_three_d_video.py"
+    ],
+    "limitations": "Cairo projection, depth ordering, two-stop native shading, cube/parametric surfaces and tracked cameras are verified. Advanced clipping, all surface/camera options, subcameras, complete 3D object families, OpenGL and remaining scene hooks are pending."
+  },
+  {
+    "id": "manim.camera.three_d_camera.ThreeDCamera.get_phi",
+    "lua_api": "ThreeDCamera:get_phi",
+    "status": "implemented_partial",
+    "evidence": [
+      "tests/three_d.lua",
+      "tools/visual_three_d.py",
+      "examples/three_d.lua",
+      "tools/verify_three_d_video.py"
+    ],
+    "limitations": "Cairo projection, depth ordering, two-stop native shading, cube/parametric surfaces and tracked cameras are verified. Advanced clipping, all surface/camera options, subcameras, complete 3D object families, OpenGL and remaining scene hooks are pending."
+  },
+  {
+    "id": "manim.camera.three_d_camera.ThreeDCamera.get_theta",
+    "lua_api": "ThreeDCamera:get_theta",
+    "status": "implemented_partial",
+    "evidence": [
+      "tests/three_d.lua",
+      "tools/visual_three_d.py",
+      "examples/three_d.lua",
+      "tools/verify_three_d_video.py"
+    ],
+    "limitations": "Cairo projection, depth ordering, two-stop native shading, cube/parametric surfaces and tracked cameras are verified. Advanced clipping, all surface/camera options, subcameras, complete 3D object families, OpenGL and remaining scene hooks are pending."
+  },
+  {
+    "id": "manim.camera.three_d_camera.ThreeDCamera.get_gamma",
+    "lua_api": "ThreeDCamera:get_gamma",
+    "status": "implemented_partial",
+    "evidence": [
+      "tests/three_d.lua",
+      "tools/visual_three_d.py",
+      "examples/three_d.lua",
+      "tools/verify_three_d_video.py"
+    ],
+    "limitations": "Cairo projection, depth ordering, two-stop native shading, cube/parametric surfaces and tracked cameras are verified. Advanced clipping, all surface/camera options, subcameras, complete 3D object families, OpenGL and remaining scene hooks are pending."
+  },
+  {
+    "id": "manim.camera.three_d_camera.ThreeDCamera.get_zoom",
+    "lua_api": "ThreeDCamera:get_zoom",
+    "status": "implemented_partial",
+    "evidence": [
+      "tests/three_d.lua",
+      "tools/visual_three_d.py",
+      "examples/three_d.lua",
+      "tools/verify_three_d_video.py"
+    ],
+    "limitations": "Cairo projection, depth ordering, two-stop native shading, cube/parametric surfaces and tracked cameras are verified. Advanced clipping, all surface/camera options, subcameras, complete 3D object families, OpenGL and remaining scene hooks are pending."
+  },
+  {
+    "id": "manim.camera.three_d_camera.ThreeDCamera.get_focal_distance",
+    "lua_api": "ThreeDCamera:get_focal_distance",
+    "status": "implemented_partial",
+    "evidence": [
+      "tests/three_d.lua",
+      "tools/visual_three_d.py",
+      "examples/three_d.lua",
+      "tools/verify_three_d_video.py"
+    ],
+    "limitations": "Cairo projection, depth ordering, two-stop native shading, cube/parametric surfaces and tracked cameras are verified. Advanced clipping, all surface/camera options, subcameras, complete 3D object families, OpenGL and remaining scene hooks are pending."
+  },
+  {
+    "id": "manim.camera.three_d_camera.ThreeDCamera.set_phi",
+    "lua_api": "ThreeDCamera:set_phi",
+    "status": "implemented_partial",
+    "evidence": [
+      "tests/three_d.lua",
+      "tools/visual_three_d.py",
+      "examples/three_d.lua",
+      "tools/verify_three_d_video.py"
+    ],
+    "limitations": "Cairo projection, depth ordering, two-stop native shading, cube/parametric surfaces and tracked cameras are verified. Advanced clipping, all surface/camera options, subcameras, complete 3D object families, OpenGL and remaining scene hooks are pending."
+  },
+  {
+    "id": "manim.camera.three_d_camera.ThreeDCamera.set_theta",
+    "lua_api": "ThreeDCamera:set_theta",
+    "status": "implemented_partial",
+    "evidence": [
+      "tests/three_d.lua",
+      "tools/visual_three_d.py",
+      "examples/three_d.lua",
+      "tools/verify_three_d_video.py"
+    ],
+    "limitations": "Cairo projection, depth ordering, two-stop native shading, cube/parametric surfaces and tracked cameras are verified. Advanced clipping, all surface/camera options, subcameras, complete 3D object families, OpenGL and remaining scene hooks are pending."
+  },
+  {
+    "id": "manim.camera.three_d_camera.ThreeDCamera.set_gamma",
+    "lua_api": "ThreeDCamera:set_gamma",
+    "status": "implemented_partial",
+    "evidence": [
+      "tests/three_d.lua",
+      "tools/visual_three_d.py",
+      "examples/three_d.lua",
+      "tools/verify_three_d_video.py"
+    ],
+    "limitations": "Cairo projection, depth ordering, two-stop native shading, cube/parametric surfaces and tracked cameras are verified. Advanced clipping, all surface/camera options, subcameras, complete 3D object families, OpenGL and remaining scene hooks are pending."
+  },
+  {
+    "id": "manim.camera.three_d_camera.ThreeDCamera.set_zoom",
+    "lua_api": "ThreeDCamera:set_zoom",
+    "status": "implemented_partial",
+    "evidence": [
+      "tests/three_d.lua",
+      "tools/visual_three_d.py",
+      "examples/three_d.lua",
+      "tools/verify_three_d_video.py"
+    ],
+    "limitations": "Cairo projection, depth ordering, two-stop native shading, cube/parametric surfaces and tracked cameras are verified. Advanced clipping, all surface/camera options, subcameras, complete 3D object families, OpenGL and remaining scene hooks are pending."
+  },
+  {
+    "id": "manim.camera.three_d_camera.ThreeDCamera.set_focal_distance",
+    "lua_api": "ThreeDCamera:set_focal_distance",
+    "status": "implemented_partial",
+    "evidence": [
+      "tests/three_d.lua",
+      "tools/visual_three_d.py",
+      "examples/three_d.lua",
+      "tools/verify_three_d_video.py"
+    ],
+    "limitations": "Cairo projection, depth ordering, two-stop native shading, cube/parametric surfaces and tracked cameras are verified. Advanced clipping, all surface/camera options, subcameras, complete 3D object families, OpenGL and remaining scene hooks are pending."
+  },
+  {
+    "id": "manim.camera.three_d_camera.ThreeDCamera.get_value_trackers",
+    "lua_api": "ThreeDCamera:get_value_trackers",
+    "status": "implemented_partial",
+    "evidence": [
+      "tests/three_d.lua",
+      "tools/visual_three_d.py",
+      "examples/three_d.lua",
+      "tools/verify_three_d_video.py"
+    ],
+    "limitations": "Cairo projection, depth ordering, two-stop native shading, cube/parametric surfaces and tracked cameras are verified. Advanced clipping, all surface/camera options, subcameras, complete 3D object families, OpenGL and remaining scene hooks are pending."
+  },
+  {
+    "id": "manim.camera.three_d_camera.ThreeDCamera.generate_rotation_matrix",
+    "lua_api": "ThreeDCamera:generate_rotation_matrix",
+    "status": "implemented_partial",
+    "evidence": [
+      "tests/three_d.lua",
+      "tools/visual_three_d.py",
+      "examples/three_d.lua",
+      "tools/verify_three_d_video.py"
+    ],
+    "limitations": "Cairo projection, depth ordering, two-stop native shading, cube/parametric surfaces and tracked cameras are verified. Advanced clipping, all surface/camera options, subcameras, complete 3D object families, OpenGL and remaining scene hooks are pending."
+  },
+  {
+    "id": "manim.camera.three_d_camera.ThreeDCamera.get_rotation_matrix",
+    "lua_api": "ThreeDCamera:get_rotation_matrix",
+    "status": "implemented_partial",
+    "evidence": [
+      "tests/three_d.lua",
+      "tools/visual_three_d.py",
+      "examples/three_d.lua",
+      "tools/verify_three_d_video.py"
+    ],
+    "limitations": "Cairo projection, depth ordering, two-stop native shading, cube/parametric surfaces and tracked cameras are verified. Advanced clipping, all surface/camera options, subcameras, complete 3D object families, OpenGL and remaining scene hooks are pending."
+  },
+  {
+    "id": "manim.camera.three_d_camera.ThreeDCamera.project_points",
+    "lua_api": "ThreeDCamera:project_points",
+    "status": "implemented_partial",
+    "evidence": [
+      "tests/three_d.lua",
+      "tools/visual_three_d.py",
+      "examples/three_d.lua",
+      "tools/verify_three_d_video.py"
+    ],
+    "limitations": "Cairo projection, depth ordering, two-stop native shading, cube/parametric surfaces and tracked cameras are verified. Advanced clipping, all surface/camera options, subcameras, complete 3D object families, OpenGL and remaining scene hooks are pending."
+  },
+  {
+    "id": "manim.camera.three_d_camera.ThreeDCamera.project_point",
+    "lua_api": "ThreeDCamera:project_point",
+    "status": "implemented_partial",
+    "evidence": [
+      "tests/three_d.lua",
+      "tools/visual_three_d.py",
+      "examples/three_d.lua",
+      "tools/verify_three_d_video.py"
+    ],
+    "limitations": "Cairo projection, depth ordering, two-stop native shading, cube/parametric surfaces and tracked cameras are verified. Advanced clipping, all surface/camera options, subcameras, complete 3D object families, OpenGL and remaining scene hooks are pending."
+  },
+  {
+    "id": "manim.camera.three_d_camera.ThreeDCamera.add_fixed_in_frame_mobjects",
+    "lua_api": "ThreeDCamera:add_fixed_in_frame_mobjects",
+    "status": "implemented_partial",
+    "evidence": [
+      "tests/three_d.lua",
+      "tools/visual_three_d.py",
+      "examples/three_d.lua",
+      "tools/verify_three_d_video.py"
+    ],
+    "limitations": "Cairo projection, depth ordering, two-stop native shading, cube/parametric surfaces and tracked cameras are verified. Advanced clipping, all surface/camera options, subcameras, complete 3D object families, OpenGL and remaining scene hooks are pending."
+  },
+  {
+    "id": "manim.camera.three_d_camera.ThreeDCamera.remove_fixed_in_frame_mobjects",
+    "lua_api": "ThreeDCamera:remove_fixed_in_frame_mobjects",
+    "status": "implemented_partial",
+    "evidence": [
+      "tests/three_d.lua",
+      "tools/visual_three_d.py",
+      "examples/three_d.lua",
+      "tools/verify_three_d_video.py"
+    ],
+    "limitations": "Cairo projection, depth ordering, two-stop native shading, cube/parametric surfaces and tracked cameras are verified. Advanced clipping, all surface/camera options, subcameras, complete 3D object families, OpenGL and remaining scene hooks are pending."
+  },
+  {
+    "id": "manim.camera.three_d_camera.ThreeDCamera.add_fixed_orientation_mobjects",
+    "lua_api": "ThreeDCamera:add_fixed_orientation_mobjects",
+    "status": "implemented_partial",
+    "evidence": [
+      "tests/three_d.lua",
+      "tools/visual_three_d.py",
+      "examples/three_d.lua",
+      "tools/verify_three_d_video.py"
+    ],
+    "limitations": "Cairo projection, depth ordering, two-stop native shading, cube/parametric surfaces and tracked cameras are verified. Advanced clipping, all surface/camera options, subcameras, complete 3D object families, OpenGL and remaining scene hooks are pending."
+  },
+  {
+    "id": "manim.mobject.three_d.three_dimensions.ThreeDVMobject",
+    "lua_api": "ThreeDVMobject",
+    "status": "implemented_partial",
+    "evidence": [
+      "tests/three_d.lua",
+      "tools/visual_three_d.py",
+      "examples/three_d.lua",
+      "tools/verify_three_d_video.py"
+    ],
+    "limitations": "Cairo projection, depth ordering, two-stop native shading, cube/parametric surfaces and tracked cameras are verified. Advanced clipping, all surface/camera options, subcameras, complete 3D object families, OpenGL and remaining scene hooks are pending."
+  },
+  {
+    "id": "manim.mobject.three_d.three_dimensions.Surface",
+    "lua_api": "Surface",
+    "status": "implemented_partial",
+    "evidence": [
+      "tests/three_d.lua",
+      "tools/visual_three_d.py",
+      "examples/three_d.lua",
+      "tools/verify_three_d_video.py"
+    ],
+    "limitations": "Cairo projection, depth ordering, two-stop native shading, cube/parametric surfaces and tracked cameras are verified. Advanced clipping, all surface/camera options, subcameras, complete 3D object families, OpenGL and remaining scene hooks are pending."
+  },
+  {
+    "id": "manim.mobject.three_d.three_dimensions.Sphere",
+    "lua_api": "Sphere",
+    "status": "implemented_partial",
+    "evidence": [
+      "tests/three_d.lua",
+      "tools/visual_three_d.py",
+      "examples/three_d.lua",
+      "tools/verify_three_d_video.py"
+    ],
+    "limitations": "Cairo projection, depth ordering, two-stop native shading, cube/parametric surfaces and tracked cameras are verified. Advanced clipping, all surface/camera options, subcameras, complete 3D object families, OpenGL and remaining scene hooks are pending."
+  },
+  {
+    "id": "manim.mobject.three_d.three_dimensions.Cube",
+    "lua_api": "Cube",
+    "status": "implemented_partial",
+    "evidence": [
+      "tests/three_d.lua",
+      "tools/visual_three_d.py",
+      "examples/three_d.lua",
+      "tools/verify_three_d_video.py"
+    ],
+    "limitations": "Cairo projection, depth ordering, two-stop native shading, cube/parametric surfaces and tracked cameras are verified. Advanced clipping, all surface/camera options, subcameras, complete 3D object families, OpenGL and remaining scene hooks are pending."
+  },
+  {
+    "id": "manim.scene.three_d_scene.ThreeDScene",
+    "lua_api": "ThreeDScene",
+    "status": "implemented_partial",
+    "evidence": [
+      "tests/three_d.lua",
+      "tools/visual_three_d.py",
+      "examples/three_d.lua",
+      "tools/verify_three_d_video.py"
+    ],
+    "limitations": "Cairo projection, depth ordering, two-stop native shading, cube/parametric surfaces and tracked cameras are verified. Advanced clipping, all surface/camera options, subcameras, complete 3D object families, OpenGL and remaining scene hooks are pending."
+  },
+  {
+    "id": "manim.scene.three_d_scene.ThreeDScene.set_camera_orientation",
+    "lua_api": "ThreeDScene:set_camera_orientation",
+    "status": "implemented_partial",
+    "evidence": [
+      "tests/three_d.lua",
+      "tools/visual_three_d.py",
+      "examples/three_d.lua",
+      "tools/verify_three_d_video.py"
+    ],
+    "limitations": "Cairo projection, depth ordering, two-stop native shading, cube/parametric surfaces and tracked cameras are verified. Advanced clipping, all surface/camera options, subcameras, complete 3D object families, OpenGL and remaining scene hooks are pending."
+  },
+  {
+    "id": "manim.scene.three_d_scene.ThreeDScene.move_camera",
+    "lua_api": "ThreeDScene:move_camera",
+    "status": "implemented_partial",
+    "evidence": [
+      "tests/three_d.lua",
+      "tools/visual_three_d.py",
+      "examples/three_d.lua",
+      "tools/verify_three_d_video.py"
+    ],
+    "limitations": "Cairo projection, depth ordering, two-stop native shading, cube/parametric surfaces and tracked cameras are verified. Advanced clipping, all surface/camera options, subcameras, complete 3D object families, OpenGL and remaining scene hooks are pending."
+  },
+  {
+    "id": "manim.scene.three_d_scene.ThreeDScene.add_fixed_in_frame_mobjects",
+    "lua_api": "ThreeDScene:add_fixed_in_frame_mobjects",
+    "status": "implemented_partial",
+    "evidence": [
+      "tests/three_d.lua",
+      "tools/visual_three_d.py",
+      "examples/three_d.lua",
+      "tools/verify_three_d_video.py"
+    ],
+    "limitations": "Cairo projection, depth ordering, two-stop native shading, cube/parametric surfaces and tracked cameras are verified. Advanced clipping, all surface/camera options, subcameras, complete 3D object families, OpenGL and remaining scene hooks are pending."
+  },
+  {
+    "id": "manim.scene.moving_camera_scene.MovingCameraScene",
+    "lua_api": "MovingCameraScene",
+    "status": "implemented_partial",
+    "evidence": [
+      "tests/three_d.lua",
+      "tools/visual_three_d.py",
+      "examples/three_d.lua",
+      "tools/verify_three_d_video.py"
+    ],
+    "limitations": "Cairo projection, depth ordering, two-stop native shading, cube/parametric surfaces and tracked cameras are verified. Advanced clipping, all surface/camera options, subcameras, complete 3D object families, OpenGL and remaining scene hooks are pending."
   }
 ]

@@ -61,8 +61,14 @@ the upstream font-size and geometry scaling. It uses a Cairo SVG target for
 the same font metrics as Manim and does not rasterize text into a texture.
 OpenGL must implement the same
 renderer-facing object model; it is currently blocked in the coverage inventory.
-SVG, images, math typography, camera movement and 3D projection each require
-their own tested subsystem rather than pretending to be generic path aliases.
+SVG, images and math typography require their own tested subsystems.
+`camera.lua` now owns view frames, trackers, 3D rotation/projection, fixed
+overlays, depth keys and the upstream light/normal calculations. The renderer
+updates the native Cairo view matrix each frame, projects actual geometry and
+uses native linear gradients for shaded faces. Depth is evaluated once per
+object per frame before sorting. `three_d.lua` builds actual cubic face meshes
+for Cube and parameterized surfaces/Sphere, using the upstream handle-shrink
+derivative construction before nonlinear surface mapping.
 
 LuaRay was evaluated as an optional numerical foundation. Basic point arithmetic
 here has no need for its large ndarray API; depending on its evolving ABI would
