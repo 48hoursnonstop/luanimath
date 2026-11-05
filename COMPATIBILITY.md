@@ -1,6 +1,6 @@
 # Compatibility
 
-Target: Manim Community 0.22.1. Current development version: 0.1.0-dev.
+Target: Manim Community 0.22.1. Current development version: 0.2.0-dev.
 
 The public API inventory is `compatibility/api_inventory.json`; reviewed
 declarations are in `compatibility/implemented.json`. `python3 tools/coverage.py`
@@ -26,12 +26,28 @@ Polygon, RegularPolygon, Rectangle, Square, Triangle and CubicBezier. Transforms
 include shift, scale, stretch, arbitrary-axis rotation, 2×2/3×3 matrices,
 positioning, alignment, grouping, copying, stroke/fill style and z-order.
 
-Actual animations: Create, FadeIn, FadeOut, Transform, ReplacementTransform,
+Actual animations: Create, Write, DrawBorderThenFill, FadeIn, FadeOut, Transform, ReplacementTransform,
 Rotate, MoveAlongPath, AnimationGroup, Succession and LaggedStart. Builders use
 `m:animate(options):shift(...)`. ValueTracker and callbacks execute in Lua.
 Scenes provide add/remove/replace, play/wait, deterministic stepping and real
-PNG/MP4/GIF/WebM rendering. The GIF/WebM paths require their own executed media
-verification before format compatibility can be claimed beyond availability.
+PNG/MP4/GIF/WebM rendering. All four formats have executed file decoding and
+motion checks. PNG transparency has been checked; encoded-format alpha fidelity
+needs further coverage.
+
+Text now has real native Pango shaping and cubic outlines: font selection,
+Unicode, multiline text, tabs, font size, BOLD/LIGHT weights, ITALIC/OBLIQUE
+styles and ligature disabling. Thirteen text cases match upstream metrics
+within 1e-4 scene units and image differences within the stated tolerance.
+This metric tolerance accounts for the upstream SVG glyph-coordinate
+serialization quantization; native Pango paths retain more precision.
+
+One standalone RTL word produces an empty SVG in upstream because canvas-wide
+automatic RTL alignment clips it outside the surface. Luanim renders it.
+`tools/reference_text.py` retains the original empty output and diagnoses it
+by changing only ManimPango's `pango_width` to 100, which restores the glyphs.
+The corrected reference matches the native output. This is **one explicitly
+recorded original-upstream mismatch**, not a passing original compatibility case.
+Mixed LTR/Arabic text is separately checked against unmodified Manim.
 
 ## Current restrictions
 
@@ -48,7 +64,11 @@ verification before format compatibility can be claimed beyond availability.
   and every overlapping animation case are not yet compatible.
 - Many constructor options are still pending; an implemented class name does
   not imply all its upstream arguments are implemented.
-- Text, math typography, SVG, images, plots, animated cameras, 3D, OpenGL,
+- Text is currently one VMobject containing shaped contours, rather than
+  individual glyph Mobjects. Character slicing, per-glyph timing, text-to-color
+  mappings, MarkupText, missing-font warnings and advanced layout remain pending.
+  Reverse Write is explicitly rejected.
+- Math typography, SVG, images, plots, animated cameras, 3D, OpenGL,
   audio, render caching, scene sections and notebook integration are pending.
 - Lua 5.4 is the only tested ABI. Lua indices are 1-based. Tables and functions
   replace Python classes and keyword machinery where appropriate.

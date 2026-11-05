@@ -2,8 +2,9 @@
 
 1. Broaden object/transform semantics: multipath alignment, family alignment,
    style inheritance, path builders and composition/backward-time cases.
-2. Typography foundation: actual Pango-shaped Unicode paths, fonts and text
-   metrics; differential tests against upstream Text with the same font stack.
+2. Typography expansion: individual glyph Mobjects, character selection,
+   per-glyph Write timing and markup. Native Pango-shaped Unicode paths,
+   fonts and text metrics now have executed upstream comparisons.
 3. Coordinate systems: NumberLine, Axes, ParametricFunction, plots and associated
    numerical mapping; preserve curve and sampling semantics.
 4. SVG and raster assets with real file decoding, transformations and errors.

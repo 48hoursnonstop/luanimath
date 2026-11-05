@@ -25,6 +25,7 @@ to its source-derived algorithms. Luanim's own changes are MIT-licensed.
 | `manim/utils/rate_functions.py` | `rate_functions.lua` |
 | `manim/animation/{animation,creation,fading,transform,rotation,composition}.py` | `animation.lua` |
 | `manim/mobject/value_tracker.py` | `geometry.lua`, `mobject.lua` |
+| `manim/mobject/text/text_mobject.py` | `text.lua`, `native/text.c` |
 | `manim/scene/scene.py` | `scene.lua` |
 | `manim/camera/camera.py` | `renderer.lua`, `native/cairo_backend.c` |
 
@@ -34,6 +35,13 @@ points. Those are intentionally different upstream semantics. The Cairo
 renderer uses default miter joins and butt caps, a 0.01 world-unit stroke-width
 multiplier, and the same frame matrix. Length estimation defaults to ten
 samples per cubic. Transform curve-count alignment follows `bezier_remap`.
+
+Text uses Manim's public-font-size / 4.8 conversion to Pango points and a final
+0.05 scene-unit geometry scale. Glyph rounding is disabled, as in ManimPango
+0.7.1. That installed dependency's `cmanimpango.pyx` was also inspected to
+verify its font description, per-line positioning and width behavior.
+Standalone RTL clipping is preserved as a diagnosed upstream difference in
+the test records; it is not silently accepted as original parity.
 
 ## Reproduce the development oracle
 

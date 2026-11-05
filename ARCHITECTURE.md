@@ -43,8 +43,11 @@ remove only their own generated directory unless `keep_frames` is requested.
 
 ## Dependencies and extension boundaries
 
-Cairo is the first backend. Pango is linked for the next typography subsystem;
-the geometry release does not yet expose text. OpenGL must implement the same
+Cairo is the first backend. `native/text.c` owns the Pango typography interface;
+`lua/luanim/text.lua` converts actual glyph outlines to vector objects and applies
+the upstream font-size and geometry scaling. It uses a Cairo SVG target for
+the same font metrics as Manim and does not rasterize text into a texture.
+OpenGL must implement the same
 renderer-facing object model; it is currently blocked in the coverage inventory.
 SVG, images, math typography, camera movement and 3D projection each require
 their own tested subsystem rather than pretending to be generic path aliases.

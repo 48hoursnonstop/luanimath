@@ -127,7 +127,7 @@ def main():
             paths.append(dict(name=name, options=options, alpha=alpha, point=obj.point_from_proportion(alpha),
                               partial=obj.copy().pointwise_become_partial(obj,0,alpha).points, length=obj.get_arc_length()))
     animations=[]
-    for kind in ['Transform','Create','FadeIn','FadeOut','Rotate']:
+    for kind in ['Transform','Create','FadeIn','FadeOut','Rotate','Write','DrawBorderThenFill']:
         for alpha in [0,.125,.25,.5,.75,1]:
             obj=m.Square(color=m.BLUE,fill_opacity=.35).shift(m.LEFT)
             target=m.Circle(color=m.GREEN,fill_opacity=.7).shift(m.RIGHT)

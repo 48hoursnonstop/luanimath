@@ -46,4 +46,4 @@ for _,case in ipairs(fixture.animations) do
     renderer:render({obj},('artifacts/luanim/%s_%.3f.png'):format(case.kind,case.alpha));renderer:close()
     count=count+1
 end
-print(('PASS: %d upstream differential cases, %d scalar comparisons; 30 actual Lua/Cairo PNGs'):format(count,scalars))
+print(('PASS: %d upstream differential cases, %d scalar comparisons; %d actual Lua/Cairo PNGs'):format(count,scalars,#fixture.animations))

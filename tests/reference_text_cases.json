@@ -1,0 +1,226 @@
+[
+  {
+    "text": "Lua",
+    "options": {
+      "font": "Liberation Sans",
+      "font_size": 48
+    },
+    "width": 1.0571289000000001,
+    "height": 0.46484375,
+    "center": [
+      0.0,
+      0.0,
+      0.0
+    ],
+    "image": "text_01.png"
+  },
+  {
+    "text": "mañana",
+    "options": {
+      "font": "Liberation Sans",
+      "font_size": 48
+    },
+    "width": 2.3641113500000004,
+    "height": 0.484375,
+    "center": [
+      0.0,
+      0.0,
+      0.0
+    ],
+    "image": "text_02.png"
+  },
+  {
+    "text": "office fi fl",
+    "options": {
+      "font": "Liberation Sans",
+      "font_size": 48
+    },
+    "width": 2.5452148500000003,
+    "height": 0.4890625,
+    "center": [
+      0.0,
+      0.0,
+      0.0
+    ],
+    "image": "text_03.png"
+  },
+  {
+    "text": "日本語",
+    "options": {
+      "font": "Noto Sans CJK JP",
+      "font_size": 48
+    },
+    "width": 1.8583008,
+    "height": 0.6125000000000004,
+    "center": [
+      0.0,
+      0.0,
+      0.0
+    ],
+    "image": "text_04.png"
+  },
+  {
+    "text": "مرحبا",
+    "options": {
+      "font": "Noto Sans Arabic",
+      "font_size": 48
+    },
+    "width": 0,
+    "height": 0,
+    "center": [
+      0.0,
+      0.0,
+      0.0
+    ],
+    "image": "text_05.png",
+    "known_difference": "Manim text2svg uses canvas-wide automatic RTL layout, clipping this word outside its SVG. Luanim retains the real glyph outlines.",
+    "diagnostic": {
+      "width": 1.3151855500000005,
+      "height": 0.63046875,
+      "center": [
+        7.105427357601002e-15,
+        0.0,
+        0.0
+      ],
+      "image": "rtl_layout_diagnostic.png"
+    }
+  },
+  {
+    "text": "Lua\nManim",
+    "options": {
+      "font": "Liberation Sans",
+      "font_size": 48
+    },
+    "width": 1.9011719,
+    "height": 1.1148437500000001,
+    "center": [
+      0.0,
+      0.0,
+      0.0
+    ],
+    "image": "text_06.png"
+  },
+  {
+    "text": "A\tB",
+    "options": {
+      "font": "Liberation Sans",
+      "font_size": 48
+    },
+    "width": 1.55649415,
+    "height": 0.45859375,
+    "center": [
+      -3.552713678800501e-15,
+      0.0,
+      0.0
+    ],
+    "image": "text_07.png"
+  },
+  {
+    "text": "",
+    "options": {
+      "font": "Liberation Sans",
+      "font_size": 48
+    },
+    "width": 0,
+    "height": 0,
+    "center": [
+      0.0,
+      0.0,
+      0.0
+    ],
+    "image": "text_08.png"
+  },
+  {
+    "text": "Native",
+    "options": {
+      "font": "Liberation Sans",
+      "font_size": 24
+    },
+    "width": 0.9032715,
+    "height": 0.24453125,
+    "center": [
+      3.552713678800501e-15,
+      0.0,
+      0.0
+    ],
+    "image": "text_09.png"
+  },
+  {
+    "text": "Native",
+    "options": {
+      "font": "Liberation Sans",
+      "font_size": 72
+    },
+    "width": 2.7080078000000003,
+    "height": 0.7351562500000001,
+    "center": [
+      0.0,
+      0.0,
+      0.0
+    ],
+    "image": "text_10.png"
+  },
+  {
+    "text": "Bold",
+    "options": {
+      "font": "Liberation Sans",
+      "font_size": 48,
+      "weight": "BOLD"
+    },
+    "width": 1.3926269500000001,
+    "height": 0.4890625,
+    "center": [
+      -3.552713678800501e-15,
+      0.0,
+      0.0
+    ],
+    "image": "text_11.png"
+  },
+  {
+    "text": "Italic",
+    "options": {
+      "font": "Liberation Sans",
+      "font_size": 48,
+      "slant": "ITALIC"
+    },
+    "width": 1.3365722500000001,
+    "height": 0.4890625,
+    "center": [
+      -3.552713678800501e-15,
+      0.0,
+      0.0
+    ],
+    "image": "text_12.png"
+  },
+  {
+    "text": "office",
+    "options": {
+      "font": "Liberation Sans",
+      "font_size": 48,
+      "disable_ligatures": true
+    },
+    "width": 1.5230469,
+    "height": 0.4890625,
+    "center": [
+      0.0,
+      0.0,
+      0.0
+    ],
+    "image": "text_13.png"
+  },
+  {
+    "text": "Lua مرحبا",
+    "options": {
+      "font": "Noto Sans Arabic",
+      "font_size": 48
+    },
+    "width": 2.6056152500000005,
+    "height": 0.63046875,
+    "center": [
+      0.0,
+      0.0,
+      0.0
+    ],
+    "image": "text_14.png"
+  }
+]

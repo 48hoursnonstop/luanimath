@@ -55,6 +55,12 @@ function Animation:begin(scene)
         if self.kind=='FadeIn' then self.starting_mobject=faded end
     elseif self.kind=='Rotate' then
         self.about_point=self.opts.about_point and V(self.opts.about_point) or self.starting_mobject:get_center()
+    elseif self.kind=='Write' or self.kind=='DrawBorderThenFill' then
+        self.outline=self.starting_mobject:copy():set_fill(nil,0)
+        for _,m in ipairs(self.outline:family_members_with_points()) do
+            local color=self.opts.stroke_color or (m.stroke_width>0 and m.stroke_color or m.fill_color)
+            m:set_stroke(color,self.opts.stroke_width or 2,nil,{family=false})
+        end
     end
     if scene then scene:add(self.mobject) end
     self.saved_suspension={}
@@ -72,11 +78,18 @@ function Animation:interpolate(alpha)
     local originals=self.starting_mobject:family_members_with_points()
     if #family~=#originals then family=self.mobject:get_family();originals=self.starting_mobject:get_family() end
     local targets=self.target_copy and self.target_copy:family_members_with_points()
+    local outlines=self.outline and self.outline:family_members_with_points()
     local n=#originals;local full=(n-1)*self.lag_ratio+1
     for i,src in ipairs(originals) do
         local t=self.rate_func(U.clamp(alpha*full-(i-1)*self.lag_ratio))
         local m=family[i]
         if self.kind=='Create' then m:pointwise_become_partial(src,0,t)
+        elseif outlines then
+            local outline=outlines[i]
+            if t<0.5 then
+                m:pointwise_become_partial(outline,0,2*t)
+                m.fill_color=U.copy(outline.fill_color);m.stroke_color=U.copy(outline.stroke_color);m.stroke_width=outline.stroke_width
+            else interpolate(m,outline,src,2*t-1) end
         elseif self.kind=='Rotate' then
             m.points=U.copy(src.points)
             local p=self.about_point;local axis=self.opts.axis or V(0,0,1)
@@ -115,6 +128,16 @@ function A.Rotate(m,angle,opts) local a=new('Rotate',m,opts);a.angle=U.number(an
 function A.MoveAlongPath(m,path,opts)
     assert(path and path.is_vector and #path.points>0,'MoveAlongPath requires a nonempty VMobject path')
     local a=new('MoveAlongPath',m,opts);a.path=path;return a
+end
+function A.DrawBorderThenFill(m,opts)
+    assert(m and m.is_vector,'DrawBorderThenFill requires VMobject')
+    return new('DrawBorderThenFill',m,U.merge({run_time=2,rate_func=R.double_smooth},opts))
+end
+function A.Write(m,opts)
+    opts=opts or {};assert(m and m.is_vector,'Write requires VMobject')
+    assert(not opts.reverse,'reverse Write is not implemented')
+    local n=#m:family_members_with_points()
+    return new('Write',m,U.merge({run_time=n<15 and 1 or 2,lag_ratio=math.min(4/math.max(1,n),0.2),rate_func=R.linear},opts))
 end
 
 local Composition={};Composition.__index=Composition

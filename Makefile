@@ -8,12 +8,12 @@ PKGS = $(LUA_PKG) cairo pangocairo
 export LUA_PATH := $(CURDIR)/lua/?.lua;$(CURDIR)/lua/?/init.lua;;
 export LUA_CPATH := $(CURDIR)/build/?.so;;
 
-.PHONY: all test demo reference differential check clean sanitize release
+.PHONY: all test text-test media-test demo reference differential check clean sanitize release
 all: build/luanim_native.so
 
-build/luanim_native.so: native/cairo_backend.c
+build/luanim_native.so: native/cairo_backend.c native/text.c
 	@mkdir -p build
-	$(CC) $(CFLAGS) $(WARN) -fPIC -shared $< -o $@ $$(pkg-config --cflags --libs $(PKGS)) -lm
+	$(CC) $(CFLAGS) $(WARN) -fPIC -shared $^ -o $@ $$(pkg-config --cflags --libs $(PKGS)) -lm
 
 test: all
 	$(LUA) tests/run.lua
@@ -23,17 +23,27 @@ demo: all
 
 reference:
 	.dev/venv/bin/python tools/reference.py --upstream .dev/manim-0.22.1
+	.dev/venv/bin/python tools/reference_text.py
+
+text-test: all
+	$(LUA) tests/text.lua
+	$(PYTHON) tools/visual_text.py
+
+media-test: all
+	$(LUA) tests/media.lua
+	$(PYTHON) tools/verify_media.py
 
 differential: all
 	$(LUA) tests/differential.lua
 	$(PYTHON) tools/visual_compare.py
 
-check: test demo differential
+check: test demo differential text-test media-test
 
 sanitize:
 	$(MAKE) clean
 	$(MAKE) CFLAGS='-O1 -g -fsanitize=address,undefined -fno-omit-frame-pointer'
 	ASAN_OPTIONS=detect_leaks=0 LD_PRELOAD="$$( $(CC) -print-file-name=libasan.so )" $(LUA) tests/run.lua
+	ASAN_OPTIONS=detect_leaks=0 LD_PRELOAD="$$( $(CC) -print-file-name=libasan.so )" $(LUA) tests/text.lua
 	$(MAKE) clean
 	$(MAKE) all
 
