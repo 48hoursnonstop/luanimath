@@ -37,6 +37,7 @@ end
 function Animation:begin(scene)
     assert(not self.started,'animation instances cannot be reused')
     self.started=true;self.scene=scene
+    if self.reverse then self.mobject:invert({recursive=true}) end
     self.starting_mobject=self.mobject:copy()
     if self.kind=='Transform' or self.kind=='ReplacementTransform' then
         self.target_copy=self.target_mobject:copy()
@@ -54,7 +55,7 @@ function Animation:begin(scene)
         if self.kind=='FadeIn' then self.starting_mobject=faded end
     elseif self.kind=='Rotate' then
         self.about_point=self.opts.about_point and V(self.opts.about_point) or self.starting_mobject:get_center()
-    elseif self.kind=='Write' or self.kind=='DrawBorderThenFill' then
+    elseif self.kind=='Write' or self.kind=='Unwrite' or self.kind=='DrawBorderThenFill' then
         self.outline=self.starting_mobject:copy():set_fill(nil,0)
         for _,m in ipairs(self.outline:family_members_with_points()) do
             local color=self.opts.stroke_color or (m.stroke_width>0 and m.stroke_color or m.fill_color)
@@ -106,6 +107,7 @@ function Animation:finish()
         if self.kind=='FadeOut' then self.mobject:become(self.starting_mobject)
         elseif self.kind=='ReplacementTransform' then self.scene:replace(self.mobject,self.target_mobject) end
     end
+    if self.reverse then self.mobject:invert({recursive=true}) end
     return self
 end
 function Animation:update_mobjects(dt)
@@ -141,9 +143,12 @@ function A.DrawBorderThenFill(m,opts)
 end
 function A.Write(m,opts)
     opts=opts or {};assert(m and m.is_vector,'Write requires VMobject')
-    assert(not opts.reverse,'reverse Write is not implemented')
     local n=#m:family_members_with_points()
-    return new('Write',m,U.merge({run_time=n<15 and 1 or 2,lag_ratio=math.min(4/math.max(1,n),0.2),rate_func=R.linear},opts))
+    local a=new('Write',m,U.merge({run_time=n<15 and 1 or 2,lag_ratio=math.min(4/math.max(1,n),0.2),rate_func=R.linear,remover=not not opts.reverse},opts))
+    a.reverse=not not opts.reverse;return a
+end
+function A.Unwrite(m,opts)
+    local a=A.Write(m,U.merge({reverse=true,reverse_rate_function=true},opts));a.kind='Unwrite';return a
 end
 
 local Composition={};Composition.__index=Composition

@@ -7,23 +7,12 @@
 #include <math.h>
 #include <string.h>
 
-static cairo_status_t discard_svg(void *closure,const unsigned char *data,unsigned int length) {
-    (void)closure;(void)data;(void)length;return CAIRO_STATUS_SUCCESS;
+static cairo_status_t collect_svg(void *closure,const unsigned char *data,unsigned int length) {
+    GString *buffer=closure;
+    if(buffer->len+length>16777216) return CAIRO_STATUS_WRITE_ERROR;
+    g_string_append_len(buffer,(const char*)data,length);return CAIRO_STATUS_SUCCESS;
 }
-static void push_point(lua_State *L,double x,double y) {
-    lua_createtable(L,3,0);
-    lua_pushnumber(L,x*0.05);lua_seti(L,-2,1);
-    lua_pushnumber(L,-y*0.05);lua_seti(L,-2,2);
-    lua_pushnumber(L,0);lua_seti(L,-2,3);
-}
-static void push_curve(lua_State *L,int table,lua_Integer *count,const double p[8]) {
-    for(int i=0;i<4;i++) {push_point(L,p[2*i],p[2*i+1]);lua_seti(L,table,++*count);}
-}
-static void push_line(lua_State *L,int table,lua_Integer *count,double x,double y,double tx,double ty) {
-    double p[]={x,y,(2*x+tx)/3,(2*y+ty)/3,(x+2*tx)/3,(y+2*ty)/3,tx,ty};
-    push_curve(L,table,count,p);
-}
-static int text_path(lua_State *L) {
+static int text_svg(lua_State *L) {
     size_t size=0;const char *text=luaL_checklstring(L,1,&size);
     const char *font=luaL_checkstring(L,2);double font_size=luaL_checknumber(L,3);
     const char *weights[]={"NORMAL","BOLD","LIGHT",NULL};
@@ -37,8 +26,13 @@ static int text_path(lua_State *L) {
     luaL_argcheck(L,isfinite(spacing) && spacing>=0,7,"line spacing must be nonnegative");
     luaL_argcheck(L,size<=1048576 && strlen(text)==size,1,"text too large or contains NUL");
     luaL_argcheck(L,g_utf8_validate(text,(gssize)size,NULL),1,"invalid UTF-8 text");
-    cairo_surface_t *surface=cairo_svg_surface_create_for_stream(discard_svg,NULL,1,1);
+    GString *buffer=g_string_new(NULL);
+    /* A vector surface has no pixel allocation. Leave room for unwrapped text;
+     * unlike upstream's canvas-wide RTL layout, natural-width shaping remains visible. */
+    double extent=fmax(1024,font_size*(size+1)+32+spacing*(size+1));
+    cairo_surface_t *surface=cairo_svg_surface_create_for_stream(collect_svg,buffer,extent,extent);
     cairo_t *cr=cairo_create(surface);
+    cairo_set_source_rgb(cr,1,1,1);
     PangoLayout *layout=pango_cairo_create_layout(cr);
     PangoContext *context=pango_layout_get_context(layout);
     pango_context_set_round_glyph_positions(context,FALSE);
@@ -58,31 +52,16 @@ static int text_path(lua_State *L) {
     while(1) {
         const char *end=strchr(start,'\n');size_t n=end ? (size_t)(end-start) : strlen(start);
         pango_layout_set_text(layout,start,(int)n);
-        cairo_move_to(cr,0,line*spacing/4.8);
-        pango_cairo_update_layout(cr,layout);pango_cairo_layout_path(cr,layout);
+        cairo_move_to(cr,30,20+line*spacing/4.8);
+        pango_cairo_update_layout(cr,layout);
+        pango_cairo_show_layout(cr,layout);
         if(!end) break;
         start=end+1;line++;
     }
-    cairo_path_t *path=cairo_copy_path(cr);
-    g_object_unref(layout);cairo_destroy(cr);cairo_surface_destroy(surface);
-    if(path->status!=CAIRO_STATUS_SUCCESS) {cairo_path_destroy(path);return luaL_error(L,"Pango outline conversion failed");}
-    lua_newtable(L);int table=lua_gettop(L);lua_Integer count=0;
-    double x=0,y=0,sx=0,sy=0;
-    for(int i=0;i<path->num_data;) {
-        cairo_path_data_t *item=&path->data[i];
-        if(item->header.type==CAIRO_PATH_MOVE_TO) {x=item[1].point.x;y=item[1].point.y;sx=x;sy=y;}
-        else if(item->header.type==CAIRO_PATH_LINE_TO) {
-            double tx=item[1].point.x,ty=item[1].point.y;
-            push_line(L,table,&count,x,y,tx,ty);x=tx;y=ty;
-        } else if(item->header.type==CAIRO_PATH_CURVE_TO) {
-            double p[]={x,y,item[1].point.x,item[1].point.y,item[2].point.x,item[2].point.y,item[3].point.x,item[3].point.y};
-            push_curve(L,table,&count,p);x=p[6];y=p[7];
-        } else if(item->header.type==CAIRO_PATH_CLOSE_PATH) {
-            push_line(L,table,&count,x,y,sx,sy);x=sx;y=sy;
-        }
-        i+=item->header.length;
-    }
-    cairo_path_destroy(path);return 1;
+    g_object_unref(layout);cairo_destroy(cr);cairo_surface_finish(surface);
+    cairo_status_t status=cairo_surface_status(surface);cairo_surface_destroy(surface);
+    if(status!=CAIRO_STATUS_SUCCESS) {g_string_free(buffer,TRUE);return luaL_error(L,"Pango SVG conversion failed: %s",cairo_status_to_string(status));}
+    lua_pushlstring(L,buffer->str,buffer->len);g_string_free(buffer,TRUE);return 1;
 }
 static int font_list(lua_State *L) {
     PangoFontMap *map=pango_cairo_font_map_get_default();
@@ -99,7 +78,7 @@ static int parse_css_color(lua_State *L) {
     for(int i=0;i<4;i++) {lua_pushnumber(L,rgba[i]);lua_seti(L,-2,i+1);}return 1;
 }
 void luanim_add_text(lua_State *L) {
-    lua_pushcfunction(L,text_path);lua_setfield(L,-2,"text_path");
+    lua_pushcfunction(L,text_svg);lua_setfield(L,-2,"text_svg");
     lua_pushcfunction(L,font_list);lua_setfield(L,-2,"font_list");
     lua_pushcfunction(L,parse_css_color);lua_setfield(L,-2,"parse_css_color");
 }

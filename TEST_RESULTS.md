@@ -1,5 +1,27 @@
 # Executed test results
 
+## 0.7.0-dev — 2026-11-07 America/Mexico_City
+
+- Strict native compilation and complete `make check` passed.
+- **19 glyph cases, 42 Write/Unwrite states and three font resizing cases**;
+  **72,066 numerical/identity/invalid-input checks**. Includes real Noto Sans
+  ligatures, invisible spaces, tabs, mixed scripts, combining accents, raw
+  positioning, resizing, shared slices, copies and reversed order cleanup.
+- **42 actual per-letter animation frames matched pixel-for-pixel**.
+- All **13 original-upstream text images** and the separately diagnosed RTL
+  layout image now match pixel-for-pixel. The original upstream RTL clipping
+  mismatch remains recorded; its diagnostic is not counted as original parity.
+- Glyph example: **108 frames, 640×360, 24 fps, 4.5 seconds**, fully decoded.
+  Sampled frame RGB changes were **3.439907407407407** and
+  **2.837824074074074**. A decoded frame was opened and inspected. The final
+  central lettering was erased by real Unwrite and checked numerically.
+- All existing regressions, differential geometry, SVG, 3D, plotting and media
+  decoding passed. ASan/UBSan passed core, text, alignment, 3D, SVG and glyph
+  suites; leak detection was disabled and system libraries were not instrumented.
+- Source-only archive extraction, SHA-256 manifest validation, native rebuild
+  and complete `make check` passed in a clean directory. Archive checksum,
+  verification JSON and full clean build log are retained in `releases/`.
+
 ## 0.6.0-dev — 2026-11-07 America/Mexico_City
 
 - Strict native C11 compilation and full `make check` passed.

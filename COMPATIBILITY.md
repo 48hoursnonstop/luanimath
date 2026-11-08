@@ -1,6 +1,6 @@
 # Compatibility
 
-Target: Manim Community 0.22.1. Current development version: 0.6.0-dev.
+Target: Manim Community 0.22.1. Current development version: 0.7.0-dev.
 
 The public API inventory is `compatibility/api_inventory.json`; reviewed
 declarations are in `compatibility/implemented.json`. `python3 tools/coverage.py`
@@ -29,7 +29,7 @@ include shift, scale, stretch, arbitrary-axis rotation, 2×2/3×3 matrices,
 positioning, alignment, grouping, copying, stroke/fill style and z-order.
 
 Actual animations: Create, Write, DrawBorderThenFill, FadeIn, FadeOut, Transform, ReplacementTransform,
-Rotate, MoveAlongPath, AnimationGroup, Succession and LaggedStart. Builders use
+Unwrite, Rotate, MoveAlongPath, AnimationGroup, Succession and LaggedStart. Builders use
 `m:animate(options):shift(...)`. ValueTracker and callbacks execute in Lua.
 Scenes provide add/remove/replace, play/wait, deterministic stepping and real
 PNG/MP4/GIF/WebM rendering. All four formats have executed file decoding and
@@ -40,8 +40,9 @@ Text now has real native Pango shaping and cubic outlines: font selection,
 Unicode, multiline text, tabs, font size, BOLD/LIGHT weights, ITALIC/OBLIQUE
 styles and ligature disabling. Thirteen text cases match upstream metrics
 within 1e-4 scene units and image differences within the stated tolerance.
-This metric tolerance accounts for the upstream SVG glyph-coordinate
-serialization quantization; native Pango paths retain more precision.
+Pango now emits an in-memory SVG with individual glyph references, imported
+through the native vector pipeline. The 13 original-upstream images and the
+diagnosed RTL layout image now have zero pixel error in this environment.
 
 One standalone RTL word produces an empty SVG in upstream because canvas-wide
 automatic RTL alignment clips it outside the surface. Luanim renders it.
@@ -105,10 +106,16 @@ plotting methods remain pending and are explicitly rejected where applicable.
   The complete option surface and every overlapping animation case still need work.
 - Many constructor options are still pending; an implemented class name does
   not imply all its upstream arguments are implemented.
-- Text is currently one VMobject containing shaped contours, rather than
-  individual glyph Mobjects. Character slicing, per-glyph timing, text-to-color
-  mappings, MarkupText, missing-font warnings and advanced layout remain pending.
-  Reverse Write is explicitly rejected.
+- Text contains individual glyph Mobjects and identity-sharing `chars` groups.
+  Lua indexing/iteration includes the object itself when it has points, matching
+  upstream’s conceptual sequence; indices are 1-based, negative indices count
+  from the end, and out-of-range lookup returns nil. `slice` uses inclusive
+  endpoints. Reverse Write and Unwrite have actual timing/order/cleanup tests.
+  19 glyph cases, 42 animation states/images and three font resizing cases
+  passed upstream comparison. Per-range font/color/style mappings, MarkupText,
+  missing-font warnings, wrapping and advanced layout remain pending. Natural
+  width layout intentionally retains the previously documented RTL difference.
+
 - Camera clipping at the focal plane, complete surface/camera options,
   per-point textures, subcameras, ambient rotation helpers and the remaining
   3D object families are pending. Points exactly on the focal plane are

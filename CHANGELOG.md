@@ -1,5 +1,16 @@
 # Changelog
 
+## 0.7.0-dev
+
+- Real Pango glyph Mobjects imported from in-memory Cairo SVG; all previous
+  text images now match exactly, retaining the diagnosed standalone-RTL case.
+- Lua indexing, length, iteration, shared-identity inclusive slicing, split
+  and recursive inversion; scaled text font-size access and assignment.
+- Invisible whitespace placeholders, natural ligatures and disabling.
+- Reverse Write and Unwrite, with upstream ordering/cleanup semantics.
+- 19 glyph cases, 42 Write/Unwrite states and images, and three font resizing
+  cases; actual selection/style animation and erasure in a native video.
+
 ## 0.6.0-dev
 
 - Lua SVG path engine including elliptical arcs and smooth control reflection.

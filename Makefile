@@ -8,7 +8,7 @@ PKGS = $(LUA_PKG) cairo pangocairo libxml-2.0
 export LUA_PATH := $(CURDIR)/lua/?.lua;$(CURDIR)/lua/?/init.lua;;
 export LUA_CPATH := $(CURDIR)/build/?.so;;
 
-.PHONY: all test text-test svg-test svg-demo media-test graphing-test alignment-test paths-test three-d-test three-d-demo demo reference differential check clean sanitize release
+.PHONY: all test text-test glyph-test glyph-demo svg-test svg-demo media-test graphing-test alignment-test paths-test three-d-test three-d-demo demo reference differential check clean sanitize release
 all: build/luanim_native.so
 
 build/luanim_native.so: native/cairo_backend.c native/text.c native/xml.c
@@ -29,6 +29,15 @@ reference:
 	.dev/venv/bin/python tools/reference_paths.py
 	.dev/venv/bin/python tools/reference_three_d.py
 	.dev/venv/bin/python tools/reference_svg.py
+	.dev/venv/bin/python tools/reference_glyphs.py
+
+glyph-test: all
+	$(LUA) tests/glyphs.lua
+	$(PYTHON) tools/visual_glyphs.py
+
+glyph-demo: all
+	$(LUA) tools/luanim.lua examples/glyphs.lua --output artifacts/glyphs.mp4 --width 640 --height 360 --fps 24
+	$(PYTHON) tools/verify_glyph_video.py
 
 svg-test: all
 	$(LUA) tests/svg.lua
@@ -69,7 +78,7 @@ differential: all
 	$(LUA) tests/differential.lua
 	$(PYTHON) tools/visual_compare.py
 
-check: test demo differential text-test media-test graphing-test alignment-test paths-test three-d-test three-d-demo svg-test svg-demo
+check: test demo differential text-test media-test graphing-test alignment-test paths-test three-d-test three-d-demo svg-test svg-demo glyph-test glyph-demo
 
 sanitize:
 	$(MAKE) clean
@@ -79,6 +88,7 @@ sanitize:
 	ASAN_OPTIONS=detect_leaks=0 LD_PRELOAD="$$( $(CC) -print-file-name=libasan.so )" $(LUA) tests/alignment.lua
 	ASAN_OPTIONS=detect_leaks=0 LD_PRELOAD="$$( $(CC) -print-file-name=libasan.so )" $(LUA) tests/three_d.lua
 	ASAN_OPTIONS=detect_leaks=0 LD_PRELOAD="$$( $(CC) -print-file-name=libasan.so )" $(LUA) tests/svg.lua
+	ASAN_OPTIONS=detect_leaks=0 LD_PRELOAD="$$( $(CC) -print-file-name=libasan.so )" $(LUA) tests/glyphs.lua
 	$(MAKE) clean
 	$(MAKE) all
 

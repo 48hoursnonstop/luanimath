@@ -56,9 +56,13 @@ world frame matches Manim's fixed 128/9 × 8 default independently of raster siz
 ## Dependencies and extension boundaries
 
 Cairo is the first backend. `native/text.c` owns the Pango typography interface;
-`lua/luanim/text.lua` converts actual glyph outlines to vector objects and applies
-the upstream font-size and geometry scaling. It uses a Cairo SVG target for
-the same font metrics as Manim and does not rasterize text into a texture.
+`lua/luanim/text.lua` imports real per-glyph outlines from Pango’s in-memory
+Cairo SVG output, using the native SVG importer. This preserves the same glyph
+serialization, coordinate quantization and contour closure as Manim, with no
+temporary text asset or Python. Spaces can have invisible placeholder geometry
+when ligatures are disabled. `chars` shares glyph identity; copying preserves
+that identity within the copied graph. Native text validates UTF-8 and bounds
+the generated SVG stream. It does not rasterize text into a texture.
 OpenGL must implement the same
 renderer-facing object model; it is currently blocked in the coverage inventory.
 `svg_path.lua` converts SVG commands to the same cubic geometry used by other

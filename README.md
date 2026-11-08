@@ -22,6 +22,7 @@ make test
 make demo
 make three-d-demo
 make svg-demo
+make glyph-demo
 ```
 
 The default module links specifically to Lua 5.4, even when the system `lua`
@@ -72,6 +73,15 @@ SVG files use `l.SVGMobject("drawing.svg", {height=2})`; raw path data uses
 `l.VMobjectFromSVGPath("M0 0 C1 2 3 2 4 0")`. SVG default centering and height
 follow Manim. Set `height=false` for Lua’s equivalent of Python `height=None`.
 Supported elements, paints and restrictions are listed in `COMPATIBILITY.md`.
+
+Text contains real glyph Mobjects. `text[1]`, `#text`, `ipairs(text)` and
+`text.chars` access them; `text:slice(1,3)` returns a group sharing those
+letters, so styling/animation affects the actual text. Slice endpoints are
+inclusive and 1-based; negative indices count from the end. `text.font_size`
+tracks geometric scaling and accepts a new positive size. Ligatures can
+combine characters; use `disable_ligatures=true` when character mapping is
+needed, subject to the font’s shaping behavior. `Write` and `Unwrite` operate
+on the individual glyphs.
 
 ## Verification
 

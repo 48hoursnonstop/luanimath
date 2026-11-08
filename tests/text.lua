@@ -29,6 +29,6 @@ fails(function() l.Text('\255') end)
 fails(function() l.Text('a\0b') end)
 assert(#l.font_list()>0);checks=checks+1
 local dot=l.Text('A',{font='Liberation Sans'}):shift(l.RIGHT):rotate(0.2)
-assert(#dot.points>0 and #dot.points%4==0);checks=checks+1
+assert(#dot==1 and #dot[1].points>0 and #dot[1].points%4==0 and dot[1]==dot.chars[1]);checks=checks+1
 assert(known_differences==1,'known differences must remain explicitly enumerated')
 print(('PASS: %d native text cases, %d checks; %d original-upstream difference, separately validated with corrected Pango layout'):format(#cases,checks,known_differences))

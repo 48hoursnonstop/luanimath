@@ -50,7 +50,7 @@ negative/positive range handling, and tip endpoint rules.
 
 Text uses Manim's public-font-size / 4.8 conversion to Pango points and a final
 0.05 scene-unit geometry scale. Glyph rounding is disabled, as in ManimPango
-0.7.1. That installed dependency's `cmanimpango.pyx` was also inspected to
+0.7.1 (MIT notice retained in `LICENSE.manimpango`). That installed dependency's `cmanimpango.pyx` was also inspected to
 verify its font description, per-line positioning and width behavior.
 Standalone RTL clipping is preserved as a diagnosed upstream difference in
 the test records; it is not silently accepted as original parity.

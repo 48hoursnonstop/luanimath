@@ -1554,9 +1554,11 @@
       "evidence": [
         "tests/differential.lua",
         "tests/reference_v0221.lua",
-        "tests/run.lua"
+        "tests/run.lua",
+        "tests/glyphs.lua",
+        "tools/visual_glyphs.py"
       ],
-      "limitations": "Real outline/fill phases; reverse Write is rejected. Text glyphs are not yet individual Mobjects, affecting per-glyph lag timing."
+      "limitations": "Native per-glyph geometry, timing, selection and resize have executed upstream comparisons. Text range styling, wrapping and every constructor/animation option remain pending. Standalone RTL natural-width layout intentionally differs as recorded in COMPATIBILITY.md."
     },
     {
       "id": "manim.animation.creation.DrawBorderThenFill.__init__",
@@ -1610,9 +1612,11 @@
       "evidence": [
         "tests/differential.lua",
         "tests/reference_v0221.lua",
-        "tests/run.lua"
+        "tests/run.lua",
+        "tests/glyphs.lua",
+        "tools/visual_glyphs.py"
       ],
-      "limitations": "Real outline/fill phases; reverse Write is rejected. Text glyphs are not yet individual Mobjects, affecting per-glyph lag timing."
+      "limitations": "Native per-glyph geometry, timing, selection and resize have executed upstream comparisons. Text range styling, wrapping and every constructor/animation option remain pending. Standalone RTL natural-width layout intentionally differs as recorded in COMPATIBILITY.md."
     },
     {
       "id": "manim.animation.creation.Write.__init__",
@@ -1647,7 +1651,13 @@
       "kind": "class",
       "source": "manim/animation/creation.py",
       "line": 371,
-      "status": "not_implemented"
+      "status": "implemented_partial",
+      "lua_api": "Unwrite",
+      "evidence": [
+        "tests/glyphs.lua",
+        "tools/visual_glyphs.py"
+      ],
+      "limitations": "Verified documented subset. Lua indices and slice endpoints are 1-based/inclusive, failed lookup returns nil; full constructor and specialized subclass behavior remain pending."
     },
     {
       "id": "manim.animation.creation.Unwrite.__init__",
@@ -8947,21 +8957,39 @@
       "kind": "method",
       "source": "manim/mobject/mobject.py",
       "line": 2626,
-      "status": "not_implemented"
+      "status": "implemented_partial",
+      "lua_api": "Mobject[index] / Mobject:slice",
+      "evidence": [
+        "tests/glyphs.lua",
+        "tools/visual_glyphs.py"
+      ],
+      "limitations": "Verified documented subset. Lua indices and slice endpoints are 1-based/inclusive, failed lookup returns nil; full constructor and specialized subclass behavior remain pending."
     },
     {
       "id": "manim.mobject.mobject.Mobject.__iter__",
       "kind": "method",
       "source": "manim/mobject/mobject.py",
       "line": 2649,
-      "status": "not_implemented"
+      "status": "implemented_partial",
+      "lua_api": "ipairs(Mobject)",
+      "evidence": [
+        "tests/glyphs.lua",
+        "tools/visual_glyphs.py"
+      ],
+      "limitations": "Verified documented subset. Lua indices and slice endpoints are 1-based/inclusive, failed lookup returns nil; full constructor and specialized subclass behavior remain pending."
     },
     {
       "id": "manim.mobject.mobject.Mobject.__len__",
       "kind": "method",
       "source": "manim/mobject/mobject.py",
       "line": 2652,
-      "status": "not_implemented"
+      "status": "implemented_partial",
+      "lua_api": "#Mobject",
+      "evidence": [
+        "tests/glyphs.lua",
+        "tools/visual_glyphs.py"
+      ],
+      "limitations": "Verified documented subset. Lua indices and slice endpoints are 1-based/inclusive, failed lookup returns nil; full constructor and specialized subclass behavior remain pending."
     },
     {
       "id": "manim.mobject.mobject.Mobject.get_group_class",
@@ -8982,7 +9010,13 @@
       "kind": "method",
       "source": "manim/mobject/mobject.py",
       "line": 2663,
-      "status": "not_implemented"
+      "status": "implemented_partial",
+      "lua_api": "Mobject:split",
+      "evidence": [
+        "tests/glyphs.lua",
+        "tools/visual_glyphs.py"
+      ],
+      "limitations": "Verified documented subset. Lua indices and slice endpoints are 1-based/inclusive, failed lookup returns nil; full constructor and specialized subclass behavior remain pending."
     },
     {
       "id": "manim.mobject.mobject.Mobject.get_family",
@@ -9049,7 +9083,13 @@
       "kind": "method",
       "source": "manim/mobject/mobject.py",
       "line": 3044,
-      "status": "not_implemented"
+      "status": "implemented_partial",
+      "lua_api": "Mobject:invert",
+      "evidence": [
+        "tests/glyphs.lua",
+        "tools/visual_glyphs.py"
+      ],
+      "limitations": "Verified documented subset. Lua indices and slice endpoints are 1-based/inclusive, failed lookup returns nil; full constructor and specialized subclass behavior remain pending."
     },
     {
       "id": "manim.mobject.mobject.Mobject.arrange_submobjects",
@@ -15210,9 +15250,11 @@
       "evidence": [
         "tests/text.lua",
         "tests/reference_text_cases.json",
-        "tools/visual_text.py"
+        "tools/visual_text.py",
+        "tests/glyphs.lua",
+        "tools/visual_glyphs.py"
       ],
-      "limitations": "Native Pango outlines, not yet per-glyph Mobjects. 13 original-upstream text references plus one separately validated RTL layout diagnostic. Standalone RTL clipping behavior differs intentionally; markup, t2c/t2f styling and character selection remain pending."
+      "limitations": "Native per-glyph geometry, timing, selection and resize have executed upstream comparisons. Text range styling, wrapping and every constructor/animation option remain pending. Standalone RTL natural-width layout intentionally differs as recorded in COMPATIBILITY.md."
     },
     {
       "id": "manim.mobject.text.text_mobject.Text.font_list",
@@ -15240,7 +15282,13 @@
       "kind": "method",
       "source": "manim/mobject/text/text_mobject.py",
       "line": 635,
-      "status": "not_implemented"
+      "status": "implemented_partial",
+      "lua_api": "Text.font_size / Text:set_font_size",
+      "evidence": [
+        "tests/glyphs.lua",
+        "tools/visual_glyphs.py"
+      ],
+      "limitations": "Verified documented subset. Lua indices and slice endpoints are 1-based/inclusive, failed lookup returns nil; full constructor and specialized subclass behavior remain pending."
     },
     {
       "id": "manim.mobject.text.text_mobject.Text.init_colors",

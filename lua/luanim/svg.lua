@@ -71,10 +71,8 @@ end
 function S.VMobjectFromSVGPath(data,opts)
     local m=G.VMobject(opts);m.kind='VMobjectFromSVGPath';return m:set_points(Path.parse(data))
 end
-function S.SVGMobject(filename,opts)
-    opts=opts or {};assert(type(filename)=='string','SVGMobject requires a filename')
-    local handle,err=io.open(filename,'rb');assert(handle,err)
-    local data=handle:read('*a');handle:close()
+function S._from_data(data,opts,filename)
+    opts=opts or {}
     local root=N.parse_xml(data);assert(root.name=='svg','document root must be svg')
     local ids={}
     local function index(node) if node.attributes.id then ids[node.attributes.id]=node end;for _,c in ipairs(node.children) do index(c) end end
@@ -147,5 +145,11 @@ function S.SVGMobject(filename,opts)
     if height and object:get_height()>0 then object:scale(height/object:get_height()) end
     if opts.width and object:get_width()>0 then object:scale(opts.width/object:get_width()) end
     return object
+end
+function S.SVGMobject(filename,opts)
+    assert(type(filename)=='string','SVGMobject requires a filename')
+    local handle,err=io.open(filename,'rb');assert(handle,err)
+    local data=handle:read('*a');handle:close()
+    return S._from_data(data,opts,filename)
 end
 return S

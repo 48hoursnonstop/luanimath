@@ -3,7 +3,20 @@ local C=require('luanim.color')
 local B=require('luanim.bezier')
 local U=require('luanim.util')
 local M={}
-M.__index=M
+M.__index=function(self,key)
+    if type(key)=='number' then
+        if key<0 then key=#self+key+1 end
+        if key<1 or key%1~=0 then return nil end
+        if #self.points>0 then return key==1 and self or self.submobjects[key-1] end
+        return self.submobjects[key]
+    end
+    if key=='font_size' and rawget(self,'_font_size') then return self:get_font_size() end
+    return M[key]
+end
+M.__len=function(self) return #self.submobjects+(#self.points>0 and 1 or 0) end
+M.__newindex=function(self,key,value)
+    if key=='font_size' and rawget(self,'_font_size') then self:set_font_size(value) else rawset(self,key,value) end
+end
 
 function M.new(opts)
     opts=opts or {}
@@ -51,6 +64,32 @@ function M:remove(...)
     self.submobjects=out;return self
 end
 function M:copy() return U.copy(self) end
+function M:split()
+    local items={};for _,m in ipairs(self) do items[#items+1]=m end;return items
+end
+function M:slice(first,last,step)
+    local n=#self;step=step or 1;U.number(step,'slice step');assert(step%1==0 and step~=0,'slice step must be a nonzero integer')
+    first=first or (step>0 and 1 or n);last=last or (step>0 and n or 1)
+    U.number(first,'slice start');U.number(last,'slice end');assert(first%1==0 and last%1==0,'slice indices must be integers')
+    if first<0 then first=n+first+1 end;if last<0 then last=n+last+1 end
+    if step>0 then first=math.max(1,first);last=math.min(n,last) else first=math.min(n,first);last=math.max(1,last) end
+    local group=M();group.is_vector=self.is_vector;group.kind=self.is_vector and 'VGroup' or 'Group'
+    for i=first,last,step do group:add(self[i]) end
+    return group
+end
+function M:invert(opts)
+    if opts and opts.recursive then for _,child in ipairs(self.submobjects) do child:invert(opts) end end
+    local a=self.submobjects;for i=1,math.floor(#a/2) do a[i],a[#a-i+1]=a[#a-i+1],a[i] end
+    return self
+end
+function M:get_font_size()
+    assert(self._font_size and self.initial_height and self.initial_height>0,'font size requires nonempty Text')
+    return self._font_size*self:get_height()/self.initial_height
+end
+function M:set_font_size(size)
+    U.number(size,'font_size');assert(size>0,'font_size must be positive')
+    return self:scale(size/self:get_font_size())
+end
 function M:get_all_points()
     local out={}
     local function visit(m)

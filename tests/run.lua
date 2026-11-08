@@ -173,7 +173,7 @@ test('Write and DrawBorderThenFill execute outline and fill phases',function()
     a:interpolate(0.75);equal(m.fill_color[4],0.5)
     a:finish();equal(m.fill_color[4],1);equal(m.stroke_width,4)
     local empty=l.Text('');local w=l.Write(empty);w:begin();w:finish();equal(#empty.points,0)
-    fails(function() l.Write(m,{reverse=true}) end)
+    local reverse=l.Write(m,{reverse=true});reverse:begin();reverse:finish();equal(reverse.finished,true)
 end)
 
 print(('PASS: %d regression groups, %d checks'):format(tests,checks))
