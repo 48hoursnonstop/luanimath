@@ -23,7 +23,7 @@ to its source-derived algorithms. luanimath's own changes are MIT-licensed.
 | `manim/mobject/geometry/polygram.py` | `geometry.lua`, `rounding.lua` polygons and corners |
 | `manim/utils/bezier.py` | `bezier.lua` interpolation, splitting and remapping |
 | `manim/utils/rate_functions.py` | `rate_functions.lua` |
-| `manim/animation/{animation,creation,fading,transform,rotation,composition}.py` | `animation.lua` |
+| `manim/animation/{animation,creation,fading,transform,rotation,composition,growing}.py` | `animation.lua` |
 | `manim/mobject/value_tracker.py` | `geometry.lua`, `mobject.lua` |
 | `manim/mobject/svg/svg_mobject.py` | `svg.lua`, `svg_path.lua`, `native/xml.c` |
 | `manim/mobject/text/text_mobject.py` | `text.lua`, `text_settings.lua`, `native/text.c` |

@@ -15,7 +15,7 @@ name='luanimath-'+version
 docs_python=os.environ.get('DOC_PYTHON','python3')
 docs_python=os.path.abspath(shutil.which(docs_python) or docs_python)
 root.joinpath('.dev').mkdir(exist_ok=True)
-excluded={'.git','.dev','build','artifacts','releases','__pycache__','.pytest_cache','.luanimath-cache'}
+excluded={'.git','.dev','build','artifacts','releases','media','__pycache__','.pytest_cache','.luanimath-cache'}
 files=sorted(p for p in root.rglob('*') if p.is_file() and not excluded.intersection(p.relative_to(root).parts) and p.name!='MANIFEST.sha256')
 manifest=''.join(hashlib.sha256(p.read_bytes()).hexdigest()+'  '+p.relative_to(root).as_posix()+'\n' for p in files)
 (root/'MANIFEST.sha256').write_text(manifest)

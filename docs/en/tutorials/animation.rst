@@ -38,3 +38,33 @@ Erasing objects
 ``remover=false`` to retain the degenerate final object. ``FadeOut`` always
 removes its subject and rejects an explicit ``remover`` option, matching the
 pinned upstream constructor. Reverse Write restores child order on finish.
+
+Growth and spiral entry
+--------------------------------------------------------------------------------
+
+``GrowFromPoint(object,point,opts)`` introduces an object from a point;
+``point`` can also be a Mobject whose center is read at animation begin.
+``GrowFromCenter`` and ``GrowFromEdge(object,edge,opts)`` capture their origin
+when constructing the animation. Moving the subject before ``begin`` therefore
+changes its destination without changing those captured origins.
+
+``point_color`` optionally sets the starting family color, interpolating back
+to each original paint while preserving opacity. ``lag_ratio`` staggers
+geometry-bearing family members, including actual text glyphs. Growth uses the
+same deterministic snapshots, rate functions and updater suspension as Transform.
+Subjects are added to the scene automatically; ``remover=true`` removes them at
+completion. An explicit ``introducer`` option is rejected, matching upstream's
+hardcoded constructor argument.
+
+.. luanimath-example:: growth
+   :alt: A title and three vector shapes enter from a point, edge, center and spiral.
+   :video:
+
+``SpinInFromNothing(object,{angle=PI/2})`` grows from the captured center with
+spiral motion around OUT. Negative angles reverse it; a full turn is allowed
+here. It supplies its own path and rejects an explicit ``path_func``.
+``spiral_path(angle,axis)`` returns a general point-array path for Transform.
+It rotates the source-to-target displacement by ``(alpha-1)*angle`` and scales
+it by alpha; an angle with magnitude below .01 uses a straight path. Zero axes
+fall back to OUT. General paths allow extrapolated alpha values; animations
+still apply their normal time/rate-function rules. GrowArrow remains pending.

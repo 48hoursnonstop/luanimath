@@ -60,3 +60,10 @@ Geometría redondeada
 .. luanimath-example:: rounding
    :alt: Esquinas convexas pasan a cóncavas y un punto recorre un arco circular.
    :video:
+
+Animaciones de crecimiento
+--------------------------------------------------------------------------------
+
+.. luanimath-example:: growth
+   :alt: Los objetos crecen desde un punto, borde, centro o espiral.
+   :video:

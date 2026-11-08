@@ -40,3 +40,33 @@ Borrar objetos
 ``remover=false`` para conservar el objeto final degenerado. ``FadeOut`` siempre
 retira el suyo y rechaza ``remover`` explícito, como el constructor de upstream.
 Write invertido restaura el orden de los hijos al terminar.
+
+Crecimiento y entrada en espiral
+--------------------------------------------------------------------------------
+
+``GrowFromPoint(objeto,punto,opciones)`` introduce un objeto desde un punto;
+puedes usar otro Mobject cuyo centro se lee al comenzar la animación.
+``GrowFromCenter`` y ``GrowFromEdge(objeto,borde,opciones)`` capturan su origen
+al construir la animación. Mover el objeto antes de ``begin`` cambia su destino,
+pero mantiene ese origen capturado.
+
+``point_color`` indica un color inicial opcional para la familia y lo interpola
+hasta los colores originales, conservando la opacidad. ``lag_ratio`` desfasa los
+miembros con geometría, incluidos los glifos reales. El crecimiento comparte las
+instantáneas deterministas, funciones temporales y suspensión de actualizadores
+de Transform. Añade automáticamente el objeto a la escena; ``remover=true`` lo
+retira al terminar. Se rechaza ``introducer`` explícito, como el argumento fijo
+del constructor de upstream.
+
+.. luanimath-example:: growth
+   :alt: Un título y tres figuras entran desde un punto, borde, centro y espiral.
+   :video:
+
+``SpinInFromNothing(objeto,{angle=PI/2})`` crece desde el centro capturado con
+movimiento espiral alrededor de OUT. Los ángulos negativos invierten el giro;
+aquí sí se admite una vuelta completa. Proporciona su propio recorrido y
+rechaza ``path_func`` explícito. ``spiral_path(ángulo,eje)`` crea un recorrido
+general de tablas de puntos para Transform: rota el desplazamiento por
+``(alpha-1)*ángulo`` y lo escala por alpha. Una magnitud menor de .01 usa una
+línea; un eje nulo usa OUT. Estos recorridos admiten alpha extrapolado; las
+animaciones mantienen sus reglas normales de tiempo. GrowArrow sigue pendiente.

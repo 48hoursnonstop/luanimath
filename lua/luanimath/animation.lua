@@ -40,7 +40,11 @@ function Animation:begin(scene)
     self.started=true;self.scene=scene
     if self.reverse then self.mobject:invert({recursive=true}) end
     self.starting_mobject=self.mobject:copy()
-    if self.kind=='Transform' or self.kind=='ReplacementTransform' then
+    if self.growth_point then
+        self.target_copy=self.mobject:copy()
+        self.starting_mobject:scale(0):move_to(self.growth_point)
+        if self.opts.point_color then self.starting_mobject:set_color(self.opts.point_color) end
+    elseif self.kind=='Transform' or self.kind=='ReplacementTransform' then
         self.target_copy=self.target_mobject:copy()
         self.starting_mobject:align_data(self.target_copy)
         self.mobject:become(self.starting_mobject)
@@ -138,6 +142,22 @@ function A.Rotate(m,angle,opts) local a=new('Rotate',m,opts);a.angle=U.number(an
 function A.MoveAlongPath(m,path,opts)
     assert(path and path.is_vector and #path.points>0,'MoveAlongPath requires a nonempty VMobject path')
     local a=new('MoveAlongPath',m,opts);a.path=path;return a
+end
+function A.GrowFromPoint(m,point,opts)
+    assert(type(point)=='table','GrowFromPoint requires a point or Mobject');opts=opts or {}
+    assert(opts.introducer==nil,'growth animations always introduce their subject; introducer is not a supported option')
+    local a=new('GrowFromPoint',m,opts);a.growth_point=point;a.target_mobject=m;a.introducer=true;return a
+end
+function A.GrowFromCenter(m,opts)
+    local a=A.GrowFromPoint(m,m:get_center(),opts);a.kind='GrowFromCenter';return a
+end
+function A.GrowFromEdge(m,edge,opts)
+    local a=A.GrowFromPoint(m,m:get_critical_point(V(edge)),opts);a.kind='GrowFromEdge';return a
+end
+function A.SpinInFromNothing(m,opts)
+    opts=opts or {};assert(opts.path_func==nil,'SpinInFromNothing supplies its own spiral path')
+    local a=A.GrowFromCenter(m,U.merge(opts,{path_func=Paths.spiral_path(opts.angle or math.pi/2)}))
+    a.kind='SpinInFromNothing';return a
 end
 function A.DrawBorderThenFill(m,opts)
     assert(m and m.is_vector,'DrawBorderThenFill requires VMobject')

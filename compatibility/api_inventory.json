@@ -1914,7 +1914,14 @@
       "kind": "class",
       "source": "manim/animation/growing.py",
       "line": 49,
-      "status": "not_implemented"
+      "status": "implemented_partial",
+      "lua_api": "GrowFromPoint",
+      "evidence": [
+        "tests/growth.lua",
+        "tests/reference_growth.lua",
+        "tools/visual_growth.py"
+      ],
+      "limitations": "Documented Lua vector-family lifecycle, point-color interpolation and constructor-time center/edge capture. Groups and native Text glyphs have real reference coverage. Complete option surfaces, OpenGL and all updater interactions remain unverified. GrowArrow is pending Arrow geometry/tip scaling."
     },
     {
       "id": "manim.animation.growing.GrowFromPoint.__init__",
@@ -1942,7 +1949,14 @@
       "kind": "class",
       "source": "manim/animation/growing.py",
       "line": 102,
-      "status": "not_implemented"
+      "status": "implemented_partial",
+      "lua_api": "GrowFromCenter",
+      "evidence": [
+        "tests/growth.lua",
+        "tests/reference_growth.lua",
+        "tools/visual_growth.py"
+      ],
+      "limitations": "Documented Lua vector-family lifecycle, point-color interpolation and constructor-time center/edge capture. Groups and native Text glyphs have real reference coverage. Complete option surfaces, OpenGL and all updater interactions remain unverified. GrowArrow is pending Arrow geometry/tip scaling."
     },
     {
       "id": "manim.animation.growing.GrowFromCenter.__init__",
@@ -1956,7 +1970,14 @@
       "kind": "class",
       "source": "manim/animation/growing.py",
       "line": 136,
-      "status": "not_implemented"
+      "status": "implemented_partial",
+      "lua_api": "GrowFromEdge",
+      "evidence": [
+        "tests/growth.lua",
+        "tests/reference_growth.lua",
+        "tools/visual_growth.py"
+      ],
+      "limitations": "Documented Lua vector-family lifecycle, point-color interpolation and constructor-time center/edge capture. Groups and native Text glyphs have real reference coverage. Complete option surfaces, OpenGL and all updater interactions remain unverified. GrowArrow is pending Arrow geometry/tip scaling."
     },
     {
       "id": "manim.animation.growing.GrowFromEdge.__init__",
@@ -1991,7 +2012,14 @@
       "kind": "class",
       "source": "manim/animation/growing.py",
       "line": 214,
-      "status": "not_implemented"
+      "status": "implemented_partial",
+      "lua_api": "SpinInFromNothing",
+      "evidence": [
+        "tests/growth.lua",
+        "tests/reference_growth.lua",
+        "tools/visual_growth.py"
+      ],
+      "limitations": "Documented Lua vector-family lifecycle, point-color interpolation and constructor-time center/edge capture. Groups and native Text glyphs have real reference coverage. Complete option surfaces, OpenGL and all updater interactions remain unverified. GrowArrow is pending Arrow geometry/tip scaling."
     },
     {
       "id": "manim.animation.growing.SpinInFromNothing.__init__",
@@ -38495,7 +38523,13 @@
       "kind": "function",
       "source": "manim/utils/paths.py",
       "line": 317,
-      "status": "not_implemented"
+      "status": "implemented_partial",
+      "lua_api": "spiral_path",
+      "evidence": [
+        "tests/growth.lua",
+        "tests/reference_growth.lua"
+      ],
+      "limitations": "Finite Lua point arrays and axis vectors; threshold and axis fallback match the pinned upstream. General numerical tensors/OpenGL behavior are not implemented."
     },
     {
       "id": "manim.utils.polylabel.Polygon",

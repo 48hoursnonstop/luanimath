@@ -471,3 +471,15 @@ OPTIONS['RoundedRectangle']=[('width','number','4','Rectangle width.','Ancho del
 OPTIONS['Mobject:round_corners']=[('evenly_distribute_anchors','boolean','false','Subdivide connecting lines by mean arc-curve length; gaps <=1e-12 receive no extra subdivisions.','Subdivide líneas según la longitud media de las curvas; los huecos <=1e-12 no reciben divisiones adicionales.'),('components_per_rounded_corner','integer','2','At least two anchors per circular corner.','Al menos dos anclas por esquina circular.')]
 
 DEFAULTS['Polygram']={'color':'BLUE'}
+
+API.update({
+ 'GrowFromPoint':('Introduce vector geometry by growing from point, optionally blending from point_color. A Mobject point is resolved at begin.','Introduce geometría vectorial creciendo desde point y opcionalmente desde point_color. Un Mobject usado como punto se resuelve al comenzar.'),
+ 'GrowFromCenter':('Introduce vector geometry from its center captured when constructing the animation. Later object motion does not change that captured point.','Introduce geometría vectorial desde su centro capturado al construir la animación. Mover el objeto después no cambia ese punto.'),
+ 'GrowFromEdge':('Introduce vector geometry from the bounding critical point in edge direction, captured when constructing the animation.','Introduce geometría vectorial desde el punto extremo del borde indicado, capturado al construir la animación.'),
+ 'SpinInFromNothing':('Grow vector geometry from its captured center using a spiral path. angle defaults to PI/2; the path rotates about OUT.','Hace crecer geometría vectorial desde su centro capturado siguiendo una espiral. angle vale PI/2 y el eje es OUT.'),
+ 'spiral_path':('Return a point-array path combining linear growth with rotation by (alpha-1)*angle. Zero axes fall back to OUT; angles with magnitude below .01 use a straight path.','Devuelve un recorrido de tablas de puntos que combina crecimiento lineal con rotación de (alpha-1)*angle. Un eje nulo usa OUT; ángulos menores de .01 en magnitud usan una línea.'),
+})
+GROWTH_COLOR=('point_color','color','nil','Initial color; nil preserves each subject paint.','Color inicial; nil conserva los colores originales.')
+for name in ('GrowFromPoint','GrowFromCenter','GrowFromEdge'):
+ OPTIONS[name]=[GROWTH_COLOR]+ANIMATION+TRANSFORM
+OPTIONS['SpinInFromNothing']=[('angle','number','PI/2','Signed spiral sweep around OUT.','Barrido espiral con signo alrededor de OUT.'),GROWTH_COLOR]+ANIMATION

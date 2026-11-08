@@ -131,3 +131,8 @@ remaining straight edges use the existing point model and subdivision engine.
 Subdivisions of roundoff-sized zero gaps are suppressed for deterministic
 geometry; construction has an explicit curve budget. SVG elliptical corners
 follow upstream's round-then-stretch conversion, sharing this geometry module.
+
+Growth factories use the existing Animation snapshots and vector interpolation.
+Their start copy collapses to the constructor-captured center/edge or the point
+resolved at begin; their target remains the actual subject geometry. Spiral
+entry supplies the general point-array spiral path, with no special renderer.

@@ -1,6 +1,6 @@
 # Compatibility
 
-Target: Manim Community 0.22.1. Current development version: 0.11.0-dev.
+Target: Manim Community 0.22.1. Current development version: 0.12.0-dev.
 
 The public API inventory is `compatibility/api_inventory.json`; reviewed
 declarations are in `compatibility/implemented.json`. `python3 tools/coverage.py`
@@ -230,3 +230,15 @@ geometry/shift diagnostics are separate from original parity. The actual eleven
 rendered circular/rounded/SVG images match the original upstream pixels.
 Numerical geometry uses 1e-9 absolute tolerance; no overall API completeness is
 claimed from these cases.
+
+## Growth animations and spiral paths
+
+GrowFromPoint, GrowFromCenter, GrowFromEdge and SpinInFromNothing have executed
+vector-family geometry/style/timing comparisons, including groups, native Text,
+point colors, lagging, moved subjects after constructor-time origin capture,
+backward evaluation and completion. A Mobject origin is resolved at begin.
+Actual Scene.play introduction/removal and file rendering are tested. Spiral
+paths cover arbitrary/zero axes, the .01 straight-path threshold and extrapolated
+alpha. Numeric comparisons use 1e-9 absolute tolerance. GrowArrow remains
+pending Arrow geometry/tip scaling; full option/updater/OpenGL behavior is not
+claimed. Growth rejects explicit introducer; Spin supplies its own path_func.

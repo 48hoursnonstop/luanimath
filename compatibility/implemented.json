@@ -3326,5 +3326,59 @@
       "tools/visual_rounding.py"
     ],
     "limitations": "Cubic geometry with documented XY arc-center queries and a 100000-curve construction limit. Full-turn endpoint arcs require Circle. Original source records retain one undefined-center mismatch, six clamped-rounding curve-count differences and four closed-loop endpoint-placement differences; diagnostics are separate. Automatic radius sequences must divide each vertex count. Remaining options, warnings and degenerate cases are not fully compatible."
+  },
+  {
+    "id": "manim.animation.growing.GrowFromPoint",
+    "lua_api": "GrowFromPoint",
+    "status": "implemented_partial",
+    "evidence": [
+      "tests/growth.lua",
+      "tests/reference_growth.lua",
+      "tools/visual_growth.py"
+    ],
+    "limitations": "Documented Lua vector-family lifecycle, point-color interpolation and constructor-time center/edge capture. Groups and native Text glyphs have real reference coverage. Complete option surfaces, OpenGL and all updater interactions remain unverified. GrowArrow is pending Arrow geometry/tip scaling."
+  },
+  {
+    "id": "manim.animation.growing.GrowFromCenter",
+    "lua_api": "GrowFromCenter",
+    "status": "implemented_partial",
+    "evidence": [
+      "tests/growth.lua",
+      "tests/reference_growth.lua",
+      "tools/visual_growth.py"
+    ],
+    "limitations": "Documented Lua vector-family lifecycle, point-color interpolation and constructor-time center/edge capture. Groups and native Text glyphs have real reference coverage. Complete option surfaces, OpenGL and all updater interactions remain unverified. GrowArrow is pending Arrow geometry/tip scaling."
+  },
+  {
+    "id": "manim.animation.growing.GrowFromEdge",
+    "lua_api": "GrowFromEdge",
+    "status": "implemented_partial",
+    "evidence": [
+      "tests/growth.lua",
+      "tests/reference_growth.lua",
+      "tools/visual_growth.py"
+    ],
+    "limitations": "Documented Lua vector-family lifecycle, point-color interpolation and constructor-time center/edge capture. Groups and native Text glyphs have real reference coverage. Complete option surfaces, OpenGL and all updater interactions remain unverified. GrowArrow is pending Arrow geometry/tip scaling."
+  },
+  {
+    "id": "manim.animation.growing.SpinInFromNothing",
+    "lua_api": "SpinInFromNothing",
+    "status": "implemented_partial",
+    "evidence": [
+      "tests/growth.lua",
+      "tests/reference_growth.lua",
+      "tools/visual_growth.py"
+    ],
+    "limitations": "Documented Lua vector-family lifecycle, point-color interpolation and constructor-time center/edge capture. Groups and native Text glyphs have real reference coverage. Complete option surfaces, OpenGL and all updater interactions remain unverified. GrowArrow is pending Arrow geometry/tip scaling."
+  },
+  {
+    "id": "manim.utils.paths.spiral_path",
+    "lua_api": "spiral_path",
+    "status": "implemented_partial",
+    "evidence": [
+      "tests/growth.lua",
+      "tests/reference_growth.lua"
+    ],
+    "limitations": "Finite Lua point arrays and axis vectors; threshold and axis fallback match the pinned upstream. General numerical tensors/OpenGL behavior are not implemented."
   }
 ]

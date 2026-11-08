@@ -1,5 +1,18 @@
 # Changelog
 
+## 0.12.0-dev
+
+- GrowFromPoint, GrowFromCenter, GrowFromEdge and SpinInFromNothing use
+  actual vector snapshots, color interpolation, lagging and scene lifecycles.
+- General spiral_path with arbitrary-axis rotation, zero-axis fallback,
+  source threshold and extrapolated path evaluation.
+- 24 growth cases with 144 sampled states, 108 spiral cases and 52,247
+  numerical/lifecycle checks; all 24 actual images match upstream exactly.
+- Native text/group growth, captured-center timing, Mobject origins and
+  real scene introduction/removal are executed. GrowArrow remains pending.
+- English/Spanish tutorials/reference and an eleventh real gallery animation.
+- Exclude development-oracle media caches from Git and source archives.
+
 ## 0.11.0-dev
 
 - Circular ArcBetweenPoints, endpoint placement, XY center queries/movement

@@ -39,4 +39,17 @@ function P.path_along_circles(angle,centers,axis)
 end
 function P.clockwise_path() return P.path_along_arc(-math.pi) end
 function P.counterclockwise_path() return P.path_along_arc(math.pi) end
+function P.spiral_path(angle,axis)
+    U.number(angle,'spiral angle')
+    if math.abs(angle)<.01 then return P.straight_path() end
+    axis=V(axis or {0,0,1});axis=V.norm(axis)==0 and V(0,0,1) or V.normalize(axis)
+    return function(start,finish,alpha)
+        U.number(alpha,'alpha');assert(#start==#finish,'path point arrays must have equal lengths')
+        local points={}
+        for i,p in ipairs(start) do
+            p=V(p);points[i]=p+V.rotate(V(finish[i])-p,(alpha-1)*angle,axis)*alpha
+        end
+        return points
+    end
+end
 return P

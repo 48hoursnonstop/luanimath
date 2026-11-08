@@ -1,5 +1,29 @@
 # Executed test results
 
+## 0.12.0-dev — growth and spiral animations
+
+- Complete `make check` passed, including all previous native geometry,
+  typography, scales, palette, SVG, 3D and media regression suites.
+- **24 growth cases and 144 sampled states**, including backward evaluation,
+  scalar shapes, groups and Pango-shaped native Text; **108 spiral-path cases**
+  cover arbitrary/zero axes, straight-path threshold and extrapolation.
+- **52,247 numerical/lifecycle checks** passed. Maximum absolute reference
+  error was **1.3322676295501878e-15**, below 1e-9. All **24 original growth
+  animation images matched pixel-for-pixel**. No new parity diagnostics were
+  needed for this corpus.
+- Thirteen ASan/UBSan native-boundary suites passed, including the new growth
+  lifecycle and image rendering; leak detection was disabled and system
+  libraries were not instrumented.
+- Actual upstream execution and native tests confirmed constructor-time
+  center/edge capture, Mobject origin resolution at begin, automatic scene
+  introduction and remover cleanup. A real Lua scene rendered the lifecycle.
+- Both strict manuals passed with **288 function bindings, 270 distinct
+  functions, 18 aliases, 109 constants, 73 pages and 6,773 checked local links**.
+  All eleven gallery animations rendered and fully decoded; growth is 36
+  frames at 640×360, 12 fps.
+- Sanitizer and clean-source release results are recorded in generated logs
+  and the verification report; no unexecuted result is inferred.
+
 ## 0.11.0-dev — circular and rounded geometry
 
 - Complete `make check` passed, including existing geometry, text, media,

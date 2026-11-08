@@ -97,3 +97,6 @@ for name in ('Scale:map','Scale:inverse'):
 
 PARAMS['vertex_groups']=('vector[][]','Sequence of closed-loop vertex sequences; do not repeat the first vertex.','Secuencia de grupos de vértices cerrados; no repitas el primer vértice.')
 SPECIAL['Mobject:round_corners']={'radius':('number or number[]','Finite scalar or nonempty repeating radius sequence; default 0.5.','Escalar finito o secuencia repetida no vacía; 0.5 por defecto.')}
+
+SPECIAL['GrowFromPoint']={'point':('vector or Mobject','Origin point, or Mobject whose center is read at animation begin.','Punto de origen o Mobject cuyo centro se lee al comenzar.')}
+SPECIAL['GrowFromEdge']={'edge':('vector','Bounding-box direction; for example LEFT, UP or UR.','Dirección del límite; por ejemplo LEFT, UP o UR.')}

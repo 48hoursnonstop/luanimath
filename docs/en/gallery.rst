@@ -60,3 +60,10 @@ Rounded geometry
 .. luanimath-example:: rounding
    :alt: Convex corners transform into concave corners while a dot follows a circular arc.
    :video:
+
+Growth animations
+--------------------------------------------------------------------------------
+
+.. luanimath-example:: growth
+   :alt: Vector objects grow into view with point, edge, center and spiral entry.
+   :video:
