@@ -1,0 +1,1 @@
+<svg xmlns="http://www.w3.org/2000/svg"><defs><path id="glyph" d="M0 0L5 0 5 8 0 8Z"/></defs><g id="letters" fill="purple"><use href="#glyph"/><use href="#glyph" x="10" y="3" transform="rotate(10)"/></g></svg>

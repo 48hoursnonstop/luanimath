@@ -1,5 +1,24 @@
 # Executed test results
 
+## 0.6.0-dev — 2026-11-07 America/Mexico_City
+
+- Strict native C11 compilation and full `make check` passed.
+- SVG: **73 path cases, 24 imported object cases, 6,632 numerical and
+  invalid-input checks** executed through the Lua API, against actual Manim.
+- **12 native SVG images matched pixel-for-pixel**, including transformed
+  paths, CSS RGB colors, alpha quantization, local references, non-scaling
+  strokes, visibility and root styling.
+- Actual SVG animation: **96 frames, 640×360, 24 fps, four seconds**. FFmpeg
+  fully decoded it. Mean sampled RGB frame changes: **4.556552372685185** and
+  **4.883288483796297**. A decoded frame was opened for inspection.
+- All existing regression, differential, text, graphing, alignment, paths,
+  3D and actual media checks passed. The recorded original RTL mismatch remains.
+- ASan/UBSan passed core, text, alignment, 3D and the new SVG suite. Leak
+  detection was disabled; system dependencies were not instrumented.
+- Source-only archive creation, clean extraction, SHA-256 manifest validation,
+  native recompilation and the complete test suite passed. Generated
+  verification JSON, archive SHA-256 and full build log are in `releases/`.
+
 ## 0.5.0-dev — 2026-11-04 America/Mexico_City
 
 - Native module compiled with strict C11 warnings; complete `make check` passed.

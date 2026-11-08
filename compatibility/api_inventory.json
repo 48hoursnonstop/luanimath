@@ -14460,7 +14460,14 @@
       "kind": "class",
       "source": "manim/mobject/svg/svg_mobject.py",
       "line": 36,
-      "status": "not_implemented"
+      "status": "implemented_partial",
+      "lua_api": "SVGMobject",
+      "evidence": [
+        "tests/svg.lua",
+        "tools/visual_svg.py",
+        "tools/verify_svg_video.py"
+      ],
+      "limitations": "See COMPATIBILITY.md: tested SVG path/shape/style/local-reference subset; rounded rectangles, full CSS, additional paints/units, caching and broader constructor options remain pending."
     },
     {
       "id": "manim.mobject.svg.svg_mobject.SVGMobject.__init__",
@@ -14600,7 +14607,14 @@
       "kind": "class",
       "source": "manim/mobject/svg/svg_mobject.py",
       "line": 504,
-      "status": "not_implemented"
+      "status": "implemented_partial",
+      "lua_api": "VMobjectFromSVGPath",
+      "evidence": [
+        "tests/svg.lua",
+        "tools/visual_svg.py",
+        "tools/verify_svg_video.py"
+      ],
+      "limitations": "See COMPATIBILITY.md: tested SVG path/shape/style/local-reference subset; rounded rectangles, full CSS, additional paints/units, caching and broader constructor options remain pending."
     },
     {
       "id": "manim.mobject.svg.svg_mobject.VMobjectFromSVGPath.__init__",

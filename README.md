@@ -12,15 +12,16 @@ reference tools**, never part of scene execution or rendering.
 ## Build
 
 Required: Lua 5.4 and development headers, a C11 compiler, make, pkg-config,
-Cairo, Pango development libraries, and FFmpeg. Check existing installations
+Cairo, Pango and libxml2 development libraries, and FFmpeg. Check existing installations
 before installing anything. On Arch the relevant package names are `lua54`,
-`cairo`, `pango`, `ffmpeg`, `gcc`, `make` and `pkgconf`.
+`cairo`, `pango`, `libxml2`, `ffmpeg`, `gcc`, `make` and `pkgconf`.
 
 ```sh
 make
 make test
 make demo
 make three-d-demo
+make svg-demo
 ```
 
 The default module links specifically to Lua 5.4, even when the system `lua`
@@ -31,7 +32,8 @@ another ABI; other ABIs have not yet been validated.
 
 Available native subsystems include cubic geometry and hierarchy transforms,
 animation/composition, numerical axes and graphs, Pango-shaped Unicode text,
-moving cameras, 3D projection and lighting, Cube, Sphere and parametric Surface.
+moving cameras, 3D projection and lighting, Cube, Sphere, parametric Surface,
+and native SVG paths/import.
 Availability and compatibility are tracked separately for each upstream API.
 
 ```lua
@@ -65,6 +67,11 @@ Constructor options use Lua tables; operations use colon calls. Vector
 arithmetic uses `l.vec(x,y,z)` and constants such as `l.RIGHT`. Dimension and
 sequence indices are **1-based**, including `stretch(factor, dimension)`.
 Angles are radians. Mobject point arrays contain four control points per cubic.
+
+SVG files use `l.SVGMobject("drawing.svg", {height=2})`; raw path data uses
+`l.VMobjectFromSVGPath("M0 0 C1 2 3 2 4 0")`. SVG default centering and height
+follow Manim. Set `height=false` for Lua’s equivalent of Python `height=None`.
+Supported elements, paints and restrictions are listed in `COMPATIBILITY.md`.
 
 ## Verification
 

@@ -33,6 +33,6 @@ with tempfile.TemporaryDirectory(prefix='clean-',dir=root/'.dev') as tmp:
         for key in ['LUA_PATH','LUA_CPATH']:env.pop(key,None)
         subprocess.run(['make','check'],cwd=clean,env=env,stdout=output,stderr=subprocess.STDOUT,check=True)
 report={'archive':archive.name,'sha256':digest,'clean_build':'passed','command':'make check','source_files':len(files),
-        'clean_log':log.name,'runtime':'Lua 5.4 + native Cairo/Pango + FFmpeg; no Python engine'}
+        'clean_log':log.name,'runtime':'Lua 5.4 + native Cairo/Pango/libxml2 + FFmpeg; no Python engine'}
 (release/(name+'-verification.json')).write_text(json.dumps(report,indent=2)+'\n')
 print(json.dumps(report,indent=2))

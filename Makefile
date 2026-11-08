@@ -4,14 +4,14 @@ PYTHON ?= python3
 CC ?= cc
 CFLAGS ?= -O2 -g
 WARN = -std=c11 -Wall -Wextra -Werror -Wpedantic
-PKGS = $(LUA_PKG) cairo pangocairo
+PKGS = $(LUA_PKG) cairo pangocairo libxml-2.0
 export LUA_PATH := $(CURDIR)/lua/?.lua;$(CURDIR)/lua/?/init.lua;;
 export LUA_CPATH := $(CURDIR)/build/?.so;;
 
-.PHONY: all test text-test media-test graphing-test alignment-test paths-test three-d-test three-d-demo demo reference differential check clean sanitize release
+.PHONY: all test text-test svg-test svg-demo media-test graphing-test alignment-test paths-test three-d-test three-d-demo demo reference differential check clean sanitize release
 all: build/luanim_native.so
 
-build/luanim_native.so: native/cairo_backend.c native/text.c
+build/luanim_native.so: native/cairo_backend.c native/text.c native/xml.c
 	@mkdir -p build
 	$(CC) $(CFLAGS) $(WARN) -fPIC -shared $^ -o $@ $$(pkg-config --cflags --libs $(PKGS)) -lm
 
@@ -28,6 +28,15 @@ reference:
 	.dev/venv/bin/python tools/reference_alignment.py
 	.dev/venv/bin/python tools/reference_paths.py
 	.dev/venv/bin/python tools/reference_three_d.py
+	.dev/venv/bin/python tools/reference_svg.py
+
+svg-test: all
+	$(LUA) tests/svg.lua
+	$(PYTHON) tools/visual_svg.py
+
+svg-demo: all
+	$(LUA) tools/luanim.lua examples/svg.lua --output artifacts/svg.mp4 --width 640 --height 360 --fps 24
+	$(PYTHON) tools/verify_svg_video.py
 
 three-d-test: all
 	$(LUA) tests/three_d.lua
@@ -60,7 +69,7 @@ differential: all
 	$(LUA) tests/differential.lua
 	$(PYTHON) tools/visual_compare.py
 
-check: test demo differential text-test media-test graphing-test alignment-test paths-test three-d-test three-d-demo
+check: test demo differential text-test media-test graphing-test alignment-test paths-test three-d-test three-d-demo svg-test svg-demo
 
 sanitize:
 	$(MAKE) clean
@@ -69,6 +78,7 @@ sanitize:
 	ASAN_OPTIONS=detect_leaks=0 LD_PRELOAD="$$( $(CC) -print-file-name=libasan.so )" $(LUA) tests/text.lua
 	ASAN_OPTIONS=detect_leaks=0 LD_PRELOAD="$$( $(CC) -print-file-name=libasan.so )" $(LUA) tests/alignment.lua
 	ASAN_OPTIONS=detect_leaks=0 LD_PRELOAD="$$( $(CC) -print-file-name=libasan.so )" $(LUA) tests/three_d.lua
+	ASAN_OPTIONS=detect_leaks=0 LD_PRELOAD="$$( $(CC) -print-file-name=libasan.so )" $(LUA) tests/svg.lua
 	$(MAKE) clean
 	$(MAKE) all
 

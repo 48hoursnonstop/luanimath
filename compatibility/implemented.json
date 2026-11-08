@@ -1995,5 +1995,27 @@
       "tools/verify_three_d_video.py"
     ],
     "limitations": "Cairo projection, depth ordering, two-stop native shading, cube/parametric surfaces and tracked cameras are verified. Advanced clipping, all surface/camera options, subcameras, complete 3D object families, OpenGL and remaining scene hooks are pending."
+  },
+  {
+    "id": "manim.mobject.svg.svg_mobject.SVGMobject",
+    "lua_api": "SVGMobject",
+    "status": "implemented_partial",
+    "evidence": [
+      "tests/svg.lua",
+      "tools/visual_svg.py",
+      "tools/verify_svg_video.py"
+    ],
+    "limitations": "See COMPATIBILITY.md: tested SVG path/shape/style/local-reference subset; rounded rectangles, full CSS, additional paints/units, caching and broader constructor options remain pending."
+  },
+  {
+    "id": "manim.mobject.svg.svg_mobject.VMobjectFromSVGPath",
+    "lua_api": "VMobjectFromSVGPath",
+    "status": "implemented_partial",
+    "evidence": [
+      "tests/svg.lua",
+      "tools/visual_svg.py",
+      "tools/verify_svg_video.py"
+    ],
+    "limitations": "See COMPATIBILITY.md: tested SVG path/shape/style/local-reference subset; rounded rectangles, full CSS, additional paints/units, caching and broader constructor options remain pending."
   }
 ]

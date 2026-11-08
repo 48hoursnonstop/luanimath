@@ -1,5 +1,13 @@
 # Changelog
 
+## 0.6.0-dev
+
+- Lua SVG path engine including elliptical arcs and smooth control reflection.
+- Native libxml2 decoding, SVG shapes, inherited styles, affine transforms,
+  local references and named group lookup, without Python at runtime.
+- 73 path and 24 object reference cases, 12 exact pixel comparisons, explicit
+  unsupported-feature errors, and a real 96-frame animated SVG example.
+
 ## 0.5.0-dev
 
 Resumed after the quota reset. Source-only packaging, checksum validation and

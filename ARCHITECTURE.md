@@ -61,7 +61,12 @@ the upstream font-size and geometry scaling. It uses a Cairo SVG target for
 the same font metrics as Manim and does not rasterize text into a texture.
 OpenGL must implement the same
 renderer-facing object model; it is currently blocked in the coverage inventory.
-SVG, images and math typography require their own tested subsystems.
+`svg_path.lua` converts SVG commands to the same cubic geometry used by other
+objects. `svg.lua` handles inherited styles, affine transforms, local references
+and flat shape/group identity. `native/xml.c` decodes XML via libxml2; it does
+not implement the geometry. Its document owner survives Lua errors and frees
+the document through `__gc`. DTDs, external references and unsupported drawing
+features are rejected. Images and math typography remain separate subsystems.
 `camera.lua` now owns view frames, trackers, 3D rotation/projection, fixed
 overlays, depth keys and the upstream light/normal calculations. The renderer
 updates the native Cairo view matrix each frame, projects actual geometry and

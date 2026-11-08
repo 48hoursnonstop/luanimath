@@ -91,7 +91,15 @@ static int font_list(lua_State *L) {
     for(int i=0;i<count;i++) {lua_pushstring(L,pango_font_family_get_name(families[i]));lua_seti(L,-2,i+1);}
     g_free(families);return 1;
 }
+static int parse_css_color(lua_State *L) {
+    const char *text=luaL_checkstring(L,1);PangoColor color;guint16 alpha=65535;
+    if(!pango_color_parse_with_alpha(&color,&alpha,text)) return luaL_error(L,"unsupported CSS color: %s",text);
+    lua_createtable(L,4,0);
+    const double rgba[]={color.red/65535.0,color.green/65535.0,color.blue/65535.0,alpha/65535.0};
+    for(int i=0;i<4;i++) {lua_pushnumber(L,rgba[i]);lua_seti(L,-2,i+1);}return 1;
+}
 void luanim_add_text(lua_State *L) {
     lua_pushcfunction(L,text_path);lua_setfield(L,-2,"text_path");
     lua_pushcfunction(L,font_list);lua_setfield(L,-2,"font_list");
+    lua_pushcfunction(L,parse_css_color);lua_setfield(L,-2,"parse_css_color");
 }

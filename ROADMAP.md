@@ -8,7 +8,8 @@
 3. Coordinate-system expansion: nonlinear scales, labels, specialized plots,
    Riemann rectangles and graphs. NumberLine, Axes, ParametricFunction,
    FunctionGraph, standard plots and spline smoothing now have executed tests.
-4. SVG and raster assets with real file decoding, transformations and errors.
+4. Expand the now-tested native SVG importer (rounded rectangles, CSS, caching,
+   more units) and add raster assets with real decoding and error handling.
 5. Math typography: external TeX or Typst pipeline, vector import, glyph grouping
    and matching-expression transforms. TeX tools are not currently installed.
 6. Camera/3D expansion: clipping, full camera options, ThreeDAxes, other solids,

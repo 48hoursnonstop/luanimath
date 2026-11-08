@@ -25,6 +25,7 @@ to its source-derived algorithms. Luanim's own changes are MIT-licensed.
 | `manim/utils/rate_functions.py` | `rate_functions.lua` |
 | `manim/animation/{animation,creation,fading,transform,rotation,composition}.py` | `animation.lua` |
 | `manim/mobject/value_tracker.py` | `geometry.lua`, `mobject.lua` |
+| `manim/mobject/svg/svg_mobject.py` | `svg.lua`, `svg_path.lua`, `native/xml.c` |
 | `manim/mobject/text/text_mobject.py` | `text.lua`, `native/text.c` |
 | `manim/mobject/graphing/number_line.py` | `graphing.lua` |
 | `manim/mobject/graphing/coordinate_systems.py` | `graphing.lua` |
@@ -53,6 +54,11 @@ Text uses Manim's public-font-size / 4.8 conversion to Pango points and a final
 verify its font description, per-line positioning and width behavior.
 Standalone RTL clipping is preserved as a diagnosed upstream difference in
 the test records; it is not silently accepted as original parity.
+
+SVG arc conversion also derives from **svgelements 1.9.6**, the installed
+upstream dependency, especially `Arc._svg_parameterize` and `Arc.as_quad_curves`.
+Its MIT notice is retained in `LICENSE.svgelements`. Lua directly executes the
+conversion; neither svgelements nor Python is a runtime dependency.
 
 ## Reproduce the development oracle
 
