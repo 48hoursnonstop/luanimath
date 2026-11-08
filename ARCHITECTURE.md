@@ -93,3 +93,14 @@ An isolated Python environment executes upstream Manim. It produces frozen
 numeric fixtures and Cairo reference images. Tests execute the *actual public
 Lua API*, compare state and points, and decode the native output. Python is not
 invoked by `require('luanimath')`, the CLI, scene construction, or rendering.
+
+## Documentation pipeline
+
+`tools/doc_api.lua` enumerates runtime exports and common method tables,
+including generated camera methods and aliases. `docs/catalog.py`,
+`docs/parameters.py` and `docs/returns.py` provide reviewed bilingual contracts.
+`tools/docs.py check` rejects missing/stale API entries. The full build generates
+Sphinx Lua-domain references, runs actual gallery scenes, decodes their media,
+builds English/Spanish HTML with warnings as errors, and checks local links
+and anchors. Output and source/media hashes are recorded under `artifacts/`.
+Python/Sphinx remain developer dependencies rather than scene runtime tools.

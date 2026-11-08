@@ -1,5 +1,29 @@
 # Executed test results
 
+## 0.8.2-dev — bilingual documentation
+
+- Complete `make check` passed, including the new runtime documentation/API
+  drift check. Core suite: **18 groups, 333 checks**.
+- Reviewed English/Spanish descriptions and parameter/return contracts cover
+  **261 function bindings, 243 distinct functions, 18 aliases and 35 constants**
+  in the enumerated Lua surface. This is documentation coverage, not upstream
+  compatibility or overall completion.
+- Strict Sphinx/Furo builds passed for both languages: **67 HTML pages** and
+  **5,879 checked local links, assets and anchors** at the recorded build.
+- All **seven gallery scenes** executed through the actual Lua CLI: real
+  640×360 PNGs were opened, all MP4s were probed and fully decoded at 12 fps.
+  Source/image/video SHA-256 values are in the gallery verification report.
+- Chromium opened the manual for visual inspection. English and Spanish
+  searches for SVGMobject executed in-browser and returned the Lua API target.
+- ASan/UBSan passed the native-boundary regression suites; leak detection was
+  disabled and system libraries were not instrumented.
+- Actual upstream execution confirmed Uncreate(remover=False) retains one
+  degenerate curve and its scene object, while FadeOut rejects an explicit
+  remover keyword. Matching Lua regression checks passed.
+- Source archive extraction, SHA-256 manifest validation, native rebuilding,
+  full `make check` and strict bilingual documentation rebuilding all passed
+  from the clean extracted source. A separate offline HTML archive was built.
+
 ## 0.8.1-dev — project rename
 
 - `require('luanimath')`, the renamed native module and

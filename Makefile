@@ -1,6 +1,8 @@
 LUA ?= lua5.4
 LUA_PKG ?= lua5.4
 PYTHON ?= python3
+DOC_PYTHON ?= python3
+export DOC_PYTHON
 CC ?= cc
 CFLAGS ?= -O2 -g
 WARN = -std=c11 -Wall -Wextra -Werror -Wpedantic
@@ -8,7 +10,7 @@ PKGS = $(LUA_PKG) cairo pangocairo libxml-2.0
 export LUA_PATH := $(CURDIR)/lua/?.lua;$(CURDIR)/lua/?/init.lua;;
 export LUA_CPATH := $(CURDIR)/build/?.so;;
 
-.PHONY: all test text-test text-features-test markup-demo glyph-test glyph-demo svg-test svg-demo media-test graphing-test alignment-test paths-test three-d-test three-d-demo demo reference differential check clean sanitize release
+.PHONY: all test docs docs-check docs-api-check text-test text-features-test markup-demo glyph-test glyph-demo svg-test svg-demo media-test graphing-test alignment-test paths-test three-d-test three-d-demo demo reference differential check clean sanitize release
 all: build/luanimath_native.so
 
 build/luanimath_native.so: native/cairo_backend.c native/text.c native/xml.c native/system.c
@@ -17,6 +19,12 @@ build/luanimath_native.so: native/cairo_backend.c native/text.c native/xml.c nat
 
 test: all
 	$(LUA) tests/run.lua
+
+docs-api-check: all
+	$(PYTHON) tools/docs.py check
+
+docs docs-check: all
+	$(DOC_PYTHON) tools/docs.py build
 
 demo: all
 	$(LUA) tools/luanimath.lua examples/geometric.lua --output artifacts/geometric.mp4 --width 640 --height 360 --fps 24
@@ -89,7 +97,7 @@ differential: all
 	$(LUA) tests/differential.lua
 	$(PYTHON) tools/visual_compare.py
 
-check: test demo differential text-test media-test graphing-test alignment-test paths-test three-d-test three-d-demo svg-test svg-demo glyph-test glyph-demo text-features-test markup-demo
+check: test demo differential text-test media-test graphing-test alignment-test paths-test three-d-test three-d-demo svg-test svg-demo glyph-test glyph-demo text-features-test markup-demo docs-api-check
 
 sanitize:
 	$(MAKE) clean
@@ -106,7 +114,7 @@ sanitize:
 	$(MAKE) all
 
 release:
-	python tools/release.py
+	$(PYTHON) tools/release.py
 
 clean:
 	rm -rf build

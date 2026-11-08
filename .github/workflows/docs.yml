@@ -1,0 +1,78 @@
+name: Documentation
+
+on:
+  push:
+    branches: [main]
+  pull_request:
+  workflow_dispatch:
+
+permissions:
+  contents: read
+
+concurrency:
+  group: docs-${{ github.ref }}
+  cancel-in-progress: true
+
+jobs:
+  build:
+    runs-on: ubuntu-24.04
+    permissions:
+      contents: read
+      pages: read
+    steps:
+      - uses: actions/checkout@3d3c42e5aac5ba805825da76410c181273ba90b1 # v7.0.1
+      - uses: actions/setup-python@6d4fd22b20465ccc0f7354476588e8df7c9ca0e0 # v7.1.0
+        with:
+          python-version: '3.14'
+      - name: Install missing native dependencies
+        shell: bash
+        run: |
+          packages=()
+          command -v cc >/dev/null || packages+=(build-essential)
+          command -v make >/dev/null || packages+=(make)
+          command -v lua5.4 >/dev/null || packages+=(lua5.4)
+          command -v ffmpeg >/dev/null || packages+=(ffmpeg)
+          if command -v pkg-config >/dev/null; then
+            pkg-config --exists lua5.4 || packages+=(liblua5.4-dev)
+            pkg-config --exists cairo || packages+=(libcairo2-dev)
+            pkg-config --exists pangocairo || packages+=(libpango1.0-dev)
+            pkg-config --exists libxml-2.0 || packages+=(libxml2-dev)
+          else
+            packages+=(pkg-config liblua5.4-dev libcairo2-dev libpango1.0-dev libxml2-dev)
+          fi
+          if command -v fc-match >/dev/null; then
+            [[ $(fc-match -f '%{family}' 'Liberation Sans') == 'Liberation Sans' ]] || packages+=(fonts-liberation)
+            [[ $(fc-match -f '%{family}' 'Noto Sans') == 'Noto Sans' ]] || packages+=(fonts-noto-core)
+          else
+            packages+=(fontconfig fonts-liberation fonts-noto-core)
+          fi
+          if ((${#packages[@]})); then
+            sudo apt-get update
+            sudo apt-get install -y --no-install-recommends "${packages[@]}"
+          fi
+      - name: Install documentation dependencies
+        run: python -m pip install -r docs/requirements.txt
+      - name: Build native library and both manuals
+        run: make all docs-check DOC_PYTHON=python
+      - name: Configure Pages
+        if: github.event_name != 'pull_request'
+        uses: actions/configure-pages@45bfe0192ca1faeb007ade9deae92b16b8254a0d # v6.0.0
+      - name: Upload HTML artifact
+        uses: actions/upload-pages-artifact@fc324d3547104276b827a68afc52ff2a11cc49c9 # v5.0.0
+        with:
+          path: artifacts/docs
+
+  deploy:
+    if: github.event_name != 'pull_request'
+    needs: build
+    runs-on: ubuntu-24.04
+    permissions:
+      pages: write
+      id-token: write
+    environment:
+      name: github-pages
+      url: ${{ steps.deployment.outputs.page_url }}
+    steps:
+      - name: Deploy manuals
+        id: deployment
+        uses: actions/deploy-pages@368f82528645a54fb793d4d04e342629a3f51346 # v5.0.1

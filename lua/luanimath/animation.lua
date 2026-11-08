@@ -12,7 +12,8 @@ local function new(kind,mobject,opts)
         run_time=opts.run_time or 1,rate_func=opts.rate_func or R.smooth,
         lag_ratio=opts.lag_ratio or (kind=='Create' and 1 or 0)},Animation)
     self.reverse_rate_function=not not opts.reverse_rate_function
-    self.remover=opts.remover or kind=='FadeOut' or kind=='Uncreate'
+    self.remover=opts.remover
+    if self.remover==nil then self.remover=kind=='FadeOut' or kind=='Uncreate' end
     self.path_func=opts.path_func or (opts.path_arc_centers and Paths.path_along_circles(opts.path_arc or 0,opts.path_arc_centers,opts.path_arc_axis))
         or Paths.path_along_arc(opts.path_arc or 0,opts.path_arc_axis)
     assert(type(self.path_func)=='function','path_func must be callable')
@@ -119,6 +120,7 @@ end
 for _,kind in ipairs({'Animation','Create','FadeIn','FadeOut'}) do
     A[kind]=function(m,opts)
         if kind=='Create' then assert(m and m.is_vector,'Create requires VMobject') end
+        if kind=='FadeOut' then assert(not opts or opts.remover==nil,'FadeOut always removes its subject; remover is not a supported option') end
         return new(kind,m,opts)
     end
 end

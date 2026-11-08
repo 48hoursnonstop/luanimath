@@ -1,0 +1,41 @@
+Galería de ejemplos
+================================================================================
+
+Cada ejemplo es una escena Lua completa. La compilación del manual ejecuta el
+código, abre el PNG, inspecciona y decodifica todo el MP4 y registra huellas de
+fuente y resultados. Ambos idiomas comparten los mismos ejemplos.
+
+Geometría y grupos
+--------------------------------------------------------------------------------
+
+.. luanimath-example:: objects
+   :alt: Tres figuras geométricas de colores distribuidas en un grupo.
+   :video:
+
+Texto y marcado
+--------------------------------------------------------------------------------
+
+.. luanimath-example:: text
+   :alt: Glifos nativos con negrita, cursiva y degradado.
+   :video:
+
+Gráficas y controles
+--------------------------------------------------------------------------------
+
+.. luanimath-example:: plots
+   :alt: Un punto controlado por tracker recorre una senoide.
+   :video:
+
+Importación SVG
+--------------------------------------------------------------------------------
+
+.. luanimath-example:: svg
+   :alt: Referencias SVG y una curva cúbica construida directamente.
+   :video:
+
+Movimiento de cámara 3D
+--------------------------------------------------------------------------------
+
+.. luanimath-example:: three_d
+   :alt: Un cubo y una esfera con orientación de cámara cambiante.
+   :video:

@@ -1,5 +1,17 @@
 # Changelog
 
+## 0.8.2-dev
+
+- English and Spanish Sphinx/Furo manuals: installation, tutorials, migration,
+  API reference, configuration, compatibility, gallery and contributor guide.
+- Reference records cover the runtime-exported Lua surface, with parameters,
+  supported options/defaults, results, source links and alias cross-references.
+- Documentation/API drift checks run with the regression suite; release builds
+  verify both manuals from clean source and package offline HTML separately.
+- Seven real documentation scenes with verified PNGs and decoded MP4s.
+- Respect explicit Uncreate remover=false; reject FadeOut remover options in
+  accordance with the pinned upstream constructor. Added regression coverage.
+
 ## 0.8.1-dev
 
 - Project renamed to **luanimath**, including the Lua module tree, native ABI,

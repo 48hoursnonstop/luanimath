@@ -1,0 +1,4 @@
+sphinx==9.2.0
+furo==2025.12.19
+sphinx-copybutton==0.5.2
+Pillow==13.0.0

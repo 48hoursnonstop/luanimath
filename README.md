@@ -103,6 +103,28 @@ start, exclusive end. They are distinct from Lua’s 1-based `slice` method.
 Conflicting overlapping styles raise an error, following upstream. Object
 families also support `group:set_color_by_gradient(l.RED,l.BLUE)`.
 
+## Documentation
+
+[English manual](https://48hoursnonstop.github.io/luanimath/en/) ·
+[Manual en español](https://48hoursnonstop.github.io/luanimath/es/)
+
+The English and Spanish manuals include tutorials, a rendered gallery, API
+signatures, supported options/defaults, return contracts and compatibility
+limits. Build both languages with:
+
+```sh
+python3 -m venv --system-site-packages .dev/venv
+.dev/venv/bin/python -m pip install -r docs/requirements.txt
+make docs DOC_PYTHON=.dev/venv/bin/python
+```
+
+Open `artifacts/docs/en/index.html` or `artifacts/docs/es/index.html`. The
+build executes all seven gallery scenes, decodes the actual media and checks
+local links. `make docs-api-check` detects new exports without bilingual
+reference entries. Source releases also build the manuals from the clean
+extraction; use `make release DOC_PYTHON=.dev/venv/bin/python` with the docs
+build dependencies installed. Documentation Python is a development tool.
+
 ## Verification
 
 The image tests use Liberation Sans, Noto Sans, Noto Sans Arabic and Noto Sans

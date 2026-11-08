@@ -1,6 +1,6 @@
 # Compatibility
 
-Target: Manim Community 0.22.1. Current development version: 0.8.1-dev.
+Target: Manim Community 0.22.1. Current development version: 0.8.2-dev.
 
 The public API inventory is `compatibility/api_inventory.json`; reviewed
 declarations are in `compatibility/implemented.json`. `python3 tools/coverage.py`

@@ -22,3 +22,8 @@
 Work proceeds through real, tested development releases. Each release updates
 the coverage inventory and records remaining differences. The target remains
 the broad Manim library, not a permanent reduced 2D product.
+
+Documentation is maintained alongside every feature. Public API additions must
+include English and Spanish catalog/parameter entries, supported defaults and
+limits, plus applicable executed tutorial/gallery updates. The API drift check
+is part of `make check`; strict bilingual HTML builds are a release gate.
