@@ -1,4 +1,12 @@
-# Recovery checkpoint
+# Development state
+
+Resumed on 2026-11-07 America/Mexico_City. The user revoked the previous 50%
+quota stop and authorized continued development through the available quota.
+Fresh telemetry showed 91% remaining, superseding the previous stale record.
+
+0.5 clean extraction/rebuild/check and checksum validation have now passed.
+Next work: native SVG paths and glyph-level typography. The historical
+checkpoint below explains the previous interruption and is retained for context.
 
 Stopped on 2026-11-05 UTC / 2026-11-04 America/Mexico_City at the user's
 50% weekly-remaining limit. No background development continues.

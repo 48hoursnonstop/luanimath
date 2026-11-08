@@ -21,9 +21,9 @@
 
 Native ASan/UBSan execution passed the core, text, alignment and 3D suites;
 leak detection was disabled and system dependencies were not instrumented.
-**0.5 clean archive extraction/rebuild has NOT been run.** Work stopped at the
-user's 50% weekly-remaining limit. The latest packaged, clean-rebuilt release
-is **0.4.0-dev**. Logs for the development 0.5 checks remain under `artifacts/`.
+After resumption, **0.5 clean source archive extraction, manifest validation,
+native compilation and complete `make check` passed**, including actual 3D
+video rendering and decoding. The clean log and SHA-256 are in `releases/`.
 
 ## 0.4.0-dev — 2026-11-04 America/Mexico_City
 

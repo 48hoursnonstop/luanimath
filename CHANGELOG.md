@@ -1,10 +1,9 @@
 # Changelog
 
-## 0.5.0-dev — unreleased checkpoint
+## 0.5.0-dev
 
-Stopped at the user's 50% weekly-remaining limit. Development tests and native
-sanitizers passed; the 0.5 source release and clean extraction/rebuild have
-**not** been executed. The latest clean-verified packaged release is 0.4.0-dev.
+Resumed after the quota reset. Source-only packaging, checksum validation and
+the complete clean extraction/rebuild/test now pass, including actual 3D video.
 
 - Camera, MovingCamera and ThreeDCamera with live view frames, orientation,
   focal distance, zoom, fixed overlays, tracked movement and depth ordering.
