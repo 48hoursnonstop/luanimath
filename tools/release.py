@@ -11,7 +11,7 @@ root=Path(__file__).resolve().parents[1]
 version=(root/'VERSION').read_text().strip()
 release=root/'releases';release.mkdir(exist_ok=True)
 name='luanim-'+version
-excluded={'.git','.dev','build','artifacts','releases','__pycache__','.pytest_cache'}
+excluded={'.git','.dev','build','artifacts','releases','__pycache__','.pytest_cache','.luanim-cache'}
 files=sorted(p for p in root.rglob('*') if p.is_file() and not excluded.intersection(p.relative_to(root).parts) and p.name!='MANIFEST.sha256')
 manifest=''.join(hashlib.sha256(p.read_bytes()).hexdigest()+'  '+p.relative_to(root).as_posix()+'\n' for p in files)
 (root/'MANIFEST.sha256').write_text(manifest)

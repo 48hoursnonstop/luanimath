@@ -11,7 +11,7 @@ export LUA_CPATH := $(CURDIR)/build/?.so;;
 .PHONY: all test text-test text-features-test markup-demo glyph-test glyph-demo svg-test svg-demo media-test graphing-test alignment-test paths-test three-d-test three-d-demo demo reference differential check clean sanitize release
 all: build/luanim_native.so
 
-build/luanim_native.so: native/cairo_backend.c native/text.c native/xml.c
+build/luanim_native.so: native/cairo_backend.c native/text.c native/xml.c native/system.c
 	@mkdir -p build
 	$(CC) $(CFLAGS) $(WARN) -fPIC -shared $^ -o $@ $$(pkg-config --cflags --libs $(PKGS)) -lm
 

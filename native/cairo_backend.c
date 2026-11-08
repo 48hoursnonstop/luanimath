@@ -9,6 +9,7 @@
 typedef struct { cairo_surface_t *surface; cairo_t *cr; } Surface;
 void luanim_add_text(lua_State *L);
 void luanim_add_xml(lua_State *L);
+void luanim_add_system(lua_State *L);
 
 static double finite_number(lua_State *L, int i) {
     double n=luaL_checknumber(L,i);
@@ -131,5 +132,5 @@ int luaopen_luanim_native(lua_State *L) {
     const luaL_Reg methods[]={{"clear",clear_surface},{"draw",draw_path},{"set_frame",set_frame},{"write_png",write_png},{"close",close_surface},{NULL,NULL}};
     luaL_setfuncs(L,methods,0);lua_setfield(L,-2,"__index");lua_pop(L,1);
     const luaL_Reg functions[]={{"surface",new_surface},{NULL,NULL}};
-    luaL_newlib(L,functions);luanim_add_text(L);luanim_add_xml(L);lua_pushstring(L,cairo_version_string());lua_setfield(L,-2,"cairo_version");return 1;
+    luaL_newlib(L,functions);luanim_add_text(L);luanim_add_xml(L);luanim_add_system(L);lua_pushstring(L,cairo_version_string());lua_setfield(L,-2,"cairo_version");return 1;
 }

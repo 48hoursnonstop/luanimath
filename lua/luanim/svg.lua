@@ -71,9 +71,11 @@ end
 function S.VMobjectFromSVGPath(data,opts)
     local m=G.VMobject(opts);m.kind='VMobjectFromSVGPath';return m:set_points(Path.parse(data))
 end
-function S._from_data(data,opts,filename)
+S._transform=transform
+S._multiply=multiply
+function S._from_tree(root,opts,filename)
     opts=opts or {}
-    local root=N.parse_xml(data);assert(root.name=='svg','document root must be svg')
+    assert(root.name=='svg','document root must be svg')
     local ids={}
     local function index(node) if node.attributes.id then ids[node.attributes.id]=node end;for _,c in ipairs(node.children) do index(c) end end
     index(root)
@@ -130,6 +132,7 @@ function S._from_data(data,opts,filename)
         local stroke_scale=style['vector-effect']=='non-scaling-stroke' and 1 or math.sqrt(math.abs(m[1]*m[4]-m[2]*m[3]))
         shape:set_stroke(stroke,stroke and number(style['stroke-width'],0)*stroke_scale or 0,stroke and alpha(style['stroke-opacity'],stroke[4]) or nil)
         shape:apply_matrix({{m[1],m[3]},{m[2],m[4]}}):shift(V(m[5],m[6]))
+        if opts._on_shape then opts._on_shape(shape,m) end
         object:add(shape);for _,group in ipairs(active) do group:add(shape) end
     end
     -- Upstream wraps root children in style groups; root viewport/transform is discarded.
@@ -146,6 +149,7 @@ function S._from_data(data,opts,filename)
     if opts.width and object:get_width()>0 then object:scale(opts.width/object:get_width()) end
     return object
 end
+function S._from_data(data,opts,filename) return S._from_tree(N.parse_xml(data),opts,filename) end
 function S.SVGMobject(filename,opts)
     assert(type(filename)=='string','SVGMobject requires a filename')
     local handle,err=io.open(filename,'rb');assert(handle,err)
