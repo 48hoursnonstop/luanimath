@@ -1,6 +1,6 @@
 # Compatibility
 
-Target: Manim Community 0.22.1. Current development version: 0.7.0-dev.
+Target: Manim Community 0.22.1. Current development version: 0.8.0-dev.
 
 The public API inventory is `compatibility/api_inventory.json`; reviewed
 declarations are in `compatibility/implemented.json`. `python3 tools/coverage.py`
@@ -93,7 +93,8 @@ plotting methods remain pending and are explicitly rejected where applicable.
   curve counts and multiple subpaths using upstream duplication/fade and null
   path rules. Non-vector point clouds and all malformed/degenerate cases are
   not yet covered. Curved arc/circular paths and custom path functions work.
-- One RGBA fill and stroke per object. Gradient/sheens, background strokes,
+- One RGBA fill and stroke per object. Family color gradients are real and
+  opacity-preserving; spatial gradients/sheens and background strokes,
   several style inheritance options and path-building APIs are pending.
 - Path builders support complete cubics and one pending start anchor, including
   lines, quadratic degree elevation, multiple subpaths, closing and subdivision.
@@ -112,9 +113,19 @@ plotting methods remain pending and are explicitly rejected where applicable.
   from the end, and out-of-range lookup returns nil. `slice` uses inclusive
   endpoints. Reverse Write and Unwrite have actual timing/order/cleanup tests.
   19 glyph cases, 42 animation states/images and three font resizing cases
-  passed upstream comparison. Per-range font/color/style mappings, MarkupText,
-  missing-font warnings, wrapping and advanced layout remain pending. Natural
-  width layout intentionally retains the previously documented RTL difference.
+  passed upstream comparison. Text now supports t2c/t2f/t2s/t2w/t2g, long-form
+  aliases, Unicode word selectors, source bracket-selector syntax, gradients
+  and overlap rejection. Twenty-one MarkupText cases and forty styled Text
+  cases (including twenty seeded multi-style overlap cases) match upstream
+  points/styles and images. Pango markup supplies nested font/size/color,
+  decoration, scripts, multiline and justified layout.
+  Bracket-selector strings preserve upstream’s zero-based/exclusive syntax;
+  out-of-bounds ranges and empty selectors are rejected explicitly. Manim’s
+  deprecated custom color/gradient markup tags, missing-font warnings, plain
+  text wrapping and remaining constructor options are pending. Natural-width
+  plain text layout retains the documented standalone RTL difference. Native
+  markup currently uses upstream’s fixed 500-unit paragraph width and ignored
+  positional line-spacing/tab-expansion behavior.
 
 - Camera clipping at the focal plane, complete surface/camera options,
   per-point textures, subcameras, ambient rotation helpers and the remaining

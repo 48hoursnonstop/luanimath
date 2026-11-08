@@ -1,13 +1,12 @@
 # Development state
 
-The user revoked the previous 50% quota stop and authorized continued work
-through the available usage. No background work is claimed between turns.
+The user revoked the previous 50% quota stop and authorized work through the
+available usage. No background work is claimed between turns.
 
-0.6 is clean-verified and tagged. 0.7 adds real glyph Mobjects, selection,
-font resizing and reverse Write/Unwrite; full regression and ASan/UBSan passed.
-Source archive extraction, checksum validation, native rebuilding and the
-complete regression suite passed in a clean directory.
+0.7 is clean-verified and tagged. 0.8 adds native MarkupText, text style maps,
+per-character and family gradients. Full regression and ASan/UBSan passed.
+Source archive clean extraction/rebuilding/testing remains the release gate.
 
-Next dependency: MarkupText and per-range styling, then mathematical text with
-external native typesetting plus SVG import. Continue from ROADMAP.md and the
-API inventory. No global completion percentage or production readiness claim.
+Next: native external mathematical typesetting (Typst/MathTypst), expression
+selection, then remaining geometry, assets and API families in ROADMAP.md.
+No global completion percentage or production readiness is claimed.

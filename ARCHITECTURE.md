@@ -63,6 +63,10 @@ temporary text asset or Python. Spaces can have invisible placeholder geometry
 when ligatures are disabled. `chars` shares glyph identity; copying preserves
 that identity within the copied graph. Native text validates UTF-8 and bounds
 the generated SVG stream. It does not rasterize text into a texture.
+`text_settings.lua` resolves literal/selector style maps, gradients, line breaks
+and overlaps into independent shaping runs, preserving Manim’s kerning/run
+boundaries. C validates the runs before allocating graphics state. Markup is
+parsed by Pango itself, with per-span attributes preserved in emitted SVG.
 OpenGL must implement the same
 renderer-facing object model; it is currently blocked in the coverage inventory.
 `svg_path.lua` converts SVG commands to the same cubic geometry used by other

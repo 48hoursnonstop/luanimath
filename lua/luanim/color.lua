@@ -24,4 +24,21 @@ function M.interpolate(a,b,t)
     for i=1,4 do r[i] = a[i]*(1-t)+b[i]*t end
     return r
 end
+function M.color_gradient(colors,length)
+    U.integer(length,'gradient length',0);assert(type(colors)=='table','reference colors must be a sequence')
+    if length==0 then return {} end
+    assert(#colors>0,'gradient needs at least one reference color')
+    local parsed={};for i,c in ipairs(colors) do parsed[i]=M.parse(c) end
+    local result={}
+    for i=1,length do
+        if #parsed==1 then result[i]=M.parse(parsed[1])
+        else
+            local step=length>1 and (#parsed-1)/(length-1) or 0
+            local x=i==length and #parsed-1 or (i-1)*step
+            local at=math.min(math.floor(x),#parsed-2);local t=x-at
+            local color=M.interpolate(parsed[at+1],parsed[at+2],t);color[4]=1;result[i]=color
+        end
+    end
+    return result
+end
 return M

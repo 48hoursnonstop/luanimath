@@ -212,9 +212,17 @@ function M:set_stroke(color,width,opacity,opts)
     end
     return self
 end
-function M:set_color(color)
-    self:set_fill(color);self:set_stroke(color);return self
+function M:set_color(color,opts)
+    self:set_fill(color,nil,opts);self:set_stroke(color,nil,nil,opts);return self
 end
+function M:set_color_by_gradient(...)
+    local colors={...};assert(#colors>0,'gradient needs at least one color')
+    if #colors==1 then return self:set_color(colors[1]) end
+    local family=self:family_members_with_points();local gradient=C.color_gradient(colors,#family)
+    for i,m in ipairs(family) do m:set_color(gradient[i],{family=false}) end
+    return self
+end
+M.set_submobject_colors_by_gradient=M.set_color_by_gradient
 function M:set_opacity(opacity) self:set_fill(nil,opacity);self:set_stroke(nil,nil,opacity);return self end
 function M:fade(darkness)
     U.number(darkness,'darkness');assert(darkness>=0 and darkness<=1,'darkness must be in [0,1]')

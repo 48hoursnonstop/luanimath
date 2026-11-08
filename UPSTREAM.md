@@ -26,7 +26,8 @@ to its source-derived algorithms. Luanim's own changes are MIT-licensed.
 | `manim/animation/{animation,creation,fading,transform,rotation,composition}.py` | `animation.lua` |
 | `manim/mobject/value_tracker.py` | `geometry.lua`, `mobject.lua` |
 | `manim/mobject/svg/svg_mobject.py` | `svg.lua`, `svg_path.lua`, `native/xml.c` |
-| `manim/mobject/text/text_mobject.py` | `text.lua`, `native/text.c` |
+| `manim/mobject/text/text_mobject.py` | `text.lua`, `text_settings.lua`, `native/text.c` |
+| `manim/utils/color/core.py` | `color.lua` RGB interpolation/gradient |
 | `manim/mobject/graphing/number_line.py` | `graphing.lua` |
 | `manim/mobject/graphing/coordinate_systems.py` | `graphing.lua` |
 | `manim/mobject/graphing/functions.py` | `graphing.lua` |

@@ -8492,7 +8492,14 @@
       "kind": "method",
       "source": "manim/mobject/mobject.py",
       "line": 2183,
-      "status": "not_implemented"
+      "status": "implemented_partial",
+      "lua_api": "Mobject:set_color_by_gradient",
+      "evidence": [
+        "tests/markup.lua",
+        "tests/text_styles.lua",
+        "tools/visual_text_features.py"
+      ],
+      "limitations": "Actual Pango markup and RGB/family gradients; documented tested domain only. Custom deprecated markup tags, broader color representations and remaining constructor/style options are pending."
     },
     {
       "id": "manim.mobject.mobject.Mobject.set_colors_by_radial_gradient",
@@ -8506,7 +8513,14 @@
       "kind": "method",
       "source": "manim/mobject/mobject.py",
       "line": 2211,
-      "status": "not_implemented"
+      "status": "implemented_partial",
+      "lua_api": "Mobject:set_submobject_colors_by_gradient",
+      "evidence": [
+        "tests/markup.lua",
+        "tests/text_styles.lua",
+        "tools/visual_text_features.py"
+      ],
+      "limitations": "Actual Pango markup and RGB/family gradients; documented tested domain only. Custom deprecated markup tags, broader color representations and remaining constructor/style options are pending."
     },
     {
       "id": "manim.mobject.mobject.Mobject.set_submobject_colors_by_radial_gradient",
@@ -15252,9 +15266,11 @@
         "tests/reference_text_cases.json",
         "tools/visual_text.py",
         "tests/glyphs.lua",
-        "tools/visual_glyphs.py"
+        "tools/visual_glyphs.py",
+        "tests/text_styles.lua",
+        "tools/visual_text_features.py"
       ],
-      "limitations": "Native per-glyph geometry, timing, selection and resize have executed upstream comparisons. Text range styling, wrapping and every constructor/animation option remain pending. Standalone RTL natural-width layout intentionally differs as recorded in COMPATIBILITY.md."
+      "limitations": "Actual glyphs, styling maps, gradients, resizing, selection and animation are source-verified in documented cases. Natural-width RTL/layout differences, font warnings, selector bounds and remaining constructor options are recorded in COMPATIBILITY.md."
     },
     {
       "id": "manim.mobject.text.text_mobject.Text.font_list",
@@ -15302,7 +15318,14 @@
       "kind": "class",
       "source": "manim/mobject/text/text_mobject.py",
       "line": 877,
-      "status": "not_implemented"
+      "status": "implemented_partial",
+      "lua_api": "MarkupText",
+      "evidence": [
+        "tests/markup.lua",
+        "tests/text_styles.lua",
+        "tools/visual_text_features.py"
+      ],
+      "limitations": "Actual Pango markup and RGB/family gradients; documented tested domain only. Custom deprecated markup tags, broader color representations and remaining constructor/style options are pending."
     },
     {
       "id": "manim.mobject.text.text_mobject.MarkupText.font_list",
@@ -15323,7 +15346,14 @@
       "kind": "method",
       "source": "manim/mobject/text/text_mobject.py",
       "line": 1358,
-      "status": "not_implemented"
+      "status": "implemented_partial",
+      "lua_api": "MarkupText.font_size",
+      "evidence": [
+        "tests/markup.lua",
+        "tests/text_styles.lua",
+        "tools/visual_text_features.py"
+      ],
+      "limitations": "Actual Pango markup and RGB/family gradients; documented tested domain only. Custom deprecated markup tags, broader color representations and remaining constructor/style options are pending."
     },
     {
       "id": "manim.mobject.text.text_mobject.register_font",
@@ -36211,7 +36241,14 @@
       "kind": "function",
       "source": "manim/utils/color/core.py",
       "line": 1384,
-      "status": "not_implemented"
+      "status": "implemented_partial",
+      "lua_api": "color_gradient",
+      "evidence": [
+        "tests/markup.lua",
+        "tests/text_styles.lua",
+        "tools/visual_text_features.py"
+      ],
+      "limitations": "Actual Pango markup and RGB/family gradients; documented tested domain only. Custom deprecated markup tags, broader color representations and remaining constructor/style options are pending."
     },
     {
       "id": "manim.utils.color.core.interpolate_color",

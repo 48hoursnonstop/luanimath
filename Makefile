@@ -8,7 +8,7 @@ PKGS = $(LUA_PKG) cairo pangocairo libxml-2.0
 export LUA_PATH := $(CURDIR)/lua/?.lua;$(CURDIR)/lua/?/init.lua;;
 export LUA_CPATH := $(CURDIR)/build/?.so;;
 
-.PHONY: all test text-test glyph-test glyph-demo svg-test svg-demo media-test graphing-test alignment-test paths-test three-d-test three-d-demo demo reference differential check clean sanitize release
+.PHONY: all test text-test text-features-test markup-demo glyph-test glyph-demo svg-test svg-demo media-test graphing-test alignment-test paths-test three-d-test three-d-demo demo reference differential check clean sanitize release
 all: build/luanim_native.so
 
 build/luanim_native.so: native/cairo_backend.c native/text.c native/xml.c
@@ -30,6 +30,17 @@ reference:
 	.dev/venv/bin/python tools/reference_three_d.py
 	.dev/venv/bin/python tools/reference_svg.py
 	.dev/venv/bin/python tools/reference_glyphs.py
+	.dev/venv/bin/python tools/reference_markup.py
+	.dev/venv/bin/python tools/reference_text_styles.py
+
+text-features-test: all
+	$(LUA) tests/markup.lua
+	$(LUA) tests/text_styles.lua
+	$(PYTHON) tools/visual_text_features.py
+
+markup-demo: all
+	$(LUA) tools/luanim.lua examples/markup.lua --output artifacts/markup.mp4 --width 640 --height 360 --fps 24
+	$(PYTHON) tools/verify_markup_video.py
 
 glyph-test: all
 	$(LUA) tests/glyphs.lua
@@ -78,7 +89,7 @@ differential: all
 	$(LUA) tests/differential.lua
 	$(PYTHON) tools/visual_compare.py
 
-check: test demo differential text-test media-test graphing-test alignment-test paths-test three-d-test three-d-demo svg-test svg-demo glyph-test glyph-demo
+check: test demo differential text-test media-test graphing-test alignment-test paths-test three-d-test three-d-demo svg-test svg-demo glyph-test glyph-demo text-features-test markup-demo
 
 sanitize:
 	$(MAKE) clean
@@ -89,6 +100,8 @@ sanitize:
 	ASAN_OPTIONS=detect_leaks=0 LD_PRELOAD="$$( $(CC) -print-file-name=libasan.so )" $(LUA) tests/three_d.lua
 	ASAN_OPTIONS=detect_leaks=0 LD_PRELOAD="$$( $(CC) -print-file-name=libasan.so )" $(LUA) tests/svg.lua
 	ASAN_OPTIONS=detect_leaks=0 LD_PRELOAD="$$( $(CC) -print-file-name=libasan.so )" $(LUA) tests/glyphs.lua
+	ASAN_OPTIONS=detect_leaks=0 LD_PRELOAD="$$( $(CC) -print-file-name=libasan.so )" $(LUA) tests/markup.lua
+	ASAN_OPTIONS=detect_leaks=0 LD_PRELOAD="$$( $(CC) -print-file-name=libasan.so )" $(LUA) tests/text_styles.lua
 	$(MAKE) clean
 	$(MAKE) all
 

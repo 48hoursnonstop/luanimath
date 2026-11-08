@@ -4,25 +4,35 @@ local V=require('luanim.vector')
 local U=require('luanim.util')
 local SVG=require('luanim.svg')
 local B=require('luanim.bezier')
+local C=require('luanim.color')
+local Settings=require('luanim.text_settings')
 local T={}
 local function is_space(code)
     return (code>=9 and code<=13) or (code>=28 and code<=32) or code==0x85 or code==0xa0 or code==0x1680
         or (code>=0x2000 and code<=0x200a) or code==0x2028 or code==0x2029 or code==0x202f or code==0x205f or code==0x3000
 end
-function T.Text(text,opts)
+local function make_text(text,opts,markup)
     assert(type(text)=='string','Text requires a UTF-8 string');opts=opts or {}
     local size=U.number(opts.font_size or 48,'font_size');assert(size>0,'font_size must be positive')
     local tabs=U.integer(opts.tab_width or 4,'tab_width',0)
     local expanded=text:gsub('\t',string.rep(' ',tabs))
     local spacing=opts.line_spacing
     if spacing==nil or spacing==-1 then spacing=size*1.3 else spacing=size*(1+U.number(spacing,'line_spacing')) end
-    local data=N.text_svg(expanded,opts.font or '',size,opts.weight or 'NORMAL',opts.slant or 'NORMAL',not not opts.disable_ligatures,spacing)
+    local input=expanded
+    if markup then
+        local c=C.parse(opts.color or '#FFFFFF')
+        input=('<span foreground="#%02X%02X%02X">%s</span>'):format(math.floor(c[1]*255),math.floor(c[2]*255),math.floor(c[3]*255),text)
+        -- Upstream MarkupUtils ignores its positional line-spacing argument.
+        spacing=0
+    end
+    local settings=not markup and Settings.build(expanded,opts) or nil
+    local data=N.text_svg(input,opts.font or '',size,opts.weight or 'NORMAL',opts.slant or 'NORMAL',not not opts.disable_ligatures,spacing,markup,not not opts.justify,settings)
     local object=SVG._from_data(data,{height=opts.height or false,width=opts.width,should_center=opts.should_center})
-    object.kind='Text';object.original_text=text;object._font_size=size;object.font=opts.font or ''
+    object.kind=markup and 'MarkupText' or 'Text';object.original_text=text;object._font_size=size;object.font=opts.font or ''
     object.text=expanded:gsub(' ',''):gsub('\n','')
-    object:set_fill(opts.fill_color or opts.color or '#FFFFFF',opts.fill_opacity or 1)
+    object:set_fill(opts.fill_color,opts.fill_opacity or 1)
     object:set_stroke(opts.stroke_color,opts.stroke_width or 0,opts.stroke_opacity)
-    if opts.disable_ligatures then
+    if opts.disable_ligatures and not markup then
         local chars={};local index=1
         for _,code in utf8.codes(text) do
             if is_space(code) then
@@ -49,8 +59,11 @@ function T.Text(text,opts)
         end
     end
     if not opts.height and not opts.width then object:scale(.05) end
+    if markup and opts.gradient and #opts.gradient>0 then object:set_color_by_gradient(table.unpack(opts.gradient)) end
     object.chars=G.VGroup(table.unpack(object.submobjects));object.initial_height=object:get_height()
     return object
 end
+function T.Text(text,opts) return make_text(text,opts,false) end
+function T.MarkupText(text,opts) return make_text(text,opts,true) end
 function T.font_list() local fonts=N.font_list();table.sort(fonts);return fonts end
 return T

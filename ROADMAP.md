@@ -2,9 +2,9 @@
 
 1. Broaden object/transform semantics: multipath alignment, family alignment,
    style inheritance, path builders and composition/backward-time cases.
-2. Typography expansion: markup and per-range style/font maps. Individual
-   Pango glyph Mobjects, selection, font resizing, per-glyph Write/Unwrite
-   timing and ordering now have executed upstream comparisons.
+2. Typography expansion: remaining font/layout options, deprecated custom tags
+   and more shaping edge cases. Native markup, word/range style maps, gradients,
+   glyph selection and Write/Unwrite now have executed upstream comparisons.
 3. Coordinate-system expansion: nonlinear scales, labels, specialized plots,
    Riemann rectangles and graphs. NumberLine, Axes, ParametricFunction,
    FunctionGraph, standard plots and spline smoothing now have executed tests.

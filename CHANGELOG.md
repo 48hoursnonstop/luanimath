@@ -1,5 +1,16 @@
 # Changelog
 
+## 0.8.0-dev
+
+- Native MarkupText with validated Pango attributes, nested formatting,
+  colors, sizes, decorations, scripts, shaping and justified paragraphs.
+- Text word/range font, weight, slant and color maps, long-form aliases,
+  per-character gradients, Unicode selectors and overlap conflict detection.
+- Independent shaping runs preserve upstream kerning and layout boundaries.
+- RGB color gradients and per-family gradient styling preserve opacity.
+- 21 markup, 40 styled text and 19 gradient cases, with 61 exact image matches;
+  a real 108-frame combined styled-text animation with verified erasure.
+
 ## 0.7.0-dev
 
 - Real Pango glyph Mobjects imported from in-memory Cairo SVG; all previous

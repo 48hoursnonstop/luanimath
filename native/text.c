@@ -7,6 +7,32 @@
 #include <math.h>
 #include <string.h>
 
+static const char *weights[]={"NORMAL","BOLD","LIGHT",NULL};
+static const PangoWeight weight_values[]={PANGO_WEIGHT_NORMAL,PANGO_WEIGHT_BOLD,PANGO_WEIGHT_LIGHT};
+static const char *slants[]={"NORMAL","ITALIC","OBLIQUE",NULL};
+static const PangoStyle slant_values[]={PANGO_STYLE_NORMAL,PANGO_STYLE_ITALIC,PANGO_STYLE_OBLIQUE};
+static void set_font(PangoLayout *layout,const char *font,double size,int weight,int slant) {
+    PangoFontDescription *desc=pango_font_description_new();
+    if(strlen(font)) pango_font_description_set_family(desc,font);
+    pango_font_description_set_size(desc,(int)round(size/4.8*PANGO_SCALE));
+    pango_font_description_set_weight(desc,weight_values[weight]);
+    pango_font_description_set_style(desc,slant_values[slant]);
+    pango_layout_set_font_description(layout,desc);pango_font_description_free(desc);
+}
+static void validate_segments(lua_State *L) {
+    luaL_checktype(L,10,LUA_TTABLE);
+    for(size_t i=1;i<=lua_rawlen(L,10);i++) {
+        lua_geti(L,10,(lua_Integer)i);luaL_checktype(L,-1,LUA_TTABLE);
+        lua_getfield(L,-1,"text");luaL_checkstring(L,-1);lua_pop(L,1);
+        lua_getfield(L,-1,"font");luaL_checkstring(L,-1);lua_pop(L,1);
+        lua_getfield(L,-1,"weight");luaL_checkoption(L,-1,"NORMAL",weights);lua_pop(L,1);
+        lua_getfield(L,-1,"slant");luaL_checkoption(L,-1,"NORMAL",slants);lua_pop(L,1);
+        lua_getfield(L,-1,"line");double line=luaL_checknumber(L,-1);luaL_argcheck(L,isfinite(line)&&line>=0&&line<=1048576&&floor(line)==line,10,"invalid text line");lua_pop(L,1);
+        lua_getfield(L,-1,"color");PangoColor color;
+        luaL_argcheck(L,pango_color_parse(&color,luaL_checkstring(L,-1)),10,"invalid text run color");lua_pop(L,2);
+    }
+}
+
 static cairo_status_t collect_svg(void *closure,const unsigned char *data,unsigned int length) {
     GString *buffer=closure;
     if(buffer->len+length>16777216) return CAIRO_STATUS_WRITE_ERROR;
@@ -15,17 +41,22 @@ static cairo_status_t collect_svg(void *closure,const unsigned char *data,unsign
 static int text_svg(lua_State *L) {
     size_t size=0;const char *text=luaL_checklstring(L,1,&size);
     const char *font=luaL_checkstring(L,2);double font_size=luaL_checknumber(L,3);
-    const char *weights[]={"NORMAL","BOLD","LIGHT",NULL};
-    const PangoWeight weight_values[]={PANGO_WEIGHT_NORMAL,PANGO_WEIGHT_BOLD,PANGO_WEIGHT_LIGHT};
     int weight=luaL_checkoption(L,4,"NORMAL",weights);
-    const char *slants[]={"NORMAL","ITALIC","OBLIQUE",NULL};
-    const PangoStyle slant_values[]={PANGO_STYLE_NORMAL,PANGO_STYLE_ITALIC,PANGO_STYLE_OBLIQUE};
     int slant=luaL_checkoption(L,5,"NORMAL",slants);
     int disable_ligatures=lua_toboolean(L,6);double spacing=luaL_checknumber(L,7);
+    int markup=lua_toboolean(L,8),justify=lua_toboolean(L,9);
     luaL_argcheck(L,isfinite(font_size) && font_size>0 && font_size<=10000,3,"font_size outside (0,10000]");
     luaL_argcheck(L,isfinite(spacing) && spacing>=0,7,"line spacing must be nonnegative");
     luaL_argcheck(L,size<=1048576 && strlen(text)==size,1,"text too large or contains NUL");
     luaL_argcheck(L,g_utf8_validate(text,(gssize)size,NULL),1,"invalid UTF-8 text");
+    if(!markup) validate_segments(L);
+    PangoAttrList *attributes=NULL;char *plain=NULL;
+    if(markup) {
+        GError *error=NULL;
+        if(!pango_parse_markup(text,(int)size,0,&attributes,&plain,NULL,&error)) {
+            lua_pushfstring(L,"invalid Pango markup: %s",error->message);g_error_free(error);return lua_error(L);
+        }
+    }
     GString *buffer=g_string_new(NULL);
     /* A vector surface has no pixel allocation. Leave room for unwrapped text;
      * unlike upstream's canvas-wide RTL layout, natural-width shaping remains visible. */
@@ -36,27 +67,35 @@ static int text_svg(lua_State *L) {
     PangoLayout *layout=pango_cairo_create_layout(cr);
     PangoContext *context=pango_layout_get_context(layout);
     pango_context_set_round_glyph_positions(context,FALSE);
-    PangoFontDescription *desc=pango_font_description_new();
-    if(strlen(font)) pango_font_description_set_family(desc,font);
     /* Manim divides its public font size by 4.8 before supplying Pango points. */
-    pango_font_description_set_size(desc,(int)round(font_size/4.8*PANGO_SCALE));
-    pango_font_description_set_weight(desc,weight_values[weight]);
-    pango_font_description_set_style(desc,slant_values[slant]);
-    pango_layout_set_font_description(layout,desc);pango_font_description_free(desc);
+    set_font(layout,font,font_size,weight,slant);
     if(disable_ligatures) {
-        PangoAttrList *attributes=pango_attr_list_new();
+        if(!attributes) attributes=pango_attr_list_new();
         pango_attr_list_insert(attributes,pango_attr_font_features_new("liga=0,dlig=0,clig=0,hlig=0"));
-        pango_layout_set_attributes(layout,attributes);pango_attr_list_unref(attributes);
     }
-    const char *start=text;unsigned int line=0;
-    while(1) {
-        const char *end=strchr(start,'\n');size_t n=end ? (size_t)(end-start) : strlen(start);
-        pango_layout_set_text(layout,start,(int)n);
-        cairo_move_to(cr,30,20+line*spacing/4.8);
-        pango_cairo_update_layout(cr,layout);
-        pango_cairo_show_layout(cr,layout);
-        if(!end) break;
-        start=end+1;line++;
+    if(attributes) {pango_layout_set_attributes(layout,attributes);pango_attr_list_unref(attributes);}
+    if(markup) {
+        pango_layout_set_width(layout,500*PANGO_SCALE);pango_layout_set_justify(layout,justify);
+        pango_layout_set_text(layout,plain,-1);g_free(plain);
+        cairo_move_to(cr,30,20);pango_cairo_update_layout(cr,layout);pango_cairo_show_layout(cr,layout);
+    } else {
+        double offset=0;lua_Integer previous_line=0;
+        for(size_t i=1;i<=lua_rawlen(L,10);i++) {
+            lua_geti(L,10,(lua_Integer)i);int run=lua_gettop(L);
+            lua_getfield(L,run,"font");const char *family=lua_tostring(L,-1);
+            lua_getfield(L,run,"weight");int w=luaL_checkoption(L,-1,"NORMAL",weights);
+            lua_getfield(L,run,"slant");int s=luaL_checkoption(L,-1,"NORMAL",slants);
+            set_font(layout,family,font_size,w,s);lua_pop(L,3);
+            lua_getfield(L,run,"line");lua_Integer line=lua_tointeger(L,-1);lua_pop(L,1);
+            if(line!=previous_line) {offset=0;previous_line=line;}
+            lua_getfield(L,run,"color");PangoColor color;pango_color_parse(&color,lua_tostring(L,-1));lua_pop(L,1);
+            cairo_set_source_rgb(cr,color.red/65535.0,color.green/65535.0,color.blue/65535.0);
+            lua_getfield(L,run,"text");size_t length=0;const char *chunk=lua_tolstring(L,-1,&length);
+            pango_layout_set_text(layout,chunk,(int)length);lua_pop(L,1);
+            cairo_move_to(cr,30+offset,20+line*spacing/4.8);pango_cairo_update_layout(cr,layout);pango_cairo_show_layout(cr,layout);
+            int width=0;pango_layout_get_size(layout,&width,NULL);offset+=pango_units_to_double(width);
+            lua_pop(L,1);
+        }
     }
     g_object_unref(layout);cairo_destroy(cr);cairo_surface_finish(surface);
     cairo_status_t status=cairo_surface_status(surface);cairo_surface_destroy(surface);

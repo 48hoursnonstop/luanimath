@@ -23,6 +23,7 @@ make demo
 make three-d-demo
 make svg-demo
 make glyph-demo
+make markup-demo
 ```
 
 The default module links specifically to Lua 5.4, even when the system `lua`
@@ -82,6 +83,22 @@ tracks geometric scaling and accepts a new positive size. Ligatures can
 combine characters; use `disable_ligatures=true` when character mapping is
 needed, subject to the font’s shaping behavior. `Write` and `Unwrite` operate
 on the individual glyphs.
+
+`l.MarkupText('<b>Lua</b> <span foreground="red">nativo</span>')` uses native
+Pango markup, including Unicode, nested styles, size changes, underlines and
+super/subscripts. `Text` supports `t2c`, `t2f`, `t2w`, `t2s`, `t2g` and their
+`text2...` aliases, plus `gradient={l.RED,l.BLUE}`. For example:
+
+```lua
+local title = l.Text('Animate Lua', {
+    font = 'Noto Sans', t2c = { Lua = l.BLUE }, t2w = { Lua = l.BOLD }
+})
+```
+
+String selectors such as `"[0:3]"` retain Manim’s selector grammar: zero-based
+start, exclusive end. They are distinct from Lua’s 1-based `slice` method.
+Conflicting overlapping styles raise an error, following upstream. Object
+families also support `group:set_color_by_gradient(l.RED,l.BLUE)`.
 
 ## Verification
 
