@@ -4,9 +4,10 @@ Project: /mnt/datos/luanimath
 Repository: https://github.com/48hoursnonstop/luanimath
 Manuals: https://48hoursnonstop.github.io/luanimath/en/ and /es/
 
-0.13.0-dev is published: source SHA
-586f9bf91b83e6d3c5bae1d9925ff7605a81e7e50576abef4177598919e8fd4d.
-Pages run 42512324266 passed; both state/transform tutorials were verified live.
+0.14.0-dev is published: source SHA
+4d93d1ba0a93fd02a82e71e6b830a4d502ec9b31f90c173fb3d0ab91022ebba5.
+Source/offline-docs release assets and all checksums are uploaded. Pages run
+42514087790 passed; English and Spanish Arrow tutorials were verified live.
 All previous immutable releases retain source/offline docs, reports and videos.
 
 0.14 adds Arrow, triangular tips and GrowArrow with real buffered 2D/3D geometry,
@@ -18,8 +19,9 @@ separate. Negative 3D fixed-tip scaling retains source positioning-axis behavior
 Full regression and fifteen sanitizer suites passed. Strict bilingual manuals
 passed 309 function bindings, 109 constants, 77 pages and 7363 links; thirteen
 real gallery scenes fully decoded. The Arrow example camera was subsequently
-adjusted for visible tip faces and rerendered/inspected. Clean source release
-and GitHub publication are the current gate; inspect releases for actual results.
+adjusted for visible tip faces and rerendered/inspected. Clean source extraction, integrity checks, compilation, all regressions and
+both strict manuals passed; the 0.14 source/archive/video release is public.
+Working tree and release verification are complete at this checkpoint.
 
 Architecture additions: private computed-property and scale/tip handlers extend
 the common Mobject model. Generic group scaling remains generic, as upstream.
