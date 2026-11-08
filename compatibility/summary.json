@@ -2,8 +2,8 @@
   "upstream_version": "0.22.1",
   "inventory_entries": 5155,
   "statuses": {
-    "not_implemented": 4308,
-    "implemented_partial": 211,
+    "not_implemented": 4298,
+    "implemented_partial": 221,
     "blocked": 541,
     "implemented_verified": 95
   },

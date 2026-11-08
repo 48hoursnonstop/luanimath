@@ -21,8 +21,13 @@ Límites de compatibilidad
 --------------------------------------------------------------------------------
 
 El importador conserva el descarte de viewBox/transform raíz, el redondeo de
-alpha y la omisión de opacidad de grupo de Manim. Faltan rectángulos redondeados,
-hojas de estilo, degradados, recorte, máscaras, filtros, unidades físicas o
+alpha y la omisión de opacidad de grupo de Manim. Faltan hojas de estilo, degradados, recorte, máscaras, filtros, unidades físicas o
 porcentuales y texto/imágenes dentro del SVG. Lo no admitido produce un error.
 Las referencias son locales; se rechazan referencias externas y declaraciones
 DTD. El SVG se limita a 16 MiB y se acotan las profundidades de árbol y referencias.
+
+Los rectángulos SVG redondeados admiten rx/ry con valores heredados entre sí y
+limitados a media anchura/altura. Los radios elípticos usan el mismo procedimiento
+de redondear y estirar de Manim. Un radio nulo produce esquinas cuadradas.
+Se rechazan radios SVG negativos, aunque la dependencia fijada los acepta como
+geometría cóncava. Consulta :doc:`rounding` para las figuras Lua.

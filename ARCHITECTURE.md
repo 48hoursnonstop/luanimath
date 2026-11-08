@@ -124,3 +124,10 @@ parameter ranges and uses the inverse map for geometric interpolation. Axes
 places origins with scaled bounds and centers using scaled midpoints. Curves
 map sample parameters before calling user Lua functions; graph plotting inherits
 the x-axis scale. All scales obey the finite-value geometry contract.
+
+`rounding.lua` supplies circular endpoint placement, tangent-normal XY centers,
+closed vertex grouping and radius-clamped polygon corners. Cubic arcs and
+remaining straight edges use the existing point model and subdivision engine.
+Subdivisions of roundoff-sized zero gaps are suppressed for deterministic
+geometry; construction has an explicit curve budget. SVG elliptical corners
+follow upstream's round-then-stretch conversion, sharing this geometry module.

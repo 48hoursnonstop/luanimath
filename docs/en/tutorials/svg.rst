@@ -8,7 +8,7 @@ geometry and fits height 2. Set ``height=false`` to preserve source size, or
 .. luanimath-example:: svg
    :alt: Two imported blue glyph-like shapes beside a yellow cubic path.
 
-The supported elements are path, line, rectangle, circle, ellipse, polygon and
+The supported elements are path, line, ordinary/rounded rectangle, circle, ellipse, polygon and
 polyline. Groups, affine transforms, local ``use`` references and named ID
 lookup work. Fill/stroke paints accept named CSS colors, hex and RGB forms.
 ``id_to_vgroup_dict`` contains identity-sharing groups for imported IDs.
@@ -21,8 +21,13 @@ Compatibility boundaries
 --------------------------------------------------------------------------------
 
 The importer follows Manim’s root viewBox/transform discard, byte alpha rounding
-and ignored group-opacity behavior. Rounded rectangles, stylesheet rules,
+and ignored group-opacity behavior. Stylesheet rules,
 gradients, clipping, masks, filters, physical/percentage units and SVG-embedded
 text/images are not implemented. Unsupported drawing features raise errors.
 Local references work; external references and DTD declarations are rejected.
 SVG input is limited to 16 MiB and bounded tree/reference depth.
+
+Rounded SVG rectangles use inherited rx/ry defaults and clamp radii to half
+the width/height. Elliptical corner radii use the same round-then-stretch path
+as upstream. A zero radius gives square corners. Negative SVG radii are
+rejected even though the pinned dependency accepts them as concave geometry.

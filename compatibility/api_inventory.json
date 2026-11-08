@@ -5250,28 +5250,56 @@
       "kind": "method",
       "source": "manim/mobject/geometry/arc.py",
       "line": 407,
-      "status": "not_implemented"
+      "status": "implemented_partial",
+      "lua_api": "Mobject:get_arc_center",
+      "evidence": [
+        "tests/rounding.lua",
+        "tests/reference_rounding.lua",
+        "tools/visual_rounding.py"
+      ],
+      "limitations": "Cubic geometry with documented XY arc-center queries and a 100000-curve construction limit. Full-turn endpoint arcs require Circle. Original source records retain one undefined-center mismatch, six clamped-rounding curve-count differences and four closed-loop endpoint-placement differences; diagnostics are separate. Automatic radius sequences must divide each vertex count. Remaining options, warnings and degenerate cases are not fully compatible."
     },
     {
       "id": "manim.mobject.geometry.arc.Arc.move_arc_center_to",
       "kind": "method",
       "source": "manim/mobject/geometry/arc.py",
       "line": 435,
-      "status": "not_implemented"
+      "status": "implemented_partial",
+      "lua_api": "Mobject:move_arc_center_to",
+      "evidence": [
+        "tests/rounding.lua",
+        "tests/reference_rounding.lua",
+        "tools/visual_rounding.py"
+      ],
+      "limitations": "Cubic geometry with documented XY arc-center queries and a 100000-curve construction limit. Full-turn endpoint arcs require Circle. Original source records retain one undefined-center mismatch, six clamped-rounding curve-count differences and four closed-loop endpoint-placement differences; diagnostics are separate. Automatic radius sequences must divide each vertex count. Remaining options, warnings and degenerate cases are not fully compatible."
     },
     {
       "id": "manim.mobject.geometry.arc.Arc.stop_angle",
       "kind": "method",
       "source": "manim/mobject/geometry/arc.py",
       "line": 439,
-      "status": "not_implemented"
+      "status": "implemented_partial",
+      "lua_api": "Mobject:stop_angle",
+      "evidence": [
+        "tests/rounding.lua",
+        "tests/reference_rounding.lua",
+        "tools/visual_rounding.py"
+      ],
+      "limitations": "Cubic geometry with documented XY arc-center queries and a 100000-curve construction limit. Full-turn endpoint arcs require Circle. Original source records retain one undefined-center mismatch, six clamped-rounding curve-count differences and four closed-loop endpoint-placement differences; diagnostics are separate. Automatic radius sequences must divide each vertex count. Remaining options, warnings and degenerate cases are not fully compatible."
     },
     {
       "id": "manim.mobject.geometry.arc.ArcBetweenPoints",
       "kind": "class",
       "source": "manim/mobject/geometry/arc.py",
       "line": 446,
-      "status": "not_implemented"
+      "status": "implemented_partial",
+      "lua_api": "ArcBetweenPoints",
+      "evidence": [
+        "tests/rounding.lua",
+        "tests/reference_rounding.lua",
+        "tools/visual_rounding.py"
+      ],
+      "limitations": "Cubic geometry with documented XY arc-center queries and a 100000-curve construction limit. Full-turn endpoint arcs require Circle. Original source records retain one undefined-center mismatch, six clamped-rounding curve-count differences and four closed-loop endpoint-placement differences; diagnostics are separate. Automatic radius sequences must divide each vertex count. Remaining options, warnings and degenerate cases are not fully compatible."
     },
     {
       "id": "manim.mobject.geometry.arc.ArcBetweenPoints.__init__",
@@ -5966,7 +5994,14 @@
       "kind": "class",
       "source": "manim/mobject/geometry/polygram.py",
       "line": 48,
-      "status": "not_implemented"
+      "status": "implemented_partial",
+      "lua_api": "Polygram",
+      "evidence": [
+        "tests/rounding.lua",
+        "tests/reference_rounding.lua",
+        "tools/visual_rounding.py"
+      ],
+      "limitations": "Cubic geometry with documented XY arc-center queries and a 100000-curve construction limit. Full-turn endpoint arcs require Circle. Original source records retain one undefined-center mismatch, six clamped-rounding curve-count differences and four closed-loop endpoint-placement differences; diagnostics are separate. Automatic radius sequences must divide each vertex count. Remaining options, warnings and degenerate cases are not fully compatible."
     },
     {
       "id": "manim.mobject.geometry.polygram.Polygram.__init__",
@@ -5980,21 +6015,42 @@
       "kind": "method",
       "source": "manim/mobject/geometry/polygram.py",
       "line": 102,
-      "status": "not_implemented"
+      "status": "implemented_partial",
+      "lua_api": "Mobject:get_vertices",
+      "evidence": [
+        "tests/rounding.lua",
+        "tests/reference_rounding.lua",
+        "tools/visual_rounding.py"
+      ],
+      "limitations": "Cubic geometry with documented XY arc-center queries and a 100000-curve construction limit. Full-turn endpoint arcs require Circle. Original source records retain one undefined-center mismatch, six clamped-rounding curve-count differences and four closed-loop endpoint-placement differences; diagnostics are separate. Automatic radius sequences must divide each vertex count. Remaining options, warnings and degenerate cases are not fully compatible."
     },
     {
       "id": "manim.mobject.geometry.polygram.Polygram.get_vertex_groups",
       "kind": "method",
       "source": "manim/mobject/geometry/polygram.py",
       "line": 123,
-      "status": "not_implemented"
+      "status": "implemented_partial",
+      "lua_api": "Mobject:get_vertex_groups",
+      "evidence": [
+        "tests/rounding.lua",
+        "tests/reference_rounding.lua",
+        "tools/visual_rounding.py"
+      ],
+      "limitations": "Cubic geometry with documented XY arc-center queries and a 100000-curve construction limit. Full-turn endpoint arcs require Circle. Original source records retain one undefined-center mismatch, six clamped-rounding curve-count differences and four closed-loop endpoint-placement differences; diagnostics are separate. Automatic radius sequences must divide each vertex count. Remaining options, warnings and degenerate cases are not fully compatible."
     },
     {
       "id": "manim.mobject.geometry.polygram.Polygram.round_corners",
       "kind": "method",
       "source": "manim/mobject/geometry/polygram.py",
       "line": 165,
-      "status": "not_implemented"
+      "status": "implemented_partial",
+      "lua_api": "Mobject:round_corners",
+      "evidence": [
+        "tests/rounding.lua",
+        "tests/reference_rounding.lua",
+        "tools/visual_rounding.py"
+      ],
+      "limitations": "Cubic geometry with documented XY arc-center queries and a 100000-curve construction limit. Full-turn endpoint arcs require Circle. Original source records retain one undefined-center mismatch, six clamped-rounding curve-count differences and four closed-loop endpoint-placement differences; diagnostics are separate. Automatic radius sequences must divide each vertex count. Remaining options, warnings and degenerate cases are not fully compatible."
     },
     {
       "id": "manim.mobject.geometry.polygram.Polygon",
@@ -6136,7 +6192,14 @@
       "kind": "class",
       "source": "manim/mobject/geometry/polygram.py",
       "line": 725,
-      "status": "not_implemented"
+      "status": "implemented_partial",
+      "lua_api": "RoundedRectangle",
+      "evidence": [
+        "tests/rounding.lua",
+        "tests/reference_rounding.lua",
+        "tools/visual_rounding.py"
+      ],
+      "limitations": "Cubic geometry with documented XY arc-center queries and a 100000-curve construction limit. Full-turn endpoint arcs require Circle. Original source records retain one undefined-center mismatch, six clamped-rounding curve-count differences and four closed-loop endpoint-placement differences; diagnostics are separate. Automatic radius sequences must divide each vertex count. Remaining options, warnings and degenerate cases are not fully compatible."
     },
     {
       "id": "manim.mobject.geometry.polygram.RoundedRectangle.__init__",
@@ -8500,7 +8563,14 @@
       "kind": "method",
       "source": "manim/mobject/mobject.py",
       "line": 2077,
-      "status": "not_implemented"
+      "status": "implemented_partial",
+      "lua_api": "Mobject:put_start_and_end_on",
+      "evidence": [
+        "tests/rounding.lua",
+        "tests/reference_rounding.lua",
+        "tools/visual_rounding.py"
+      ],
+      "limitations": "Cubic geometry with documented XY arc-center queries and a 100000-curve construction limit. Full-turn endpoint arcs require Circle. Original source records retain one undefined-center mismatch, six clamped-rounding curve-count differences and four closed-loop endpoint-placement differences; diagnostics are separate. Automatic radius sequences must divide each vertex count. Remaining options, warnings and degenerate cases are not fully compatible."
     },
     {
       "id": "manim.mobject.mobject.Mobject.add_background_rectangle",

@@ -1,0 +1,12 @@
+local l=require('luanimath')
+
+return l.Scene(function(s)
+    local shape=l.RoundedRectangle{width=4,height=2,corner_radius=.4,color=l.BLUE,fill_opacity=.3}:shift(l.LEFT*2.5)
+    local target=l.RoundedRectangle{width=4,height=2,corner_radius=-.4,color=l.TEAL,fill_opacity=.3}:shift(l.LEFT*2.5)
+    local arc=l.ArcBetweenPoints({.5,-1},{4.5,1},{angle=2,color=l.YELLOW})
+    local dot=l.Dot(arc:get_start(),{color=l.PINK})
+    s:play(l.Create(shape),l.Create(arc),{run_time=.75})
+    s:play(l.Transform(shape,target),{run_time=1})
+    s:add(dot);s:play(l.MoveAlongPath(dot,arc),{run_time=1})
+    s:wait(.25)
+end)

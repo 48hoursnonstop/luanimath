@@ -18,9 +18,9 @@ to its source-derived algorithms. luanimath's own changes are MIT-licensed.
 | --- | --- |
 | `manim/mobject/mobject.py` | `lua/luanimath/mobject.lua`, `scene.lua` hierarchy handling |
 | `manim/mobject/types/vectorized_mobject.py` | `mobject.lua`, `bezier.lua`, `animation.lua` |
-| `manim/mobject/geometry/arc.py` | `geometry.lua` cubic arc control points |
+| `manim/mobject/geometry/arc.py` | `geometry.lua`, `rounding.lua` cubic circular paths |
 | `manim/mobject/geometry/line.py` | `geometry.lua` straight lines and buffers |
-| `manim/mobject/geometry/polygram.py` | `geometry.lua` polygons and rectangles |
+| `manim/mobject/geometry/polygram.py` | `geometry.lua`, `rounding.lua` polygons and corners |
 | `manim/utils/bezier.py` | `bezier.lua` interpolation, splitting and remapping |
 | `manim/utils/rate_functions.py` | `rate_functions.lua` |
 | `manim/animation/{animation,creation,fading,transform,rotation,composition}.py` | `animation.lua` |

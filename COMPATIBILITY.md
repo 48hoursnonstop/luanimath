@@ -1,6 +1,6 @@
 # Compatibility
 
-Target: Manim Community 0.22.1. Current development version: 0.10.0-dev.
+Target: Manim Community 0.22.1. Current development version: 0.11.0-dev.
 
 The public API inventory is `compatibility/api_inventory.json`; reviewed
 declarations are in `compatibility/implemented.json`. `python3 tools/coverage.py`
@@ -62,7 +62,7 @@ The images matched exactly in the recorded environment. SVG alpha quantization,
 non-scaling strokes, root-viewBox/transform discard and ignored group `opacity`
 follow the pinned upstream importer, including its quirks.
 
-SVG remains partial: rounded rectangles, CSS stylesheets, HSL paints, gradients,
+SVG remains partial: CSS stylesheets, HSL paints, gradients,
 patterns, clipping/masks/filters, viewport/physical units, external references,
 text/images inside SVG, file search and SVG caching are pending. Unsupported
 drawing features raise errors; this importer does not claim full SVG compliance.
@@ -209,3 +209,24 @@ available symbols; constant coverage must not be read as additional engine
 features or overall implementation progress. YELLOW now follows #F7D96F;
 PURE_YELLOW preserves #FFFF00. The previous small graph-image differences were
 traced to that palette mismatch; corrected comparisons have zero pixel error.
+
+## Circular and rounded geometry
+
+ArcBetweenPoints, Polygram, RoundedRectangle, closed vertex groups and corner
+rounding execute real cubic geometry. Circular-center queries use the first
+cubic's XY tangent normals; nonplanar/undefined centers return ORIGIN and set
+_failed_to_get_center. Signed radii, concave corners, clamped large corners,
+per-corner radius sequences, anchor redistribution and elliptical SVG rx/ry
+have actual oracle coverage. Radius-list length must divide each loop size.
+Negative SVG radii and exact full-turn endpoint arcs are rejected; use Circle
+for a full turn. Dense construction is limited to 100,000 curves.
+
+Eleven original behavioral differences are retained, asserted and diagnosed:
+one numerically spurious straight-arc center, six clamped-rounding cases where
+ceil of roundoff adds degenerate curves, and four closed-circle endpoint
+placements that amplify closure roundoff. Lua uses an undefined-center fallback,
+avoids extra subdivision of gaps <=1e-12, and shifts closed loops. Normalized
+geometry/shift diagnostics are separate from original parity. The actual eleven
+rendered circular/rounded/SVG images match the original upstream pixels.
+Numerical geometry uses 1e-9 absolute tolerance; no overall API completeness is
+claimed from these cases.

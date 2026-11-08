@@ -53,3 +53,10 @@ Logarithmic scales
 .. luanimath-example:: scales
    :alt: A moving point on a logarithmic plot with explicit formula labels.
    :video:
+
+Rounded geometry
+--------------------------------------------------------------------------------
+
+.. luanimath-example:: rounding
+   :alt: Convex corners transform into concave corners while a dot follows a circular arc.
+   :video:

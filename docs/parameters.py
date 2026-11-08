@@ -94,3 +94,6 @@ def parameter(name,key):
 
 for name in ('Scale:map','Scale:inverse'):
  SPECIAL[name]={'value':('number or number[]','Finite scalar or nested numerical sequence.','Escalar finito o secuencia numérica anidada.')}
+
+PARAMS['vertex_groups']=('vector[][]','Sequence of closed-loop vertex sequences; do not repeat the first vertex.','Secuencia de grupos de vértices cerrados; no repitas el primer vértice.')
+SPECIAL['Mobject:round_corners']={'radius':('number or number[]','Finite scalar or nonempty repeating radius sequence; default 0.5.','Escalar finito o secuencia repetida no vacía; 0.5 por defecto.')}

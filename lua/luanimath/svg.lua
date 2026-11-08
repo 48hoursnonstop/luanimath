@@ -3,6 +3,7 @@ local G=require('luanimath.geometry')
 local V=require('luanimath.vector')
 local U=require('luanimath.util')
 local Path=require('luanimath.svg_path')
+local Round=require('luanimath.rounding')
 local S={}
 local identity={1,0,0,1,0,0}
 local function multiply(a,b)
@@ -114,10 +115,14 @@ function S._from_tree(root,opts,filename)
         if name=='path' then shape=S.VMobjectFromSVGPath(a.d or '')
         elseif name=='line' then shape=G.Line(V(number(a.x1,0),number(a.y1,0)),V(number(a.x2,0),number(a.y2,0)))
         elseif name=='rect' then
-            assert(number(a.rx,0)==0 and number(a.ry,0)==0,'rounded SVG rectangles are not implemented')
             local w,h=number(a.width,0),number(a.height,0)
             if w<=0 or h<=0 then return end
-            shape=G.Rectangle{width=w,height=h}:shift(V(number(a.x,0)+w/2,number(a.y,0)+h/2))
+            local rx=number(a.rx,number(a.ry,0));local ry=number(a.ry,number(a.rx,0))
+            assert(rx>=0 and ry>=0,'SVG rounded rectangle radii must be nonnegative')
+            rx,ry=math.min(rx,w/2),math.min(ry,h/2)
+            if rx==0 or ry==0 then shape=G.Rectangle{width=w,height=h}
+            else shape=Round.RoundedRectangle{width=w,height=h*rx/ry,corner_radius=rx};shape:stretch(h/shape:get_height(),2) end
+            shape:shift(V(number(a.x,0)+w/2,number(a.y,0)+h/2))
         elseif name=='circle' or name=='ellipse' then
             local rx=name=='circle' and number(a.r,0) or number(a.rx,0)
             local ry=name=='circle' and rx or number(a.ry,0)

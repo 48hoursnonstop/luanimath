@@ -31,8 +31,8 @@ generated frame directory. Verify the extension and output directory permissions
 An SVG feature raises an error
 --------------------------------------------------------------------------------
 
-Check :doc:`tutorials/svg` for the supported subset. Gradients, clipping, rounded
-rectangles and embedded text/images are among the explicitly unsupported cases.
+Check :doc:`tutorials/svg` for the supported subset. Gradients, clipping
+and embedded text/images are among the explicitly unsupported cases.
 
 The final PNG differs from the final video frame
 --------------------------------------------------------------------------------

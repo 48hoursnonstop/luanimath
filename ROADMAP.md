@@ -9,7 +9,7 @@
    Riemann rectangles and graphs. NumberLine, Axes, ParametricFunction,
    FunctionGraph, linear/logarithmic scales, standard plots and spline smoothing
    now have executed tests.
-4. Expand the now-tested native SVG importer (rounded rectangles, CSS, caching,
+4. Expand the now-tested native SVG importer (CSS, caching,
    more units) and add raster assets with real decoding and error handling.
 5. Math typography expansion: TeX pipeline, expression-matching transforms,
    additional Typst options and asset-aware cache invalidation. Native Typst

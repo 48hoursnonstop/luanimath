@@ -32,7 +32,7 @@ Una función SVG produce un error
 --------------------------------------------------------------------------------
 
 Consulta el subconjunto de :doc:`tutorials/svg`. Entre los casos no admitidos
-están degradados, recorte, rectángulos redondeados y texto/imágenes incrustados.
+están degradados, recorte y texto/imágenes incrustados.
 
 El PNG final difiere del último fotograma del video
 --------------------------------------------------------------------------------

@@ -1,5 +1,19 @@
 # Changelog
 
+## 0.11.0-dev
+
+- Circular ArcBetweenPoints, endpoint placement, XY center queries/movement
+  and final polar angles; full turns use Circle.
+- Polygram closed loops, vertex queries, signed per-corner rounding, cutoff
+  clamping, anchor redistribution and RoundedRectangle.
+- SVG rx/ry defaults, clamping and elliptical corner conversion through the
+  native rounded geometry; negative SVG radii are rejected explicitly.
+- 16,106 numerical/boundary checks and eleven exact original image matches.
+  Eleven original center/subdivision/closed-loop differences are retained
+  and compared using separate, explicitly described diagnostics.
+- Bilingual rounded-geometry tutorial and tenth real gallery animation;
+  references cover 283 function bindings and 109 constants.
+
 ## 0.10.0-dev
 
 - LinearBase and LogBase numerical scales, scalar/nested-array map/inverse

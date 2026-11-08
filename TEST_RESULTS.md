@@ -1,5 +1,32 @@
 # Executed test results
 
+## 0.11.0-dev — circular and rounded geometry
+
+- Complete `make check` passed, including existing geometry, text, media,
+  3D, SVG, Typst, scales, palette and documentation-drift regressions.
+- **17 endpoint arcs, 51 rounded polygons, eight endpoint placements and
+  seven rounded SVG imports**, with **16,106 numerical/invalid-input checks**.
+  Measured maximum absolute error in the compared geometry/diagnostics was
+  **4.9220139324401288e-15**, below the 1e-9 absolute tolerance.
+- All **eleven original rendered images matched pixel-for-pixel**: one arc,
+  three convex/concave/clamped rounded rectangles and seven actual SVGs.
+- Eleven original behavioral mismatches are separately retained/asserted:
+  one unstable straight-arc center, six roundoff-driven degenerate-subdivision
+  counts, and four closed-circle endpoint placements. Geometry normalization
+  removes only zero-length curves; shift diagnostics execute upstream shift.
+  These diagnostic comparisons are not counted as original behavioral parity.
+- Twelve ASan/UBSan native-boundary suites passed, including rounded paths;
+  leak detection was disabled and system libraries were not instrumented.
+- Invalid radii, full-turn endpoint arcs, incompatible radius lists, NaN,
+  invalid component counts and excessive subdivision budgets were executed.
+- Strict English/Spanish manuals passed with **283 function bindings, 265
+  distinct functions, 18 aliases, 109 constants, 73 HTML pages and 6,729 local
+  links/assets/anchors**. All ten actual gallery videos fully decoded.
+- The new rounded-geometry example contains 36 frames at 640×360 and 12 fps;
+  its real final PNG was opened and inspected.
+- Sanitizer and clean source release results are recorded in the generated
+  logs/verification report; no unexecuted result is inferred.
+
 ## 0.10.0-dev — scales and full palette
 
 - Complete `make check` passed after the final palette corrections, including

@@ -15,6 +15,7 @@ Community 0.22.1; the project is an early development port. Consult
    installation
    tutorials/quickstart
    tutorials/building_blocks
+   tutorials/rounding
    tutorials/animation
    tutorials/text
    tutorials/math

@@ -53,3 +53,10 @@ Escalas logarítmicas
 .. luanimath-example:: scales
    :alt: Un punto animado sobre una gráfica logarítmica con etiquetas matemáticas explícitas.
    :video:
+
+Geometría redondeada
+--------------------------------------------------------------------------------
+
+.. luanimath-example:: rounding
+   :alt: Esquinas convexas pasan a cóncavas y un punto recorre un arco circular.
+   :video:

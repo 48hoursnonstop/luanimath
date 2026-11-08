@@ -7,5 +7,6 @@
   "svg": 24,
   "text": 24,
   "three_d": 18,
-  "scales": 36
+  "scales": 36,
+  "rounding": 36
 }
