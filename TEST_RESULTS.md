@@ -1,5 +1,38 @@
 # Executed test results
 
+## 0.10.0-dev — scales and full palette
+
+- Complete `make check` passed after the final palette corrections, including
+  existing geometry, timelines, text, SVG, 3D, mathematical typography and
+  actual PNG/MP4/GIF/WebM decode/motion tests.
+- **20,602 numerical/invalid-input checks** across six scale configurations,
+  24 transformed number lines, 18 sampled functions (including six with
+  discontinuities) and 24 axes/plots. Negative linear factors and fractional
+  logarithmic bases are included.
+- Maximum absolute scale/reference error was **5.6843418860808015e-14**,
+  below the 1e-9 absolute tolerance.
+- Eleven ASan/UBSan native-boundary suites passed, including scales and
+  colors; leak detection was disabled and system libraries were not instrumented.
+- Three real semilog/logarithmic plot images match the unmodified upstream
+  pixel-for-pixel. The existing axes/sine image now also matches exactly.
+  Pixel investigation traced its former MAE 0.006761 to YELLOW incorrectly
+  using pure yellow. The pinned palette defines YELLOW as #F7D96F.
+- All **89 palette constants/aliases** have **801 exact hex/named/RGBA checks**
+  and one real swatch image with zero pixel error. Lua exports immutable hex
+  values; the ManimColor class interface is not claimed.
+- Real upstream execution confirmed mixed logarithmic arrays can return
+  [0, NaN, -infinity]. Lua explicitly rejects every nonpositive inverse input
+  and nonfinite result; this is a documented finite-geometry requirement.
+- Strict bilingual manuals built **273 function bindings, 255 distinct
+  functions, 18 aliases, 109 constants, 71 HTML pages and 6,437 checked links**.
+  All nine gallery scenes rendered and fully decoded; the new logarithmic
+  example contains 36 frames at 640×360, 12 fps. Its final PNG was inspected.
+- The inventory declares 217 available symbols outside the color palette
+  (211 partial, six verified), plus 89 verified color constant symbols.
+  This separation avoids interpreting constant coverage as engine progress.
+- Sanitizer and clean source rebuild results are recorded in the generated
+  release logs/verification report; no unexecuted result is inferred.
+
 ## 0.9.0-dev — native mathematical typography
 
 - Complete `make check` passed, including all existing numerical, visual and

@@ -118,3 +118,9 @@ and tracks affine baseline frames with a covariance fit. Lua copy memoization
 preserves each copied object's own tracking/selection graph.
 The Scene render configuration is scoped during construction so typography
 uses the active pixel-to-world ratio. TeX is a separate pending adapter.
+
+`scales.lua` implements numerical map/inverse objects. NumberLine keeps raw
+parameter ranges and uses the inverse map for geometric interpolation. Axes
+places origins with scaled bounds and centers using scaled midpoints. Curves
+map sample parameters before calling user Lua functions; graph plotting inherits
+the x-axis scale. All scales obey the finite-value geometry contract.

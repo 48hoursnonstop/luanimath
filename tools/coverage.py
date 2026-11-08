@@ -16,6 +16,7 @@ for entry in entries.values():
         entry.update(status='blocked',blocked_by=['OpenGL backend'])
     elif 'tex_mobject.' in entry['id']:
         entry.update(status='blocked',blocked_by=['TeX compiler integration'])
+assert len({d['id'] for d in declarations})==len(declarations),'duplicate compatibility declarations'
 for declaration in declarations:
     assert declaration['id'] in entries,'unknown upstream API: '+declaration['id']
     assert declaration['status'] in ['implemented_verified','implemented_partial','not_applicable']

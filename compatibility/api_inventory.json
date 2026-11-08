@@ -7578,7 +7578,14 @@
       "kind": "class",
       "source": "manim/mobject/graphing/scale.py",
       "line": 93,
-      "status": "not_implemented"
+      "status": "implemented_partial",
+      "lua_api": "LinearBase",
+      "evidence": [
+        "tests/scales.lua",
+        "tests/reference_scales.lua",
+        "tools/visual_scales.py"
+      ],
+      "limitations": "Finite scalar/nested Lua arrays, nonzero linear factors and positive log bases different from one. All inverse logarithmic inputs must be positive; invalid mixed arrays raise instead of producing upstream NaN. Automatic LogBase mathematical labels remain pending."
     },
     {
       "id": "manim.mobject.graphing.scale.LinearBase.__init__",
@@ -7592,21 +7599,42 @@
       "kind": "method",
       "source": "manim/mobject/graphing/scale.py",
       "line": 105,
-      "status": "not_implemented"
+      "status": "implemented_partial",
+      "lua_api": "Scale:map",
+      "evidence": [
+        "tests/scales.lua",
+        "tests/reference_scales.lua",
+        "tools/visual_scales.py"
+      ],
+      "limitations": "Finite scalar/nested Lua arrays, nonzero linear factors and positive log bases different from one. All inverse logarithmic inputs must be positive; invalid mixed arrays raise instead of producing upstream NaN. Automatic LogBase mathematical labels remain pending."
     },
     {
       "id": "manim.mobject.graphing.scale.LinearBase.inverse_function",
       "kind": "method",
       "source": "manim/mobject/graphing/scale.py",
       "line": 115,
-      "status": "not_implemented"
+      "status": "implemented_partial",
+      "lua_api": "Scale:inverse",
+      "evidence": [
+        "tests/scales.lua",
+        "tests/reference_scales.lua",
+        "tools/visual_scales.py"
+      ],
+      "limitations": "Finite scalar/nested Lua arrays, nonzero linear factors and positive log bases different from one. All inverse logarithmic inputs must be positive; invalid mixed arrays raise instead of producing upstream NaN. Automatic LogBase mathematical labels remain pending."
     },
     {
       "id": "manim.mobject.graphing.scale.LogBase",
       "kind": "class",
       "source": "manim/mobject/graphing/scale.py",
       "line": 126,
-      "status": "not_implemented"
+      "status": "implemented_partial",
+      "lua_api": "LogBase",
+      "evidence": [
+        "tests/scales.lua",
+        "tests/reference_scales.lua",
+        "tools/visual_scales.py"
+      ],
+      "limitations": "Finite scalar/nested Lua arrays, nonzero linear factors and positive log bases different from one. All inverse logarithmic inputs must be positive; invalid mixed arrays raise instead of producing upstream NaN. Automatic LogBase mathematical labels remain pending."
     },
     {
       "id": "manim.mobject.graphing.scale.LogBase.__init__",
@@ -7620,14 +7648,28 @@
       "kind": "method",
       "source": "manim/mobject/graphing/scale.py",
       "line": 149,
-      "status": "not_implemented"
+      "status": "implemented_partial",
+      "lua_api": "Scale:map",
+      "evidence": [
+        "tests/scales.lua",
+        "tests/reference_scales.lua",
+        "tools/visual_scales.py"
+      ],
+      "limitations": "Finite scalar/nested Lua arrays, nonzero linear factors and positive log bases different from one. All inverse logarithmic inputs must be positive; invalid mixed arrays raise instead of producing upstream NaN. Automatic LogBase mathematical labels remain pending."
     },
     {
       "id": "manim.mobject.graphing.scale.LogBase.inverse_function",
       "kind": "method",
       "source": "manim/mobject/graphing/scale.py",
       "line": 154,
-      "status": "not_implemented"
+      "status": "implemented_partial",
+      "lua_api": "Scale:inverse",
+      "evidence": [
+        "tests/scales.lua",
+        "tests/reference_scales.lua",
+        "tools/visual_scales.py"
+      ],
+      "limitations": "Finite scalar/nested Lua arrays, nonzero linear factors and positive log bases different from one. All inverse logarithmic inputs must be positive; invalid mixed arrays raise instead of producing upstream NaN. Automatic LogBase mathematical labels remain pending."
     },
     {
       "id": "manim.mobject.graphing.scale.LogBase.get_custom_labels",
@@ -36347,623 +36389,1157 @@
       "kind": "constant",
       "source": "manim/utils/color/manim_colors.py",
       "line": 129,
-      "status": "not_implemented"
+      "status": "implemented_verified",
+      "lua_api": "WHITE",
+      "evidence": [
+        "tests/colors.lua",
+        "tests/reference_colors.lua",
+        "tools/visual_colors.py"
+      ]
     },
     {
       "id": "manim.utils.color.manim_colors.GRAY_A",
       "kind": "constant",
       "source": "manim/utils/color/manim_colors.py",
       "line": 130,
-      "status": "not_implemented"
+      "status": "implemented_verified",
+      "lua_api": "GRAY_A",
+      "evidence": [
+        "tests/colors.lua",
+        "tests/reference_colors.lua",
+        "tools/visual_colors.py"
+      ]
     },
     {
       "id": "manim.utils.color.manim_colors.GREY_A",
       "kind": "constant",
       "source": "manim/utils/color/manim_colors.py",
       "line": 131,
-      "status": "not_implemented"
+      "status": "implemented_verified",
+      "lua_api": "GREY_A",
+      "evidence": [
+        "tests/colors.lua",
+        "tests/reference_colors.lua",
+        "tools/visual_colors.py"
+      ]
     },
     {
       "id": "manim.utils.color.manim_colors.GRAY_B",
       "kind": "constant",
       "source": "manim/utils/color/manim_colors.py",
       "line": 132,
-      "status": "not_implemented"
+      "status": "implemented_verified",
+      "lua_api": "GRAY_B",
+      "evidence": [
+        "tests/colors.lua",
+        "tests/reference_colors.lua",
+        "tools/visual_colors.py"
+      ]
     },
     {
       "id": "manim.utils.color.manim_colors.GREY_B",
       "kind": "constant",
       "source": "manim/utils/color/manim_colors.py",
       "line": 133,
-      "status": "not_implemented"
+      "status": "implemented_verified",
+      "lua_api": "GREY_B",
+      "evidence": [
+        "tests/colors.lua",
+        "tests/reference_colors.lua",
+        "tools/visual_colors.py"
+      ]
     },
     {
       "id": "manim.utils.color.manim_colors.GRAY_C",
       "kind": "constant",
       "source": "manim/utils/color/manim_colors.py",
       "line": 134,
-      "status": "not_implemented"
+      "status": "implemented_verified",
+      "lua_api": "GRAY_C",
+      "evidence": [
+        "tests/colors.lua",
+        "tests/reference_colors.lua",
+        "tools/visual_colors.py"
+      ]
     },
     {
       "id": "manim.utils.color.manim_colors.GREY_C",
       "kind": "constant",
       "source": "manim/utils/color/manim_colors.py",
       "line": 135,
-      "status": "not_implemented"
+      "status": "implemented_verified",
+      "lua_api": "GREY_C",
+      "evidence": [
+        "tests/colors.lua",
+        "tests/reference_colors.lua",
+        "tools/visual_colors.py"
+      ]
     },
     {
       "id": "manim.utils.color.manim_colors.GRAY_D",
       "kind": "constant",
       "source": "manim/utils/color/manim_colors.py",
       "line": 136,
-      "status": "not_implemented"
+      "status": "implemented_verified",
+      "lua_api": "GRAY_D",
+      "evidence": [
+        "tests/colors.lua",
+        "tests/reference_colors.lua",
+        "tools/visual_colors.py"
+      ]
     },
     {
       "id": "manim.utils.color.manim_colors.GREY_D",
       "kind": "constant",
       "source": "manim/utils/color/manim_colors.py",
       "line": 137,
-      "status": "not_implemented"
+      "status": "implemented_verified",
+      "lua_api": "GREY_D",
+      "evidence": [
+        "tests/colors.lua",
+        "tests/reference_colors.lua",
+        "tools/visual_colors.py"
+      ]
     },
     {
       "id": "manim.utils.color.manim_colors.GRAY_E",
       "kind": "constant",
       "source": "manim/utils/color/manim_colors.py",
       "line": 138,
-      "status": "not_implemented"
+      "status": "implemented_verified",
+      "lua_api": "GRAY_E",
+      "evidence": [
+        "tests/colors.lua",
+        "tests/reference_colors.lua",
+        "tools/visual_colors.py"
+      ]
     },
     {
       "id": "manim.utils.color.manim_colors.GREY_E",
       "kind": "constant",
       "source": "manim/utils/color/manim_colors.py",
       "line": 139,
-      "status": "not_implemented"
+      "status": "implemented_verified",
+      "lua_api": "GREY_E",
+      "evidence": [
+        "tests/colors.lua",
+        "tests/reference_colors.lua",
+        "tools/visual_colors.py"
+      ]
     },
     {
       "id": "manim.utils.color.manim_colors.BLACK",
       "kind": "constant",
       "source": "manim/utils/color/manim_colors.py",
       "line": 140,
-      "status": "not_implemented"
+      "status": "implemented_verified",
+      "lua_api": "BLACK",
+      "evidence": [
+        "tests/colors.lua",
+        "tests/reference_colors.lua",
+        "tools/visual_colors.py"
+      ]
     },
     {
       "id": "manim.utils.color.manim_colors.LIGHTER_GRAY",
       "kind": "constant",
       "source": "manim/utils/color/manim_colors.py",
       "line": 141,
-      "status": "not_implemented"
+      "status": "implemented_verified",
+      "lua_api": "LIGHTER_GRAY",
+      "evidence": [
+        "tests/colors.lua",
+        "tests/reference_colors.lua",
+        "tools/visual_colors.py"
+      ]
     },
     {
       "id": "manim.utils.color.manim_colors.LIGHTER_GREY",
       "kind": "constant",
       "source": "manim/utils/color/manim_colors.py",
       "line": 142,
-      "status": "not_implemented"
+      "status": "implemented_verified",
+      "lua_api": "LIGHTER_GREY",
+      "evidence": [
+        "tests/colors.lua",
+        "tests/reference_colors.lua",
+        "tools/visual_colors.py"
+      ]
     },
     {
       "id": "manim.utils.color.manim_colors.LIGHT_GRAY",
       "kind": "constant",
       "source": "manim/utils/color/manim_colors.py",
       "line": 143,
-      "status": "not_implemented"
+      "status": "implemented_verified",
+      "lua_api": "LIGHT_GRAY",
+      "evidence": [
+        "tests/colors.lua",
+        "tests/reference_colors.lua",
+        "tools/visual_colors.py"
+      ]
     },
     {
       "id": "manim.utils.color.manim_colors.LIGHT_GREY",
       "kind": "constant",
       "source": "manim/utils/color/manim_colors.py",
       "line": 144,
-      "status": "not_implemented"
+      "status": "implemented_verified",
+      "lua_api": "LIGHT_GREY",
+      "evidence": [
+        "tests/colors.lua",
+        "tests/reference_colors.lua",
+        "tools/visual_colors.py"
+      ]
     },
     {
       "id": "manim.utils.color.manim_colors.GRAY",
       "kind": "constant",
       "source": "manim/utils/color/manim_colors.py",
       "line": 145,
-      "status": "not_implemented"
+      "status": "implemented_verified",
+      "lua_api": "GRAY",
+      "evidence": [
+        "tests/colors.lua",
+        "tests/reference_colors.lua",
+        "tools/visual_colors.py"
+      ]
     },
     {
       "id": "manim.utils.color.manim_colors.GREY",
       "kind": "constant",
       "source": "manim/utils/color/manim_colors.py",
       "line": 146,
-      "status": "not_implemented"
+      "status": "implemented_verified",
+      "lua_api": "GREY",
+      "evidence": [
+        "tests/colors.lua",
+        "tests/reference_colors.lua",
+        "tools/visual_colors.py"
+      ]
     },
     {
       "id": "manim.utils.color.manim_colors.DARK_GRAY",
       "kind": "constant",
       "source": "manim/utils/color/manim_colors.py",
       "line": 147,
-      "status": "not_implemented"
+      "status": "implemented_verified",
+      "lua_api": "DARK_GRAY",
+      "evidence": [
+        "tests/colors.lua",
+        "tests/reference_colors.lua",
+        "tools/visual_colors.py"
+      ]
     },
     {
       "id": "manim.utils.color.manim_colors.DARK_GREY",
       "kind": "constant",
       "source": "manim/utils/color/manim_colors.py",
       "line": 148,
-      "status": "not_implemented"
+      "status": "implemented_verified",
+      "lua_api": "DARK_GREY",
+      "evidence": [
+        "tests/colors.lua",
+        "tests/reference_colors.lua",
+        "tools/visual_colors.py"
+      ]
     },
     {
       "id": "manim.utils.color.manim_colors.DARKER_GRAY",
       "kind": "constant",
       "source": "manim/utils/color/manim_colors.py",
       "line": 149,
-      "status": "not_implemented"
+      "status": "implemented_verified",
+      "lua_api": "DARKER_GRAY",
+      "evidence": [
+        "tests/colors.lua",
+        "tests/reference_colors.lua",
+        "tools/visual_colors.py"
+      ]
     },
     {
       "id": "manim.utils.color.manim_colors.DARKER_GREY",
       "kind": "constant",
       "source": "manim/utils/color/manim_colors.py",
       "line": 150,
-      "status": "not_implemented"
+      "status": "implemented_verified",
+      "lua_api": "DARKER_GREY",
+      "evidence": [
+        "tests/colors.lua",
+        "tests/reference_colors.lua",
+        "tools/visual_colors.py"
+      ]
     },
     {
       "id": "manim.utils.color.manim_colors.PURE_RED",
       "kind": "constant",
       "source": "manim/utils/color/manim_colors.py",
       "line": 151,
-      "status": "not_implemented"
+      "status": "implemented_verified",
+      "lua_api": "PURE_RED",
+      "evidence": [
+        "tests/colors.lua",
+        "tests/reference_colors.lua",
+        "tools/visual_colors.py"
+      ]
     },
     {
       "id": "manim.utils.color.manim_colors.PURE_GREEN",
       "kind": "constant",
       "source": "manim/utils/color/manim_colors.py",
       "line": 152,
-      "status": "not_implemented"
+      "status": "implemented_verified",
+      "lua_api": "PURE_GREEN",
+      "evidence": [
+        "tests/colors.lua",
+        "tests/reference_colors.lua",
+        "tools/visual_colors.py"
+      ]
     },
     {
       "id": "manim.utils.color.manim_colors.PURE_BLUE",
       "kind": "constant",
       "source": "manim/utils/color/manim_colors.py",
       "line": 153,
-      "status": "not_implemented"
+      "status": "implemented_verified",
+      "lua_api": "PURE_BLUE",
+      "evidence": [
+        "tests/colors.lua",
+        "tests/reference_colors.lua",
+        "tools/visual_colors.py"
+      ]
     },
     {
       "id": "manim.utils.color.manim_colors.PURE_CYAN",
       "kind": "constant",
       "source": "manim/utils/color/manim_colors.py",
       "line": 154,
-      "status": "not_implemented"
+      "status": "implemented_verified",
+      "lua_api": "PURE_CYAN",
+      "evidence": [
+        "tests/colors.lua",
+        "tests/reference_colors.lua",
+        "tools/visual_colors.py"
+      ]
     },
     {
       "id": "manim.utils.color.manim_colors.PURE_MAGENTA",
       "kind": "constant",
       "source": "manim/utils/color/manim_colors.py",
       "line": 155,
-      "status": "not_implemented"
+      "status": "implemented_verified",
+      "lua_api": "PURE_MAGENTA",
+      "evidence": [
+        "tests/colors.lua",
+        "tests/reference_colors.lua",
+        "tools/visual_colors.py"
+      ]
     },
     {
       "id": "manim.utils.color.manim_colors.PURE_YELLOW",
       "kind": "constant",
       "source": "manim/utils/color/manim_colors.py",
       "line": 156,
-      "status": "not_implemented"
+      "status": "implemented_verified",
+      "lua_api": "PURE_YELLOW",
+      "evidence": [
+        "tests/colors.lua",
+        "tests/reference_colors.lua",
+        "tools/visual_colors.py"
+      ]
     },
     {
       "id": "manim.utils.color.manim_colors.BLUE_A",
       "kind": "constant",
       "source": "manim/utils/color/manim_colors.py",
       "line": 157,
-      "status": "not_implemented"
+      "status": "implemented_verified",
+      "lua_api": "BLUE_A",
+      "evidence": [
+        "tests/colors.lua",
+        "tests/reference_colors.lua",
+        "tools/visual_colors.py"
+      ]
     },
     {
       "id": "manim.utils.color.manim_colors.BLUE_B",
       "kind": "constant",
       "source": "manim/utils/color/manim_colors.py",
       "line": 158,
-      "status": "not_implemented"
+      "status": "implemented_verified",
+      "lua_api": "BLUE_B",
+      "evidence": [
+        "tests/colors.lua",
+        "tests/reference_colors.lua",
+        "tools/visual_colors.py"
+      ]
     },
     {
       "id": "manim.utils.color.manim_colors.BLUE_C",
       "kind": "constant",
       "source": "manim/utils/color/manim_colors.py",
       "line": 159,
-      "status": "not_implemented"
+      "status": "implemented_verified",
+      "lua_api": "BLUE_C",
+      "evidence": [
+        "tests/colors.lua",
+        "tests/reference_colors.lua",
+        "tools/visual_colors.py"
+      ]
     },
     {
       "id": "manim.utils.color.manim_colors.BLUE_D",
       "kind": "constant",
       "source": "manim/utils/color/manim_colors.py",
       "line": 160,
-      "status": "not_implemented"
+      "status": "implemented_verified",
+      "lua_api": "BLUE_D",
+      "evidence": [
+        "tests/colors.lua",
+        "tests/reference_colors.lua",
+        "tools/visual_colors.py"
+      ]
     },
     {
       "id": "manim.utils.color.manim_colors.BLUE_E",
       "kind": "constant",
       "source": "manim/utils/color/manim_colors.py",
       "line": 161,
-      "status": "not_implemented"
+      "status": "implemented_verified",
+      "lua_api": "BLUE_E",
+      "evidence": [
+        "tests/colors.lua",
+        "tests/reference_colors.lua",
+        "tools/visual_colors.py"
+      ]
     },
     {
       "id": "manim.utils.color.manim_colors.BLUE",
       "kind": "constant",
       "source": "manim/utils/color/manim_colors.py",
       "line": 162,
-      "status": "not_implemented"
+      "status": "implemented_verified",
+      "lua_api": "BLUE",
+      "evidence": [
+        "tests/colors.lua",
+        "tests/reference_colors.lua",
+        "tools/visual_colors.py"
+      ]
     },
     {
       "id": "manim.utils.color.manim_colors.DARK_BLUE",
       "kind": "constant",
       "source": "manim/utils/color/manim_colors.py",
       "line": 163,
-      "status": "not_implemented"
+      "status": "implemented_verified",
+      "lua_api": "DARK_BLUE",
+      "evidence": [
+        "tests/colors.lua",
+        "tests/reference_colors.lua",
+        "tools/visual_colors.py"
+      ]
     },
     {
       "id": "manim.utils.color.manim_colors.TEAL_A",
       "kind": "constant",
       "source": "manim/utils/color/manim_colors.py",
       "line": 164,
-      "status": "not_implemented"
+      "status": "implemented_verified",
+      "lua_api": "TEAL_A",
+      "evidence": [
+        "tests/colors.lua",
+        "tests/reference_colors.lua",
+        "tools/visual_colors.py"
+      ]
     },
     {
       "id": "manim.utils.color.manim_colors.TEAL_B",
       "kind": "constant",
       "source": "manim/utils/color/manim_colors.py",
       "line": 165,
-      "status": "not_implemented"
+      "status": "implemented_verified",
+      "lua_api": "TEAL_B",
+      "evidence": [
+        "tests/colors.lua",
+        "tests/reference_colors.lua",
+        "tools/visual_colors.py"
+      ]
     },
     {
       "id": "manim.utils.color.manim_colors.TEAL_C",
       "kind": "constant",
       "source": "manim/utils/color/manim_colors.py",
       "line": 166,
-      "status": "not_implemented"
+      "status": "implemented_verified",
+      "lua_api": "TEAL_C",
+      "evidence": [
+        "tests/colors.lua",
+        "tests/reference_colors.lua",
+        "tools/visual_colors.py"
+      ]
     },
     {
       "id": "manim.utils.color.manim_colors.TEAL_D",
       "kind": "constant",
       "source": "manim/utils/color/manim_colors.py",
       "line": 167,
-      "status": "not_implemented"
+      "status": "implemented_verified",
+      "lua_api": "TEAL_D",
+      "evidence": [
+        "tests/colors.lua",
+        "tests/reference_colors.lua",
+        "tools/visual_colors.py"
+      ]
     },
     {
       "id": "manim.utils.color.manim_colors.TEAL_E",
       "kind": "constant",
       "source": "manim/utils/color/manim_colors.py",
       "line": 168,
-      "status": "not_implemented"
+      "status": "implemented_verified",
+      "lua_api": "TEAL_E",
+      "evidence": [
+        "tests/colors.lua",
+        "tests/reference_colors.lua",
+        "tools/visual_colors.py"
+      ]
     },
     {
       "id": "manim.utils.color.manim_colors.TEAL",
       "kind": "constant",
       "source": "manim/utils/color/manim_colors.py",
       "line": 169,
-      "status": "not_implemented"
+      "status": "implemented_verified",
+      "lua_api": "TEAL",
+      "evidence": [
+        "tests/colors.lua",
+        "tests/reference_colors.lua",
+        "tools/visual_colors.py"
+      ]
     },
     {
       "id": "manim.utils.color.manim_colors.GREEN_A",
       "kind": "constant",
       "source": "manim/utils/color/manim_colors.py",
       "line": 170,
-      "status": "not_implemented"
+      "status": "implemented_verified",
+      "lua_api": "GREEN_A",
+      "evidence": [
+        "tests/colors.lua",
+        "tests/reference_colors.lua",
+        "tools/visual_colors.py"
+      ]
     },
     {
       "id": "manim.utils.color.manim_colors.GREEN_B",
       "kind": "constant",
       "source": "manim/utils/color/manim_colors.py",
       "line": 171,
-      "status": "not_implemented"
+      "status": "implemented_verified",
+      "lua_api": "GREEN_B",
+      "evidence": [
+        "tests/colors.lua",
+        "tests/reference_colors.lua",
+        "tools/visual_colors.py"
+      ]
     },
     {
       "id": "manim.utils.color.manim_colors.GREEN_C",
       "kind": "constant",
       "source": "manim/utils/color/manim_colors.py",
       "line": 172,
-      "status": "not_implemented"
+      "status": "implemented_verified",
+      "lua_api": "GREEN_C",
+      "evidence": [
+        "tests/colors.lua",
+        "tests/reference_colors.lua",
+        "tools/visual_colors.py"
+      ]
     },
     {
       "id": "manim.utils.color.manim_colors.GREEN_D",
       "kind": "constant",
       "source": "manim/utils/color/manim_colors.py",
       "line": 173,
-      "status": "not_implemented"
+      "status": "implemented_verified",
+      "lua_api": "GREEN_D",
+      "evidence": [
+        "tests/colors.lua",
+        "tests/reference_colors.lua",
+        "tools/visual_colors.py"
+      ]
     },
     {
       "id": "manim.utils.color.manim_colors.GREEN_E",
       "kind": "constant",
       "source": "manim/utils/color/manim_colors.py",
       "line": 174,
-      "status": "not_implemented"
+      "status": "implemented_verified",
+      "lua_api": "GREEN_E",
+      "evidence": [
+        "tests/colors.lua",
+        "tests/reference_colors.lua",
+        "tools/visual_colors.py"
+      ]
     },
     {
       "id": "manim.utils.color.manim_colors.GREEN",
       "kind": "constant",
       "source": "manim/utils/color/manim_colors.py",
       "line": 175,
-      "status": "not_implemented"
+      "status": "implemented_verified",
+      "lua_api": "GREEN",
+      "evidence": [
+        "tests/colors.lua",
+        "tests/reference_colors.lua",
+        "tools/visual_colors.py"
+      ]
     },
     {
       "id": "manim.utils.color.manim_colors.YELLOW_A",
       "kind": "constant",
       "source": "manim/utils/color/manim_colors.py",
       "line": 176,
-      "status": "not_implemented"
+      "status": "implemented_verified",
+      "lua_api": "YELLOW_A",
+      "evidence": [
+        "tests/colors.lua",
+        "tests/reference_colors.lua",
+        "tools/visual_colors.py"
+      ]
     },
     {
       "id": "manim.utils.color.manim_colors.YELLOW_B",
       "kind": "constant",
       "source": "manim/utils/color/manim_colors.py",
       "line": 177,
-      "status": "not_implemented"
+      "status": "implemented_verified",
+      "lua_api": "YELLOW_B",
+      "evidence": [
+        "tests/colors.lua",
+        "tests/reference_colors.lua",
+        "tools/visual_colors.py"
+      ]
     },
     {
       "id": "manim.utils.color.manim_colors.YELLOW_C",
       "kind": "constant",
       "source": "manim/utils/color/manim_colors.py",
       "line": 178,
-      "status": "not_implemented"
+      "status": "implemented_verified",
+      "lua_api": "YELLOW_C",
+      "evidence": [
+        "tests/colors.lua",
+        "tests/reference_colors.lua",
+        "tools/visual_colors.py"
+      ]
     },
     {
       "id": "manim.utils.color.manim_colors.YELLOW_D",
       "kind": "constant",
       "source": "manim/utils/color/manim_colors.py",
       "line": 179,
-      "status": "not_implemented"
+      "status": "implemented_verified",
+      "lua_api": "YELLOW_D",
+      "evidence": [
+        "tests/colors.lua",
+        "tests/reference_colors.lua",
+        "tools/visual_colors.py"
+      ]
     },
     {
       "id": "manim.utils.color.manim_colors.YELLOW_E",
       "kind": "constant",
       "source": "manim/utils/color/manim_colors.py",
       "line": 180,
-      "status": "not_implemented"
+      "status": "implemented_verified",
+      "lua_api": "YELLOW_E",
+      "evidence": [
+        "tests/colors.lua",
+        "tests/reference_colors.lua",
+        "tools/visual_colors.py"
+      ]
     },
     {
       "id": "manim.utils.color.manim_colors.YELLOW",
       "kind": "constant",
       "source": "manim/utils/color/manim_colors.py",
       "line": 181,
-      "status": "not_implemented"
+      "status": "implemented_verified",
+      "lua_api": "YELLOW",
+      "evidence": [
+        "tests/colors.lua",
+        "tests/reference_colors.lua",
+        "tools/visual_colors.py"
+      ]
     },
     {
       "id": "manim.utils.color.manim_colors.GOLD_A",
       "kind": "constant",
       "source": "manim/utils/color/manim_colors.py",
       "line": 182,
-      "status": "not_implemented"
+      "status": "implemented_verified",
+      "lua_api": "GOLD_A",
+      "evidence": [
+        "tests/colors.lua",
+        "tests/reference_colors.lua",
+        "tools/visual_colors.py"
+      ]
     },
     {
       "id": "manim.utils.color.manim_colors.GOLD_B",
       "kind": "constant",
       "source": "manim/utils/color/manim_colors.py",
       "line": 183,
-      "status": "not_implemented"
+      "status": "implemented_verified",
+      "lua_api": "GOLD_B",
+      "evidence": [
+        "tests/colors.lua",
+        "tests/reference_colors.lua",
+        "tools/visual_colors.py"
+      ]
     },
     {
       "id": "manim.utils.color.manim_colors.GOLD_C",
       "kind": "constant",
       "source": "manim/utils/color/manim_colors.py",
       "line": 184,
-      "status": "not_implemented"
+      "status": "implemented_verified",
+      "lua_api": "GOLD_C",
+      "evidence": [
+        "tests/colors.lua",
+        "tests/reference_colors.lua",
+        "tools/visual_colors.py"
+      ]
     },
     {
       "id": "manim.utils.color.manim_colors.GOLD_D",
       "kind": "constant",
       "source": "manim/utils/color/manim_colors.py",
       "line": 185,
-      "status": "not_implemented"
+      "status": "implemented_verified",
+      "lua_api": "GOLD_D",
+      "evidence": [
+        "tests/colors.lua",
+        "tests/reference_colors.lua",
+        "tools/visual_colors.py"
+      ]
     },
     {
       "id": "manim.utils.color.manim_colors.GOLD_E",
       "kind": "constant",
       "source": "manim/utils/color/manim_colors.py",
       "line": 186,
-      "status": "not_implemented"
+      "status": "implemented_verified",
+      "lua_api": "GOLD_E",
+      "evidence": [
+        "tests/colors.lua",
+        "tests/reference_colors.lua",
+        "tools/visual_colors.py"
+      ]
     },
     {
       "id": "manim.utils.color.manim_colors.GOLD",
       "kind": "constant",
       "source": "manim/utils/color/manim_colors.py",
       "line": 187,
-      "status": "not_implemented"
+      "status": "implemented_verified",
+      "lua_api": "GOLD",
+      "evidence": [
+        "tests/colors.lua",
+        "tests/reference_colors.lua",
+        "tools/visual_colors.py"
+      ]
     },
     {
       "id": "manim.utils.color.manim_colors.RED_A",
       "kind": "constant",
       "source": "manim/utils/color/manim_colors.py",
       "line": 188,
-      "status": "not_implemented"
+      "status": "implemented_verified",
+      "lua_api": "RED_A",
+      "evidence": [
+        "tests/colors.lua",
+        "tests/reference_colors.lua",
+        "tools/visual_colors.py"
+      ]
     },
     {
       "id": "manim.utils.color.manim_colors.RED_B",
       "kind": "constant",
       "source": "manim/utils/color/manim_colors.py",
       "line": 189,
-      "status": "not_implemented"
+      "status": "implemented_verified",
+      "lua_api": "RED_B",
+      "evidence": [
+        "tests/colors.lua",
+        "tests/reference_colors.lua",
+        "tools/visual_colors.py"
+      ]
     },
     {
       "id": "manim.utils.color.manim_colors.RED_C",
       "kind": "constant",
       "source": "manim/utils/color/manim_colors.py",
       "line": 190,
-      "status": "not_implemented"
+      "status": "implemented_verified",
+      "lua_api": "RED_C",
+      "evidence": [
+        "tests/colors.lua",
+        "tests/reference_colors.lua",
+        "tools/visual_colors.py"
+      ]
     },
     {
       "id": "manim.utils.color.manim_colors.RED_D",
       "kind": "constant",
       "source": "manim/utils/color/manim_colors.py",
       "line": 191,
-      "status": "not_implemented"
+      "status": "implemented_verified",
+      "lua_api": "RED_D",
+      "evidence": [
+        "tests/colors.lua",
+        "tests/reference_colors.lua",
+        "tools/visual_colors.py"
+      ]
     },
     {
       "id": "manim.utils.color.manim_colors.RED_E",
       "kind": "constant",
       "source": "manim/utils/color/manim_colors.py",
       "line": 192,
-      "status": "not_implemented"
+      "status": "implemented_verified",
+      "lua_api": "RED_E",
+      "evidence": [
+        "tests/colors.lua",
+        "tests/reference_colors.lua",
+        "tools/visual_colors.py"
+      ]
     },
     {
       "id": "manim.utils.color.manim_colors.RED",
       "kind": "constant",
       "source": "manim/utils/color/manim_colors.py",
       "line": 193,
-      "status": "not_implemented"
+      "status": "implemented_verified",
+      "lua_api": "RED",
+      "evidence": [
+        "tests/colors.lua",
+        "tests/reference_colors.lua",
+        "tools/visual_colors.py"
+      ]
     },
     {
       "id": "manim.utils.color.manim_colors.MAROON_A",
       "kind": "constant",
       "source": "manim/utils/color/manim_colors.py",
       "line": 194,
-      "status": "not_implemented"
+      "status": "implemented_verified",
+      "lua_api": "MAROON_A",
+      "evidence": [
+        "tests/colors.lua",
+        "tests/reference_colors.lua",
+        "tools/visual_colors.py"
+      ]
     },
     {
       "id": "manim.utils.color.manim_colors.MAROON_B",
       "kind": "constant",
       "source": "manim/utils/color/manim_colors.py",
       "line": 195,
-      "status": "not_implemented"
+      "status": "implemented_verified",
+      "lua_api": "MAROON_B",
+      "evidence": [
+        "tests/colors.lua",
+        "tests/reference_colors.lua",
+        "tools/visual_colors.py"
+      ]
     },
     {
       "id": "manim.utils.color.manim_colors.MAROON_C",
       "kind": "constant",
       "source": "manim/utils/color/manim_colors.py",
       "line": 196,
-      "status": "not_implemented"
+      "status": "implemented_verified",
+      "lua_api": "MAROON_C",
+      "evidence": [
+        "tests/colors.lua",
+        "tests/reference_colors.lua",
+        "tools/visual_colors.py"
+      ]
     },
     {
       "id": "manim.utils.color.manim_colors.MAROON_D",
       "kind": "constant",
       "source": "manim/utils/color/manim_colors.py",
       "line": 197,
-      "status": "not_implemented"
+      "status": "implemented_verified",
+      "lua_api": "MAROON_D",
+      "evidence": [
+        "tests/colors.lua",
+        "tests/reference_colors.lua",
+        "tools/visual_colors.py"
+      ]
     },
     {
       "id": "manim.utils.color.manim_colors.MAROON_E",
       "kind": "constant",
       "source": "manim/utils/color/manim_colors.py",
       "line": 198,
-      "status": "not_implemented"
+      "status": "implemented_verified",
+      "lua_api": "MAROON_E",
+      "evidence": [
+        "tests/colors.lua",
+        "tests/reference_colors.lua",
+        "tools/visual_colors.py"
+      ]
     },
     {
       "id": "manim.utils.color.manim_colors.MAROON",
       "kind": "constant",
       "source": "manim/utils/color/manim_colors.py",
       "line": 199,
-      "status": "not_implemented"
+      "status": "implemented_verified",
+      "lua_api": "MAROON",
+      "evidence": [
+        "tests/colors.lua",
+        "tests/reference_colors.lua",
+        "tools/visual_colors.py"
+      ]
     },
     {
       "id": "manim.utils.color.manim_colors.PURPLE_A",
       "kind": "constant",
       "source": "manim/utils/color/manim_colors.py",
       "line": 200,
-      "status": "not_implemented"
+      "status": "implemented_verified",
+      "lua_api": "PURPLE_A",
+      "evidence": [
+        "tests/colors.lua",
+        "tests/reference_colors.lua",
+        "tools/visual_colors.py"
+      ]
     },
     {
       "id": "manim.utils.color.manim_colors.PURPLE_B",
       "kind": "constant",
       "source": "manim/utils/color/manim_colors.py",
       "line": 201,
-      "status": "not_implemented"
+      "status": "implemented_verified",
+      "lua_api": "PURPLE_B",
+      "evidence": [
+        "tests/colors.lua",
+        "tests/reference_colors.lua",
+        "tools/visual_colors.py"
+      ]
     },
     {
       "id": "manim.utils.color.manim_colors.PURPLE_C",
       "kind": "constant",
       "source": "manim/utils/color/manim_colors.py",
       "line": 202,
-      "status": "not_implemented"
+      "status": "implemented_verified",
+      "lua_api": "PURPLE_C",
+      "evidence": [
+        "tests/colors.lua",
+        "tests/reference_colors.lua",
+        "tools/visual_colors.py"
+      ]
     },
     {
       "id": "manim.utils.color.manim_colors.PURPLE_D",
       "kind": "constant",
       "source": "manim/utils/color/manim_colors.py",
       "line": 203,
-      "status": "not_implemented"
+      "status": "implemented_verified",
+      "lua_api": "PURPLE_D",
+      "evidence": [
+        "tests/colors.lua",
+        "tests/reference_colors.lua",
+        "tools/visual_colors.py"
+      ]
     },
     {
       "id": "manim.utils.color.manim_colors.PURPLE_E",
       "kind": "constant",
       "source": "manim/utils/color/manim_colors.py",
       "line": 204,
-      "status": "not_implemented"
+      "status": "implemented_verified",
+      "lua_api": "PURPLE_E",
+      "evidence": [
+        "tests/colors.lua",
+        "tests/reference_colors.lua",
+        "tools/visual_colors.py"
+      ]
     },
     {
       "id": "manim.utils.color.manim_colors.PURPLE",
       "kind": "constant",
       "source": "manim/utils/color/manim_colors.py",
       "line": 205,
-      "status": "not_implemented"
+      "status": "implemented_verified",
+      "lua_api": "PURPLE",
+      "evidence": [
+        "tests/colors.lua",
+        "tests/reference_colors.lua",
+        "tools/visual_colors.py"
+      ]
     },
     {
       "id": "manim.utils.color.manim_colors.PINK",
       "kind": "constant",
       "source": "manim/utils/color/manim_colors.py",
       "line": 206,
-      "status": "not_implemented"
+      "status": "implemented_verified",
+      "lua_api": "PINK",
+      "evidence": [
+        "tests/colors.lua",
+        "tests/reference_colors.lua",
+        "tools/visual_colors.py"
+      ]
     },
     {
       "id": "manim.utils.color.manim_colors.LIGHT_PINK",
       "kind": "constant",
       "source": "manim/utils/color/manim_colors.py",
       "line": 207,
-      "status": "not_implemented"
+      "status": "implemented_verified",
+      "lua_api": "LIGHT_PINK",
+      "evidence": [
+        "tests/colors.lua",
+        "tests/reference_colors.lua",
+        "tools/visual_colors.py"
+      ]
     },
     {
       "id": "manim.utils.color.manim_colors.ORANGE",
       "kind": "constant",
       "source": "manim/utils/color/manim_colors.py",
       "line": 208,
-      "status": "not_implemented"
+      "status": "implemented_verified",
+      "lua_api": "ORANGE",
+      "evidence": [
+        "tests/colors.lua",
+        "tests/reference_colors.lua",
+        "tools/visual_colors.py"
+      ]
     },
     {
       "id": "manim.utils.color.manim_colors.LIGHT_BROWN",
       "kind": "constant",
       "source": "manim/utils/color/manim_colors.py",
       "line": 209,
-      "status": "not_implemented"
+      "status": "implemented_verified",
+      "lua_api": "LIGHT_BROWN",
+      "evidence": [
+        "tests/colors.lua",
+        "tests/reference_colors.lua",
+        "tools/visual_colors.py"
+      ]
     },
     {
       "id": "manim.utils.color.manim_colors.DARK_BROWN",
       "kind": "constant",
       "source": "manim/utils/color/manim_colors.py",
       "line": 210,
-      "status": "not_implemented"
+      "status": "implemented_verified",
+      "lua_api": "DARK_BROWN",
+      "evidence": [
+        "tests/colors.lua",
+        "tests/reference_colors.lua",
+        "tools/visual_colors.py"
+      ]
     },
     {
       "id": "manim.utils.color.manim_colors.GRAY_BROWN",
       "kind": "constant",
       "source": "manim/utils/color/manim_colors.py",
       "line": 211,
-      "status": "not_implemented"
+      "status": "implemented_verified",
+      "lua_api": "GRAY_BROWN",
+      "evidence": [
+        "tests/colors.lua",
+        "tests/reference_colors.lua",
+        "tools/visual_colors.py"
+      ]
     },
     {
       "id": "manim.utils.color.manim_colors.GREY_BROWN",
       "kind": "constant",
       "source": "manim/utils/color/manim_colors.py",
       "line": 212,
-      "status": "not_implemented"
+      "status": "implemented_verified",
+      "lua_api": "GREY_BROWN",
+      "evidence": [
+        "tests/colors.lua",
+        "tests/reference_colors.lua",
+        "tools/visual_colors.py"
+      ]
     },
     {
       "id": "manim.utils.color.manim_colors.LOGO_WHITE",
       "kind": "constant",
       "source": "manim/utils/color/manim_colors.py",
       "line": 216,
-      "status": "not_implemented"
+      "status": "implemented_verified",
+      "lua_api": "LOGO_WHITE",
+      "evidence": [
+        "tests/colors.lua",
+        "tests/reference_colors.lua",
+        "tools/visual_colors.py"
+      ]
     },
     {
       "id": "manim.utils.color.manim_colors.LOGO_GREEN",
       "kind": "constant",
       "source": "manim/utils/color/manim_colors.py",
       "line": 217,
-      "status": "not_implemented"
+      "status": "implemented_verified",
+      "lua_api": "LOGO_GREEN",
+      "evidence": [
+        "tests/colors.lua",
+        "tests/reference_colors.lua",
+        "tools/visual_colors.py"
+      ]
     },
     {
       "id": "manim.utils.color.manim_colors.LOGO_BLUE",
       "kind": "constant",
       "source": "manim/utils/color/manim_colors.py",
       "line": 218,
-      "status": "not_implemented"
+      "status": "implemented_verified",
+      "lua_api": "LOGO_BLUE",
+      "evidence": [
+        "tests/colors.lua",
+        "tests/reference_colors.lua",
+        "tools/visual_colors.py"
+      ]
     },
     {
       "id": "manim.utils.color.manim_colors.LOGO_RED",
       "kind": "constant",
       "source": "manim/utils/color/manim_colors.py",
       "line": 219,
-      "status": "not_implemented"
+      "status": "implemented_verified",
+      "lua_api": "LOGO_RED",
+      "evidence": [
+        "tests/colors.lua",
+        "tests/reference_colors.lua",
+        "tools/visual_colors.py"
+      ]
     },
     {
       "id": "manim.utils.color.manim_colors.LOGO_BLACK",
       "kind": "constant",
       "source": "manim/utils/color/manim_colors.py",
       "line": 220,
-      "status": "not_implemented"
+      "status": "implemented_verified",
+      "lua_api": "LOGO_BLACK",
+      "evidence": [
+        "tests/colors.lua",
+        "tests/reference_colors.lua",
+        "tools/visual_colors.py"
+      ]
     },
     {
       "id": "manim.utils.commands.capture",

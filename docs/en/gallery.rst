@@ -46,3 +46,10 @@ Mathematical expressions
 .. luanimath-example:: math
    :alt: Colored Pythagorean captures and a sum with a fraction rendered by Typst.
    :video:
+
+Logarithmic scales
+--------------------------------------------------------------------------------
+
+.. luanimath-example:: scales
+   :alt: A moving point on a logarithmic plot with explicit formula labels.
+   :video:

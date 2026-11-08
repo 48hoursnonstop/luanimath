@@ -47,7 +47,7 @@ eq(#svg('').submobjects,0,'empty SVG')
 eq(#svg('<rect width="0" height="10"/>').submobjects,0,'degenerate rectangle')
 local customized=svg('<rect width="10" height="5"/>',{height=1,width=3,fill_color=l.YELLOW,fill_opacity=.25,stroke_width=2,stroke_color=l.RED,stroke_opacity=.5})
 eq(customized:get_width(),3,'width option');eq(customized:get_height(),1.5,'height then width')
-eq(customized.submobjects[1].fill_color,{1,1,0,.25},'fill override')
+eq(customized.submobjects[1].fill_color,{247/255,217/255,111/255,.25},'fill override')
 eq(customized.submobjects[1].stroke_color,{252/255,98/255,85/255,.5},'stroke override')
 eq(customized.submobjects[1].stroke_width,2,'stroke width override')
 local ids=l.SVGMobject('tests/svg_assets/use.svg').id_to_vgroup_dict

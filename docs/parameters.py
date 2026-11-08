@@ -91,3 +91,6 @@ for name in ('Mobject:get_subcurve','Mobject:pointwise_become_partial','bezier.p
 
 def parameter(name,key):
     return SPECIAL.get(name,{}).get(key,PARAMS.get(key))
+
+for name in ('Scale:map','Scale:inverse'):
+ SPECIAL[name]={'value':('number or number[]','Finite scalar or nested numerical sequence.','Escalar finito o secuencia numérica anidada.')}

@@ -77,3 +77,11 @@ Los índices numéricos empiezan en 1; los nombres explícitos son cadenas.
 ``m.color`` / ``m:get_color()`` devuelve RGB opaco: prioriza relleno visible y
 después trazo; si ambos son negro totalmente transparente devuelve nil.
 Asignar ``m.color`` aplica ``set_color`` a toda su familia.
+
+Constantes de color
+--------------------------------------------------------------------------------
+
+Se exportan las 89 constantes de paleta y sus alias como cadenas hex RGB.
+Usa ``l.YELLOW`` o ``l.parse("YELLOW")``. Son cadenas Lua inmutables; la clase
+ManimColor sigue pendiente. ``YELLOW`` vale ``#F7D96F`` y ``PURE_YELLOW``,
+``#FFFF00``. Consulta :doc:`reference/constants`.

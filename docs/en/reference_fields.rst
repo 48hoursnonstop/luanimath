@@ -77,3 +77,11 @@ formula. Numeric capture indices start at 1; explicit names remain strings.
 ``m.color`` / ``m:get_color()`` returns an opaque RGB color, choosing visible
 fill before stroke; an object with both paints equal to transparent black
 returns nil. Assigning ``m.color`` applies ``set_color`` to its family.
+
+Color constants
+--------------------------------------------------------------------------------
+
+All 89 Manim palette constants and spelling aliases are exported as RGB hex
+strings. Use ``l.YELLOW`` or ``l.parse("YELLOW")``; values are immutable Lua
+strings, not instances of the pending ManimColor class. ``YELLOW`` is
+``#F7D96F`` and ``PURE_YELLOW`` is ``#FFFF00``. See :doc:`reference/constants`.

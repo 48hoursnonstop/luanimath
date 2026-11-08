@@ -28,6 +28,7 @@ methods('Mobject',l.Mobject,'mobjects')
 methods('Scene',l.Scene,'scenes')
 methods('Renderer',l.Renderer,'rendering')
 methods('Camera',getmetatable(l.ThreeDCamera()),'cameras')
+methods('Scale',getmetatable(l.LogBase()),'scales')
 methods('Animation',getmetatable(l.Write(l.Square())),'animations')
 methods('AnimationGroup',getmetatable(l.AnimationGroup({l.Create(l.Square())})),'animations')
 for _,module in ipairs({'vector','bezier','rate_functions','config'}) do

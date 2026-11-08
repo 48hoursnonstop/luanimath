@@ -28,9 +28,11 @@ to its source-derived algorithms. luanimath's own changes are MIT-licensed.
 | `manim/mobject/svg/svg_mobject.py` | `svg.lua`, `svg_path.lua`, `native/xml.c` |
 | `manim/mobject/text/text_mobject.py` | `text.lua`, `text_settings.lua`, `native/text.c` |
 | `manim/utils/color/core.py` | `color.lua` RGB interpolation/gradient |
+| `manim/utils/color/manim_colors.py` | `color_palette.lua` RGB constants/aliases |
 | `manim/mobject/graphing/number_line.py` | `graphing.lua` |
 | `manim/mobject/graphing/coordinate_systems.py` | `graphing.lua` |
 | `manim/mobject/graphing/functions.py` | `graphing.lua` |
+| `manim/mobject/graphing/scale.py` | `scales.lua`, `graphing.lua` |
 | `manim/mobject/geometry/tips.py` | `graphing.lua` triangular tip geometry |
 | `manim/scene/scene.py` | `scene.lua` |
 | `manim/camera/camera.py` | `renderer.lua`, `native/cairo_backend.c` |

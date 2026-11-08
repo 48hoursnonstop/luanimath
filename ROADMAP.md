@@ -5,9 +5,10 @@
 2. Typography expansion: remaining font/layout options, deprecated custom tags
    and more shaping edge cases. Native markup, word/range style maps, gradients,
    glyph selection and Write/Unwrite now have executed upstream comparisons.
-3. Coordinate-system expansion: nonlinear scales, labels, specialized plots,
+3. Coordinate-system expansion: automatic labels, specialized plots,
    Riemann rectangles and graphs. NumberLine, Axes, ParametricFunction,
-   FunctionGraph, standard plots and spline smoothing now have executed tests.
+   FunctionGraph, linear/logarithmic scales, standard plots and spline smoothing
+   now have executed tests.
 4. Expand the now-tested native SVG importer (rounded rectangles, CSS, caching,
    more units) and add raster assets with real decoding and error handling.
 5. Math typography expansion: TeX pipeline, expression-matching transforms,

@@ -24,7 +24,9 @@ for ext in ['mp4','gif','webm']:
     frames=np.frombuffer(raw,dtype=np.uint8).reshape(5,90,160,3)
     centers=[]
     for frame in frames:
-        yy,xx=np.where((frame[:,:,0]>100)&(frame[:,:,1]>100)&(frame[:,:,2]<100))
+        # Manim 0.22.1 YELLOW is #F7D96F; allow lossy codec variation around
+        # that reference color rather than identifying only pure yellow.
+        yy,xx=np.where(np.max(np.abs(frame.astype(float)-[247,217,111]),axis=2)<45)
         assert len(xx)>0
         centers.append(float(xx.mean()))
     assert all(b>a for a,b in zip(centers,centers[1:])),(ext,centers)

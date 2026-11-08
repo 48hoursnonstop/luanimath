@@ -10,7 +10,7 @@ PKGS = $(LUA_PKG) cairo pangocairo libxml-2.0
 export LUA_PATH := $(CURDIR)/lua/?.lua;$(CURDIR)/lua/?/init.lua;;
 export LUA_CPATH := $(CURDIR)/build/?.so;;
 
-.PHONY: all test docs docs-check docs-api-check text-test text-features-test markup-demo typst-test glyph-test glyph-demo svg-test svg-demo media-test graphing-test alignment-test paths-test three-d-test three-d-demo demo reference differential check clean sanitize release
+.PHONY: all test docs docs-check docs-api-check text-test text-features-test markup-demo colors-test scales-test typst-test glyph-test glyph-demo svg-test svg-demo media-test graphing-test alignment-test paths-test three-d-test three-d-demo demo reference differential check clean sanitize release
 all: build/luanimath_native.so
 
 build/luanimath_native.so: native/cairo_backend.c native/text.c native/xml.c native/system.c
@@ -41,6 +41,16 @@ reference:
 	.dev/venv/bin/python tools/reference_markup.py
 	.dev/venv/bin/python tools/reference_text_styles.py
 	.dev/venv/bin/python tools/reference_typst.py
+	.dev/venv/bin/python tools/reference_scales.py
+	.dev/venv/bin/python tools/reference_colors.py
+
+colors-test: all
+	$(LUA) tests/colors.lua
+	$(PYTHON) tools/visual_colors.py
+
+scales-test: all
+	$(LUA) tests/scales.lua
+	$(PYTHON) tools/visual_scales.py
 
 typst-test: all
 	$(LUA) tests/typst.lua
@@ -102,7 +112,7 @@ differential: all
 	$(LUA) tests/differential.lua
 	$(PYTHON) tools/visual_compare.py
 
-check: test demo differential text-test media-test graphing-test alignment-test paths-test three-d-test three-d-demo svg-test svg-demo glyph-test glyph-demo text-features-test markup-demo typst-test docs-api-check
+check: test demo differential text-test media-test graphing-test alignment-test paths-test three-d-test three-d-demo svg-test svg-demo glyph-test glyph-demo text-features-test markup-demo typst-test scales-test colors-test docs-api-check
 
 sanitize:
 	$(MAKE) clean
@@ -116,6 +126,8 @@ sanitize:
 	ASAN_OPTIONS=detect_leaks=0 LD_PRELOAD="$$( $(CC) -print-file-name=libasan.so )" $(LUA) tests/markup.lua
 	ASAN_OPTIONS=detect_leaks=0 LD_PRELOAD="$$( $(CC) -print-file-name=libasan.so )" $(LUA) tests/text_styles.lua
 	ASAN_OPTIONS=detect_leaks=0 LD_PRELOAD="$$( $(CC) -print-file-name=libasan.so )" $(LUA) tests/typst.lua
+	ASAN_OPTIONS=detect_leaks=0 LD_PRELOAD="$$( $(CC) -print-file-name=libasan.so )" $(LUA) tests/scales.lua
+	ASAN_OPTIONS=detect_leaks=0 LD_PRELOAD="$$( $(CC) -print-file-name=libasan.so )" $(LUA) tests/colors.lua
 	$(MAKE) clean
 	$(MAKE) all
 

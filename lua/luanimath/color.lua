@@ -1,9 +1,5 @@
 local U = require('luanimath.util')
-local M = {
-    WHITE='#FFFFFF', BLACK='#000000', RED='#FC6255', BLUE='#58C4DD', GREEN='#83C167',
-    YELLOW='#FFFF00', PURPLE='#9A72AC', TEAL='#5CD0B3', ORANGE='#FF862F', PINK='#D147BD',
-    GREY='#888888', GRAY='#888888', BLUE_D='#29ABCA', RED_D='#E65A4C', GREEN_D='#77B05D',
-}
+local M = require('luanimath.color_palette')
 function M.parse(c, alpha)
     if type(c) == 'string' then
         c = M[c] or c

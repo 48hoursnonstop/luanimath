@@ -22,7 +22,7 @@ API={
  'font_list':('Return a sorted sequence of font-family names available to the current Pango font map. Font installation remains external to the library.','Devuelve una secuencia ordenada de familias disponibles en Pango. La instalación de fuentes es externa a la biblioteca.'),
  'SVGMobject':('Decode an SVG file into real vector shapes. It centers and fits height 2 by default; height=false disables height fitting.','Decodifica un archivo SVG en formas vectoriales reales. Lo centra y ajusta a una altura de 2; height=false desactiva ese ajuste.'),
  'VMobjectFromSVGPath':('Convert SVG path data to cubic geometry. Supports absolute and relative M/L/H/V/C/S/Q/T/A/Z commands, including elliptical arcs.','Convierte datos de trazado SVG en geometría cúbica. Admite M/L/H/V/C/S/Q/T/A/Z absolutos y relativos, incluidos arcos elípticos.'),
- 'NumberLine':('Build a numerical line with optional ticks and a triangular tip. Mapping follows later transformations; numeric text labels and nonlinear scales remain pending.','Construye una recta numérica con marcas y punta triangular opcionales. Su correspondencia sigue las transformaciones; faltan etiquetas numéricas y escalas no lineales.'),
+ 'NumberLine':('Build a numerical line with optional ticks, a triangular tip and a linear/logarithmic scale. Mapping follows later transformations; numeric text labels remain pending.','Construye una recta numérica con marcas, punta triangular y escala lineal/logarítmica opcionales. Su correspondencia sigue las transformaciones; faltan etiquetas numéricas.'),
  'Axes':('Build two NumberLines with independent ranges and lengths. Use coords_to_point to position objects in the transformed coordinate system.','Construye dos NumberLines con intervalos y longitudes independientes. Usa coords_to_point para colocar objetos en el sistema transformado.'),
  'ParametricFunction':('Sample fn(t), which must return a 2D/3D point, over t_range. Cubic smoothing is enabled unless use_smoothing=false.','Muestrea fn(t), que debe devolver un punto 2D/3D, sobre t_range. El suavizado cúbico está activo salvo use_smoothing=false.'),
  'FunctionGraph':('Construct the graph of a scalar Lua function y=fn(x). The default interval spans the world frame and the default color is yellow.','Construye la gráfica de una función escalar de Lua y=fn(x). El intervalo predeterminado cubre el encuadre y su color es amarillo.'),
@@ -440,3 +440,15 @@ TYPST=[
 OPTIONS['Typst']=TYPST;OPTIONS['MathTypst']=TYPST
 OPTIONS['typst_to_svg_file']=[('preamble','string','""','Extra Typst rules.','Reglas Typst adicionales.'),('text_size','number','10','Compilation font size in points.','Tamaño de compilación en puntos.')]+TYPST[2:3]+TYPST[9:]
 OPTIONS['config.with']=CONFIG
+
+API.update({
+ 'LinearBase':('Create a numerical scale multiplying values by scale_factor. Its inverse divides by that nonzero finite factor.','Crea una escala que multiplica por scale_factor; la inversa divide por ese factor finito distinto de cero.'),
+ 'LogBase':('Create an exponential scale base^value with a logarithmic inverse. Bases must be positive and different from 1. Automatic mathematical labels remain pending.','Crea una escala exponencial base^valor con inversa logarítmica. La base debe ser positiva y distinta de 1. Las etiquetas matemáticas automáticas siguen pendientes.'),
+ 'Scale:map':('Map a finite scalar or nested numerical sequence. LinearBase multiplies; LogBase exponentiates. Nonfinite results raise errors.','Transforma un escalar finito o secuencia numérica anidada. LinearBase multiplica y LogBase eleva la base. Rechaza resultados no finitos.'),
+ 'Scale:inverse':('Invert a scalar or nested numerical sequence. LogBase requires every input to be strictly positive.','Invierte un escalar o secuencia numérica anidada. LogBase exige que cada entrada sea estrictamente positiva.'),
+})
+OPTIONS['LinearBase']=[('scale_factor','number','1','Finite nonzero multiplier; negative factors are supported.','Multiplicador finito distinto de cero; se admiten valores negativos.')]
+OPTIONS['LogBase']=[('base','number','10','Positive base, different from 1; fractions below 1 are supported.','Base positiva distinta de 1; se admiten fracciones menores de 1.'),('custom_labels','boolean','true','Retained scale metadata; automatic labels remain pending.','Metadato conservado; las etiquetas automáticas siguen pendientes.')]
+SCALING=('scaling','Scale','LinearBase()','Scale applied to coordinate values or function sample times. x_range/t_range retain unscaled values.','Escala aplicada a coordenadas o tiempos de muestreo; x_range/t_range conservan valores sin transformar.')
+for name in ('NumberLine','ParametricFunction','FunctionGraph'):
+ OPTIONS[name]=OPTIONS[name]+[SCALING]

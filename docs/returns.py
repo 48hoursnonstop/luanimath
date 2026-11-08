@@ -3,6 +3,7 @@ GEOMETRY={'Mobject','VMobject','VGroup','Group','Arc','Circle','Dot','Ellipse','
 ANIMATIONS={'Animation','Create','Uncreate','Write','Unwrite','DrawBorderThenFill','FadeIn','FadeOut','Transform','ReplacementTransform','Rotate','MoveAlongPath'}
 PATHS={'straight_path','path_along_arc','path_along_circles','clockwise_path','counterclockwise_path'}
 TYPES={
+ 'LinearBase':'Scale','LogBase':'Scale','Scale:map':'number or number[]','Scale:inverse':'number or number[]',
  'typst_to_svg_file':'string','config.with':'...','Mobject:select':'VGroup','Mobject:get_baseline_frame':'vector, vector, vector','Mobject:get_baseline_frames':'vector[3][]','Mobject:get_color':'RGBA or nil',
  'vec':'vector','font_list':'string[]','parse':'RGBA','interpolate':'RGBA','color_gradient':'RGBA[]',
  'builder':'AnimationBuilder','Mobject:animate':'AnimationBuilder',

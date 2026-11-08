@@ -46,3 +46,10 @@ Expresiones matemáticas
 .. luanimath-example:: math
    :alt: Capturas coloreadas de Pitágoras y una suma con fracción mediante Typst.
    :video:
+
+Escalas logarítmicas
+--------------------------------------------------------------------------------
+
+.. luanimath-example:: scales
+   :alt: Un punto animado sobre una gráfica logarítmica con etiquetas matemáticas explícitas.
+   :video:

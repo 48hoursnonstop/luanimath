@@ -5,6 +5,7 @@ local B=require('luanimath.bezier')
 local U=require('luanimath.util')
 local C=require('luanimath.color')
 local Config=require('luanimath.config')
+local Scales=require('luanimath.scales')
 local P={}
 local function range(r,default_step)
     assert(type(r)=='table' and (#r==2 or #r==3),'range requires {minimum,maximum[,step]}')
@@ -31,13 +32,14 @@ function M:number_to_point(number)
     assert(self.kind=='NumberLine','number_to_point requires NumberLine')
     if type(number)=='table' then local out={};for i,x in ipairs(number) do out[i]=self:number_to_point(x) end;return out end
     U.number(number,'number')
+    number=self.scaling:inverse(number)
     return V.lerp(self:get_start(),self:get_end(),(number-self.x_range[1])/(self.x_range[2]-self.x_range[1]))
 end
 function M:point_to_number(point)
     assert(self.kind=='NumberLine','point_to_number requires NumberLine')
     if type(point[1])=='table' then local out={};for i,p in ipairs(point) do out[i]=self:point_to_number(p) end;return out end
     local d=self:get_end()-self:get_start()
-    return self.x_range[1]+V.dot(V(point)-self:get_start(),d)/V.dot(d,d)*(self.x_range[2]-self.x_range[1])
+    return self.scaling:map(self.x_range[1]+V.dot(V(point)-self:get_start(),d)/V.dot(d,d)*(self.x_range[2]-self.x_range[1]))
 end
 M.n2p=M.number_to_point;M.p2n=M.point_to_number
 function M:get_tick_range()
@@ -56,7 +58,7 @@ function M:get_tick_range()
     end
     table.sort(values);local unique={}
     for _,x in ipairs(values) do if #unique==0 or math.abs(x-unique[#unique])>1e-10 then unique[#unique+1]=x end end
-    return unique
+    return self.scaling:map(unique)
 end
 function M:get_tick(x,size)
     size=size or self.tick_size
@@ -64,13 +66,15 @@ function M:get_tick(x,size)
     return m:rotate(self:get_angle()):move_to(self:number_to_point(x))
 end
 function P.NumberLine(opts)
-    opts=opts or {};assert(not opts.include_numbers,'NumberLine numeric labels require the mathematical text subsystem')
-    assert(not opts.scaling,'nonlinear NumberLine scaling is not implemented')
+    opts=opts or {};assert(not opts.include_numbers,'NumberLine automatic numeric labels are not implemented')
+    local scaling=Scales._resolve(opts.scaling)
     local r=range(opts.x_range or {-7,7,1},1)
     local length=opts.length or (r[2]-r[1])*(opts.unit_size or 1)
     U.number(length,'length');assert(length>0,'length must be positive')
     local m=G.Line(V(-length/2,0,0),V(length/2,0,0),U.merge({stroke_width=2},opts))
-    m.kind='NumberLine';m.x_range=r;m.tick_size=opts.tick_size or .1;m.include_tip=not not opts.include_tip
+    m.kind='NumberLine';m.x_range=r;m.scaling=scaling
+    m.x_min,m.x_max,m.x_step=table.unpack(scaling:map(r))
+    m.tick_size=opts.tick_size or .1;m.include_tip=not not opts.include_tip
     m.exclude_origin_tick=not not opts.exclude_origin_tick
     if m.include_tip then m:add_tip{tip_length=opts.tip_height,tip_width=opts.tip_width,stroke_width=m.stroke_width} end
     m.ticks=G.VGroup()
@@ -92,7 +96,7 @@ function M:coords_to_point(x,y)
         if type(x[1])=='table' then local out={};for i,p in ipairs(x) do out[i]=self:coords_to_point(p[1],p[2]) end;return out end
         x,y=x[1],x[2]
     end
-    local origin=self.x_axis:number_to_point(origin_shift(self.x_axis.x_range))
+    local origin=self.x_axis:number_to_point(origin_shift({self.x_axis.x_min,self.x_axis.x_max}))
     return self.x_axis:number_to_point(x)+self.y_axis:number_to_point(y or 0)-origin
 end
 M.c2p=M.coords_to_point
@@ -105,16 +109,22 @@ M.p2c=M.point_to_coords
 function P.Axes(opts)
     opts=opts or {};local xr,yr=range(opts.x_range or {-7,7,1},1),range(opts.y_range or {-4,4,1},1)
     local common=U.merge({include_tip=opts.tips~=false,exclude_origin_tick=true},opts.axis_config)
-    local x= P.NumberLine(U.merge(U.merge(common,opts.x_axis_config),{x_range=xr,length=opts.x_length or 12}))
-    local y= P.NumberLine(U.merge(U.merge(U.merge(common,{rotation=math.pi/2}),opts.y_axis_config),{x_range=yr,length=opts.y_length or 6}))
-    x:shift(-x:number_to_point(origin_shift(xr)));y:shift(-y:number_to_point(origin_shift(yr)))
+    local xc=U.merge(common,opts.x_axis_config)
+    local yc=U.merge(U.merge(common,{rotation=math.pi/2}),opts.y_axis_config)
+    xc.exclude_origin_tick=not xc.scaling or xc.scaling.kind=='LinearBase'
+    yc.exclude_origin_tick=not yc.scaling or yc.scaling.kind=='LinearBase'
+    local x=P.NumberLine(U.merge(xc,{x_range=xr,length=opts.x_length or 12}))
+    local y=P.NumberLine(U.merge(yc,{x_range=yr,length=opts.y_length or 6}))
+    x:shift(-x:number_to_point(origin_shift({x.x_min,x.x_max})))
+    y:shift(-y:number_to_point(origin_shift({y.x_min,y.x_max})))
     local m=G.VGroup(x,y);m.kind='Axes';m.x_range=xr;m.y_range=yr;m.x_axis=x;m.y_axis=y
     m.axes=G.VGroup(x,y)
-    return m:shift(-m:coords_to_point((xr[1]+xr[2])/2,(yr[1]+yr[2])/2))
+    return m:shift(-m:coords_to_point(x.scaling:map((xr[1]+xr[2])/2),y.scaling:map((yr[1]+yr[2])/2)))
 end
 function P.ParametricFunction(fn,opts)
     assert(type(fn)=='function','ParametricFunction requires a function');opts=opts or {}
-    assert(not opts.scaling and not opts.use_vectorized,'custom scaling and vectorized functions are not implemented')
+    assert(not opts.use_vectorized,'vectorized functions are not implemented')
+    local scaling=Scales._resolve(opts.scaling)
     local function evaluate(t)
         local point=fn(t)
         assert(type(point)=='table' and (#point==2 or #point==3),'parametric function must return a 2D/3D point table')
@@ -133,8 +143,8 @@ function P.ParametricFunction(fn,opts)
         local low,high=boundaries[i],boundaries[i+1]
         if high>=low then
             local anchors={};local n=math.ceil((high-low)/r[3])
-            for j=0,n-1 do anchors[#anchors+1]=evaluate(low+j*r[3]) end
-            anchors[#anchors+1]=evaluate(high)
+            for j=0,n-1 do anchors[#anchors+1]=evaluate(scaling:map(low+j*r[3])) end
+            anchors[#anchors+1]=evaluate(scaling:map(high))
             if #anchors>=2 then
                 local path={}
                 if opts.use_smoothing==false then for j=1,#anchors-1 do B.append(path,B.line(anchors[j],anchors[j+1])) end
@@ -143,7 +153,7 @@ function P.ParametricFunction(fn,opts)
             end
         end
     end
-    local m=G.VMobject(opts);m.kind='ParametricFunction';m.function_fn=evaluate;m.t_range=r
+    local m=G.VMobject(opts);m.kind='ParametricFunction';m.function_fn=evaluate;m.t_range=r;m.scaling=scaling
     return m:set_points(points)
 end
 function P.FunctionGraph(fn,opts)
@@ -155,7 +165,7 @@ function M:plot(fn,opts)
     local r=opts.x_range or self.x_range
     local step=(#r>=3 and opts.x_range) and r[3] or self.x_range[3]/10
     local graph=P.ParametricFunction(function(x) return self:coords_to_point(x,fn(x)) end,
-        U.merge(opts,{t_range={r[1],r[2],step}}))
+        U.merge(opts,{t_range={r[1],r[2],step},scaling=self.x_axis.scaling}))
     graph.underlying_function=fn;return graph
 end
 function M:get_axes() assert(self.kind=='Axes','get_axes requires Axes');return self.axes end

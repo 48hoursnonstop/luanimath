@@ -84,6 +84,7 @@ def category(obj):
         if key in ('get_font_size','set_font_size'):return 'text'
         return 'objects'
     if name.startswith('vec.') or name in ('vec','Vector'):return 'vectors'
+    if name.startswith('Scale:') or path.endswith('/scales.lua'):return 'graphing'
     for suffix,cat in [('animation','animations'),('text','text'),('typst','typst'),('typst_file','typst'),('svg','svg'),('graphing','graphing'),('three_d','three_d'),('paths','paths'),('vector','vectors'),('color','colors'),('rate_functions','colors'),('bezier','bezier'),('config','config')]:
         if path.endswith('/'+suffix+'.lua'):return cat
     return 'objects'

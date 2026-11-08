@@ -1,5 +1,21 @@
 # Changelog
 
+## 0.10.0-dev
+
+- LinearBase and LogBase numerical scales, scalar/nested-array map/inverse
+  methods, scaled ticks and transformed coordinate conversion.
+- Axes origin placement and logarithmic origin ticks; scaled curve sampling,
+  discontinuity exclusions and x-scale inheritance in Axes.plot.
+- Full 89-color Manim palette with spelling aliases as native Lua RGB strings.
+  Correct YELLOW to #F7D96F; PURE_YELLOW retains #FFFF00.
+- 20,602 scale checks, 801 exact color checks and four new real image
+  comparisons. The previous graph-image mismatch is now resolved exactly.
+- English/Spanish scale tutorials and a ninth executed gallery animation,
+  with explicit MathTypst labels and tracker-driven motion.
+- Pinned native Typst download uses the verified GitHub asset API after
+  reproducible HTTP 504 failures on the browser-download URL. Pages passed
+  actual deployment and both public math tutorials were verified live.
+
 ## 0.9.0-dev
 
 - Native Typst CLI compilation and SVG import; public Typst and MathTypst.

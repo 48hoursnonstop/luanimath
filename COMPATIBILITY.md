@@ -1,6 +1,6 @@
 # Compatibility
 
-Target: Manim Community 0.22.1. Current development version: 0.9.0-dev.
+Target: Manim Community 0.22.1. Current development version: 0.10.0-dev.
 
 The public API inventory is `compatibility/api_inventory.json`; reviewed
 declarations are in `compatibility/implemented.json`. `python3 tools/coverage.py`
@@ -86,7 +86,7 @@ conversion, ticks, standard triangular 2D tips, ParametricFunction,
 FunctionGraph and Axes.plot. Open and closed cubic splines use the upstream
 linear-time tridiagonal/rank-one algorithms, with 83 differential cases and
 12,264 scalar/invalid-input comparisons. `always_redraw` executes actual Lua
-callbacks. Nonlinear scaling, math labels, custom tips and many specialized
+callbacks. Automatic math labels, custom tips and many specialized
 plotting methods remain pending and are explicitly rejected where applicable.
 
 - Transform aligns unequal vector families, empty vector groups, differing
@@ -172,9 +172,40 @@ original mismatch remains visible and compare separate diagnostic states made
 by changing only `use_svg_cache=False`. There are 38 unmodified comparisons and
 six separately diagnosed comparisons; neither set establishes complete parity.
 
+Typst numeric comparisons use 1e-8 absolute tolerance for SVG-coordinate
+imports and affine baseline fits; images use the existing pixel thresholds.
+
 Cache keys cover source, compiler version, font-path strings and root, with
 content checksums for generated SVG. They do not track external font/file
 contents. Use `use_cache=false` or clear the cache after external changes.
 Nonlinear baseline deformation, every Typst SVG feature and all constructor
 options remain unverified. Unsupported SVG features raise importer errors.
 MathTex/Tex and matching-expression transforms remain pending.
+
+## Numerical scales
+
+LinearBase and LogBase provide scalar/nested-array map/inverse methods. NumberLine
+maps numerical values through the inverse scale, transforms ticks and retains
+unscaled x_range plus scaled x_min/x_max/x_step metadata. Axes uses scaled bounds
+for its origin placement and retains logarithmic origin ticks. ParametricFunction
+scales sample times, including discontinuity exclusions; Axes.plot inherits the
+x-axis scale. Transformed axes and graph sampling have executed upstream tests.
+
+Linear factors must be finite/nonzero and log bases positive/different from 1.
+All results must be finite; every logarithmic inverse input must be positive.
+This deliberately rejects mixed invalid arrays that upstream can return as NaN.
+Default/custom numeric label construction remains pending and include_numbers
+is rejected. The retained custom_labels scale flag is metadata only. Numerical
+zero has no logarithmic coordinate, so get_origin() rejects logarithmic axes.
+
+## Color constants
+
+All 89 constants/aliases in the pinned manim_colors module are exported as
+immutable Lua RGB hex strings. Named parsing and normalized RGBA values are
+verified against actual upstream values, with an executed 89-swatch image.
+This covers constant values, not the unimplemented ManimColor class interface.
+The inventory includes these 89 constant symbols separately from 217 other
+available symbols; constant coverage must not be read as additional engine
+features or overall implementation progress. YELLOW now follows #F7D96F;
+PURE_YELLOW preserves #FFFF00. The previous small graph-image differences were
+traced to that palette mismatch; corrected comparisons have zero pixel error.

@@ -39,7 +39,7 @@ another ABI; other ABIs have not yet been validated.
 
 Available native subsystems include cubic geometry and hierarchy transforms,
 animation/composition, numerical axes and graphs, Pango-shaped Unicode text,
-moving cameras, 3D projection and lighting, Cube, Sphere, parametric Surface,
+linear/logarithmic scales, moving cameras, 3D projection and lighting, Cube, Sphere, parametric Surface,
 native SVG paths/import, and native-CLI Typst mathematical expressions.
 Availability and compatibility are tracked separately for each upstream API.
 
@@ -138,7 +138,7 @@ make docs DOC_PYTHON=.dev/venv/bin/python
 ```
 
 Open `artifacts/docs/en/index.html` or `artifacts/docs/es/index.html`. The
-build executes all eight gallery scenes, decodes the actual media and checks
+build executes all nine gallery scenes, decodes the actual media and checks
 local links. `make docs-api-check` detects new exports without bilingual
 reference entries. Source releases also build the manuals from the clean
 extraction; use `make release DOC_PYTHON=.dev/venv/bin/python` with the docs
