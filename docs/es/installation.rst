@@ -26,8 +26,11 @@ Dependencias durante la ejecución
 
 Las escenas usan Lua y el módulo nativo Cairo/Pango/libxml2. FFmpeg es necesario
 para codificar animaciones. Python y Manim son herramientas de desarrollo para
-comparaciones y documentación; no ejecutan las escenas Lua. Los objetos públicos
-de matemáticas mediante TeX/Typst siguen en desarrollo en esta versión.
+comparaciones y documentación; no ejecutan las escenas Lua. Typst y MathTypst
+requieren además la CLI nativa ``typst`` en PATH (probada con 0.15.1). Usa
+``LUANIMATH_TYPST`` o ``typst_bin`` para otra ruta. Consulta :doc:`tutorials/math`.
+TeX/MathTex siguen pendientes. Las pruebas completas y la galería requieren
+este compilador opcional.
 
 Fuentes
 --------------------------------------------------------------------------------

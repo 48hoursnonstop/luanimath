@@ -55,3 +55,25 @@ RenderReport
 
 El PNG final contiene el extremo lógico y puede diferir de la última muestra
 codificada. Consulta :doc:`configuration`.
+
+Objetos Typst
+--------------------------------------------------------------------------------
+
+``typst_code`` conserva el código compilado, incluidos los delimitadores y
+auxiliares de capturas. ``typst_preamble`` conserva el preámbulo efectivo.
+Con ``track_baselines=true``, ``baseline_frames`` calcula una secuencia de
+marcos afines de tres puntos para las hojas no degeneradas. ``get_baseline_frame``
+devuelve origen, extremo del eje x y extremo del eje y como tres valores.
+Cambiar el número de puntos invalida la referencia de esa hoja; las deformaciones
+no lineales quedan fuera del contrato de seguimiento afín.
+
+``font_size`` sigue la medida de Manim: 960 por la altura relativa. ``height``
+explícito omite el escalado inicial de fuente; asignar ``font_size`` escala todo
+el objeto. Una altura nula no admite una medida de fuente significativa. Los
+trazos Typst sin ancho explícito se actualizan al escalar el objeto raíz.
+``select`` comparte las hojas reales: colorear el grupo modifica la fórmula.
+Los índices numéricos empiezan en 1; los nombres explícitos son cadenas.
+
+``m.color`` / ``m:get_color()`` devuelve RGB opaco: prioriza relleno visible y
+después trazo; si ambos son negro totalmente transparente devuelve nil.
+Asignar ``m.color`` aplica ``set_color`` a toda su familia.

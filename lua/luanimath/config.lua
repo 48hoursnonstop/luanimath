@@ -11,4 +11,13 @@ function M.resolve(opts)
     c.background_rgba=C.parse(c.background_color,c.background_opacity)
     return c
 end
+function M.with(opts,fn)
+    assert(type(fn)=='function','config.with requires a callback')
+    local previous=M.defaults;local temporary=M.resolve(opts)
+    M.defaults=temporary
+    local result=table.pack(xpcall(fn,debug.traceback))
+    M.defaults=previous
+    if not result[1] then error(result[2],0) end
+    return table.unpack(result,2,result.n)
+end
 return M

@@ -14,8 +14,8 @@ for entry in entries.values():
         entry.pop(key,None)
     if '.opengl.' in entry['id']:
         entry.update(status='blocked',blocked_by=['OpenGL backend'])
-    elif 'tex_mobject.' in entry['id'] or 'typst_mobject.' in entry['id']:
-        entry.update(status='blocked',blocked_by=['mathematical text pipeline'])
+    elif 'tex_mobject.' in entry['id']:
+        entry.update(status='blocked',blocked_by=['TeX compiler integration'])
 for declaration in declarations:
     assert declaration['id'] in entries,'unknown upstream API: '+declaration['id']
     assert declaration['status'] in ['implemented_verified','implemented_partial','not_applicable']

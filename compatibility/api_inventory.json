@@ -28,7 +28,14 @@
       "kind": "function",
       "source": "manim/_config/__init__.py",
       "line": 46,
-      "status": "not_implemented"
+      "status": "implemented_partial",
+      "lua_api": "config.with",
+      "evidence": [
+        "tests/typst.lua",
+        "tests/reference_typst.lua",
+        "tools/visual_typst.py"
+      ],
+      "limitations": "Lua 5.4 vector subset with Typst CLI 0.15.1. Named/nested captures use Lua 1-based indices. Cached SVG imports intentionally retain baseline/stroke tracking lost by upstream cache hits; six original reference states are separately diagnosed. Complete constructor, nonlinear baseline and asset invalidation behavior remains unverified. config.with scopes the documented Lua configuration keys only."
     },
     {
       "id": "manim._config.__init__.logger",
@@ -14999,7 +15006,7 @@
       "line": 43,
       "status": "blocked",
       "blocked_by": [
-        "mathematical text pipeline"
+        "TeX compiler integration"
       ]
     },
     {
@@ -15009,7 +15016,7 @@
       "line": 46,
       "status": "blocked",
       "blocked_by": [
-        "mathematical text pipeline"
+        "TeX compiler integration"
       ]
     },
     {
@@ -15019,7 +15026,7 @@
       "line": 57,
       "status": "blocked",
       "blocked_by": [
-        "mathematical text pipeline"
+        "TeX compiler integration"
       ]
     },
     {
@@ -15029,7 +15036,7 @@
       "line": 118,
       "status": "blocked",
       "blocked_by": [
-        "mathematical text pipeline"
+        "TeX compiler integration"
       ]
     },
     {
@@ -15039,7 +15046,7 @@
       "line": 210,
       "status": "blocked",
       "blocked_by": [
-        "mathematical text pipeline"
+        "TeX compiler integration"
       ]
     },
     {
@@ -15049,7 +15056,7 @@
       "line": 213,
       "status": "blocked",
       "blocked_by": [
-        "mathematical text pipeline"
+        "TeX compiler integration"
       ]
     },
     {
@@ -15059,7 +15066,7 @@
       "line": 227,
       "status": "blocked",
       "blocked_by": [
-        "mathematical text pipeline"
+        "TeX compiler integration"
       ]
     },
     {
@@ -15069,7 +15076,7 @@
       "line": 278,
       "status": "blocked",
       "blocked_by": [
-        "mathematical text pipeline"
+        "TeX compiler integration"
       ]
     },
     {
@@ -15079,7 +15086,7 @@
       "line": 543,
       "status": "blocked",
       "blocked_by": [
-        "mathematical text pipeline"
+        "TeX compiler integration"
       ]
     },
     {
@@ -15089,7 +15096,7 @@
       "line": 549,
       "status": "blocked",
       "blocked_by": [
-        "mathematical text pipeline"
+        "TeX compiler integration"
       ]
     },
     {
@@ -15099,7 +15106,7 @@
       "line": 557,
       "status": "blocked",
       "blocked_by": [
-        "mathematical text pipeline"
+        "TeX compiler integration"
       ]
     },
     {
@@ -15109,7 +15116,7 @@
       "line": 585,
       "status": "blocked",
       "blocked_by": [
-        "mathematical text pipeline"
+        "TeX compiler integration"
       ]
     },
     {
@@ -15119,7 +15126,7 @@
       "line": 594,
       "status": "blocked",
       "blocked_by": [
-        "mathematical text pipeline"
+        "TeX compiler integration"
       ]
     },
     {
@@ -15129,7 +15136,7 @@
       "line": 602,
       "status": "blocked",
       "blocked_by": [
-        "mathematical text pipeline"
+        "TeX compiler integration"
       ]
     },
     {
@@ -15139,7 +15146,7 @@
       "line": 607,
       "status": "blocked",
       "blocked_by": [
-        "mathematical text pipeline"
+        "TeX compiler integration"
       ]
     },
     {
@@ -15149,7 +15156,7 @@
       "line": 614,
       "status": "blocked",
       "blocked_by": [
-        "mathematical text pipeline"
+        "TeX compiler integration"
       ]
     },
     {
@@ -15159,7 +15166,7 @@
       "line": 631,
       "status": "blocked",
       "blocked_by": [
-        "mathematical text pipeline"
+        "TeX compiler integration"
       ]
     },
     {
@@ -15169,7 +15176,7 @@
       "line": 646,
       "status": "blocked",
       "blocked_by": [
-        "mathematical text pipeline"
+        "TeX compiler integration"
       ]
     },
     {
@@ -15179,7 +15186,7 @@
       "line": 677,
       "status": "blocked",
       "blocked_by": [
-        "mathematical text pipeline"
+        "TeX compiler integration"
       ]
     },
     {
@@ -15189,7 +15196,7 @@
       "line": 701,
       "status": "blocked",
       "blocked_by": [
-        "mathematical text pipeline"
+        "TeX compiler integration"
       ]
     },
     {
@@ -15199,7 +15206,7 @@
       "line": 722,
       "status": "blocked",
       "blocked_by": [
-        "mathematical text pipeline"
+        "TeX compiler integration"
       ]
     },
     {
@@ -15209,7 +15216,7 @@
       "line": 740,
       "status": "blocked",
       "blocked_by": [
-        "mathematical text pipeline"
+        "TeX compiler integration"
       ]
     },
     {
@@ -15367,130 +15374,140 @@
       "kind": "class",
       "source": "manim/mobject/text/typst_mobject.py",
       "line": 274,
-      "status": "blocked",
-      "blocked_by": [
-        "mathematical text pipeline"
-      ]
+      "status": "implemented_partial",
+      "lua_api": "Typst",
+      "evidence": [
+        "tests/typst.lua",
+        "tests/reference_typst.lua",
+        "tools/visual_typst.py"
+      ],
+      "limitations": "Lua 5.4 vector subset with Typst CLI 0.15.1. Named/nested captures use Lua 1-based indices. Cached SVG imports intentionally retain baseline/stroke tracking lost by upstream cache hits; six original reference states are separately diagnosed. Complete constructor, nonlinear baseline and asset invalidation behavior remains unverified. config.with scopes the documented Lua configuration keys only."
     },
     {
       "id": "manim.mobject.text.typst_mobject.Typst.__init__",
       "kind": "method",
       "source": "manim/mobject/text/typst_mobject.py",
       "line": 339,
-      "status": "blocked",
-      "blocked_by": [
-        "mathematical text pipeline"
-      ]
+      "status": "not_implemented"
     },
     {
       "id": "manim.mobject.text.typst_mobject.Typst.hash_seed",
       "kind": "method",
       "source": "manim/mobject/text/typst_mobject.py",
       "line": 401,
-      "status": "blocked",
-      "blocked_by": [
-        "mathematical text pipeline"
-      ]
+      "status": "not_implemented"
     },
     {
       "id": "manim.mobject.text.typst_mobject.Typst.font_size",
       "kind": "method",
       "source": "manim/mobject/text/typst_mobject.py",
       "line": 413,
-      "status": "blocked",
-      "blocked_by": [
-        "mathematical text pipeline"
-      ]
+      "status": "implemented_partial",
+      "lua_api": "Typst.font_size",
+      "evidence": [
+        "tests/typst.lua",
+        "tests/reference_typst.lua",
+        "tools/visual_typst.py"
+      ],
+      "limitations": "Lua 5.4 vector subset with Typst CLI 0.15.1. Named/nested captures use Lua 1-based indices. Cached SVG imports intentionally retain baseline/stroke tracking lost by upstream cache hits; six original reference states are separately diagnosed. Complete constructor, nonlinear baseline and asset invalidation behavior remains unverified. config.with scopes the documented Lua configuration keys only."
     },
     {
       "id": "manim.mobject.text.typst_mobject.Typst.scale",
       "kind": "method",
       "source": "manim/mobject/text/typst_mobject.py",
       "line": 419,
-      "status": "blocked",
-      "blocked_by": [
-        "mathematical text pipeline"
-      ]
+      "status": "implemented_partial",
+      "lua_api": "Typst:scale",
+      "evidence": [
+        "tests/typst.lua",
+        "tests/reference_typst.lua",
+        "tools/visual_typst.py"
+      ],
+      "limitations": "Lua 5.4 vector subset with Typst CLI 0.15.1. Named/nested captures use Lua 1-based indices. Cached SVG imports intentionally retain baseline/stroke tracking lost by upstream cache hits; six original reference states are separately diagnosed. Complete constructor, nonlinear baseline and asset invalidation behavior remains unverified. config.with scopes the documented Lua configuration keys only."
     },
     {
       "id": "manim.mobject.text.typst_mobject.Typst.get_mob_from_shape_element",
       "kind": "method",
       "source": "manim/mobject/text/typst_mobject.py",
       "line": 469,
-      "status": "blocked",
-      "blocked_by": [
-        "mathematical text pipeline"
-      ]
+      "status": "not_implemented"
     },
     {
       "id": "manim.mobject.text.typst_mobject.Typst.get_baseline_frame",
       "kind": "method",
       "source": "manim/mobject/text/typst_mobject.py",
       "line": 529,
-      "status": "blocked",
-      "blocked_by": [
-        "mathematical text pipeline"
-      ]
+      "status": "implemented_partial",
+      "lua_api": "Typst:get_baseline_frame",
+      "evidence": [
+        "tests/typst.lua",
+        "tests/reference_typst.lua",
+        "tools/visual_typst.py"
+      ],
+      "limitations": "Lua 5.4 vector subset with Typst CLI 0.15.1. Named/nested captures use Lua 1-based indices. Cached SVG imports intentionally retain baseline/stroke tracking lost by upstream cache hits; six original reference states are separately diagnosed. Complete constructor, nonlinear baseline and asset invalidation behavior remains unverified. config.with scopes the documented Lua configuration keys only."
     },
     {
       "id": "manim.mobject.text.typst_mobject.Typst.baseline_frames",
       "kind": "method",
       "source": "manim/mobject/text/typst_mobject.py",
       "line": 583,
-      "status": "blocked",
-      "blocked_by": [
-        "mathematical text pipeline"
-      ]
+      "status": "implemented_partial",
+      "lua_api": "Typst.baseline_frames",
+      "evidence": [
+        "tests/typst.lua",
+        "tests/reference_typst.lua",
+        "tools/visual_typst.py"
+      ],
+      "limitations": "Lua 5.4 vector subset with Typst CLI 0.15.1. Named/nested captures use Lua 1-based indices. Cached SVG imports intentionally retain baseline/stroke tracking lost by upstream cache hits; six original reference states are separately diagnosed. Complete constructor, nonlinear baseline and asset invalidation behavior remains unverified. config.with scopes the documented Lua configuration keys only."
     },
     {
       "id": "manim.mobject.text.typst_mobject.Typst.modify_xml_tree",
       "kind": "method",
       "source": "manim/mobject/text/typst_mobject.py",
       "line": 627,
-      "status": "blocked",
-      "blocked_by": [
-        "mathematical text pipeline"
-      ]
+      "status": "not_implemented"
     },
     {
       "id": "manim.mobject.text.typst_mobject.Typst.select",
       "kind": "method",
       "source": "manim/mobject/text/typst_mobject.py",
       "line": 683,
-      "status": "blocked",
-      "blocked_by": [
-        "mathematical text pipeline"
-      ]
+      "status": "implemented_partial",
+      "lua_api": "Typst:select",
+      "evidence": [
+        "tests/typst.lua",
+        "tests/reference_typst.lua",
+        "tools/visual_typst.py"
+      ],
+      "limitations": "Lua 5.4 vector subset with Typst CLI 0.15.1. Named/nested captures use Lua 1-based indices. Cached SVG imports intentionally retain baseline/stroke tracking lost by upstream cache hits; six original reference states are separately diagnosed. Complete constructor, nonlinear baseline and asset invalidation behavior remains unverified. config.with scopes the documented Lua configuration keys only."
     },
     {
       "id": "manim.mobject.text.typst_mobject.Typst.init_colors",
       "kind": "method",
       "source": "manim/mobject/text/typst_mobject.py",
       "line": 744,
-      "status": "blocked",
-      "blocked_by": [
-        "mathematical text pipeline"
-      ]
+      "status": "not_implemented"
     },
     {
       "id": "manim.mobject.text.typst_mobject.MathTypst",
       "kind": "class",
       "source": "manim/mobject/text/typst_mobject.py",
       "line": 763,
-      "status": "blocked",
-      "blocked_by": [
-        "mathematical text pipeline"
-      ]
+      "status": "implemented_partial",
+      "lua_api": "MathTypst",
+      "evidence": [
+        "tests/typst.lua",
+        "tests/reference_typst.lua",
+        "tools/visual_typst.py"
+      ],
+      "limitations": "Lua 5.4 vector subset with Typst CLI 0.15.1. Named/nested captures use Lua 1-based indices. Cached SVG imports intentionally retain baseline/stroke tracking lost by upstream cache hits; six original reference states are separately diagnosed. Complete constructor, nonlinear baseline and asset invalidation behavior remains unverified. config.with scopes the documented Lua configuration keys only."
     },
     {
       "id": "manim.mobject.text.typst_mobject.MathTypst.__init__",
       "kind": "method",
       "source": "manim/mobject/text/typst_mobject.py",
       "line": 816,
-      "status": "blocked",
-      "blocked_by": [
-        "mathematical text pipeline"
-      ]
+      "status": "not_implemented"
     },
     {
       "id": "manim.mobject.three_d.polyhedra.Polyhedron",
@@ -16673,7 +16690,14 @@
       "kind": "method",
       "source": "manim/mobject/types/vectorized_mobject.py",
       "line": 639,
-      "status": "not_implemented"
+      "status": "implemented_partial",
+      "lua_api": "Mobject:get_color",
+      "evidence": [
+        "tests/typst.lua",
+        "tests/reference_typst.lua",
+        "tools/visual_typst.py"
+      ],
+      "limitations": "Lua 5.4 vector subset with Typst CLI 0.15.1. Named/nested captures use Lua 1-based indices. Cached SVG imports intentionally retain baseline/stroke tracking lost by upstream cache hits; six original reference states are separately diagnosed. Complete constructor, nonlinear baseline and asset invalidation behavior remains unverified. config.with scopes the documented Lua configuration keys only."
     },
     {
       "id": "manim.mobject.types.vectorized_mobject.VMobject.nonempty_submobjects",
@@ -38957,7 +38981,14 @@
       "kind": "function",
       "source": "manim/utils/typst_file_writing.py",
       "line": 35,
-      "status": "not_implemented"
+      "status": "implemented_partial",
+      "lua_api": "typst_to_svg_file",
+      "evidence": [
+        "tests/typst.lua",
+        "tests/reference_typst.lua",
+        "tools/visual_typst.py"
+      ],
+      "limitations": "Lua 5.4 vector subset with Typst CLI 0.15.1. Named/nested captures use Lua 1-based indices. Cached SVG imports intentionally retain baseline/stroke tracking lost by upstream cache hits; six original reference states are separately diagnosed. Complete constructor, nonlinear baseline and asset invalidation behavior remains unverified. config.with scopes the documented Lua configuration keys only."
     },
     {
       "id": "manim.utils.unit.Percent",

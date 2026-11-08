@@ -79,7 +79,7 @@ function S._from_tree(root,opts,filename)
     local ids={}
     local function index(node) if node.attributes.id then ids[node.attributes.id]=node end;for _,c in ipairs(node.children) do index(c) end end
     index(root)
-    local object=G.VGroup();object.kind='SVGMobject';object.file_name=filename;object.id_to_vgroup_dict={root=G.VGroup()}
+    local object=G.VGroup();object.kind='SVGMobject';object.file_name=filename;object.id_to_vgroup_dict={root=G.VGroup()};object._id_order={'root'}
     local defaults=opts.svg_default or {}
     local initial={fill=defaults.fill_color or defaults.color or 'black',['fill-opacity']=defaults.fill_opacity or defaults.opacity,
         stroke=defaults.stroke_color or defaults.color or 'none',['stroke-opacity']=defaults.stroke_opacity or defaults.opacity,
@@ -96,7 +96,11 @@ function S._from_tree(root,opts,filename)
         for _,key in ipairs({'clip-path','mask','filter'}) do assert(not style[key] or style[key]=='none','SVG '..key..' is not implemented') end
         local m=multiply(matrix,transform(a.transform))
         local active={};for i,group in ipairs(groups) do active[i]=group end
-        if a.id then local group=object.id_to_vgroup_dict[a.id] or G.VGroup();object.id_to_vgroup_dict[a.id]=group;active[#active+1]=group end
+        if a.id then
+            local group=object.id_to_vgroup_dict[a.id]
+            if not group then group=G.VGroup();object._id_order[#object._id_order+1]=a.id end
+            object.id_to_vgroup_dict[a.id]=group;active[#active+1]=group
+        end
         if name=='use' then
             local href=a.href;assert(href and href:sub(1,1)=='#','only local SVG use references are supported')
             local target=assert(ids[href:sub(2)],'unknown SVG reference: '..href)

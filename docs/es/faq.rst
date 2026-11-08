@@ -40,3 +40,12 @@ El PNG final difiere del último fotograma del video
 La imagen fija captura el extremo lógico. El video muestrea tiempos anteriores
 al extremo de cada tramo. Es el muestreo determinista previsto; consulta
 :doc:`configuration`.
+
+Falla la compilación matemática
+--------------------------------------------------------------------------------
+
+Ejecuta ``typst --version`` y comprueba la sintaxis: MathTypst usa matemáticas
+Typst. ``typst_bin`` selecciona otro ejecutable. La caché predeterminada está en
+``.luanimath-cache/typst``; ``use_cache=false`` fuerza la compilación. Si cambia
+una fuente o un archivo externo, limpia la caché o fuerza la compilación: su
+contenido externo no forma parte de la clave.

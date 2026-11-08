@@ -39,3 +39,10 @@ Movimiento de cámara 3D
 .. luanimath-example:: three_d
    :alt: Un cubo y una esfera con orientación de cámara cambiante.
    :video:
+
+Expresiones matemáticas
+--------------------------------------------------------------------------------
+
+.. luanimath-example:: math
+   :alt: Capturas coloreadas de Pitágoras y una suma con fracción mediante Typst.
+   :video:

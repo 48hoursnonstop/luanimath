@@ -11,11 +11,15 @@ M.__index=function(self,key)
         return self.submobjects[key]
     end
     if key=='font_size' and rawget(self,'_font_size') then return self:get_font_size() end
+    if key=='color' then return self:get_color() end
+    if key=='baseline_frames' and rawget(self,'_typst_state') then return self:get_baseline_frames() end
     return M[key]
 end
 M.__len=function(self) return #self.submobjects+(#self.points>0 and 1 or 0) end
 M.__newindex=function(self,key,value)
-    if key=='font_size' and rawget(self,'_font_size') then self:set_font_size(value) else rawset(self,key,value) end
+    if key=='font_size' and rawget(self,'_font_size') then self:set_font_size(value)
+    elseif key=='color' then self:set_color(value)
+    else rawset(self,key,value) end
 end
 
 function M.new(opts)
@@ -83,8 +87,8 @@ function M:invert(opts)
     return self
 end
 function M:get_font_size()
-    assert(self._font_size and self.initial_height and self.initial_height>0,'font size requires nonempty Text')
-    return self._font_size*self:get_height()/self.initial_height
+    assert(self._font_size and self.initial_height and self.initial_height>0,'font size requires nonempty Text or Typst')
+    return (self._font_size_basis or self._font_size)*self:get_height()/self.initial_height
 end
 function M:set_font_size(size)
     U.number(size,'font_size');assert(size>0,'font_size must be positive')
@@ -156,7 +160,9 @@ local function about(self,opts)
 end
 function M:scale(factor,opts)
     U.number(factor,'scale factor');local p=about(self,opts)
-    return self:apply_points_function(function(v) return p+(v-p)*factor end)
+    self:apply_points_function(function(v) return p+(v-p)*factor end)
+    if self._after_scale then self:_after_scale() end
+    return self
 end
 function M:stretch(factor,dim,opts)
     U.number(factor,'stretch factor');U.integer(dim,'dimension',1);assert(dim<=3,'dimension must be 1, 2, or 3')
@@ -214,6 +220,11 @@ function M:set_stroke(color,width,opacity,opts)
 end
 function M:set_color(color,opts)
     self:set_fill(color,nil,opts);self:set_stroke(color,nil,nil,opts);return self
+end
+function M:get_color()
+    local color=self.fill_color[4]==0 and self.stroke_color or self.fill_color
+    if color[1]==0 and color[2]==0 and color[3]==0 and color[4]==0 then return nil end
+    return C.parse(color,1)
 end
 function M:set_color_by_gradient(...)
     local colors={...};assert(#colors>0,'gradient needs at least one color')

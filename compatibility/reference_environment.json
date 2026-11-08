@@ -9,7 +9,8 @@
     "pillow": "13.0.0",
     "av": "19.0.2",
     "svgelements": "1.9.6",
-    "skia-pathops": "0.9.2"
+    "skia-pathops": "0.9.2",
+    "typst": "0.15.2"
   },
   "installed_manim_sources_match_pinned_tag": true,
   "source_file_count": 177,
@@ -35,5 +36,14 @@
       "file": "NotoSansCJK-Regular.ttc",
       "sha256": "b76b0433203017ca80401b2ee0dd69350349871c4b19d504c34dbdd80541690a"
     }
+  },
+  "typst": {
+    "native_cli": "0.15.1 (9dfd3a08)",
+    "oracle_python_package": "0.15.2",
+    "oracle_embedded_engine": "0.15.1",
+    "native_archive": "typst-x86_64-unknown-linux-musl.tar.xz",
+    "archive_sha256": "a6d077d0a95eed5a2eba715b2dae06be954f624ccbf85758a03f389ded33118c",
+    "release": "https://github.com/typst/typst/releases/tag/v0.15.1",
+    "oracle_source": "https://github.com/messense/typst-py/blob/v0.15.2/Cargo.toml"
   }
 }

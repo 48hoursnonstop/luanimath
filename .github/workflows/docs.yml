@@ -52,6 +52,17 @@ jobs:
           fi
       - name: Install documentation dependencies
         run: python -m pip install -r docs/requirements.txt
+      - name: Install tested native Typst compiler if missing
+        shell: bash
+        run: |
+          if ! command -v typst >/dev/null; then
+            curl --fail --location --retry 3 https://github.com/typst/typst/releases/download/v0.15.1/typst-x86_64-unknown-linux-musl.tar.xz --output /tmp/typst.tar.xz
+            echo 'a6d077d0a95eed5a2eba715b2dae06be954f624ccbf85758a03f389ded33118c  /tmp/typst.tar.xz' | sha256sum --check
+            tar -xJf /tmp/typst.tar.xz -C /tmp
+            mkdir -p "$HOME/.local/bin"
+            install /tmp/typst-x86_64-unknown-linux-musl/typst "$HOME/.local/bin/typst"
+            echo "$HOME/.local/bin" >> "$GITHUB_PATH"
+          fi
       - name: Build native library and both manuals
         run: make all docs-check DOC_PYTHON=python
       - name: Configure Pages

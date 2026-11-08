@@ -73,3 +73,20 @@ The installed reference wheel's 177 Python package sources were checked against
 the pinned source archive: every file matched byte-for-byte. Exact reference
 dependency versions and tested font-file hashes are recorded in
 `compatibility/reference_environment.json`.
+
+## Typst reference
+
+`manim/mobject/text/typst_mobject.py` maps to `typst.lua` and `typst_groups.lua`;
+`manim/utils/typst_file_writing.py` maps to `typst_file.lua`. Runtime uses the
+native Typst CLI **0.15.1 (9dfd3a08)**. Its official release archive SHA-256 is
+recorded in `compatibility/reference_environment.json`; the CI installer checks
+it. Development Manim uses `typst` Python package **0.15.2**, whose Cargo source
+pins the same **0.15.1 engine**. A real CLI/oracle compilation produced identical
+SVG. This Python package is an oracle dependency only. Reproduction therefore
+also needs `.dev/venv/bin/python -m pip install typst==0.15.2`.
+
+The oracle retains unmodified upstream cache-hit results and separately records
+six diagnostic states with only `use_svg_cache=False`. This exposes the upstream
+loss of baseline/stroke tracking on cache hits; luanimath deliberately retains
+that tracking when importing cached SVG. These six states are not original
+behavioral/visual compatibility passes.

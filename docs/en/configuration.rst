@@ -40,3 +40,12 @@ removes its own directory unless retained; a failed render keeps it for diagnosi
 Encoded output also writes a final PNG, whose path can be changed with
 ``last_frame``. Audio, caching of scene segments and upstream quality presets
 remain pending.
+
+Temporary configuration
+--------------------------------------------------------------------------------
+
+``l.config.with(options,function() ... end)`` validates and scopes the supported
+configuration keys. It restores the original defaults table after normal return
+or an error, supports nesting and forwards the callback's return values.
+``Scene:render`` scopes its resolved configuration while constructing the scene;
+Typst stroke widths therefore use the active pixel/world dimensions.

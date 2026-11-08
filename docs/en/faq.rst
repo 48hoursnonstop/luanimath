@@ -40,3 +40,12 @@ The final PNG differs from the final video frame
 The still captures the logical endpoint, while the encoded sequence samples
 times strictly before each segment endpoint. This is intentional deterministic
 sampling; see :doc:`configuration`.
+
+Math compilation fails
+--------------------------------------------------------------------------------
+
+Run ``typst --version`` and check the source syntax: MathTypst uses Typst math,
+not LaTeX. ``typst_bin`` can select an explicit executable. The default cache
+is ``.luanimath-cache/typst``; ``use_cache=false`` forces recompilation. If a
+font or externally read file changes, clear that cache or force recompilation:
+external asset content is not part of the cache key.

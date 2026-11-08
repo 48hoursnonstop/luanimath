@@ -10,8 +10,10 @@
    FunctionGraph, standard plots and spline smoothing now have executed tests.
 4. Expand the now-tested native SVG importer (rounded rectangles, CSS, caching,
    more units) and add raster assets with real decoding and error handling.
-5. Math typography: external TeX or Typst pipeline, vector import, glyph grouping
-   and matching-expression transforms. TeX tools are not currently installed.
+5. Math typography expansion: TeX pipeline, expression-matching transforms,
+   additional Typst options and asset-aware cache invalidation. Native Typst
+   compilation, labeled/nested captures, stroke scaling and affine baselines
+   now have executed numeric/visual comparisons. TeX tools are not installed.
 6. Camera/3D expansion: clipping, full camera options, ThreeDAxes, other solids,
    textures and helper scene lifecycles. Moving cameras, 3D projection,
    Cube/Sphere/Surface, depth ordering and lighting now have real executed

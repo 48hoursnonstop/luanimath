@@ -104,11 +104,13 @@ function Scene:render(opts)
     end
     self.renderer=Renderer(config,self.camera)
     local ok,err=xpcall(function()
+        return Config.with(config,function()
         self:construct()
         if self.frame_count==0 then self:_frame() end
         local last=output:match('%.png$') and output or (opts.last_frame or output:gsub('%.[^/.]+$','')..'.png')
         self.renderer:render(self.mobjects,last)
         if not output:match('%.png$') then Renderer.encode(self.frame_dir,output,config.frame_rate) end
+        end)
     end,debug.traceback)
     self.renderer:close();self.renderer=nil
     if ok and not opts.keep_frames then U.command({'rm','-rf','--',self.frame_dir}) end

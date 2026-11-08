@@ -411,3 +411,32 @@ for name in ('Mobject:clear_updaters','Mobject:suspend_updating','Mobject:resume
  OPTIONS[name]=[('recursive','boolean','true','Include descendants.','Incluye descendientes.')]
 OPTIONS['Mobject:align_data']=[('skip_point_alignment','boolean','false','Skip this object’s point alignment; child alignment still runs.','Omite la alineación de puntos propia; la de los hijos sigue ejecutándose.')]
 OPTIONS['Mobject:add_tip']=[('tip_length','number','0.35','Positive length, shorter than the line.','Longitud positiva menor que la línea.'),('tip_width','number','0.35','Positive triangular base width.','Ancho positivo de base triangular.'),('stroke_width','number','0','Tip border width.','Grosor del borde de la punta.')]
+
+API.update({
+ 'Typst':('Compile Typst markup with the native external compiler and import its SVG as vector Mobjects. Black artwork is recolored to color; explicit nonblack paints are preserved.','Compila marcado Typst con el compilador nativo externo e importa su SVG como Mobjects vectoriales. Recolorea la geometría negra con color y conserva colores explícitos distintos de negro.'),
+ 'MathTypst':('Compile a display-style Typst math expression without dollar delimiters. Double-brace captures provide labeled or numbered identity-sharing subexpression groups.','Compila una expresión matemática Typst de presentación sin delimitadores de dólar. Las capturas de doble llave crean grupos compartidos por etiqueta o número.'),
+ 'typst_to_svg_file':('Compile a complete Typst body with the upstream automatic page template. Return a verified SVG filename from the native asset cache; no Python runtime is involved.','Compila un cuerpo Typst con la plantilla de página automática de upstream. Devuelve la ruta SVG verificada de la caché nativa, sin Python durante la ejecución.'),
+ 'Mobject:select':('For Typst/MathTypst, return an identity-sharing VGroup for a string label or a 1-based automatic capture index. Unknown labels raise an error.','En Typst/MathTypst, devuelve un VGroup compartido por etiqueta o índice automático desde 1. Las etiquetas desconocidas producen un error.'),
+ 'Mobject:get_baseline_frame':('For tracked Typst leaves, recover origin/right/up vectors by an affine least-squares fit to current geometry. Point counts must match the stored reference.','En hojas Typst seguidas, recupera origen/derecha/arriba mediante ajuste afín por mínimos cuadrados. La cantidad de puntos debe coincidir con la referencia.'),
+ 'Mobject:get_baseline_frames':('Return recovered frames for every tracked nondegenerate Typst leaf. Also available through the computed baseline_frames property.','Devuelve marcos recuperados para todas las hojas Typst seguidas no degeneradas. También está disponible como propiedad calculada baseline_frames.'),
+ 'Mobject:get_color':('Return opaque RGB(A) from fill when fill opacity is nonzero, otherwise from stroke. All-zero paint returns nil; opacity is queried separately.','Devuelve RGB(A) opaco del relleno si su opacidad no es cero, o del borde en caso contrario. Un color completamente cero devuelve nil; la opacidad se consulta aparte.'),
+ 'config.with':('Evaluate a callback inside validated temporary defaults, forwarding all return values. Previous defaults are restored after success or error, including nested scopes.','Evalúa una función con valores temporales validados y reenvía sus resultados. Restaura la configuración tras éxito o error, incluidos ámbitos anidados.'),
+})
+TYPST=[
+ ('font_size','number','48','Positive size; applied as font_size/960 when height is absent.','Tamaño positivo; se aplica como font_size/960 cuando no se indica height.'),
+ ('typst_preamble','string','""','Typst rules inserted before the body.','Reglas Typst insertadas antes del cuerpo.'),
+ ('font_paths','string[]','{}','Additional font directories for the compiler.','Directorios de fuentes adicionales.'),
+ ('track_baselines','boolean','false','Record SVG-coordinate affine reference frames.','Registra marcos afines en coordenadas SVG.'),
+ ('should_center','boolean','true','Center imported geometry.','Centra la geometría importada.'),
+ ('height','number or false','false','Explicit fit disables automatic font-size scaling.','El ajuste explícito desactiva la escala automática de fuente.'),
+ ('width','number','nil','SVG width fit occurs before font-size scaling, as upstream.','El ancho SVG se ajusta antes de la escala de fuente, como upstream.'),
+ ('color','color','WHITE','Replacement for black artwork.','Sustitución de la geometría negra.'),
+ ('stroke_width','number','nil','Override all strokes; nil preserves and scales source strokes.','Sustituye todos los trazos; nil conserva y escala los originales.'),
+ ('cache_dir','string','".luanimath-cache/typst"','Native compiled-asset cache directory.','Directorio de caché nativa de compilación.'),
+ ('typst_bin','string','LUANIMATH_TYPST or "typst"','Compiler executable.','Ejecutable del compilador.'),
+ ('use_cache','boolean','true','Reuse compiled SVG when its SHA-256 matches.','Reutiliza SVG compilado si coincide su SHA-256.'),
+ ('root','string','source directory','Optional compiler project root.','Raíz opcional del proyecto de compilación.'),
+]
+OPTIONS['Typst']=TYPST;OPTIONS['MathTypst']=TYPST
+OPTIONS['typst_to_svg_file']=[('preamble','string','""','Extra Typst rules.','Reglas Typst adicionales.'),('text_size','number','10','Compilation font size in points.','Tamaño de compilación en puntos.')]+TYPST[2:3]+TYPST[9:]
+OPTIONS['config.with']=CONFIG

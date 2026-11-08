@@ -2150,5 +2150,115 @@
       "tools/visual_text_features.py"
     ],
     "limitations": "Actual Pango markup and RGB/family gradients; documented tested domain only. Custom deprecated markup tags, broader color representations and remaining constructor/style options are pending."
+  },
+  {
+    "id": "manim.mobject.text.typst_mobject.Typst",
+    "lua_api": "Typst",
+    "status": "implemented_partial",
+    "evidence": [
+      "tests/typst.lua",
+      "tests/reference_typst.lua",
+      "tools/visual_typst.py"
+    ],
+    "limitations": "Lua 5.4 vector subset with Typst CLI 0.15.1. Named/nested captures use Lua 1-based indices. Cached SVG imports intentionally retain baseline/stroke tracking lost by upstream cache hits; six original reference states are separately diagnosed. Complete constructor, nonlinear baseline and asset invalidation behavior remains unverified. config.with scopes the documented Lua configuration keys only."
+  },
+  {
+    "id": "manim.mobject.text.typst_mobject.MathTypst",
+    "lua_api": "MathTypst",
+    "status": "implemented_partial",
+    "evidence": [
+      "tests/typst.lua",
+      "tests/reference_typst.lua",
+      "tools/visual_typst.py"
+    ],
+    "limitations": "Lua 5.4 vector subset with Typst CLI 0.15.1. Named/nested captures use Lua 1-based indices. Cached SVG imports intentionally retain baseline/stroke tracking lost by upstream cache hits; six original reference states are separately diagnosed. Complete constructor, nonlinear baseline and asset invalidation behavior remains unverified. config.with scopes the documented Lua configuration keys only."
+  },
+  {
+    "id": "manim.mobject.text.typst_mobject.Typst.font_size",
+    "lua_api": "Typst.font_size",
+    "status": "implemented_partial",
+    "evidence": [
+      "tests/typst.lua",
+      "tests/reference_typst.lua",
+      "tools/visual_typst.py"
+    ],
+    "limitations": "Lua 5.4 vector subset with Typst CLI 0.15.1. Named/nested captures use Lua 1-based indices. Cached SVG imports intentionally retain baseline/stroke tracking lost by upstream cache hits; six original reference states are separately diagnosed. Complete constructor, nonlinear baseline and asset invalidation behavior remains unverified. config.with scopes the documented Lua configuration keys only."
+  },
+  {
+    "id": "manim.mobject.text.typst_mobject.Typst.scale",
+    "lua_api": "Typst:scale",
+    "status": "implemented_partial",
+    "evidence": [
+      "tests/typst.lua",
+      "tests/reference_typst.lua",
+      "tools/visual_typst.py"
+    ],
+    "limitations": "Lua 5.4 vector subset with Typst CLI 0.15.1. Named/nested captures use Lua 1-based indices. Cached SVG imports intentionally retain baseline/stroke tracking lost by upstream cache hits; six original reference states are separately diagnosed. Complete constructor, nonlinear baseline and asset invalidation behavior remains unverified. config.with scopes the documented Lua configuration keys only."
+  },
+  {
+    "id": "manim.mobject.text.typst_mobject.Typst.select",
+    "lua_api": "Typst:select",
+    "status": "implemented_partial",
+    "evidence": [
+      "tests/typst.lua",
+      "tests/reference_typst.lua",
+      "tools/visual_typst.py"
+    ],
+    "limitations": "Lua 5.4 vector subset with Typst CLI 0.15.1. Named/nested captures use Lua 1-based indices. Cached SVG imports intentionally retain baseline/stroke tracking lost by upstream cache hits; six original reference states are separately diagnosed. Complete constructor, nonlinear baseline and asset invalidation behavior remains unverified. config.with scopes the documented Lua configuration keys only."
+  },
+  {
+    "id": "manim.mobject.text.typst_mobject.Typst.get_baseline_frame",
+    "lua_api": "Typst:get_baseline_frame",
+    "status": "implemented_partial",
+    "evidence": [
+      "tests/typst.lua",
+      "tests/reference_typst.lua",
+      "tools/visual_typst.py"
+    ],
+    "limitations": "Lua 5.4 vector subset with Typst CLI 0.15.1. Named/nested captures use Lua 1-based indices. Cached SVG imports intentionally retain baseline/stroke tracking lost by upstream cache hits; six original reference states are separately diagnosed. Complete constructor, nonlinear baseline and asset invalidation behavior remains unverified. config.with scopes the documented Lua configuration keys only."
+  },
+  {
+    "id": "manim.mobject.text.typst_mobject.Typst.baseline_frames",
+    "lua_api": "Typst.baseline_frames",
+    "status": "implemented_partial",
+    "evidence": [
+      "tests/typst.lua",
+      "tests/reference_typst.lua",
+      "tools/visual_typst.py"
+    ],
+    "limitations": "Lua 5.4 vector subset with Typst CLI 0.15.1. Named/nested captures use Lua 1-based indices. Cached SVG imports intentionally retain baseline/stroke tracking lost by upstream cache hits; six original reference states are separately diagnosed. Complete constructor, nonlinear baseline and asset invalidation behavior remains unverified. config.with scopes the documented Lua configuration keys only."
+  },
+  {
+    "id": "manim.utils.typst_file_writing.typst_to_svg_file",
+    "lua_api": "typst_to_svg_file",
+    "status": "implemented_partial",
+    "evidence": [
+      "tests/typst.lua",
+      "tests/reference_typst.lua",
+      "tools/visual_typst.py"
+    ],
+    "limitations": "Lua 5.4 vector subset with Typst CLI 0.15.1. Named/nested captures use Lua 1-based indices. Cached SVG imports intentionally retain baseline/stroke tracking lost by upstream cache hits; six original reference states are separately diagnosed. Complete constructor, nonlinear baseline and asset invalidation behavior remains unverified. config.with scopes the documented Lua configuration keys only."
+  },
+  {
+    "id": "manim.mobject.types.vectorized_mobject.VMobject.get_color",
+    "lua_api": "Mobject:get_color",
+    "status": "implemented_partial",
+    "evidence": [
+      "tests/typst.lua",
+      "tests/reference_typst.lua",
+      "tools/visual_typst.py"
+    ],
+    "limitations": "Lua 5.4 vector subset with Typst CLI 0.15.1. Named/nested captures use Lua 1-based indices. Cached SVG imports intentionally retain baseline/stroke tracking lost by upstream cache hits; six original reference states are separately diagnosed. Complete constructor, nonlinear baseline and asset invalidation behavior remains unverified. config.with scopes the documented Lua configuration keys only."
+  },
+  {
+    "id": "manim._config.__init__.tempconfig",
+    "lua_api": "config.with",
+    "status": "implemented_partial",
+    "evidence": [
+      "tests/typst.lua",
+      "tests/reference_typst.lua",
+      "tools/visual_typst.py"
+    ],
+    "limitations": "Lua 5.4 vector subset with Typst CLI 0.15.1. Named/nested captures use Lua 1-based indices. Cached SVG imports intentionally retain baseline/stroke tracking lost by upstream cache hits; six original reference states are separately diagnosed. Complete constructor, nonlinear baseline and asset invalidation behavior remains unverified. config.with scopes the documented Lua configuration keys only."
   }
 ]

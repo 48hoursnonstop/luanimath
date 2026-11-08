@@ -55,3 +55,25 @@ RenderReport
 
 The generated final PNG contains the logical endpoint, which can differ from
 the last encoded sample. See :doc:`configuration`.
+
+Typst objects
+--------------------------------------------------------------------------------
+
+``typst_code`` stores the compiled source, with math delimiters/capture helpers
+when applicable. ``typst_preamble`` stores the effective preamble. With
+``track_baselines=true``, ``baseline_frames`` is a newly computed sequence of
+three-point affine frames for nondegenerate imported leaves. ``get_baseline_frame``
+returns the origin, x-axis endpoint and y-axis endpoint as three values.
+Point-count changes invalidate that leaf's reference; nonlinear deformations
+are outside the affine tracking contract.
+
+``font_size`` follows upstream's 960-times-relative-height measurement. Explicit
+``height`` bypasses initial font scaling; changing ``font_size`` scales the whole
+object. Zero-height objects cannot report a meaningful font size. Unlike normal
+geometry, unoverridden Typst stroke widths are refreshed when scaling the root.
+``select`` returns a VGroup sharing the actual leaves; styling it changes the
+formula. Numeric capture indices start at 1; explicit names remain strings.
+
+``m.color`` / ``m:get_color()`` returns an opaque RGB color, choosing visible
+fill before stroke; an object with both paints equal to transparent black
+returns nil. Assigning ``m.color`` applies ``set_color`` to its family.

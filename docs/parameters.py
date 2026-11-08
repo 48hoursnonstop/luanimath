@@ -1,5 +1,10 @@
 """Shared parameter meanings; operation-specific overrides remove ambiguity."""
 PARAMS={
+ 'code':('string','Typst markup body in valid UTF-8.','Cuerpo de marcado Typst en UTF-8 válido.'),
+ 'body':('string','Typst source body, without page-template rules.','Cuerpo Typst sin las reglas de plantilla de página.'),
+ 'expression':('string','Typst math source without outer dollar delimiters.','Expresión matemática Typst sin dólares exteriores.'),
+ 'key':('string or integer','Label or 1-based automatic capture index.','Etiqueta o índice automático de captura desde 1.'),
+ 'shape':('Mobject','A tracked nondegenerate leaf of this Typst object.','Hoja no degenerada seguida de este objeto Typst.'),
  'opts':('table or nil','Optional supported settings, listed below when applicable.','Opciones admitidas, descritas abajo cuando corresponda.'),
  'construct':('function','Callback receiving the scene; add objects and schedule animation here.','Función que recibe la escena para añadir objetos y programar animaciones.'),
  'm':('Mobject','Subject whose geometry or state is animated.','Objeto cuya geometría o estado se anima.'),
@@ -66,6 +71,7 @@ PARAMS={
  'p':('vector','Point/vector to rotate.','Punto o vector que se gira.'),
 }
 SPECIAL={
+ 'config.with':{'fn':('function','Zero-argument callback whose results are forwarded.','Función sin argumentos cuyos resultados se reenvían.')},
  'AnimationGroup':{'a':('Animation[]','Nonempty sequence of child animations.','Secuencia no vacía de animaciones hijas.')},
  'LaggedStart':{'a':('Animation[]','Nonempty sequence of child animations.','Secuencia no vacía de animaciones hijas.')},
  'Succession':{'a':('Animation[]','Nonempty sequence of child animations.','Secuencia no vacía de animaciones hijas.')},

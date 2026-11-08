@@ -1,6 +1,6 @@
 # Compatibility
 
-Target: Manim Community 0.22.1. Current development version: 0.8.2-dev.
+Target: Manim Community 0.22.1. Current development version: 0.9.0-dev.
 
 The public API inventory is `compatibility/api_inventory.json`; reviewed
 declarations are in `compatibility/implemented.json`. `python3 tools/coverage.py`
@@ -131,7 +131,8 @@ plotting methods remain pending and are explicitly rejected where applicable.
   per-point textures, subcameras, ambient rotation helpers and the remaining
   3D object families are pending. Points exactly on the focal plane are
   explicitly rejected. The 3D API remains partially compatible.
-- Math typography, raster images, advanced plots, remaining 3D features, OpenGL,
+- TeX/MathTex, expression-matching transforms, raster images, advanced plots,
+  remaining 3D features, OpenGL,
   audio, render caching, scene sections and notebook integration are pending.
 - Lua 5.4 is the only tested ABI. Lua indices are 1-based. Tables and functions
   replace Python classes and keyword machinery where appropriate.
@@ -155,3 +156,25 @@ from the existing visual suite and measured zero error. Ordinary 2D numerical
 tolerances remain 1e-9 absolute.
 
 No overall production-readiness or complete Manim compatibility is claimed.
+
+## Mathematical typography
+
+Typst and MathTypst compile through the native Typst 0.15.1 CLI, then use the
+actual vector importer and renderer. Named/unnamed/nested/repeated captures,
+ordinary Typst labels, source colors, font size, explicit size, source strokes,
+affine baseline tracking, selection identity and copy independence execute tests.
+Numeric selection is Lua 1-based. Typst syntax is distinct from LaTeX.
+
+The corpus retains **44 original states/images**. In **six** states, upstream
+SVG cache hits omit baseline/stroke tracking, changing scaling behavior. Lua
+intentionally retains tracking on cached imports. The tests assert that this
+original mismatch remains visible and compare separate diagnostic states made
+by changing only `use_svg_cache=False`. There are 38 unmodified comparisons and
+six separately diagnosed comparisons; neither set establishes complete parity.
+
+Cache keys cover source, compiler version, font-path strings and root, with
+content checksums for generated SVG. They do not track external font/file
+contents. Use `use_cache=false` or clear the cache after external changes.
+Nonlinear baseline deformation, every Typst SVG feature and all constructor
+options remain unverified. Unsupported SVG features raise importer errors.
+MathTex/Tex and matching-expression transforms remain pending.

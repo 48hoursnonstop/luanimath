@@ -2,28 +2,29 @@
 
 Project: luanimath, /mnt/datos/luanimath.
 Public repository: https://github.com/48hoursnonstop/luanimath
-0.8.1 is published with a clean-verified source archive and real example videos.
-0.8.2 passed clean source extraction/rebuild/regression and both strict manuals;
-the final package and GitHub Pages publication are being completed.
+English: https://48hoursnonstop.github.io/luanimath/en/
+Spanish: https://48hoursnonstop.github.io/luanimath/es/
 
-Active task: the user requires Manim-style documentation maintained alongside
-the library, primarily in English and also in Spanish. The 0.8.2 manual has
-261 function bindings (243 distinct + 18 aliases), 35 constants, reviewed
-bilingual descriptions/parameters/options/results, tutorials and seven real
-scene examples. Strict final builds passed 67 HTML pages and 5879 local links. Object-state
-and return contracts are included. English/Spanish browser search worked.
-GitHub Pages is enabled with workflow builds; publish the prepared workflow
-and verify the actual public pages before reporting them as live.
+0.8.2 is published; its bilingual GitHub Pages deployment was verified live.
+0.9.0 adds native Typst math with actual differential/rendered tests and
+English/Spanish tutorials/reference. Full make check, nine ASan/UBSan suites
+and both strict manuals passed. The source package clean rebuild and GitHub
+publication are the current release gate; inspect releases for actual results.
 
-One source-derived fix is included: Uncreate accepts remover=false; FadeOut
-rejects explicit remover because upstream hardcodes that constructor keyword.
-The actual upstream probe and Lua regression passed.
+The formula corpus has 44 original states and 10 capture parser cases; six
+original SVG-cache states lose baseline/stroke tracking upstream. Lua retains
+tracking. Preserve those original mismatches and their separately diagnosed
+use_svg_cache=False data. Do not count diagnostics as original compatibility.
+The actual Lua suite has 63,893 checks; 38 original and six diagnostic images
+measured zero error. Native Typst 0.15.1 is under /mnt/datos/Tools, with a
+user PATH symlink. typst-py 0.15.2 embeds the same engine for the dev oracle.
 
-Then resume mathematical typography. Native Typst 0.15.1 is installed under
-/mnt/datos/Tools; typst-py 0.15.2 embeds the same engine for the dev oracle.
-A real formula produced identical CLI/oracle SVG. Private compilation/cache
-and SHA-256 work; public Typst/MathTypst objects, labels, stroke scaling and
-behavioral/visual tests are still pending.
+Continue dependency-ordered development after release: numerical scales,
+coordinate labels, remaining plots, native TeX adapter, SVG/assets and
+matching-expression transforms. Maintain English and Spanish API contracts,
+tutorials and real rendered examples as features grow. No overall completion
+percentage is claimed: availability is currently 211/5155 symbols (4.09%),
+205 partial plus six verified, with all limitations recorded.
 
-The user authorized continued work through available usage. Preserve releases
-and actual evidence; no overall completion percentage is claimed.
+The user authorized continued work through available usage and public GitHub
+updates. Preserve immutable prior archives and actual evidence.

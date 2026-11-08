@@ -1,5 +1,35 @@
 # Executed test results
 
+## 0.9.0-dev — native mathematical typography
+
+- Complete `make check` passed, including all existing numerical, visual and
+  media regressions; core suite remains **18 groups, 333 checks**.
+- Real Manim 0.22.1 with typst-py 0.15.2 (embedded Typst 0.15.1) produced
+  **44 formula states/images and 10 capture-parser cases**. Actual Lua API
+  execution passed **63,893 checks**, including capture identity, nested/repeated
+  labels, source colors, sizing, strokes, affine baselines, copied graphs,
+  configuration restoration, invalid input and corrupt-cache recompilation.
+  Cache paths containing quotes, a newline and Unicode executed successfully.
+- **38 unmodified-upstream image comparisons measured zero pixel error**.
+  Six original cache-hit states lose baseline/stroke tracking in upstream;
+  their mismatches remain asserted and separately recorded. Six diagnostic
+  images changing only use_svg_cache=False also measured zero pixel error.
+  These are explicitly separate from original-upstream compatibility passes.
+- ASan/UBSan passed nine native-boundary suites including the new formula
+  suite. Leak detection was disabled; system libraries were not instrumented.
+- Both strict manuals built with **269 function bindings, 251 distinct
+  functions, 18 aliases, 35 constants, 71 HTML pages and 6,391 checked local
+  links/assets/anchors**. Both languages include the executed math tutorial.
+- All eight gallery scenes rendered actual PNG/MP4 output and all videos
+  fully decoded. The math example contains **36 frames, 640×360, 12 fps,
+  three seconds**; its real final frame was opened for visual inspection.
+- The inventory now declares **211/5,155 symbols available (4.09%)**:
+  205 partially implemented and six verified. This is a symbol count, not an
+  overall completion estimate.
+- Clean source rebuilding, regression and strict documentation rebuilding
+  are required by `make release`; their executed result and archive hashes
+  are recorded in the generated release verification report.
+
 ## 0.8.2-dev — bilingual documentation
 
 - Complete `make check` passed, including the new runtime documentation/API

@@ -62,6 +62,7 @@ CATEGORIES={
  'animations':('Animations and composition','Animaciones y composición'),
  'scenes':('Scenes and rendering','Escenas y renderizado'),
  'text':('Text and glyphs','Texto y glifos'),
+ 'typst':('Mathematical text','Texto matemático'),
  'svg':('SVG import','Importación SVG'),
  'graphing':('Coordinate systems and plots','Coordenadas y gráficas'),
  'cameras':('Cameras','Cámaras'),
@@ -77,12 +78,13 @@ def category(obj):
     if name.startswith('Camera:') or path.endswith('/camera.lua'):return 'cameras'
     if name.startswith('Mobject:'):
         key=name.split(':')[1]
+        if key in ('select','get_baseline_frame','get_baseline_frames'):return 'typst'
         if key in GRAPH_METHODS:return 'graphing'
         if key in PATH_METHODS:return 'paths'
         if key in ('get_font_size','set_font_size'):return 'text'
         return 'objects'
     if name.startswith('vec.') or name in ('vec','Vector'):return 'vectors'
-    for suffix,cat in [('animation','animations'),('text','text'),('svg','svg'),('graphing','graphing'),('three_d','three_d'),('paths','paths'),('vector','vectors'),('color','colors'),('rate_functions','colors'),('bezier','bezier'),('config','config')]:
+    for suffix,cat in [('animation','animations'),('text','text'),('typst','typst'),('typst_file','typst'),('svg','svg'),('graphing','graphing'),('three_d','three_d'),('paths','paths'),('vector','vectors'),('color','colors'),('rate_functions','colors'),('bezier','bezier'),('config','config')]:
         if path.endswith('/'+suffix+'.lua'):return cat
     return 'objects'
 
@@ -142,10 +144,13 @@ def render_examples():
     from PIL import Image
     assets=ROOT/'artifacts/docs-assets';assets.mkdir(parents=True,exist_ok=True)
     results=[]
+    manifest=json.loads((ROOT/'docs/examples/manifest.json').read_text())
+    assert {p.stem for p in (ROOT/'docs/examples').glob('*.lua')}==set(manifest),'gallery manifest and source scenes differ'
     for path in sorted((ROOT/'docs/examples').glob('*.lua')):
         output=assets/(path.stem+'.mp4')
         log=subprocess.check_output([os.environ.get('LUA','lua5.4'),'tools/luanimath.lua',str(path),'--output',str(output),'--width','640','--height','360','--fps','12'],cwd=ROOT,text=True)
         match=re.search(r'Rendered (\d+) frames',log);assert match,log
+        assert int(match[1])==manifest[path.stem],(path.name,match[1],manifest[path.stem])
         info=json.loads(subprocess.check_output(['ffprobe','-v','error','-count_frames','-select_streams','v:0','-show_entries','stream=width,height,nb_read_frames,r_frame_rate','-of','json',str(output)]))['streams'][0]
         assert (info['width'],info['height'],int(info['nb_read_frames']))==(640,360,int(match[1])),info
         subprocess.run(['ffmpeg','-v','error','-i',str(output),'-f','null','-'],check=True)
@@ -154,7 +159,7 @@ def render_examples():
             assert image.size==(640,360);assert max(c[1] for c in image.convert('RGB').getextrema())>32
         results.append(dict(example=path.name,frames=int(match[1]),width=640,height=360,fps=12,source_sha256=hashlib.sha256(path.read_bytes()).hexdigest(),png_sha256=hashlib.sha256(png.read_bytes()).hexdigest(),mp4_sha256=hashlib.sha256(output.read_bytes()).hexdigest()))
         print(log.strip(),flush=True)
-    assert len(results)==7
+    assert len(results)==len(manifest)
     (assets/'verification.json').write_text(json.dumps(results,indent=2)+'\n')
 
 class Links(HTMLParser):

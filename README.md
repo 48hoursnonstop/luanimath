@@ -16,7 +16,9 @@ reference tools**, never part of scene execution or rendering.
 
 Required: Lua 5.4 and development headers, a C11 compiler, make, pkg-config,
 Cairo, Pango and libxml2 development libraries, and FFmpeg. Check existing installations
-before installing anything. On Arch the relevant package names are `lua54`,
+before installing anything. Mathematical expressions additionally need the native
+`typst` CLI (tested with 0.15.1); full checks and the documentation gallery
+require it. Set `LUANIMATH_TYPST` or the `typst_bin` option for its path. On Arch the relevant package names are `lua54`,
 `cairo`, `pango`, `libxml2`, `ffmpeg`, `gcc`, `make` and `pkgconf`.
 
 ```sh
@@ -38,7 +40,7 @@ another ABI; other ABIs have not yet been validated.
 Available native subsystems include cubic geometry and hierarchy transforms,
 animation/composition, numerical axes and graphs, Pango-shaped Unicode text,
 moving cameras, 3D projection and lighting, Cube, Sphere, parametric Surface,
-and native SVG paths/import.
+native SVG paths/import, and native-CLI Typst mathematical expressions.
 Availability and compatibility are tracked separately for each upstream API.
 
 ```lua
@@ -103,6 +105,23 @@ start, exclusive end. They are distinct from Lua’s 1-based `slice` method.
 Conflicting overlapping styles raise an error, following upstream. Object
 families also support `group:set_color_by_gradient(l.RED,l.BLUE)`.
 
+## Mathematical expressions
+
+`Typst` compiles Typst document content; `MathTypst` accepts a math expression.
+The native compiler produces SVG imported into the same Lua vector model.
+No Python runs during compilation, selection, animation or rendering.
+
+```lua
+local equation = l.MathTypst('{{ a^2+b^2 : lhs }} = {{ c^2 }}', {font_size=72})
+equation:select('lhs'):set_color(l.BLUE)
+equation:select(1):set_color(l.YELLOW) -- first unnamed capture, Lua indexing
+```
+
+Nested/repeated captures, ordinary Typst labels and optional affine baseline
+tracking have differential tests. Typst syntax differs from LaTeX; MathTex/Tex
+and expression-matching animations remain pending. See the manual for cache
+limits and the explicitly diagnosed upstream SVG-cache tracking difference.
+
 ## Documentation
 
 [English manual](https://48hoursnonstop.github.io/luanimath/en/) ·
@@ -119,7 +138,7 @@ make docs DOC_PYTHON=.dev/venv/bin/python
 ```
 
 Open `artifacts/docs/en/index.html` or `artifacts/docs/es/index.html`. The
-build executes all seven gallery scenes, decodes the actual media and checks
+build executes all eight gallery scenes, decodes the actual media and checks
 local links. `make docs-api-check` detects new exports without bilingual
 reference entries. Source releases also build the manuals from the clean
 extraction; use `make release DOC_PYTHON=.dev/venv/bin/python` with the docs

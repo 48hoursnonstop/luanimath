@@ -17,6 +17,7 @@ Community 0.22.1; the project is an early development port. Consult
    tutorials/building_blocks
    tutorials/animation
    tutorials/text
+   tutorials/math
    tutorials/plots
    tutorials/three_d
    tutorials/svg

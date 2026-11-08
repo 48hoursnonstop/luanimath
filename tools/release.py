@@ -44,7 +44,7 @@ with tempfile.TemporaryDirectory(prefix='clean-',dir=root/'.dev') as tmp:
     docs_digest=hashlib.sha256(docs_archive.read_bytes()).hexdigest()
     (release/(docs_archive.name+'.sha256')).write_text(docs_digest+'  '+docs_archive.name+'\n')
 report={'archive':archive.name,'sha256':digest,'clean_build':'passed','command':'make check','source_files':len(files),
-        'clean_log':log.name,'runtime':'Lua 5.4 + native Cairo/Pango/libxml2 + FFmpeg; no Python engine',
+        'clean_log':log.name,'runtime':'Lua 5.4 + native Cairo/Pango/libxml2 + FFmpeg; optional native Typst CLI; no Python engine',
         'documentation':documentation,'docs_archive':docs_archive.name,'docs_sha256':docs_digest}
 (release/(name+'-verification.json')).write_text(json.dumps(report,indent=2)+'\n')
 print(json.dumps(report,indent=2))

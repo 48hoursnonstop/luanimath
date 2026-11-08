@@ -39,3 +39,10 @@ SVG import
 .. luanimath-example:: three_d
    :alt: A cube and a sphere under a changing camera orientation.
    :video:
+
+Mathematical expressions
+--------------------------------------------------------------------------------
+
+.. luanimath-example:: math
+   :alt: Colored Pythagorean captures and a sum with a fraction rendered by Typst.
+   :video:

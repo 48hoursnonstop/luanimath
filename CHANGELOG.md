@@ -1,5 +1,19 @@
 # Changelog
 
+## 0.9.0-dev
+
+- Native Typst CLI compilation and SVG import; public Typst and MathTypst.
+- Named, anonymous, nested and repeated expression captures sharing actual
+  glyph identities, source colors, stroke scaling and affine baseline frames.
+- Integrity-checked asset cache, explicit compiler/font/root options and
+  actual corruption repair; no Python runtime dependency.
+- Scoped Lua configuration with guaranteed restoration and render settings
+  active during scene construction. Opaque vector color queries/properties.
+- 44 formula states and 10 parser cases; 38 exact unmodified image matches
+  and six separately diagnosed upstream SVG-cache tracking differences.
+- English/Spanish math tutorials, generated reference and an eighth rendered
+  gallery scene. CI installs the native compiler with a pinned SHA-256.
+
 ## 0.8.2-dev
 
 - English and Spanish Sphinx/Furo manuals: installation, tutorials, migration,

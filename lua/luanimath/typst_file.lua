@@ -10,7 +10,7 @@ local function write(path,data)
 end
 local function temporary(directory)
     local pipe=assert(io.popen('mktemp '..U.shell_quote(directory..'/.compile-XXXXXX'),'r'))
-    local path=pipe:read('*l');local ok=pipe:close();assert(ok and path,'cannot create Typst staging file');return path
+    local path=pipe:read('*a');local ok=pipe:close();assert(ok and path~='','cannot create Typst staging file');return (path:gsub('\n$',''))
 end
 function F.typst_to_svg_file(body,opts)
     opts=opts or {};assert(type(body)=='string' and #body<=1048576 and not body:find('\0',1,true) and utf8.len(body),'Typst requires valid UTF-8 source, at most 1 MiB, without NUL')

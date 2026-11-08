@@ -104,3 +104,17 @@ Sphinx Lua-domain references, runs actual gallery scenes, decodes their media,
 builds English/Spanish HTML with warnings as errors, and checks local links
 and anchors. Output and source/media hashes are recorded under `artifacts/`.
 Python/Sphinx remain developer dependencies rather than scene runtime tools.
+
+## Mathematical typography
+
+`typst_file.lua` invokes the native Typst CLI with shell-quoted arguments and
+atomically caches validated SVG with SHA-256 integrity. Keys include source,
+compiler version, font-path strings and project root; external font/file content
+changes require cache invalidation. No Python runtime is involved.
+`typst_groups.lua` parses balanced math captures while respecting strings and
+content blocks. Hidden-capture probe compilations identify actual SVG leaves;
+`typst.lua` imports them, preserves identity selections, scales source strokes
+and tracks affine baseline frames with a covariance fit. Lua copy memoization
+preserves each copied object's own tracking/selection graph.
+The Scene render configuration is scoped during construction so typography
+uses the active pixel-to-world ratio. TeX is a separate pending adapter.

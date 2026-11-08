@@ -28,7 +28,10 @@ Dependencies at runtime
 Scene execution uses Lua and the native Cairo/Pango/libxml2 module. FFmpeg is
 needed for encoded animation. Python and upstream Manim are development tools
 for reference testing and documentation builds; they do not execute Lua scenes.
-TeX/Typst-backed public math objects remain in progress in this release.
+Typst and MathTypst additionally require the native ``typst`` CLI on PATH
+(tested with 0.15.1). Set ``LUANIMATH_TYPST`` or ``typst_bin`` for another
+executable path. See :doc:`tutorials/math`. TeX/MathTex support remains pending.
+The complete tests and documentation gallery require this optional compiler.
 
 Fonts
 --------------------------------------------------------------------------------

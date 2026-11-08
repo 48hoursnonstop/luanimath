@@ -39,3 +39,12 @@ Los fotogramas usan una carpeta temporal única junto a la salida. Si termina
 bien se elimina salvo que se pida conservarla; si falla se mantiene para
 diagnóstico. La salida codificada guarda además un PNG final, configurable con
 ``last_frame``. Siguen pendientes audio, caché de segmentos y presets de calidad.
+
+Configuración temporal
+--------------------------------------------------------------------------------
+
+``l.config.with(opciones,function() ... end)`` valida y aplica temporalmente las
+claves admitidas. Restaura la tabla original de valores predeterminados al volver
+o producirse un error; permite anidación y devuelve los resultados del callback.
+``Scene:render`` aplica su configuración resuelta al construir la escena, para
+que los trazos de Typst usen las dimensiones de píxeles y mundo activas.
