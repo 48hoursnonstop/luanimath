@@ -483,3 +483,28 @@ GROWTH_COLOR=('point_color','color','nil','Initial color; nil preserves each sub
 for name in ('GrowFromPoint','GrowFromCenter','GrowFromEdge'):
  OPTIONS[name]=[GROWTH_COLOR]+ANIMATION+TRANSFORM
 OPTIONS['SpinInFromNothing']=[('angle','number','PI/2','Signed spiral sweep around OUT.','Barrido espiral con signo alrededor de OUT.'),GROWTH_COLOR]+ANIMATION
+
+API.update({
+ 'Mobject:generate_target':('Replace target with a deep copy and return that copy. The copy has no old target chain. MoveToTarget captures the resulting target object.','Sustituye target por una copia profunda y la devuelve. La copia no arrastra destinos anteriores. MoveToTarget captura ese objeto de destino.'),
+ 'Mobject:apply_function':('Map complete vector curves after shrinking handles toward anchors, then expand handles again to preserve tangent behavior. Optional smoothing follows the object fields.','Transforma curvas completas tras acercar los controles a las anclas y vuelve a separarlos para conservar tangentes. El suavizado opcional depende de los campos del objeto.'),
+ 'Mobject:scale_handle_to_anchor_distances':('Multiply each complete cubic handle offset by factor without moving anchors. One-point vector objects are left unchanged.','Multiplica por factor la distancia de cada control cúbico a su ancla sin mover las anclas. Los objetos de un punto no cambian.'),
+ 'MoveToTarget':('Transform to the target object captured at construction. Call generate_target first; editing that target before begin changes the destination.','Transforma al objeto target capturado al construir. Llama antes a generate_target; editar ese destino antes de begin cambia el resultado.'),
+ 'ApplyMethod':('Apply a named method or unbound Lua function to a copy at animation begin, using args as positional arguments. The callback return value is ignored, as upstream.','Aplica un método por nombre o una función Lua sin ligar a una copia al comenzar. args contiene argumentos posicionales. Se ignora el resultado, como upstream.'),
+ 'ApplyFunction':('At begin, call fn with a deep subject copy and transform to the returned Mobject. Returning another hierarchy is supported; returning nil is an error.','Al comenzar, llama fn con una copia profunda y transforma al Mobject devuelto. Admite otra jerarquía; devolver nil produce un error.'),
+ 'ApplyPointwiseFunction':('At begin, map points of a subject copy with Bézier handle protection, then interpolate to it. Default duration is three seconds.','Al comenzar, transforma puntos de una copia protegiendo controles Bézier y después interpola. Su duración predeterminada es tres segundos.'),
+ 'ApplyMatrix':('Capture a finite 2x2/3x3 matrix and apply it around about_point through pointwise interpolation. A 2x2 matrix preserves z; default duration is three seconds.','Captura una matriz finita 2x2/3x3 y la aplica alrededor de about_point mediante interpolación. Una matriz 2x2 conserva z; dura tres segundos por defecto.'),
+ 'FadeToColor':('Interpolate each vector-family paint to color, preserving opacity. The destination is generated at begin.','Interpola los colores de la familia vectorial hacia color, conservando opacidad. El destino se genera al comenzar.'),
+ 'ScaleInPlace':('Animate uniform scaling about the current center, generating the target at begin. Zero and negative factors are supported.','Anima una escala uniforme alrededor del centro actual, generando el destino al comenzar. Admite factores nulos y negativos.'),
+ 'ShrinkToCenter':('Animate scaling to zero about the current center. The degenerate object stays in the scene unless remover=true.','Anima una escala a cero alrededor del centro actual. El objeto degenerado permanece salvo remover=true.'),
+ 'Restore':('Animate restoration to the latest saved_state read at begin. Missing snapshots raise an error when the animation begins.','Anima la restauración al saved_state más reciente, leído al comenzar. Sin instantánea produce un error al comenzar.'),
+})
+API['Mobject:become']=('Align family structure, then copy geometry/style while retaining subject identity, kind and updaters. Alignment can mutate the other hierarchy and retain extra faded children.','Alinea la familia y copia geometría/estilo, conservando identidad, tipo y actualizadores. La alineación puede modificar la otra jerarquía y conservar hijos adicionales transparentes.')
+for name in ('MoveToTarget','ApplyMethod','ApplyFunction','ApplyPointwiseFunction','ApplyMatrix','FadeToColor','ScaleInPlace','ShrinkToCenter','Restore'):
+ OPTIONS[name]=list(ANIMATION)+TRANSFORM
+DEFAULTS['ApplyPointwiseFunction']={'run_time':'3'}
+DEFAULTS['ApplyMatrix']={'run_time':'3'}
+OPTIONS['ApplyMatrix']+=[('about_point','vector','ORIGIN','Matrix origin; a supplied coordinate table is read at begin.','Origen de la matriz; una tabla indicada se lee al comenzar.')]
+FUNCTION_FIELDS=[('pre_function_handle_to_anchor_scale_factor','number','0.01','Finite nonzero temporary handle multiplier for apply_function.','Multiplicador temporal finito no nulo de los controles para apply_function.'),('make_smooth_after_applying_functions','boolean','false','Rebuild smooth handles after point mapping.','Reconstruye controles suaves tras transformar puntos.')]
+for name in ('Mobject','VMobject','Arc','Circle','Dot','Ellipse','Line','Polygon','Rectangle','Square','RegularPolygon','Triangle','CubicBezier','ThreeDVMobject','NumberLine','ParametricFunction','FunctionGraph','ArcBetweenPoints','RoundedRectangle','Polygram'):
+ OPTIONS[name]=OPTIONS.get(name,[])+FUNCTION_FIELDS
+OPTIONS['Surface']+=[FUNCTION_FIELDS[1]]

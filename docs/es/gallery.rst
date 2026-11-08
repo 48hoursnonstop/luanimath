@@ -67,3 +67,10 @@ Animaciones de crecimiento
 .. luanimath-example:: growth
    :alt: Los objetos crecen desde un punto, borde, centro o espiral.
    :video:
+
+Estados guardados y transformaciones
+--------------------------------------------------------------------------------
+
+.. luanimath-example:: state_transforms
+   :alt: Un rectángulo redondeado se transforma y restaura su geometría guardada.
+   :video:

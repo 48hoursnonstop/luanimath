@@ -1,5 +1,5 @@
 local V=require('luanimath.vector')
-local api={version='0.12.0-dev',vec=V,Vector=V,Mobject=require('luanimath.mobject'),
+local api={version='0.13.0-dev',vec=V,Vector=V,Mobject=require('luanimath.mobject'),
     Scene=require('luanimath.scene'),Renderer=require('luanimath.renderer'),
     config=require('luanimath.config'),bezier=require('luanimath.bezier'),rate_functions=require('luanimath.rate_functions'),
     PI=math.pi,TAU=2*math.pi,DEGREES=math.pi/180,

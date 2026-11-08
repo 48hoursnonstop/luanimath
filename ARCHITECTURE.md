@@ -136,3 +136,11 @@ Growth factories use the existing Animation snapshots and vector interpolation.
 Their start copy collapses to the constructor-captured center/edge or the point
 resolved at begin; their target remains the actual subject geometry. Spiral
 entry supplies the general point-array spiral path, with no special renderer.
+
+Transform setup generates deferred targets and aligns the live subject before
+capturing its starting snapshot, preserving matching family/curve arrays.
+Method/function transforms share that engine. generate_target clears the previous
+target link before copying; saved snapshots retain their own geometry graphs.
+Immediate become follows family alignment before recursive point/style copying.
+Pointwise vector functions shrink handles, map points, then restore handle
+lengths and optionally smooth; matrices use the same source-derived mapping.

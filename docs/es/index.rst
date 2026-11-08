@@ -18,6 +18,7 @@ Manim Community 0.22.1; el proyecto está en desarrollo temprano. Consulta
    tutorials/building_blocks
    tutorials/rounding
    tutorials/animation
+   tutorials/state_transforms
    tutorials/text
    tutorials/math
    tutorials/plots

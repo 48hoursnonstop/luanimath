@@ -67,3 +67,10 @@ Growth animations
 .. luanimath-example:: growth
    :alt: Vector objects grow into view with point, edge, center and spiral entry.
    :video:
+
+Saved states and transforms
+--------------------------------------------------------------------------------
+
+.. luanimath-example:: state_transforms
+   :alt: A rounded rectangle transforms and restores its saved geometry.
+   :video:

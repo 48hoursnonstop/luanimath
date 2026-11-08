@@ -24,6 +24,8 @@ function D.Surface(fn,opts)
         return V(point)
     end
     local m=G.VGroup();m.kind='Surface';m.list_of_faces={};m.surface_function=fn
+    m.pre_function_handle_to_anchor_scale_factor=factor
+    m.make_smooth_after_applying_functions=not not opts.make_smooth_after_applying_functions
     m.fill_color=C.parse(style.fill_color,style.fill_opacity);m.stroke_color=C.parse(style.stroke_color,style.stroke_opacity or 1);m.stroke_width=style.stroke_width
     local checker=opts.checkerboard_colors
     if checker==nil then checker={C.BLUE_D,'#236B8E'} end
@@ -45,6 +47,7 @@ function D.Surface(fn,opts)
         if checker then face:set_fill(checker[(i+j)%#checker+1]) end
         m:add(face);m.list_of_faces[#m.list_of_faces+1]=face
     end end
+    if m.make_smooth_after_applying_functions and not opts.should_make_jagged then m:make_smooth() end
     return m
 end
 function D.Sphere(opts)

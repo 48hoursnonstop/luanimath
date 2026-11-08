@@ -4,31 +4,35 @@ Project: /mnt/datos/luanimath
 Repository: https://github.com/48hoursnonstop/luanimath
 Manuals: https://48hoursnonstop.github.io/luanimath/en/ and /es/
 
-0.9 through 0.11 development releases are published with clean-verified source,
-offline manuals, checksums, reports and actual videos. Latest published 0.11
-source SHA aef43cce790490bff733292e3647eddb3957262b7fdf35ed3ba1b600fa800f5d.
-Pages run 42472375282 passed and the public rounded tutorial was verified live.
+0.12.0-dev is published: source SHA
+49e443d4d0cfdfbe11ecb312a0439483e6ed5d343e624a368f9e932998ab0a61.
+Pages run 42510597797 passed and both live growth tutorials were verified.
+Prior immutable releases retain clean-build reports, source/offline docs and videos.
 
-0.12 adds GrowFromPoint/Center/Edge, SpinInFromNothing and spiral_path. Full
-regressions and strict bilingual manuals passed: 52,247 new checks, 24 growth
-cases/144 states, 108 spiral paths and 24 exact original images. Native Text,
-groups, point color, moved subjects after origin capture, backward evaluation
-and actual scene introduction/removal execute. No new source mismatches.
-Docs cover 288 function bindings, 109 constants, 73 pages and 6773 links, with
-eleven executed gallery animations. Sanitizers and the clean source release
-are the current gate; inspect artifacts/releases for actual executed results.
+0.13 adds target generation and nine transform factories plus nonlinear
+Bézier mapping/handle scaling. Actual tests cover 72 cases/360 states, 20 direct
+operations and 27 exact original images. The final transform suite has 145040
+checks, maximum absolute error 4.4408920985006262e-11. Full regressions passed;
+14 sanitizer suites passed before the final numeric-only nonvector fixture.
+Both strict manuals passed with 300 function bindings, 109 constants, 75 pages,
+7068 links and twelve real gallery scenes. Clean-source release/publication
+are the current gate; inspect releases for actual completed verification.
 
-Next: Arrow/tip geometry and scaling, then GrowArrow, more transform/state
-families, SVG/assets, automatic numerical labels, native TeX and expression
-matching. Inspect pinned source before each component and run actual comparisons.
+Two source-derived corrections: Text parent paints now follow the base color;
+transform alignment acts on the live subject before taking its starting copy.
+Immediate become/restore now align families, preserve old identities and retain
+extra faded children, matching upstream. ApplyMethod uses explicit Lua subject,
+method name/unbound function and argument table (table.pack supports nil).
+Deferred targets, captured target references, latest saved states and matrix
+origin capture have frozen oracle cases. No new source mismatches in this corpus.
 
-Preserve previously recorded original mismatches: eleven rounded-geometry
-center/zero-gap/closed-loop cases, six Typst SVG-cache tracking cases and one
-standalone RTL case. Diagnostics remain separate from original parity.
+Next: Arrow/tip geometry and scaling with GrowArrow, remaining transforms,
+SVG/assets, automatic numerical labels, native TeX and expression matching.
+Preserve old diagnosed differences: eleven rounding cases, six Typst SVG-cache
+tracking cases, one standalone RTL layout case. Diagnostics are not original parity.
 
-Availability: 232 non-palette symbols (226 partial, six verified), plus 89
-verified RGB constants. These are symbol counts, not overall project completion.
-Execution remains Lua/native libraries; Python is development-only. Development
-media caches are now excluded from Git/source packaging. Preserve immutable
-release archives. User authorized continued autonomous work through available
-usage and public GitHub publication; the old 50-percent limit was revoked.
+Availability: 245 non-palette symbols (239 partial, six verified), plus 89
+verified RGB constants. No overall project-completion percentage is claimed.
+Runtime is Lua/native libraries; Python is development-only. User authorized
+continued autonomous work through available usage and public GitHub publication;
+the prior 50-percent restriction was revoked. Preserve immutable release archives.

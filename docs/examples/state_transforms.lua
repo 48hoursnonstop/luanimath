@@ -1,0 +1,17 @@
+local l=require('luanimath')
+
+return l.Scene(function(s)
+    local object=l.RoundedRectangle{width=2,height=1.2,corner_radius=.2,color=l.BLUE,fill_opacity=.4}
+    object:save_state();object:generate_target():shift(l.RIGHT*2):scale(.7):set_color(l.TEAL)
+    s:add(object)
+    s:play(l.MoveToTarget(object),{run_time=.75})
+    s:play(l.ApplyMatrix({{1,.5},{-.2,1}},object),{run_time=.75})
+    s:play(l.ApplyPointwiseFunction(function(p)
+        return l.vec(p[1]+.1*p[2]^2,p[2]+.15*math.sin(p[1]),p[3])
+    end,object),{run_time=.75})
+    s:play(l.Restore(object),{run_time=.75})
+    s:play(l.FadeToColor(object,l.GOLD),{run_time=.5})
+    s:play(l.ShrinkToCenter(object),{run_time=.5})
+    s:play(l.Restore(object),{run_time=.5})
+    s:wait(.5)
+end)

@@ -263,8 +263,10 @@
     "lua_api": "Mobject:become",
     "status": "implemented_partial",
     "evidence": [
+      "tests/reference_state_transforms.lua",
+      "tests/reference_v0221.lua",
       "tests/run.lua",
-      "tests/reference_v0221.lua"
+      "tests/state_transforms.lua"
     ],
     "limitations": "Only the documented Lua 5.4 subset is implemented; remaining constructor options and advanced behavior need differential coverage."
   },
@@ -1519,7 +1521,9 @@
     "evidence": [
       "tests/alignment.lua",
       "tests/paths.lua",
-      "tests/run.lua"
+      "tests/reference_state_transforms.lua",
+      "tests/run.lua",
+      "tests/state_transforms.lua"
     ],
     "limitations": "Verified native vector subset and documented Lua point tables. Point clouds, all styling/kwargs, arbitrary host objects and some degenerate/malformed upstream states are not yet fully compatible."
   },
@@ -1530,7 +1534,9 @@
     "evidence": [
       "tests/alignment.lua",
       "tests/paths.lua",
-      "tests/run.lua"
+      "tests/reference_state_transforms.lua",
+      "tests/run.lua",
+      "tests/state_transforms.lua"
     ],
     "limitations": "Verified native vector subset and documented Lua point tables. Point clouds, all styling/kwargs, arbitrary host objects and some degenerate/malformed upstream states are not yet fully compatible."
   },
@@ -3380,5 +3386,148 @@
       "tests/reference_growth.lua"
     ],
     "limitations": "Finite Lua point arrays and axis vectors; threshold and axis fallback match the pinned upstream. General numerical tensors/OpenGL behavior are not implemented."
+  },
+  {
+    "id": "manim.mobject.mobject.Mobject.generate_target",
+    "lua_api": "Mobject:generate_target",
+    "status": "implemented_partial",
+    "evidence": [
+      "tests/state_transforms.lua",
+      "tests/reference_state_transforms.lua",
+      "tools/visual_state_transforms.py"
+    ],
+    "limitations": "Documented Lua vector-family API with target/snapshot timing, pointwise handle preservation and matrix mapping. ApplyMethod uses explicit subject, method name/unbound function and an argument table. Incomplete pending cubic paths are rejected by handle mapping. Match-size become options, every updater interaction and OpenGL remain pending."
+  },
+  {
+    "id": "manim.mobject.mobject.Mobject.apply_function",
+    "lua_api": "Mobject:apply_function",
+    "status": "implemented_partial",
+    "evidence": [
+      "tests/state_transforms.lua",
+      "tests/reference_state_transforms.lua",
+      "tools/visual_state_transforms.py"
+    ],
+    "limitations": "Documented Lua vector-family API with target/snapshot timing, pointwise handle preservation and matrix mapping. ApplyMethod uses explicit subject, method name/unbound function and an argument table. Incomplete pending cubic paths are rejected by handle mapping. Match-size become options, every updater interaction and OpenGL remain pending."
+  },
+  {
+    "id": "manim.mobject.types.vectorized_mobject.VMobject.apply_function",
+    "lua_api": "Mobject:apply_function",
+    "status": "implemented_partial",
+    "evidence": [
+      "tests/state_transforms.lua",
+      "tests/reference_state_transforms.lua",
+      "tools/visual_state_transforms.py"
+    ],
+    "limitations": "Documented Lua vector-family API with target/snapshot timing, pointwise handle preservation and matrix mapping. ApplyMethod uses explicit subject, method name/unbound function and an argument table. Incomplete pending cubic paths are rejected by handle mapping. Match-size become options, every updater interaction and OpenGL remain pending."
+  },
+  {
+    "id": "manim.mobject.types.vectorized_mobject.VMobject.scale_handle_to_anchor_distances",
+    "lua_api": "Mobject:scale_handle_to_anchor_distances",
+    "status": "implemented_partial",
+    "evidence": [
+      "tests/state_transforms.lua",
+      "tests/reference_state_transforms.lua",
+      "tools/visual_state_transforms.py"
+    ],
+    "limitations": "Documented Lua vector-family API with target/snapshot timing, pointwise handle preservation and matrix mapping. ApplyMethod uses explicit subject, method name/unbound function and an argument table. Incomplete pending cubic paths are rejected by handle mapping. Match-size become options, every updater interaction and OpenGL remain pending."
+  },
+  {
+    "id": "manim.animation.transform.MoveToTarget",
+    "lua_api": "MoveToTarget",
+    "status": "implemented_partial",
+    "evidence": [
+      "tests/state_transforms.lua",
+      "tests/reference_state_transforms.lua",
+      "tools/visual_state_transforms.py"
+    ],
+    "limitations": "Documented Lua vector-family API with target/snapshot timing, pointwise handle preservation and matrix mapping. ApplyMethod uses explicit subject, method name/unbound function and an argument table. Incomplete pending cubic paths are rejected by handle mapping. Match-size become options, every updater interaction and OpenGL remain pending."
+  },
+  {
+    "id": "manim.animation.transform.ApplyMethod",
+    "lua_api": "ApplyMethod",
+    "status": "implemented_partial",
+    "evidence": [
+      "tests/state_transforms.lua",
+      "tests/reference_state_transforms.lua",
+      "tools/visual_state_transforms.py"
+    ],
+    "limitations": "Documented Lua vector-family API with target/snapshot timing, pointwise handle preservation and matrix mapping. ApplyMethod uses explicit subject, method name/unbound function and an argument table. Incomplete pending cubic paths are rejected by handle mapping. Match-size become options, every updater interaction and OpenGL remain pending."
+  },
+  {
+    "id": "manim.animation.transform.ApplyFunction",
+    "lua_api": "ApplyFunction",
+    "status": "implemented_partial",
+    "evidence": [
+      "tests/state_transforms.lua",
+      "tests/reference_state_transforms.lua",
+      "tools/visual_state_transforms.py"
+    ],
+    "limitations": "Documented Lua vector-family API with target/snapshot timing, pointwise handle preservation and matrix mapping. ApplyMethod uses explicit subject, method name/unbound function and an argument table. Incomplete pending cubic paths are rejected by handle mapping. Match-size become options, every updater interaction and OpenGL remain pending."
+  },
+  {
+    "id": "manim.animation.transform.ApplyPointwiseFunction",
+    "lua_api": "ApplyPointwiseFunction",
+    "status": "implemented_partial",
+    "evidence": [
+      "tests/state_transforms.lua",
+      "tests/reference_state_transforms.lua",
+      "tools/visual_state_transforms.py"
+    ],
+    "limitations": "Documented Lua vector-family API with target/snapshot timing, pointwise handle preservation and matrix mapping. ApplyMethod uses explicit subject, method name/unbound function and an argument table. Incomplete pending cubic paths are rejected by handle mapping. Match-size become options, every updater interaction and OpenGL remain pending."
+  },
+  {
+    "id": "manim.animation.transform.ApplyMatrix",
+    "lua_api": "ApplyMatrix",
+    "status": "implemented_partial",
+    "evidence": [
+      "tests/state_transforms.lua",
+      "tests/reference_state_transforms.lua",
+      "tools/visual_state_transforms.py"
+    ],
+    "limitations": "Documented Lua vector-family API with target/snapshot timing, pointwise handle preservation and matrix mapping. ApplyMethod uses explicit subject, method name/unbound function and an argument table. Incomplete pending cubic paths are rejected by handle mapping. Match-size become options, every updater interaction and OpenGL remain pending."
+  },
+  {
+    "id": "manim.animation.transform.FadeToColor",
+    "lua_api": "FadeToColor",
+    "status": "implemented_partial",
+    "evidence": [
+      "tests/state_transforms.lua",
+      "tests/reference_state_transforms.lua",
+      "tools/visual_state_transforms.py"
+    ],
+    "limitations": "Documented Lua vector-family API with target/snapshot timing, pointwise handle preservation and matrix mapping. ApplyMethod uses explicit subject, method name/unbound function and an argument table. Incomplete pending cubic paths are rejected by handle mapping. Match-size become options, every updater interaction and OpenGL remain pending."
+  },
+  {
+    "id": "manim.animation.transform.ScaleInPlace",
+    "lua_api": "ScaleInPlace",
+    "status": "implemented_partial",
+    "evidence": [
+      "tests/state_transforms.lua",
+      "tests/reference_state_transforms.lua",
+      "tools/visual_state_transforms.py"
+    ],
+    "limitations": "Documented Lua vector-family API with target/snapshot timing, pointwise handle preservation and matrix mapping. ApplyMethod uses explicit subject, method name/unbound function and an argument table. Incomplete pending cubic paths are rejected by handle mapping. Match-size become options, every updater interaction and OpenGL remain pending."
+  },
+  {
+    "id": "manim.animation.transform.ShrinkToCenter",
+    "lua_api": "ShrinkToCenter",
+    "status": "implemented_partial",
+    "evidence": [
+      "tests/state_transforms.lua",
+      "tests/reference_state_transforms.lua",
+      "tools/visual_state_transforms.py"
+    ],
+    "limitations": "Documented Lua vector-family API with target/snapshot timing, pointwise handle preservation and matrix mapping. ApplyMethod uses explicit subject, method name/unbound function and an argument table. Incomplete pending cubic paths are rejected by handle mapping. Match-size become options, every updater interaction and OpenGL remain pending."
+  },
+  {
+    "id": "manim.animation.transform.Restore",
+    "lua_api": "Restore",
+    "status": "implemented_partial",
+    "evidence": [
+      "tests/state_transforms.lua",
+      "tests/reference_state_transforms.lua",
+      "tools/visual_state_transforms.py"
+    ],
+    "limitations": "Documented Lua vector-family API with target/snapshot timing, pointwise handle preservation and matrix mapping. ApplyMethod uses explicit subject, method name/unbound function and an argument table. Incomplete pending cubic paths are rejected by handle mapping. Match-size become options, every updater interaction and OpenGL remain pending."
   }
 ]

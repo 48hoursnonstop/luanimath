@@ -39,15 +39,17 @@ function Animation:begin(scene)
     assert(not self.started,'animation instances cannot be reused')
     self.started=true;self.scene=scene
     if self.reverse then self.mobject:invert({recursive=true}) end
+    if self.is_transform then
+        if self.target_builder then self.target_mobject=self.target_builder(self.mobject) end
+        assert(self.target_mobject and self.target_mobject.get_family,'transform callback must return a Mobject')
+        self.target_copy=self.target_mobject:copy()
+        self.mobject:align_data(self.target_copy)
+    end
     self.starting_mobject=self.mobject:copy()
     if self.growth_point then
         self.target_copy=self.mobject:copy()
         self.starting_mobject:scale(0):move_to(self.growth_point)
         if self.opts.point_color then self.starting_mobject:set_color(self.opts.point_color) end
-    elseif self.kind=='Transform' or self.kind=='ReplacementTransform' then
-        self.target_copy=self.target_mobject:copy()
-        self.starting_mobject:align_data(self.target_copy)
-        self.mobject:become(self.starting_mobject)
     elseif self.kind=='FadeIn' or self.kind=='FadeOut' then
         local faded=self.starting_mobject:copy():fade(1)
         local shift=V(self.opts.shift or {})
@@ -131,8 +133,53 @@ end
 function A.Transform(m,target,opts)
     opts=opts or {}
     assert(target and target.get_family,'target must be a Mobject')
-    local a=new('Transform',m,opts);a.target_mobject=target;return a
+    local a=new('Transform',m,opts);a.target_mobject=target;a.is_transform=true;return a
 end
+local function deferred_transform(kind,m,build,opts)
+    local a=new(kind,m,opts);a.is_transform=true;a.target_builder=build;return a
+end
+function A.MoveToTarget(m,opts)
+    local a=A.Transform(m,assert(m.target,'generate_target must be called before MoveToTarget'),opts)
+    a.kind='MoveToTarget';return a
+end
+function A.ApplyMethod(m,method,args,opts)
+    local fn=type(method)=='string' and m[method] or method
+    assert(type(fn)=='function','ApplyMethod requires a method name or unbound Lua function')
+    args=args or {};assert(type(args)=='table','method arguments must be a sequence')
+    local count=U.integer(args.n or #args,'argument count',0);assert(count<=100000,'too many method arguments')
+    return deferred_transform('ApplyMethod',m,function(subject)
+        local target=subject:copy();fn(target,table.unpack(args,1,count));return target
+    end,opts)
+end
+function A.ApplyFunction(fn,m,opts)
+    assert(type(fn)=='function','ApplyFunction requires a callback')
+    return deferred_transform('ApplyFunction',m,function(subject) return fn(subject:copy()) end,opts)
+end
+function A.ApplyPointwiseFunction(fn,m,opts)
+    assert(type(fn)=='function','ApplyPointwiseFunction requires a point callback')
+    local a=A.ApplyMethod(m,'apply_function',{fn},U.merge({run_time=3},opts));a.kind='ApplyPointwiseFunction';return a
+end
+function A.ApplyMatrix(matrix,m,opts)
+    assert(type(matrix)=='table' and (#matrix==2 or #matrix==3),'matrix must be 2x2 or 3x3')
+    local n=#matrix;matrix=U.copy(matrix)
+    for _,row in ipairs(matrix) do assert(type(row)=='table' and #row==n,'matrix must be square');for _,value in ipairs(row) do U.number(value,'matrix entry') end end
+    opts=opts or {};local origin=opts.about_point or V()
+    local a=A.ApplyPointwiseFunction(function(point)
+        local about=V(origin);local delta=point-about;local result=V(delta)
+        for i=1,n do result[i]=0;for j=1,n do result[i]=result[i]+matrix[i][j]*delta[j] end end
+        return about+result
+    end,m,opts)
+    a.kind='ApplyMatrix';return a
+end
+function A.FadeToColor(m,color,opts)
+    local a=A.ApplyMethod(m,'set_color',{color},opts);a.kind='FadeToColor';return a
+end
+function A.ScaleInPlace(m,factor,opts)
+    U.number(factor,'scale factor')
+    local a=A.ApplyMethod(m,'scale',{factor},opts);a.kind='ScaleInPlace';return a
+end
+function A.ShrinkToCenter(m,opts) local a=A.ScaleInPlace(m,0,opts);a.kind='ShrinkToCenter';return a end
+function A.Restore(m,opts) local a=A.ApplyMethod(m,'restore',{},opts);a.kind='Restore';return a end
 function A.Uncreate(m,opts)
     assert(m and m.is_vector,'Uncreate requires VMobject')
     return new('Uncreate',m,U.merge({reverse_rate_function=true,remover=true,lag_ratio=1},opts))

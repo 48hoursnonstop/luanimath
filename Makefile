@@ -10,7 +10,7 @@ PKGS = $(LUA_PKG) cairo pangocairo libxml-2.0
 export LUA_PATH := $(CURDIR)/lua/?.lua;$(CURDIR)/lua/?/init.lua;;
 export LUA_CPATH := $(CURDIR)/build/?.so;;
 
-.PHONY: all test docs docs-check docs-api-check text-test text-features-test markup-demo growth-test rounding-test colors-test scales-test typst-test glyph-test glyph-demo svg-test svg-demo media-test graphing-test alignment-test paths-test three-d-test three-d-demo demo reference differential check clean sanitize release
+.PHONY: all test docs docs-check docs-api-check text-test text-features-test markup-demo state-transforms-test growth-test rounding-test colors-test scales-test typst-test glyph-test glyph-demo svg-test svg-demo media-test graphing-test alignment-test paths-test three-d-test three-d-demo demo reference differential check clean sanitize release
 all: build/luanimath_native.so
 
 build/luanimath_native.so: native/cairo_backend.c native/text.c native/xml.c native/system.c
@@ -45,6 +45,11 @@ reference:
 	.dev/venv/bin/python tools/reference_colors.py
 	.dev/venv/bin/python tools/reference_rounding.py
 	.dev/venv/bin/python tools/reference_growth.py
+	.dev/venv/bin/python tools/reference_state_transforms.py
+
+state-transforms-test: all
+	$(LUA) tests/state_transforms.lua
+	$(PYTHON) tools/visual_state_transforms.py
 
 growth-test: all
 	$(LUA) tests/growth.lua
@@ -122,7 +127,7 @@ differential: all
 	$(LUA) tests/differential.lua
 	$(PYTHON) tools/visual_compare.py
 
-check: test demo differential text-test media-test graphing-test alignment-test paths-test three-d-test three-d-demo svg-test svg-demo glyph-test glyph-demo text-features-test markup-demo typst-test scales-test colors-test rounding-test growth-test docs-api-check
+check: test demo differential text-test media-test graphing-test alignment-test paths-test three-d-test three-d-demo svg-test svg-demo glyph-test glyph-demo text-features-test markup-demo typst-test scales-test colors-test rounding-test growth-test state-transforms-test docs-api-check
 
 sanitize:
 	$(MAKE) clean
@@ -140,6 +145,7 @@ sanitize:
 	ASAN_OPTIONS=detect_leaks=0 LD_PRELOAD="$$( $(CC) -print-file-name=libasan.so )" $(LUA) tests/colors.lua
 	ASAN_OPTIONS=detect_leaks=0 LD_PRELOAD="$$( $(CC) -print-file-name=libasan.so )" $(LUA) tests/rounding.lua
 	ASAN_OPTIONS=detect_leaks=0 LD_PRELOAD="$$( $(CC) -print-file-name=libasan.so )" $(LUA) tests/growth.lua
+	ASAN_OPTIONS=detect_leaks=0 LD_PRELOAD="$$( $(CC) -print-file-name=libasan.so )" $(LUA) tests/state_transforms.lua
 	$(MAKE) clean
 	$(MAKE) all
 

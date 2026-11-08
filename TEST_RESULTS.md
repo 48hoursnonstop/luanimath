@@ -1,5 +1,36 @@
 # Executed test results
 
+## 0.13.0-dev — targets, state and transform families
+
+- Complete `make check` passed after the engine changes, including all prior
+  numerical/visual regressions and actual media decode/motion tests.
+- **72 transform cases, 360 sampled states and 20 direct operations** execute
+  through the actual Lua API. Shapes, groups, native Text and 3D surfaces
+  cover target capture, latest saved state, deferred callbacks, backward
+  evaluation, 2x2/3x3 matrices, nonlinearity and post-smoothing.
+- **145,040 numerical/identity/invalid-input checks** passed; maximum measured
+  absolute error was **4.4408920985006262e-11**, below the 1e-9 tolerance.
+  All **27 original upstream images matched pixel-for-pixel**.
+- Added children survive restoration as aligned transparent children, matching
+  actual upstream hierarchy/style state. Restore retains subject/child identity
+  and updater functions; regenerated targets omit the old target chain.
+- Matrix copies and mutable about-point capture, replacing saved states after
+  Restore construction, and old target-reference capture have actual oracle
+  fixtures. Lua packed nil arguments and unbound method callbacks execute.
+- Bézier handle factors and smoothing execute against upstream; non-vector
+  point mapping has a separate real numeric fixture. Invalid matrices, nil
+  callback results, missing snapshots/targets and pending cubic anchors fail.
+- Fourteen ASan/UBSan native-boundary suites passed, including the transform
+  suite before the final added non-vector numeric fixture; leak detection
+  was disabled and system libraries were not instrumented.
+- Strict English/Spanish documentation passed **300 function bindings, 282
+  distinct functions, 18 aliases, 109 constants, 75 HTML pages and 7,068 local
+  links/assets/anchors**. All twelve gallery videos fully decoded. The new
+  state example contains **60 frames, 640×360, 12 fps**, and its final PNG
+  was opened for inspection.
+- Clean source rebuilding and checksums are release gates; their actual
+  outcome is recorded in the generated release verification report.
+
 ## 0.12.0-dev — growth and spiral animations
 
 - Complete `make check` passed, including all previous native geometry,

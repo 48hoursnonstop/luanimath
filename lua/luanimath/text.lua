@@ -30,6 +30,7 @@ local function make_text(text,opts,markup)
     local object=SVG._from_data(data,{height=opts.height or false,width=opts.width,should_center=opts.should_center})
     object.kind=markup and 'MarkupText' or 'Text';object.original_text=text;object._font_size=size;object.font=opts.font or ''
     object.text=expanded:gsub(' ',''):gsub('\n','')
+    object:set_color(opts.color or C.WHITE,{family=false})
     object:set_fill(opts.fill_color,opts.fill_opacity or 1)
     object:set_stroke(opts.stroke_color,opts.stroke_width or 0,opts.stroke_opacity)
     if opts.disable_ligatures and not markup then

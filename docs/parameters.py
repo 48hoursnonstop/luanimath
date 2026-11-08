@@ -100,3 +100,9 @@ SPECIAL['Mobject:round_corners']={'radius':('number or number[]','Finite scalar 
 
 SPECIAL['GrowFromPoint']={'point':('vector or Mobject','Origin point, or Mobject whose center is read at animation begin.','Punto de origen o Mobject cuyo centro se lee al comenzar.')}
 SPECIAL['GrowFromEdge']={'edge':('vector','Bounding-box direction; for example LEFT, UP or UR.','Dirección del límite; por ejemplo LEFT, UP o UR.')}
+
+PARAMS['method']=('string or function','Method name or unbound function receiving the copied subject as its first argument.','Nombre del método o función sin ligar cuyo primer argumento es la copia.')
+PARAMS['args']=('table or nil','Positional arguments, optionally table.pack(...) to retain trailing nil values.','Argumentos posicionales; table.pack(...) conserva valores nil finales.')
+SPECIAL['ApplyFunction']={'fn':('function','Callback taking a Mobject copy and returning a Mobject.','Función que recibe una copia y devuelve un Mobject.')}
+SPECIAL['ApplyPointwiseFunction']={'fn':('function','Point callback returning a finite 2D/3D vector.','Función de punto que devuelve un vector finito 2D/3D.')}
+SPECIAL['Mobject:apply_function']={'fn':SPECIAL['ApplyPointwiseFunction']['fn']}

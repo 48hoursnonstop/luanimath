@@ -1,5 +1,20 @@
 # Changelog
 
+## 0.13.0-dev
+
+- Target generation, MoveToTarget, Restore, ApplyMethod, ApplyFunction,
+  ApplyPointwiseFunction, ApplyMatrix, FadeToColor, ScaleInPlace and ShrinkToCenter.
+- Deferred target creation follows source timing; Lua ApplyMethod accepts
+  explicit subject, method name/unbound function and packed argument tables.
+- Source-derived Bézier handle shortening/expansion for nonlinear mapping,
+  configurable handle factor and post-smoothing, including Surface behavior.
+- Align live transform families before capturing starting snapshots; become
+  and immediate restore preserve source family alignment/faded extra children.
+- Fix Text/MarkupText parent paints to follow requested base color.
+- 72 transform cases/360 sampled states, 20 direct operations and 27 exact
+  original image matches. Strict bilingual tutorial/reference and twelfth
+  real gallery scene.
+
 ## 0.12.0-dev
 
 - GrowFromPoint, GrowFromCenter, GrowFromEdge and SpinInFromNothing use

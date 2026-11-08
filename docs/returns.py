@@ -1,8 +1,9 @@
 """Return contracts for the documented public surface."""
 GEOMETRY={'Mobject','VMobject','VGroup','Group','Arc','Circle','Dot','Ellipse','Line','Polygon','Rectangle','Square','RegularPolygon','Triangle','CubicBezier','ValueTracker','VectorizedPoint','Text','MarkupText','SVGMobject','VMobjectFromSVGPath','NumberLine','Axes','ParametricFunction','FunctionGraph','ThreeDVMobject','Cube','Sphere','Surface','always_redraw','Typst','MathTypst','ArcBetweenPoints','Polygram','RoundedRectangle'}
-ANIMATIONS={'Animation','Create','Uncreate','Write','Unwrite','DrawBorderThenFill','FadeIn','FadeOut','Transform','ReplacementTransform','Rotate','MoveAlongPath','GrowFromPoint','GrowFromCenter','GrowFromEdge','SpinInFromNothing'}
+ANIMATIONS={'Animation','Create','Uncreate','Write','Unwrite','DrawBorderThenFill','FadeIn','FadeOut','Transform','ReplacementTransform','Rotate','MoveAlongPath','GrowFromPoint','GrowFromCenter','GrowFromEdge','SpinInFromNothing','MoveToTarget','ApplyMethod','ApplyFunction','ApplyPointwiseFunction','ApplyMatrix','FadeToColor','ScaleInPlace','ShrinkToCenter','Restore'}
 PATHS={'straight_path','path_along_arc','path_along_circles','clockwise_path','counterclockwise_path','spiral_path'}
 TYPES={
+ 'Mobject:generate_target':'Mobject',
  'Mobject:get_arc_center':'vector','Mobject:stop_angle':'number','Mobject:get_vertices':'vector[]','Mobject:get_vertex_groups':'vector[][]',
  'LinearBase':'Scale','LogBase':'Scale','Scale:map':'number or number[]','Scale:inverse':'number or number[]',
  'typst_to_svg_file':'string','config.with':'...','Mobject:select':'VGroup','Mobject:get_baseline_frame':'vector, vector, vector','Mobject:get_baseline_frames':'vector[3][]','Mobject:get_color':'RGBA or nil',

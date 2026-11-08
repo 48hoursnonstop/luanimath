@@ -31,6 +31,8 @@ function M.new(opts)
         stroke_width=opts.stroke_width or 4,z_index=opts.z_index or 0,
         joint_type=opts.joint_type or 'miter',cap_style=opts.cap_style or 'butt',
         shade_in_3d=not not opts.shade_in_3d,
+        pre_function_handle_to_anchor_scale_factor=opts.pre_function_handle_to_anchor_scale_factor or .01,
+        make_smooth_after_applying_functions=not not opts.make_smooth_after_applying_functions,
         updating_suspended=false},M)
     U.number(self.stroke_width,'stroke_width');assert(self.stroke_width>=0,'stroke_width must be nonnegative')
     U.number(self.z_index,'z_index')
@@ -68,6 +70,9 @@ function M:remove(...)
     self.submobjects=out;return self
 end
 function M:copy() return U.copy(self) end
+function M:generate_target()
+    self.target=nil;self.target=self:copy();return self.target
+end
 function M:split()
     local items={};for _,m in ipairs(self) do items[#items+1]=m end;return items
 end
@@ -142,6 +147,33 @@ function M:apply_points_function(fn)
     for _,m in ipairs(self:family_members_with_points()) do
         for i,p in ipairs(m.points) do m.points[i]=V(fn(V(p))) end
     end
+    return self
+end
+function M:scale_handle_to_anchor_distances(factor)
+    U.number(factor,'handle scale factor')
+    for _,m in ipairs(self:family_members_with_points()) do
+        if m.is_vector and #m.points>=4 then
+            assert(#m.points%4==0,'handle scaling requires complete cubic curves')
+            for i=1,#m.points,4 do
+                m.points[i+1]=m.points[i]+(m.points[i+1]-m.points[i])*factor
+                m.points[i+2]=m.points[i+3]+(m.points[i+2]-m.points[i+3])*factor
+            end
+        end
+    end
+    return self
+end
+function M:apply_function(fn)
+    assert(type(fn)=='function','apply_function requires a point callback')
+    local function mapped(point)
+        local result=fn(point)
+        assert(type(result)=='table' and (#result==2 or #result==3),'point callback must return a 2D/3D vector')
+        return V(result)
+    end
+    if not self.is_vector then return self:apply_points_function(mapped) end
+    local factor=U.number(self.pre_function_handle_to_anchor_scale_factor,'pre-function handle scale')
+    assert(factor~=0,'pre-function handle scale must be nonzero')
+    self:scale_handle_to_anchor_distances(factor):apply_points_function(mapped):scale_handle_to_anchor_distances(1/factor)
+    if self.make_smooth_after_applying_functions then self:make_smooth() end
     return self
 end
 function M:shift(...)
@@ -424,13 +456,15 @@ function M:make_smooth()
     return self
 end
 function M:become(other)
-    self.points=U.copy(other.points)
-    self.fill_color=U.copy(other.fill_color);self.stroke_color=U.copy(other.stroke_color)
-    self.stroke_width=other.stroke_width
-    for i,child in ipairs(other.submobjects) do
-        if self.submobjects[i] then self.submobjects[i]:become(child) else self.submobjects[i]=child:copy() end
+    assert(other and other.get_family,'become requires a Mobject')
+    self:align_data(other,{skip_point_alignment=true})
+    local function transfer(subject,target)
+        subject.points=U.copy(target.points)
+        subject.fill_color=U.copy(target.fill_color);subject.stroke_color=U.copy(target.stroke_color)
+        subject.stroke_width=target.stroke_width
+        for i,child in ipairs(subject.submobjects) do transfer(child,target.submobjects[i]) end
     end
-    for i=#self.submobjects,#other.submobjects+1,-1 do self.submobjects[i]=nil end
+    transfer(self,other)
     return self
 end
 function M:add_updater(fn,opts)
