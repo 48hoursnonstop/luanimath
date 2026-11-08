@@ -4,35 +4,37 @@ Project: /mnt/datos/luanimath
 Repository: https://github.com/48hoursnonstop/luanimath
 Manuals: https://48hoursnonstop.github.io/luanimath/en/ and /es/
 
-0.12.0-dev is published: source SHA
-49e443d4d0cfdfbe11ecb312a0439483e6ed5d343e624a368f9e932998ab0a61.
-Pages run 42510597797 passed and both live growth tutorials were verified.
-Prior immutable releases retain clean-build reports, source/offline docs and videos.
+0.13.0-dev is published: source SHA
+586f9bf91b83e6d3c5bae1d9925ff7605a81e7e50576abef4177598919e8fd4d.
+Pages run 42512324266 passed; both state/transform tutorials were verified live.
+All previous immutable releases retain source/offline docs, reports and videos.
 
-0.13 adds target generation and nine transform factories plus nonlinear
-Bézier mapping/handle scaling. Actual tests cover 72 cases/360 states, 20 direct
-operations and 27 exact original images. The final transform suite has 145040
-checks, maximum absolute error 4.4408920985006262e-11. Full regressions passed;
-14 sanitizer suites passed before the final numeric-only nonvector fixture.
-Both strict manuals passed with 300 function bindings, 109 constants, 75 pages,
-7068 links and twelve real gallery scenes. Clean-source release/publication
-are the current gate; inspect releases for actual completed verification.
+0.14 adds Arrow, triangular tips and GrowArrow with real buffered 2D/3D geometry,
+fixed-tip and whole-tip scaling, length limits, normals and detach/reattach.
+84 states, twelve growth traces, eight standalone tip cases, 14425 checks and
+eight exact original images passed. Six Z-pole fixed-tip azimuth differences
+are asserted against retained originals; rigid registration diagnostics remain
+separate. Negative 3D fixed-tip scaling retains source positioning-axis behavior.
+Full regression and fifteen sanitizer suites passed. Strict bilingual manuals
+passed 309 function bindings, 109 constants, 77 pages and 7363 links; thirteen
+real gallery scenes fully decoded. The Arrow example camera was subsequently
+adjusted for visible tip faces and rerendered/inspected. Clean source release
+and GitHub publication are the current gate; inspect releases for actual results.
 
-Two source-derived corrections: Text parent paints now follow the base color;
-transform alignment acts on the live subject before taking its starting copy.
-Immediate become/restore now align families, preserve old identities and retain
-extra faded children, matching upstream. ApplyMethod uses explicit Lua subject,
-method name/unbound function and argument table (table.pack supports nil).
-Deferred targets, captured target references, latest saved states and matrix
-origin capture have frozen oracle cases. No new source mismatches in this corpus.
+Architecture additions: private computed-property and scale/tip handlers extend
+the common Mobject model. Generic group scaling remains generic, as upstream.
+Native Vector remains the documented numeric alias; Arrow-derived Vector,
+start/double tips, curved Arrow/tip families and remaining geometry are pending.
+Continue with these foundations, assets, coordinate labels, native TeX and
+expression matching; maintain English/Spanish docs with every feature.
 
-Next: Arrow/tip geometry and scaling with GrowArrow, remaining transforms,
-SVG/assets, automatic numerical labels, native TeX and expression matching.
-Preserve old diagnosed differences: eleven rounding cases, six Typst SVG-cache
-tracking cases, one standalone RTL layout case. Diagnostics are not original parity.
+Preserve old diagnosed original differences: six Arrow pole azimuth states,
+eleven rounding cases, six Typst SVG-cache tracking states and one RTL layout.
+Do not merge diagnostics into original parity counts. 0.13 deferred transforms,
+state restoration and nonlinear mapping have their own exact numeric/visual corpus.
 
-Availability: 245 non-palette symbols (239 partial, six verified), plus 89
-verified RGB constants. No overall project-completion percentage is claimed.
+Availability: 260 non-palette symbols (254 partial, six verified), plus 89 RGB
+constants. These are inventory counts, not overall project-completion estimates.
 Runtime is Lua/native libraries; Python is development-only. User authorized
-continued autonomous work through available usage and public GitHub publication;
-the prior 50-percent restriction was revoked. Preserve immutable release archives.
+continued work through available usage and public GitHub publication. The old
+50-percent restriction was revoked. Preserve immutable release artifacts.

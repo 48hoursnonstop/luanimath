@@ -17,6 +17,7 @@ end
 local function origin_shift(r) return r[1]>0 and r[1] or r[2]<0 and r[2] or 0 end
 
 function M:add_tip(opts)
+    if self._add_tip_handler then return self:_add_tip_handler(opts or {}) end
     opts=opts or {};assert(not self.tip,'tip already present')
     local start,finish=self:get_start(),self:get_end();local direction=V.normalize(finish-start)
     assert(math.abs(direction[3])<1e-10,'3D line tips are not implemented')

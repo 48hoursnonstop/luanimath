@@ -74,3 +74,10 @@ Estados guardados y transformaciones
 .. luanimath-example:: state_transforms
    :alt: Un rectángulo redondeado se transforma y restaura su geometría guardada.
    :video:
+
+Flechas en 3D
+--------------------------------------------------------------------------------
+
+.. luanimath-example:: arrows
+   :alt: Puntas Arrow reales crecen y cambian de escala con cámara 3D.
+   :video:

@@ -19,7 +19,7 @@ to its source-derived algorithms. luanimath's own changes are MIT-licensed.
 | `manim/mobject/mobject.py` | `lua/luanimath/mobject.lua`, `scene.lua` hierarchy handling |
 | `manim/mobject/types/vectorized_mobject.py` | `mobject.lua`, `bezier.lua`, `animation.lua` |
 | `manim/mobject/geometry/arc.py` | `geometry.lua`, `rounding.lua` cubic circular paths |
-| `manim/mobject/geometry/line.py` | `geometry.lua` straight lines and buffers |
+| `manim/mobject/geometry/line.py` | `geometry.lua`, `arrows.lua` lines, buffers and Arrow |
 | `manim/mobject/geometry/polygram.py` | `geometry.lua`, `rounding.lua` polygons and corners |
 | `manim/utils/bezier.py` | `bezier.lua` interpolation, splitting and remapping |
 | `manim/utils/rate_functions.py` | `rate_functions.lua` |
@@ -92,3 +92,8 @@ six diagnostic states with only `use_svg_cache=False`. This exposes the upstream
 loss of baseline/stroke tracking on cache hits; luanimath deliberately retains
 that tracking when importing cached SVG. These six states are not original
 behavioral/visual compatibility passes.
+
+`arrows.lua` also derives triangular tip properties and placement from
+`manim/mobject/geometry/tips.py` and TipableVMobject in `geometry/arc.py`.
+The oracle retains six Z-pole fixed-tip azimuth differences separately from
+its rigid registration checks.

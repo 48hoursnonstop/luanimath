@@ -1,5 +1,17 @@
 # Changelog
 
+## 0.14.0-dev
+
+- Actual 2D/3D Arrow shafts, triangular filled/outlined tips, endpoint buffers
+  and length-based stroke/tip limits, including zero-length geometry.
+- Fixed-tip scaling preserves tip identity; geometric tip scaling, detach/reattach,
+  computed tip properties and normal helpers have actual source comparisons.
+- GrowArrow collapses shaft and tip together at the captured tail.
+- 84 Arrow states, twelve growth traces, eight standalone tip cases and
+  eight exact original images. Six Z-pole azimuth differences are retained
+  and rigid-registration diagnostics remain separate from original parity.
+- English/Spanish Arrow tutorial/reference and thirteenth gallery animation.
+
 ## 0.13.0-dev
 
 - Target generation, MoveToTarget, Restore, ApplyMethod, ApplyFunction,

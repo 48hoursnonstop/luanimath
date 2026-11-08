@@ -74,3 +74,10 @@ Saved states and transforms
 .. luanimath-example:: state_transforms
    :alt: A rounded rectangle transforms and restores its saved geometry.
    :video:
+
+Arrows in 3D
+--------------------------------------------------------------------------------
+
+.. luanimath-example:: arrows
+   :alt: Actual Arrow tips grow and scale under a 3D camera.
+   :video:

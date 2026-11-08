@@ -69,4 +69,4 @@ rechaza ``path_func`` explícito. ``spiral_path(ángulo,eje)`` crea un recorrido
 general de tablas de puntos para Transform: rota el desplazamiento por
 ``(alpha-1)*ángulo`` y lo escala por alpha. Una magnitud menor de .01 usa una
 línea; un eje nulo usa OUT. Estos recorridos admiten alpha extrapolado; las
-animaciones mantienen sus reglas normales de tiempo. GrowArrow sigue pendiente.
+animaciones mantienen sus reglas normales de tiempo. Consulta :doc:`arrows` para GrowArrow y la escala con punta fija.

@@ -67,4 +67,4 @@ here. It supplies its own path and rejects an explicit ``path_func``.
 It rotates the source-to-target displacement by ``(alpha-1)*angle`` and scales
 it by alpha; an angle with magnitude below .01 uses a straight path. Zero axes
 fall back to OUT. General paths allow extrapolated alpha values; animations
-still apply their normal time/rate-function rules. GrowArrow remains pending.
+still apply their normal time/rate-function rules. See :doc:`arrows` for GrowArrow and fixed-tip scaling.

@@ -48,7 +48,8 @@ function Animation:begin(scene)
     self.starting_mobject=self.mobject:copy()
     if self.growth_point then
         self.target_copy=self.mobject:copy()
-        self.starting_mobject:scale(0):move_to(self.growth_point)
+        if self.grow_arrow then self.starting_mobject:scale(0,{scale_tips=true,about_point=self.growth_point})
+        else self.starting_mobject:scale(0):move_to(self.growth_point) end
         if self.opts.point_color then self.starting_mobject:set_color(self.opts.point_color) end
     elseif self.kind=='FadeIn' or self.kind=='FadeOut' then
         local faded=self.starting_mobject:copy():fade(1)
@@ -200,6 +201,10 @@ function A.GrowFromCenter(m,opts)
 end
 function A.GrowFromEdge(m,edge,opts)
     local a=A.GrowFromPoint(m,m:get_critical_point(V(edge)),opts);a.kind='GrowFromEdge';return a
+end
+function A.GrowArrow(m,opts)
+    assert(m and m._arrow,'GrowArrow requires Arrow')
+    local a=A.GrowFromPoint(m,m:get_start(),opts);a.kind='GrowArrow';a.grow_arrow=true;return a
 end
 function A.SpinInFromNothing(m,opts)
     opts=opts or {};assert(opts.path_func==nil,'SpinInFromNothing supplies its own spiral path')

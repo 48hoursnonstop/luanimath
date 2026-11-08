@@ -13,12 +13,14 @@ M.__index=function(self,key)
     if key=='font_size' and rawget(self,'_font_size') then return self:get_font_size() end
     if key=='color' then return self:get_color() end
     if key=='baseline_frames' and rawget(self,'_typst_state') then return self:get_baseline_frames() end
+    local fields=rawget(self,'_computed_fields');if fields and fields[key] then return fields[key](self) end
     return M[key]
 end
 M.__len=function(self) return #self.submobjects+(#self.points>0 and 1 or 0) end
 M.__newindex=function(self,key,value)
     if key=='font_size' and rawget(self,'_font_size') then self:set_font_size(value)
     elseif key=='color' then self:set_color(value)
+    elseif rawget(self,'_computed_fields') and self._computed_fields[key] then error('computed property is read-only: '..key)
     else rawset(self,key,value) end
 end
 
@@ -190,11 +192,16 @@ end
 local function about(self,opts)
     opts=opts or {};return opts.about_point and V(opts.about_point) or self:get_critical_point(opts.about_edge or V())
 end
-function M:scale(factor,opts)
-    U.number(factor,'scale factor');local p=about(self,opts)
+function M._scale_geometry(self,factor,opts)
+    local p=about(self,opts)
     self:apply_points_function(function(v) return p+(v-p)*factor end)
     if self._after_scale then self:_after_scale() end
     return self
+end
+function M:scale(factor,opts)
+    U.number(factor,'scale factor')
+    if self._scale_handler then return self:_scale_handler(factor,opts or {}) end
+    return M._scale_geometry(self,factor,opts)
 end
 function M:stretch(factor,dim,opts)
     U.number(factor,'stretch factor');U.integer(dim,'dimension',1);assert(dim<=3,'dimension must be 1, 2, or 3')
@@ -290,7 +297,7 @@ function M:set_points_as_corners(points)
 end
 function M:get_start() assert(#self.points>0,'Mobject has no points');return V(self.points[1]) end
 function M:get_end()
-    if self.tip then return self.tip:get_start() end
+    if self.tip and self:has_tip() then return self.tip:get_start() end
     assert(#self.points>0,'Mobject has no points');return V(self.points[#self.points])
 end
 function M:get_length() return V.norm(self:get_end()-self:get_start()) end

@@ -10,5 +10,6 @@
   "scales": 36,
   "rounding": 36,
   "growth": 36,
-  "state_transforms": 60
+  "state_transforms": 60,
+  "arrows": 36
 }

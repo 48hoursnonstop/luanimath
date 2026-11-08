@@ -1,6 +1,6 @@
 # Compatibility
 
-Target: Manim Community 0.22.1. Current development version: 0.13.0-dev.
+Target: Manim Community 0.22.1. Current development version: 0.14.0-dev.
 
 The public API inventory is `compatibility/api_inventory.json`; reviewed
 declarations are in `compatibility/implemented.json`. `python3 tools/coverage.py`
@@ -239,8 +239,7 @@ point colors, lagging, moved subjects after constructor-time origin capture,
 backward evaluation and completion. A Mobject origin is resolved at begin.
 Actual Scene.play introduction/removal and file rendering are tested. Spiral
 paths cover arbitrary/zero axes, the .01 straight-path threshold and extrapolated
-alpha. Numeric comparisons use 1e-9 absolute tolerance. GrowArrow remains
-pending Arrow geometry/tip scaling; full option/updater/OpenGL behavior is not
+alpha. Numeric comparisons use 1e-9 absolute tolerance. Arrow/GrowArrow have a separate tested section below; full option/updater/OpenGL behavior is not
 claimed. Growth rejects explicit introducer; Spin supplies its own path_func.
 
 ## Targets, state restoration and point transforms
@@ -263,3 +262,22 @@ one-point vectors are covered; pending anchors after curves are rejected.
 Matrix transforms preserve z for 2x2 inputs and support explicit about_point.
 Invalid callbacks/matrices are executed and rejected. No transactional rollback,
 OpenGL parity or complete updater/constructor option coverage is claimed.
+
+## Arrow geometry and scaling
+
+Arrow and outlined/filled triangular tips execute buffered 2D/3D geometry,
+length-limited tip/stroke sizes, fixed-tip uniform scaling, geometric tip scaling,
+identity-preserving pop/reattach and GrowArrow. Computed tip base/point/vector/
+angle/length and normal helpers have real tests. Zero lengths and zero-sized tips
+execute. Only end triangles are implemented; start tips, other tip families,
+curved Arrow paths and remaining inherited options are pending. Vector remains
+the documented numeric alias, not the upstream Arrow-derived class.
+
+Six original scale states for Z-pole shafts have a different tip azimuth driven
+by near-zero projected tangent arithmetic. The raw original data remain and
+the tests assert those mismatches. Rigid tip-registration diagnostics verify
+otherwise identical cubic shape, endpoints, lengths and styles; these are not
+original orientation-parity passes. Tip angles use circular modulo-2*pi error.
+Negative 3D fixed-tip scaling retains upstream's positioning-axis behavior;
+scale_tips=true performs a full geometric inversion. Eight actual original
+Arrow/3D/GrowArrow images execute visual comparison.

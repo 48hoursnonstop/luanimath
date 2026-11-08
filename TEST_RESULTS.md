@@ -1,5 +1,30 @@
 # Executed test results
 
+## 0.14.0-dev — Arrow geometry and growth
+
+- Complete `make check` passed after shared scale/end-tip handling changes,
+  including all prior geometry, timing, text, typography, SVG, 3D and media suites.
+- **84 Arrow states, twelve GrowArrow traces and eight standalone tips**
+  passed **14,425 numerical/identity/invalid-input checks**. Buffering, 2D/3D
+  orientation, length limits, zero geometry, negative scale, fixed-size tips,
+  geometric tip scaling, pop/reattach and read-only properties execute.
+- Maximum compared absolute error was **2.6645352591003757e-15** below 1e-9.
+  Tip angles use circular error modulo 2*pi, including signed-pi boundaries.
+- Six original Z-pole fixed-tip scaling states have an azimuth mismatch;
+  raw original data are retained and the mismatch is asserted. Separate
+  rigid tip registration compares all geometry/styles/lengths/endpoints.
+  These six diagnostics are not original orientation compatibility passes.
+- All **eight original Arrow/3D/GrowArrow images matched pixel-for-pixel**.
+- Fifteen ASan/UBSan native-boundary suites passed, including Arrow rendering.
+  Leak detection was disabled and system libraries were not instrumented.
+- Strict English/Spanish manuals passed **309 function bindings, 291 distinct
+  functions, 18 aliases, 109 constants, 77 HTML pages and 7,363 local links**.
+  All thirteen gallery videos rendered and fully decoded. The Arrow example
+  has 36 frames at 640×360, 12 fps; its final camera view was inspected and
+  adjusted to show the triangular tips clearly.
+- Clean extraction/rebuild/regression/documentation and SHA-256 are release
+  gates; actual outcomes are in the generated verification report.
+
 ## 0.13.0-dev — targets, state and transform families
 
 - Complete `make check` passed after the engine changes, including all prior

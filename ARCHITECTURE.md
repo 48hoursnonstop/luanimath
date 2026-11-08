@@ -144,3 +144,9 @@ target link before copying; saved snapshots retain their own geometry graphs.
 Immediate become follows family alignment before recursive point/style copying.
 Pointwise vector functions shrink handles, map points, then restore handle
 lengths and optionally smooth; matrices use the same source-derived mapping.
+
+`arrows.lua` owns triangular tip geometry, computed properties, orientation and
+length-limited shaft styling. Private scale/add-tip handlers extend the common
+Mobject model while preserving generic group transformations. Fixed-tip scaling
+detaches and reuses actual tip identity; GrowArrow uses geometric tip scaling
+only in its collapsed starting snapshot. All output uses the existing renderer.

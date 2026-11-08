@@ -3529,5 +3529,170 @@
       "tools/visual_state_transforms.py"
     ],
     "limitations": "Documented Lua vector-family API with target/snapshot timing, pointwise handle preservation and matrix mapping. ApplyMethod uses explicit subject, method name/unbound function and an argument table. Incomplete pending cubic paths are rejected by handle mapping. Match-size become options, every updater interaction and OpenGL remain pending."
+  },
+  {
+    "id": "manim.mobject.geometry.line.Arrow",
+    "lua_api": "Arrow",
+    "status": "implemented_partial",
+    "evidence": [
+      "tests/arrows.lua",
+      "tests/reference_arrows.lua",
+      "tools/visual_arrows.py"
+    ],
+    "limitations": "Triangular end tips, buffered straight 2D/3D shafts, source fixed-tip scaling and GrowArrow. Six original pole-aligned fixed-tip scaling states have different tip azimuth due numerical roundoff; original data are retained and rigid tip-registration diagnostics are separate. Negative 3D scaling retains the source positioning-axis behavior. Starting tips, other tip families, curved Arrow options and complete constructor behavior are pending."
+  },
+  {
+    "id": "manim.mobject.geometry.line.Arrow.scale",
+    "lua_api": "Mobject:scale",
+    "status": "implemented_partial",
+    "evidence": [
+      "tests/arrows.lua",
+      "tests/reference_arrows.lua",
+      "tools/visual_arrows.py"
+    ],
+    "limitations": "Triangular end tips, buffered straight 2D/3D shafts, source fixed-tip scaling and GrowArrow. Six original pole-aligned fixed-tip scaling states have different tip azimuth due numerical roundoff; original data are retained and rigid tip-registration diagnostics are separate. Negative 3D scaling retains the source positioning-axis behavior. Starting tips, other tip families, curved Arrow options and complete constructor behavior are pending."
+  },
+  {
+    "id": "manim.mobject.geometry.line.Arrow.get_default_tip_length",
+    "lua_api": "Mobject:get_default_tip_length",
+    "status": "implemented_partial",
+    "evidence": [
+      "tests/arrows.lua",
+      "tests/reference_arrows.lua",
+      "tools/visual_arrows.py"
+    ],
+    "limitations": "Triangular end tips, buffered straight 2D/3D shafts, source fixed-tip scaling and GrowArrow. Six original pole-aligned fixed-tip scaling states have different tip azimuth due numerical roundoff; original data are retained and rigid tip-registration diagnostics are separate. Negative 3D scaling retains the source positioning-axis behavior. Starting tips, other tip families, curved Arrow options and complete constructor behavior are pending."
+  },
+  {
+    "id": "manim.mobject.geometry.line.Arrow.get_normal_vector",
+    "lua_api": "Mobject:get_normal_vector",
+    "status": "implemented_partial",
+    "evidence": [
+      "tests/arrows.lua",
+      "tests/reference_arrows.lua",
+      "tools/visual_arrows.py"
+    ],
+    "limitations": "Triangular end tips, buffered straight 2D/3D shafts, source fixed-tip scaling and GrowArrow. Six original pole-aligned fixed-tip scaling states have different tip azimuth due numerical roundoff; original data are retained and rigid tip-registration diagnostics are separate. Negative 3D scaling retains the source positioning-axis behavior. Starting tips, other tip families, curved Arrow options and complete constructor behavior are pending."
+  },
+  {
+    "id": "manim.mobject.geometry.line.Arrow.reset_normal_vector",
+    "lua_api": "Mobject:reset_normal_vector",
+    "status": "implemented_partial",
+    "evidence": [
+      "tests/arrows.lua",
+      "tests/reference_arrows.lua",
+      "tools/visual_arrows.py"
+    ],
+    "limitations": "Triangular end tips, buffered straight 2D/3D shafts, source fixed-tip scaling and GrowArrow. Six original pole-aligned fixed-tip scaling states have different tip azimuth due numerical roundoff; original data are retained and rigid tip-registration diagnostics are separate. Negative 3D scaling retains the source positioning-axis behavior. Starting tips, other tip families, curved Arrow options and complete constructor behavior are pending."
+  },
+  {
+    "id": "manim.mobject.geometry.tips.ArrowTriangleTip",
+    "lua_api": "ArrowTriangleTip",
+    "status": "implemented_partial",
+    "evidence": [
+      "tests/arrows.lua",
+      "tests/reference_arrows.lua",
+      "tools/visual_arrows.py"
+    ],
+    "limitations": "Triangular end tips, buffered straight 2D/3D shafts, source fixed-tip scaling and GrowArrow. Six original pole-aligned fixed-tip scaling states have different tip azimuth due numerical roundoff; original data are retained and rigid tip-registration diagnostics are separate. Negative 3D scaling retains the source positioning-axis behavior. Starting tips, other tip families, curved Arrow options and complete constructor behavior are pending."
+  },
+  {
+    "id": "manim.mobject.geometry.tips.ArrowTriangleFilledTip",
+    "lua_api": "ArrowTriangleFilledTip",
+    "status": "implemented_partial",
+    "evidence": [
+      "tests/arrows.lua",
+      "tests/reference_arrows.lua",
+      "tools/visual_arrows.py"
+    ],
+    "limitations": "Triangular end tips, buffered straight 2D/3D shafts, source fixed-tip scaling and GrowArrow. Six original pole-aligned fixed-tip scaling states have different tip azimuth due numerical roundoff; original data are retained and rigid tip-registration diagnostics are separate. Negative 3D scaling retains the source positioning-axis behavior. Starting tips, other tip families, curved Arrow options and complete constructor behavior are pending."
+  },
+  {
+    "id": "manim.mobject.geometry.arc.TipableVMobject.has_tip",
+    "lua_api": "Mobject:has_tip",
+    "status": "implemented_partial",
+    "evidence": [
+      "tests/arrows.lua",
+      "tests/reference_arrows.lua",
+      "tools/visual_arrows.py"
+    ],
+    "limitations": "Triangular end tips, buffered straight 2D/3D shafts, source fixed-tip scaling and GrowArrow. Six original pole-aligned fixed-tip scaling states have different tip azimuth due numerical roundoff; original data are retained and rigid tip-registration diagnostics are separate. Negative 3D scaling retains the source positioning-axis behavior. Starting tips, other tip families, curved Arrow options and complete constructor behavior are pending."
+  },
+  {
+    "id": "manim.mobject.geometry.arc.TipableVMobject.pop_tips",
+    "lua_api": "Mobject:pop_tips",
+    "status": "implemented_partial",
+    "evidence": [
+      "tests/arrows.lua",
+      "tests/reference_arrows.lua",
+      "tools/visual_arrows.py"
+    ],
+    "limitations": "Triangular end tips, buffered straight 2D/3D shafts, source fixed-tip scaling and GrowArrow. Six original pole-aligned fixed-tip scaling states have different tip azimuth due numerical roundoff; original data are retained and rigid tip-registration diagnostics are separate. Negative 3D scaling retains the source positioning-axis behavior. Starting tips, other tip families, curved Arrow options and complete constructor behavior are pending."
+  },
+  {
+    "id": "manim.animation.growing.GrowArrow",
+    "lua_api": "GrowArrow",
+    "status": "implemented_partial",
+    "evidence": [
+      "tests/arrows.lua",
+      "tests/reference_arrows.lua",
+      "tools/visual_arrows.py"
+    ],
+    "limitations": "Triangular end tips, buffered straight 2D/3D shafts, source fixed-tip scaling and GrowArrow. Six original pole-aligned fixed-tip scaling states have different tip azimuth due numerical roundoff; original data are retained and rigid tip-registration diagnostics are separate. Negative 3D scaling retains the source positioning-axis behavior. Starting tips, other tip families, curved Arrow options and complete constructor behavior are pending."
+  },
+  {
+    "id": "manim.mobject.geometry.tips.ArrowTip.base",
+    "lua_api": "ArrowTriangleTip.base",
+    "status": "implemented_partial",
+    "evidence": [
+      "tests/arrows.lua",
+      "tests/reference_arrows.lua",
+      "tools/visual_arrows.py"
+    ],
+    "limitations": "Triangular end tips, buffered straight 2D/3D shafts, source fixed-tip scaling and GrowArrow. Six original pole-aligned fixed-tip scaling states have different tip azimuth due numerical roundoff; original data are retained and rigid tip-registration diagnostics are separate. Negative 3D scaling retains the source positioning-axis behavior. Starting tips, other tip families, curved Arrow options and complete constructor behavior are pending."
+  },
+  {
+    "id": "manim.mobject.geometry.tips.ArrowTip.tip_point",
+    "lua_api": "ArrowTriangleTip.tip_point",
+    "status": "implemented_partial",
+    "evidence": [
+      "tests/arrows.lua",
+      "tests/reference_arrows.lua",
+      "tools/visual_arrows.py"
+    ],
+    "limitations": "Triangular end tips, buffered straight 2D/3D shafts, source fixed-tip scaling and GrowArrow. Six original pole-aligned fixed-tip scaling states have different tip azimuth due numerical roundoff; original data are retained and rigid tip-registration diagnostics are separate. Negative 3D scaling retains the source positioning-axis behavior. Starting tips, other tip families, curved Arrow options and complete constructor behavior are pending."
+  },
+  {
+    "id": "manim.mobject.geometry.tips.ArrowTip.vector",
+    "lua_api": "ArrowTriangleTip.vector",
+    "status": "implemented_partial",
+    "evidence": [
+      "tests/arrows.lua",
+      "tests/reference_arrows.lua",
+      "tools/visual_arrows.py"
+    ],
+    "limitations": "Triangular end tips, buffered straight 2D/3D shafts, source fixed-tip scaling and GrowArrow. Six original pole-aligned fixed-tip scaling states have different tip azimuth due numerical roundoff; original data are retained and rigid tip-registration diagnostics are separate. Negative 3D scaling retains the source positioning-axis behavior. Starting tips, other tip families, curved Arrow options and complete constructor behavior are pending."
+  },
+  {
+    "id": "manim.mobject.geometry.tips.ArrowTip.tip_angle",
+    "lua_api": "ArrowTriangleTip.tip_angle",
+    "status": "implemented_partial",
+    "evidence": [
+      "tests/arrows.lua",
+      "tests/reference_arrows.lua",
+      "tools/visual_arrows.py"
+    ],
+    "limitations": "Triangular end tips, buffered straight 2D/3D shafts, source fixed-tip scaling and GrowArrow. Six original pole-aligned fixed-tip scaling states have different tip azimuth due numerical roundoff; original data are retained and rigid tip-registration diagnostics are separate. Negative 3D scaling retains the source positioning-axis behavior. Starting tips, other tip families, curved Arrow options and complete constructor behavior are pending."
+  },
+  {
+    "id": "manim.mobject.geometry.tips.ArrowTip.length",
+    "lua_api": "ArrowTriangleTip.length",
+    "status": "implemented_partial",
+    "evidence": [
+      "tests/arrows.lua",
+      "tests/reference_arrows.lua",
+      "tools/visual_arrows.py"
+    ],
+    "limitations": "Triangular end tips, buffered straight 2D/3D shafts, source fixed-tip scaling and GrowArrow. Six original pole-aligned fixed-tip scaling states have different tip azimuth due numerical roundoff; original data are retained and rigid tip-registration diagnostics are separate. Negative 3D scaling retains the source positioning-axis behavior. Starting tips, other tip families, curved Arrow options and complete constructor behavior are pending."
   }
 ]
