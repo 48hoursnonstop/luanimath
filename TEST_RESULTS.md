@@ -1,5 +1,19 @@
 # Executed test results
 
+## 0.8.1-dev — project rename
+
+- `require('luanimath')`, the renamed native module and
+  `tools/luanimath.lua` execute real scenes from `/mnt/datos/luanimath`.
+- Complete `make check` passed after the rename, including all actual media
+  decoding and frozen upstream numerical/visual comparisons.
+- Core suite: **17 groups, 326 checks**, including native SHA-256 standard
+  vectors, an embedded NUL, a million-byte input and invalid input.
+- ASan/UBSan passed the renamed core, text, alignment, 3D, SVG, glyph, markup
+  and text-styling suites. Leak detection remained disabled.
+- Prior source archives remain intact under their original filenames.
+- Source-only `luanimath-0.8.1-dev.tar.gz` clean extraction/rebuilding/testing
+  is the release gate; generated integrity reports are under `releases/`.
+
 ## 0.8.0-dev — 2026-11-07 America/Mexico_City
 
 - Strict native compilation and complete `make check` passed. Final added

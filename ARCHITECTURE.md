@@ -9,7 +9,7 @@ scene.lua -> public Lua API -> object/geometry model -> animation/timeline
                                                                -> FFmpeg video
 ```
 
-`lua/luanim/init.lua` exports the public interface. `mobject.lua` owns points,
+`lua/luanimath/init.lua` exports the public interface. `mobject.lua` owns points,
 hierarchical identity, transformations and update callbacks. `geometry.lua`
 constructs actual cubic paths, following upstream geometry. `vector.lua`,
 `bezier.lua`, `color.lua` and `rate_functions.lua` implement the associated
@@ -56,7 +56,7 @@ world frame matches Manim's fixed 128/9 × 8 default independently of raster siz
 ## Dependencies and extension boundaries
 
 Cairo is the first backend. `native/text.c` owns the Pango typography interface;
-`lua/luanim/text.lua` imports real per-glyph outlines from Pango’s in-memory
+`lua/luanimath/text.lua` imports real per-glyph outlines from Pango’s in-memory
 Cairo SVG output, using the native SVG importer. This preserves the same glyph
 serialization, coordinate quantization and contour closure as Manim, with no
 temporary text asset or Python. Spaces can have invisible placeholder geometry
@@ -92,4 +92,4 @@ currently add fragility. This decision can be revisited for batched geometry.
 An isolated Python environment executes upstream Manim. It produces frozen
 numeric fixtures and Cairo reference images. Tests execute the *actual public
 Lua API*, compare state and points, and decode the native output. Python is not
-invoked by `require('luanim')`, the CLI, scene construction, or rendering.
+invoked by `require('luanimath')`, the CLI, scene construction, or rendering.

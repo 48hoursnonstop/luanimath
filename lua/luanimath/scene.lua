@@ -1,9 +1,9 @@
-local U=require('luanim.util')
-local V=require('luanim.vector')
-local Config=require('luanim.config')
-local Renderer=require('luanim.renderer')
-local A=require('luanim.animation')
-local Cameras=require('luanim.camera')
+local U=require('luanimath.util')
+local V=require('luanimath.vector')
+local Config=require('luanimath.config')
+local Renderer=require('luanimath.renderer')
+local A=require('luanimath.animation')
+local Cameras=require('luanimath.camera')
 local Scene={};Scene.__index=Scene
 function Scene.new(construct,opts)
     assert(type(construct)=='function','Scene requires a construct function')
@@ -93,7 +93,7 @@ function Scene:render(opts)
     local output=opts.output or 'artifacts/scene.mp4'
     local directory=output:match('^(.*)/[^/]+$') or '.';U.mkdir(directory)
     -- mktemp avoids colliding with earlier renderings or deleting a user directory.
-    local handle=assert(io.popen('mktemp -d '..U.shell_quote(directory..'/.luanim-frames-XXXXXX'),'r'))
+    local handle=assert(io.popen('mktemp -d '..U.shell_quote(directory..'/.luanimath-frames-XXXXXX'),'r'))
     self.frame_dir=assert(handle:read('*l'));assert(handle:close(),'cannot create frame directory')
     self.config=config;self.mobjects={};self.time=0;self.frame_count=0
     if opts.frame_width then self.camera.frame:stretch(opts.frame_width/self.camera.frame:get_width(),1) end

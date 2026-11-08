@@ -1,5 +1,14 @@
 # Changelog
 
+## 0.8.1-dev
+
+- Project renamed to **luanimath**, including the Lua module tree, native ABI,
+  CLI, examples, cache names, source release prefix and documentation.
+- Previous source archives remain available under their original names.
+- Native asset hash primitive has executed standard binary/SHA-256 vectors.
+- Mathematical typesetting remains in progress; no public Typst API parity
+  is claimed by this naming release.
+
 ## 0.8.0-dev
 
 - Native MarkupText with validated Pango attributes, nested formatting,

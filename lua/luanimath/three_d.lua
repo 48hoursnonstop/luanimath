@@ -1,8 +1,8 @@
-local G=require('luanim.geometry')
-local V=require('luanim.vector')
-local U=require('luanim.util')
-local C=require('luanim.color')
-local B=require('luanim.bezier')
+local G=require('luanimath.geometry')
+local V=require('luanimath.vector')
+local U=require('luanimath.util')
+local C=require('luanimath.color')
+local B=require('luanimath.bezier')
 local D={}
 function D.ThreeDVMobject(opts)
     local m=G.VMobject(U.merge({shade_in_3d=true},opts));m.kind='ThreeDVMobject';return m

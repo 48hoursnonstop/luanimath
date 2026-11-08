@@ -1,4 +1,4 @@
-local l=require('luanim')
+local l=require('luanimath')
 return l.Scene(function(s)
     local title=l.Text('Transform · grupos y subtrazados',{font='Liberation Sans',font_size=44}):shift(2.8*l.UP)
     local shape=l.Square{color=l.BLUE,fill_opacity=.3}

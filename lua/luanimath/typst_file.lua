@@ -1,5 +1,5 @@
-local U=require('luanim.util')
-local N=require('luanim_native')
+local U=require('luanimath.util')
+local N=require('luanimath_native')
 local F={}
 local function read(path)
     local f=io.open(path,'rb');if not f then return nil end
@@ -17,14 +17,14 @@ function F.typst_to_svg_file(body,opts)
     local preamble=opts.preamble or opts.typst_preamble or '';assert(type(preamble)=='string','Typst preamble must be a string')
     local size=U.number(opts.text_size or 10,'Typst compilation text_size');assert(size>0,'Typst text_size must be positive')
     local source=('#set page(width: auto, height: auto, margin: 0pt, fill: none)\n#set text(size: %spt)\n%s\n%s\n'):format(size,preamble,body)
-    local compiler=opts.typst_bin or os.getenv('LUANIM_TYPST') or 'typst'
+    local compiler=opts.typst_bin or os.getenv('LUANIMATH_TYPST') or 'typst'
     local pipe=assert(io.popen(U.shell_quote(compiler)..' --version 2>&1','r'))
     local version=pipe:read('*a');local ok=pipe:close();assert(ok and version:match('^typst '),'Typst compiler is unavailable: '..version)
     local paths=opts.font_paths or {};assert(type(paths)=='table','font_paths must be a sequence')
     local key={source,version,opts.root or ''}
     for _,path in ipairs(paths) do assert(type(path)=='string','font path must be a string');key[#key+1]=path end
     local hash=N.sha256(table.concat(key,'\0'))
-    local directory=opts.cache_dir or '.luanim-cache/typst';U.mkdir(directory)
+    local directory=opts.cache_dir or '.luanimath-cache/typst';U.mkdir(directory)
     local stem=directory..'/'..hash;local svg,typ=stem..'.svg',stem..'.typ'
     if read(typ)~=source then local stage=temporary(directory);write(stage,source);assert(os.rename(stage,typ)) end
     local cached=read(svg);local digest=read(svg..'.sha256')

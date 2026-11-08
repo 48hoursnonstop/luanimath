@@ -1,4 +1,4 @@
-local U = require('luanim.util')
+local U = require('luanimath.util')
 local M = {
     WHITE='#FFFFFF', BLACK='#000000', RED='#FC6255', BLUE='#58C4DD', GREEN='#83C167',
     YELLOW='#FFFF00', PURPLE='#9A72AC', TEAL='#5CD0B3', ORANGE='#FF862F', PINK='#D147BD',

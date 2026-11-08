@@ -1,4 +1,4 @@
-local l=require('luanim')
+local l=require('luanimath')
 local fixture=dofile('tests/reference_paths.lua')
 local checks=0
 local function eq(a,b,label)

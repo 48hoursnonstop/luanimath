@@ -1,8 +1,8 @@
-local N=require('luanim_native')
-local G=require('luanim.geometry')
-local V=require('luanim.vector')
-local U=require('luanim.util')
-local Path=require('luanim.svg_path')
+local N=require('luanimath_native')
+local G=require('luanimath.geometry')
+local V=require('luanimath.vector')
+local U=require('luanimath.util')
+local Path=require('luanimath.svg_path')
 local S={}
 local identity={1,0,0,1,0,0}
 local function multiply(a,b)

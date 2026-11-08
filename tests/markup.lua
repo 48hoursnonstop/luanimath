@@ -1,5 +1,5 @@
-local l=require('luanim')
-local U=require('luanim.util')
+local l=require('luanimath')
+local U=require('luanimath.util')
 local cases=dofile('tests/reference_markup.lua')
 local checks=0
 local function eq(a,b,label)

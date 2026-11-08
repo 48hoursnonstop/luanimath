@@ -9,9 +9,9 @@ export LUA_PATH := $(CURDIR)/lua/?.lua;$(CURDIR)/lua/?/init.lua;;
 export LUA_CPATH := $(CURDIR)/build/?.so;;
 
 .PHONY: all test text-test text-features-test markup-demo glyph-test glyph-demo svg-test svg-demo media-test graphing-test alignment-test paths-test three-d-test three-d-demo demo reference differential check clean sanitize release
-all: build/luanim_native.so
+all: build/luanimath_native.so
 
-build/luanim_native.so: native/cairo_backend.c native/text.c native/xml.c native/system.c
+build/luanimath_native.so: native/cairo_backend.c native/text.c native/xml.c native/system.c
 	@mkdir -p build
 	$(CC) $(CFLAGS) $(WARN) -fPIC -shared $^ -o $@ $$(pkg-config --cflags --libs $(PKGS)) -lm
 
@@ -19,7 +19,7 @@ test: all
 	$(LUA) tests/run.lua
 
 demo: all
-	$(LUA) tools/luanim.lua examples/geometric.lua --output artifacts/geometric.mp4 --width 640 --height 360 --fps 24
+	$(LUA) tools/luanimath.lua examples/geometric.lua --output artifacts/geometric.mp4 --width 640 --height 360 --fps 24
 
 reference:
 	.dev/venv/bin/python tools/reference.py --upstream .dev/manim-0.22.1
@@ -39,7 +39,7 @@ text-features-test: all
 	$(PYTHON) tools/visual_text_features.py
 
 markup-demo: all
-	$(LUA) tools/luanim.lua examples/markup.lua --output artifacts/markup.mp4 --width 640 --height 360 --fps 24
+	$(LUA) tools/luanimath.lua examples/markup.lua --output artifacts/markup.mp4 --width 640 --height 360 --fps 24
 	$(PYTHON) tools/verify_markup_video.py
 
 glyph-test: all
@@ -47,7 +47,7 @@ glyph-test: all
 	$(PYTHON) tools/visual_glyphs.py
 
 glyph-demo: all
-	$(LUA) tools/luanim.lua examples/glyphs.lua --output artifacts/glyphs.mp4 --width 640 --height 360 --fps 24
+	$(LUA) tools/luanimath.lua examples/glyphs.lua --output artifacts/glyphs.mp4 --width 640 --height 360 --fps 24
 	$(PYTHON) tools/verify_glyph_video.py
 
 svg-test: all
@@ -55,7 +55,7 @@ svg-test: all
 	$(PYTHON) tools/visual_svg.py
 
 svg-demo: all
-	$(LUA) tools/luanim.lua examples/svg.lua --output artifacts/svg.mp4 --width 640 --height 360 --fps 24
+	$(LUA) tools/luanimath.lua examples/svg.lua --output artifacts/svg.mp4 --width 640 --height 360 --fps 24
 	$(PYTHON) tools/verify_svg_video.py
 
 three-d-test: all
@@ -63,7 +63,7 @@ three-d-test: all
 	$(PYTHON) tools/visual_three_d.py
 
 three-d-demo: all
-	$(LUA) tools/luanim.lua examples/three_d.lua --output artifacts/three-d.mp4 --width 640 --height 360 --fps 24
+	$(LUA) tools/luanimath.lua examples/three_d.lua --output artifacts/three-d.mp4 --width 640 --height 360 --fps 24
 	$(PYTHON) tools/verify_three_d_video.py
 
 paths-test: all

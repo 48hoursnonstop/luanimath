@@ -1,5 +1,5 @@
-local l=require('luanim')
-local U=require('luanim.util')
+local l=require('luanimath')
+local U=require('luanimath.util')
 local fixture=dofile('tests/reference_v0221.lua')
 local count,scalars=0,0
 local function eq(a,b,path)
@@ -33,7 +33,7 @@ for i,case in ipairs(fixture.paths) do
     eq(m:get_subcurve(0,case.alpha).points,case.partial,'path.partial:'..i)
     eq(m:get_arc_length(),case.length,'path.length:'..i);count=count+1
 end
-U.mkdir('artifacts/luanim')
+U.mkdir('artifacts/luanimath')
 for _,case in ipairs(fixture.animations) do
     local obj=l.Square{color=l.BLUE,fill_opacity=.35}:shift(l.LEFT)
     local target=l.Circle{color=l.GREEN,fill_opacity=.7}:shift(l.RIGHT)
@@ -43,7 +43,7 @@ for _,case in ipairs(fixture.animations) do
     else a=l[case.kind](obj,{rate_func=l.linear}) end
     a:begin();a:interpolate(case.alpha);state(obj,case.expected,case.kind..':'..case.alpha)
     local renderer=l.Renderer{pixel_width=320,pixel_height=180,frame_height=8,frame_width=128/9}
-    renderer:render({obj},('artifacts/luanim/%s_%.3f.png'):format(case.kind,case.alpha));renderer:close()
+    renderer:render({obj},('artifacts/luanimath/%s_%.3f.png'):format(case.kind,case.alpha));renderer:close()
     count=count+1
 end
 print(('PASS: %d upstream differential cases, %d scalar comparisons; %d actual Lua/Cairo PNGs'):format(count,scalars,#fixture.animations))

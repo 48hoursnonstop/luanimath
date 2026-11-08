@@ -1,6 +1,6 @@
 # Compatibility
 
-Target: Manim Community 0.22.1. Current development version: 0.8.0-dev.
+Target: Manim Community 0.22.1. Current development version: 0.8.1-dev.
 
 The public API inventory is `compatibility/api_inventory.json`; reviewed
 declarations are in `compatibility/implemented.json`. `python3 tools/coverage.py`
@@ -45,7 +45,7 @@ through the native vector pipeline. The 13 original-upstream images and the
 diagnosed RTL layout image now have zero pixel error in this environment.
 
 One standalone RTL word produces an empty SVG in upstream because canvas-wide
-automatic RTL alignment clips it outside the surface. Luanim renders it.
+automatic RTL alignment clips it outside the surface. luanimath renders it.
 `tools/reference_text.py` retains the original empty output and diagnoses it
 by changing only ManimPango's `pango_width` to 100, which restores the glyphs.
 The corrected reference matches the native output. This is **one explicitly

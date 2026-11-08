@@ -1,5 +1,5 @@
-local l=require('luanim')
-local U=require('luanim.util')
+local l=require('luanimath')
+local U=require('luanimath.util')
 local data=dofile('tests/reference_svg.lua')
 local checks=0
 local function eq(a,b,label)
@@ -29,10 +29,10 @@ end
 local function fails(fn) checks=checks+1;assert(not pcall(fn),'expected rejection') end
 fails(function() l.VMobjectFromSVGPath('M0 0Lbad') end)
 fails(function() l.VMobjectFromSVGPath('M0 0A1 1 0 2 0 3 4') end)
-fails(function() l.SVGMobject('/missing-luanim.svg') end)
-fails(function() require('luanim_native').parse_xml('<svg>') end)
-fails(function() require('luanim_native').parse_xml('<!DOCTYPE svg><svg/>') end)
-fails(function() require('luanim_native').parse_xml('<svg>\0</svg>') end)
+fails(function() l.SVGMobject('/missing-luanimath.svg') end)
+fails(function() require('luanimath_native').parse_xml('<svg>') end)
+fails(function() require('luanimath_native').parse_xml('<!DOCTYPE svg><svg/>') end)
+fails(function() require('luanimath_native').parse_xml('<svg>\0</svg>') end)
 local function svg(content,opts)
     local f=assert(io.open('artifacts/svg/input.svg','wb'));f:write('<svg xmlns="http://www.w3.org/2000/svg">'..content..'</svg>');f:close()
     return l.SVGMobject('artifacts/svg/input.svg',opts)

@@ -1,5 +1,5 @@
-local U=require('luanim.util')
-local C=require('luanim.color')
+local U=require('luanimath.util')
+local C=require('luanimath.color')
 local M={defaults={pixel_width=854,pixel_height=480,frame_height=8,frame_width=128/9,frame_rate=30,background_color=C.BLACK,background_opacity=1}}
 function M.resolve(opts)
     local c=U.merge(M.defaults,opts)

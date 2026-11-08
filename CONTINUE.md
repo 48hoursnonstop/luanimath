@@ -1,15 +1,18 @@
 # Development state
 
-0.8 is clean-verified and tagged. The user authorized continued development
-through available usage, then requested the new project name `luanimath`.
+Current project name and directory: **luanimath**, `/mnt/datos/luanimath`.
+Lua entrypoint: `require('luanimath')`; CLI: `tools/luanimath.lua`.
 
-The next mathematical-text subsystem is in progress. A native Typst 0.15.1
-compiler is installed under /mnt/datos/Tools and reachable as `typst`.
-The development oracle uses typst-py 0.15.2, which embeds Typst 0.15.1.
-A formula produced byte-identical CLI/oracle SVG. Private compilation/cache
-and native SHA-256 have executed a first example; public Typst/MathTypst
-objects, selection, edge tests and compatibility declarations remain pending.
+0.8 is a clean-verified historical release. 0.8.1 renames the module tree,
+native ABI, CLI, examples, caches and source package. Its complete regression
+suite passed; clean source packaging remains the release gate.
 
-Finish the naming change across the repository, then resume mathematical
-objects and their source-derived tests. Preserve all existing releases and
-actual evidence. No overall completion percentage is claimed.
+Mathematical typography is next. Native Typst 0.15.1 is installed under
+/mnt/datos/Tools and available as `typst`. The development oracle uses
+`typst-py` 0.15.2, which embeds the same Typst 0.15.1 engine. An actual formula
+produced byte-identical CLI/oracle SVG. Private native compilation/cache and
+SHA-256 are working; public Typst/MathTypst objects, labeled selection,
+stroke-width scaling and compatibility tests remain in progress.
+
+Continue from ROADMAP.md. Preserve existing releases and actual evidence.
+No overall parity percentage or production readiness is claimed.

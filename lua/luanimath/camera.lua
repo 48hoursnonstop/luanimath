@@ -1,7 +1,7 @@
-local V=require('luanim.vector')
-local G=require('luanim.geometry')
-local U=require('luanim.util')
-local Config=require('luanim.config')
+local V=require('luanimath.vector')
+local G=require('luanimath.geometry')
+local U=require('luanimath.util')
+local Config=require('luanimath.config')
 local Camera={};Camera.__index=Camera
 local API={}
 function Camera.new(opts,kind)

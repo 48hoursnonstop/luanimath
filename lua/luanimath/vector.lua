@@ -1,4 +1,4 @@
-local U = require('luanim.util')
+local U = require('luanimath.util')
 local V = {}
 local mt = {__index = V}
 

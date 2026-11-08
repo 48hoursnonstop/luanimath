@@ -1,7 +1,7 @@
 -- Source-derived SVG path conversion: svg_mobject.py and svgelements.Arc.
-local V=require('luanim.vector')
-local U=require('luanim.util')
-local B=require('luanim.bezier')
+local V=require('luanimath.vector')
+local U=require('luanimath.util')
+local B=require('luanimath.bezier')
 local P={}
 function P.reader(text)
     assert(type(text)=='string','path data must be a string')

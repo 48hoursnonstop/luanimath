@@ -1,6 +1,6 @@
 -- Manim Text._text2settings: independent shaping runs and overlapping styles.
-local C=require('luanim.color')
-local U=require('luanim.util')
+local C=require('luanimath.color')
+local U=require('luanimath.util')
 local S={}
 function S.hex(color)
     local c=C.parse(color)

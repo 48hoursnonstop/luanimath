@@ -9,7 +9,7 @@ from PIL import Image
 root=Path(__file__).resolve().parents[1]
 results=[]
 for path in sorted((root/'tests/reference_images').glob('*.png')):
-    actual=root/'artifacts/luanim'/path.name
+    actual=root/'artifacts/luanimath'/path.name
     a=np.asarray(Image.open(path).convert('RGBA')).astype(float)
     b=np.asarray(Image.open(actual).convert('RGBA')).astype(float)
     assert a.shape==b.shape,(path.name,a.shape,b.shape)

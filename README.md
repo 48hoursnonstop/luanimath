@@ -1,9 +1,12 @@
-# Luanim
+# luanimath
 
 A source-derived, Lua-native port of Manim Community Edition. The compatibility
 target is **Manim 0.22.1**. This is an early development release in a continuing
 port: consult `COMPATIBILITY.md` and the machine-readable inventory for its
 verified scope. It does not yet replace the full upstream library.
+
+The project lives in `/mnt/datos/luanimath`. The Lua entrypoint is
+`require("luanimath")` and the CLI is `tools/luanimath.lua`.
 
 The animation engine runs in Lua 5.4. A small C module interfaces directly with
 Cairo. FFmpeg encodes actual frames. Python and Manim are **development-only
@@ -39,7 +42,7 @@ and native SVG paths/import.
 Availability and compatibility are tracked separately for each upstream API.
 
 ```lua
-local l = require('luanim')
+local l = require('luanimath')
 
 return l.Scene(function(s)
     local square = l.Square { color = l.BLUE, fill_opacity = 0.3 }
@@ -53,7 +56,7 @@ end)
 Render from the repository root:
 
 ```sh
-lua5.4 tools/luanim.lua examples/geometric.lua \
+lua5.4 tools/luanimath.lua examples/geometric.lua \
     --output artifacts/geometric.mp4 --width 640 --height 360 --fps 24
 ```
 

@@ -1,4 +1,4 @@
-local U=require('luanim.util')
+local U=require('luanimath.util')
 local R={}
 local function unit(fn)
     return function(t,...) U.number(t,'t'); if t<0 then return 0 elseif t>1 then return 1 end; return fn(t,...) end

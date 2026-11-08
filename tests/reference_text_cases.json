@@ -73,7 +73,7 @@
       0.0
     ],
     "image": "text_05.png",
-    "known_difference": "Manim text2svg uses canvas-wide automatic RTL layout, clipping this word outside its SVG. Luanim retains the real glyph outlines.",
+    "known_difference": "Manim text2svg uses canvas-wide automatic RTL layout, clipping this word outside its SVG. luanimath retains the real glyph outlines.",
     "diagnostic": {
       "width": 1.3151855500000005,
       "height": 0.63046875,

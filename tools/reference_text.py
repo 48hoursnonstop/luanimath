@@ -32,7 +32,7 @@ with m.tempconfig(dict(pixel_width=480,pixel_height=270,frame_height=8,frame_wid
                 with m.tempconfig({'media_dir':str(ROOT/'artifacts/oracle-rtl-diagnostic')}):
                     corrected=m.Text(text,**opts)
                 assert corrected.width>0 and corrected.height>0
-                case['known_difference']='Manim text2svg uses canvas-wide automatic RTL layout, clipping this word outside its SVG. Luanim retains the real glyph outlines.'
+                case['known_difference']='Manim text2svg uses canvas-wide automatic RTL layout, clipping this word outside its SVG. luanimath retains the real glyph outlines.'
                 case['diagnostic']=dict(width=corrected.width,height=corrected.height,center=corrected.get_center(),image='rtl_layout_diagnostic.png')
                 camera=m.Camera();camera.capture_mobjects([corrected]);Image.fromarray(camera.pixel_array).save(output/'rtl_layout_diagnostic.png')
             finally:

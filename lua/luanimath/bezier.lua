@@ -1,6 +1,6 @@
 -- Cubic representation and de Casteljau subdivision follow Manim utils/bezier.py.
-local V = require('luanim.vector')
-local U = require('luanim.util')
+local V = require('luanimath.vector')
+local U = require('luanimath.util')
 local B = {}
 function B.point(c,t)
     local q=1-t

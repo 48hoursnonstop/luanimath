@@ -1,4 +1,4 @@
-local l=require('luanim')
+local l=require('luanimath')
 return l.Scene(function(s)
     local title=l.Text('SVG · curvas, estilos y referencias',{font='Liberation Sans',font_size=42}):shift(2.8*l.UP)
     local shape=l.SVGMobject('tests/svg_assets/use.svg',{height=2.6,fill_color=l.BLUE})

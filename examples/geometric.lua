@@ -1,4 +1,4 @@
-local l=require('luanim')
+local l=require('luanimath')
 return l.Scene(function(s)
     local square=l.Square{side_length=1.8,color=l.BLUE,fill_opacity=0.25}:shift(2*l.LEFT)
     local circle=l.Circle{radius=0.9,color=l.GREEN,fill_opacity=0.25}:shift(2*l.RIGHT)

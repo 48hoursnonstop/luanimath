@@ -10,13 +10,13 @@ Reference: Manim Community Edition **v0.22.1**.
 
 Manim is copyright its original and community contributors, including Grant
 Sanderson and the Manim Community Developers. The retained MIT notices apply
-to its source-derived algorithms. Luanim's own changes are MIT-licensed.
+to its source-derived algorithms. luanimath's own changes are MIT-licensed.
 
 ## Initial port mapping
 
 | Upstream source | Lua/native implementation |
 | --- | --- |
-| `manim/mobject/mobject.py` | `lua/luanim/mobject.lua`, `scene.lua` hierarchy handling |
+| `manim/mobject/mobject.py` | `lua/luanimath/mobject.lua`, `scene.lua` hierarchy handling |
 | `manim/mobject/types/vectorized_mobject.py` | `mobject.lua`, `bezier.lua`, `animation.lua` |
 | `manim/mobject/geometry/arc.py` | `geometry.lua` cubic arc control points |
 | `manim/mobject/geometry/line.py` | `geometry.lua` straight lines and buffers |

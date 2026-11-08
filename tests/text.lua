@@ -1,5 +1,5 @@
-local l=require('luanim')
-local U=require('luanim.util')
+local l=require('luanimath')
+local U=require('luanimath.util')
 local checks,known_differences=0,0
 local function eq(a,b,label)
     checks=checks+1

@@ -1,8 +1,8 @@
-local U=require('luanim.util')
-local V=require('luanim.vector')
-local C=require('luanim.color')
-local R=require('luanim.rate_functions')
-local Paths=require('luanim.paths')
+local U=require('luanimath.util')
+local V=require('luanimath.vector')
+local C=require('luanimath.color')
+local R=require('luanimath.rate_functions')
+local Paths=require('luanimath.paths')
 local A={}
 local Animation={};Animation.__index=Animation
 

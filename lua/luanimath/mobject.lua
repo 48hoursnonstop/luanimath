@@ -1,7 +1,7 @@
-local V=require('luanim.vector')
-local C=require('luanim.color')
-local B=require('luanim.bezier')
-local U=require('luanim.util')
+local V=require('luanimath.vector')
+local C=require('luanimath.color')
+local B=require('luanimath.bezier')
+local U=require('luanimath.util')
 local M={}
 M.__index=function(self,key)
     if type(key)=='number' then
@@ -341,7 +341,7 @@ function M:insert_n_curves(n)
 end
 function M:get_point_mobject(center)
     assert(self.is_vector,'point mobjects currently require VMobject')
-    local point=require('luanim.geometry').VectorizedPoint(center or self:get_center())
+    local point=require('luanimath.geometry').VectorizedPoint(center or self:get_center())
     point.fill_color=U.copy(self.fill_color);point.stroke_color=U.copy(self.stroke_color);point.stroke_width=self.stroke_width
     return point
 end
@@ -459,7 +459,7 @@ function M:update(dt,opts)
     return self
 end
 function M:animate(opts)
-    local A=require('luanim.animation')
+    local A=require('luanimath.animation')
     return A.builder(self,opts)
 end
 function M:get_value() assert(self.kind=='ValueTracker','get_value requires ValueTracker');return self.points[1][1] end

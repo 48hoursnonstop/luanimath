@@ -1,4 +1,4 @@
-local l=require('luanim')
+local l=require('luanimath')
 return l.Scene(function(s)
     local axes=l.Axes{x_range={-3,3,1},y_range={-2,2,1},x_length=9,y_length=5}
     local curve=axes:plot(math.sin,{x_range={-3,3,.08},color=l.BLUE})

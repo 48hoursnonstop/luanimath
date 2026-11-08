@@ -1,5 +1,5 @@
-local V=require('luanim.vector')
-local U=require('luanim.util')
+local V=require('luanimath.vector')
+local U=require('luanimath.util')
 local P={}
 function P.straight_path()
     return function(start,finish,alpha)

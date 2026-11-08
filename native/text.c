@@ -116,7 +116,7 @@ static int parse_css_color(lua_State *L) {
     const double rgba[]={color.red/65535.0,color.green/65535.0,color.blue/65535.0,alpha/65535.0};
     for(int i=0;i<4;i++) {lua_pushnumber(L,rgba[i]);lua_seti(L,-2,i+1);}return 1;
 }
-void luanim_add_text(lua_State *L) {
+void luanimath_add_text(lua_State *L) {
     lua_pushcfunction(L,text_svg);lua_setfield(L,-2,"text_svg");
     lua_pushcfunction(L,font_list);lua_setfield(L,-2,"font_list");
     lua_pushcfunction(L,parse_css_color);lua_setfield(L,-2,"parse_css_color");

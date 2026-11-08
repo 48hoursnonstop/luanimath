@@ -5,4 +5,4 @@ releases/
 *.so
 __pycache__/
 .pytest_cache/
-.luanim-cache/
+.luanimath-cache/

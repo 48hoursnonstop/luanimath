@@ -1,8 +1,8 @@
-local M=require('luanim.mobject')
-local V=require('luanim.vector')
-local B=require('luanim.bezier')
-local U=require('luanim.util')
-local C=require('luanim.color')
+local M=require('luanimath.mobject')
+local V=require('luanimath.vector')
+local B=require('luanimath.bezier')
+local U=require('luanimath.util')
+local C=require('luanimath.color')
 local G={}
 function G.VMobject(opts) local m=M(opts);m.kind='VMobject';m.is_vector=true;return m end
 function G.Group(...)

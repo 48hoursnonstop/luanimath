@@ -1,8 +1,8 @@
-local Native=require('luanim_native')
-local U=require('luanim.util')
-local Config=require('luanim.config')
-local V=require('luanim.vector')
-local Cameras=require('luanim.camera')
+local Native=require('luanimath_native')
+local U=require('luanimath.util')
+local Config=require('luanimath.config')
+local V=require('luanimath.vector')
+local Cameras=require('luanimath.camera')
 local Renderer={};Renderer.__index=Renderer
 function Renderer.new(opts,camera)
     local config=Config.resolve(opts);local center=V(config.frame_center or {})

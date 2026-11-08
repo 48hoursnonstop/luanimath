@@ -7,7 +7,7 @@
 
 typedef struct {xmlDocPtr doc;} XmlOwner;
 static int free_xml(lua_State *L) {
-    XmlOwner *owner=luaL_checkudata(L,1,"luanim.xml_owner");
+    XmlOwner *owner=luaL_checkudata(L,1,"luanimath.xml_owner");
     if(owner->doc) {xmlFreeDoc(owner->doc);owner->doc=NULL;} return 0;
 }
 static void node_table(lua_State *L,xmlNodePtr node,unsigned depth,unsigned *count) {
@@ -28,7 +28,7 @@ static void node_table(lua_State *L,xmlNodePtr node,unsigned depth,unsigned *cou
 static int parse_xml(lua_State *L) {
     size_t size=0;const char *data=luaL_checklstring(L,1,&size);
     luaL_argcheck(L,size<=16777216 && strlen(data)==size,1,"SVG XML too large or contains NUL");
-    XmlOwner *owner=lua_newuserdatauv(L,sizeof(*owner),0);owner->doc=NULL;luaL_setmetatable(L,"luanim.xml_owner");
+    XmlOwner *owner=lua_newuserdatauv(L,sizeof(*owner),0);owner->doc=NULL;luaL_setmetatable(L,"luanimath.xml_owner");
     owner->doc=xmlReadMemory(data,(int)size,"input.svg",NULL,XML_PARSE_NONET|XML_PARSE_NOERROR|XML_PARSE_NOWARNING);
     if(!owner->doc) return luaL_error(L,"invalid SVG/XML document");
     if(owner->doc->intSubset || owner->doc->extSubset) return luaL_error(L,"SVG DTD declarations are not supported");
@@ -36,7 +36,7 @@ static int parse_xml(lua_State *L) {
     if(!root) return luaL_error(L,"SVG XML has no root element");
     unsigned count=0;node_table(L,root,0,&count);xmlFreeDoc(owner->doc);owner->doc=NULL;return 1;
 }
-void luanim_add_xml(lua_State *L) {
-    luaL_newmetatable(L,"luanim.xml_owner");lua_pushcfunction(L,free_xml);lua_setfield(L,-2,"__gc");lua_pop(L,1);
+void luanimath_add_xml(lua_State *L) {
+    luaL_newmetatable(L,"luanimath.xml_owner");lua_pushcfunction(L,free_xml);lua_setfield(L,-2,"__gc");lua_pop(L,1);
     lua_pushcfunction(L,parse_xml);lua_setfield(L,-2,"parse_xml");
 }

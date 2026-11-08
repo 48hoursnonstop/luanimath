@@ -1,4 +1,4 @@
-local l=require('luanim')
+local l=require('luanimath')
 local function create()
     return l.Scene(function(s)
         local dot=l.Dot(l.LEFT,{radius=0.3,color=l.YELLOW})

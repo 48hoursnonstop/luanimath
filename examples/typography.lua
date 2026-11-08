@@ -1,6 +1,6 @@
-local l=require('luanim')
+local l=require('luanimath')
 return l.Scene(function(s)
-    local heading=l.Text('Luanim',{font='Liberation Sans',font_size=96,color=l.BLUE,weight=l.BOLD}):shift(1.2*l.UP)
+    local heading=l.Text('luanimath',{font='Liberation Sans',font_size=96,color=l.BLUE,weight=l.BOLD}):shift(1.2*l.UP)
     local subtitle=l.Text('Lua nativo · geometría · animación',{font='Liberation Sans',font_size=42})
     local unicode=l.Text('mañana  日本語  Lua مرحبا',{font='Noto Sans',font_size=42,color=l.GREEN}):shift(1.1*l.DOWN)
     s:play(l.Write(heading),{run_time=1.5})

@@ -1,15 +1,15 @@
-/* Lua/Cairo boundary for Luanim. MIT; see LICENSE and LICENSE.manim*. */
+/* Lua/Cairo boundary for luanimath. MIT; see LICENSE and LICENSE.manim*. */
 #include <lua.h>
 #include <lauxlib.h>
 #include <cairo.h>
 #include <pango/pangocairo.h>
 #include <math.h>
 
-#define SURFACE_MT "luanim.surface"
+#define SURFACE_MT "luanimath.surface"
 typedef struct { cairo_surface_t *surface; cairo_t *cr; } Surface;
-void luanim_add_text(lua_State *L);
-void luanim_add_xml(lua_State *L);
-void luanim_add_system(lua_State *L);
+void luanimath_add_text(lua_State *L);
+void luanimath_add_xml(lua_State *L);
+void luanimath_add_system(lua_State *L);
 
 static double finite_number(lua_State *L, int i) {
     double n=luaL_checknumber(L,i);
@@ -124,7 +124,7 @@ static int write_png(lua_State *L) {
     if(status!=CAIRO_STATUS_SUCCESS) return luaL_error(L,"PNG output failed: %s",cairo_status_to_string(status));
     return 0;
 }
-int luaopen_luanim_native(lua_State *L) {
+int luaopen_luanimath_native(lua_State *L) {
     luaL_newmetatable(L,SURFACE_MT);
     lua_pushcfunction(L,close_surface);lua_setfield(L,-2,"__gc");
     lua_pushcfunction(L,close_surface);lua_setfield(L,-2,"__close");
@@ -132,5 +132,5 @@ int luaopen_luanim_native(lua_State *L) {
     const luaL_Reg methods[]={{"clear",clear_surface},{"draw",draw_path},{"set_frame",set_frame},{"write_png",write_png},{"close",close_surface},{NULL,NULL}};
     luaL_setfuncs(L,methods,0);lua_setfield(L,-2,"__index");lua_pop(L,1);
     const luaL_Reg functions[]={{"surface",new_surface},{NULL,NULL}};
-    luaL_newlib(L,functions);luanim_add_text(L);luanim_add_xml(L);luanim_add_system(L);lua_pushstring(L,cairo_version_string());lua_setfield(L,-2,"cairo_version");return 1;
+    luaL_newlib(L,functions);luanimath_add_text(L);luanimath_add_xml(L);luanimath_add_system(L);lua_pushstring(L,cairo_version_string());lua_setfield(L,-2,"cairo_version");return 1;
 }

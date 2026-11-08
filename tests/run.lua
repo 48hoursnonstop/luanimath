@@ -1,5 +1,5 @@
-local l=require('luanim')
-local U=require('luanim.util')
+local l=require('luanimath')
+local U=require('luanimath.util')
 local tests,checks=0,0
 local function equal(a,b,tolerance)
     checks=checks+1
@@ -15,6 +15,15 @@ local function test(name,fn)
     local ok,err=xpcall(fn,debug.traceback)
     assert(ok,name..': '..tostring(err));tests=tests+1
 end
+
+test('native asset SHA-256 handles binary strings and boundaries',function()
+    local native=require('luanimath_native')
+    equal(native.sha256(''),'e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855')
+    equal(native.sha256('abc'),'ba7816bf8f01cfea414140de5dae2223b00361a396177a9cb410ff61f20015ad')
+    equal(native.sha256('a\0b'),'59b271ae1bbcb1d31d41929817f4b16fb439eb4f31520b5ad1d5ce98920a7138')
+    equal(native.sha256(string.rep('a',1000000)),'cdc76e5c9914fb9281a1c7e284d73e67f1809a48a497200e046d39ccc7112cd0')
+    fails(function() native.sha256({}) end)
+end)
 
 test('vectors and Rodrigues rotation',function()
     equal(l.RIGHT+l.UP,{1,1,0});equal(2*l.LEFT,{-2,0,0})
@@ -133,14 +142,14 @@ test('scene removal preserves unaffected siblings',function()
 end)
 test('native surface executes and rejects invalid data',function()
     U.mkdir('artifacts/tests')
-    local native=require('luanim_native')
+    local native=require('luanimath_native')
     local s=native.surface(64,64,4,4,0,0)
     s:clear(l.parse(l.BLACK,0));local m=l.Circle{fill_opacity=0.5}
     s:draw(m.points,m.fill_color,m.stroke_color,m.stroke_width,'round','round')
     s:write_png('artifacts/tests/native.png')
     s:draw({{0,0,0}},m.fill_color,m.stroke_color,4)
     fails(function() s:draw({{0,0},{1,0}},m.fill_color,m.stroke_color,4) end)
-    fails(function() s:write_png('/nonexistent-luanim-directory/test.png') end)
+    fails(function() s:write_png('/nonexistent-luanimath-directory/test.png') end)
     s:close();s:close();fails(function() s:clear(l.parse(l.BLACK)) end)
     fails(function() native.surface(-1,64,4,4,0,0) end)
     fails(function() native.surface(64,64,0,4,0,0) end)

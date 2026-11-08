@@ -1,5 +1,5 @@
-local l=require('luanim')
-local U=require('luanim.util')
+local l=require('luanimath')
+local U=require('luanimath.util')
 local fixture=dofile('tests/reference_alignment.lua')
 local checks=0
 local function eq(a,b,label)
